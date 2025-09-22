@@ -6,22 +6,16 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Starfield } from "@/components/Starfield";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-
 const About = () => {
-  return (
-    <div className="min-h-screen bg-background text-foreground relative">
+  return <div className="min-h-screen bg-background text-foreground relative">
       <Starfield />
       <Header />
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 px-6">
         <div className="container mx-auto max-w-4xl relative z-10">
-          <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6 text-center">
-            About Adam Saltarelli
-          </h1>
-          <p className="text-xl text-center text-muted-foreground">
-            Web Designer • Ontario, Canada • Turning Dreams Into Reality
-          </p>
+          <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6 text-center">About Me</h1>
+          <p className="text-xl text-center text-muted-foreground">Web Designer • Runner • Martial Artist</p>
         </div>
       </section>
 
@@ -38,11 +32,7 @@ const About = () => {
               <h2 className="text-3xl font-heading font-bold mb-6">
                 Hi, I'm Adam
               </h2>
-              <p className="text-lg text-muted-foreground mb-4">
-                I'm a web designer from Ontario who builds clean, engaging websites 
-                that help businesses thrive. I combine practical design with quality 
-                workmanship — raised to believe if you won't do your best, don't bother.
-              </p>
+              <p className="text-lg text-muted-foreground mb-4">I'm a web designer from Ontario who builds clean, engaging websites that help businesses thrive. I combine practical design with quality workmanship — raised to believe if you won't do your best, don't bother.</p>
               <p className="text-lg text-muted-foreground mb-4">
                 Outside of design I train for marathons and practice MMA; that focus 
                 shows up in my attention to detail. Every project gets my full effort 
@@ -159,8 +149,6 @@ const About = () => {
       </section>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default About;
