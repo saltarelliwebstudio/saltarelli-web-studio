@@ -21,9 +21,8 @@ export const Header = () => {
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/about", label: "About" },
-    { href: "/services", label: "Services" },
-    { href: "/portfolio", label: "Portfolio" },
-    { href: "/contact", label: "Contact" },
+              { href: "/services", label: "Services" },
+              { href: "/portfolio", label: "Portfolio" },
   ];
 
   return (
@@ -61,7 +60,7 @@ export const Header = () => {
               </Link>
             ))}
             <Button variant="hero" size="sm" asChild>
-              <Link to="/contact">Get Started</Link>
+              <Link to="/get-started">Get Started</Link>
             </Button>
           </div>
 
@@ -92,7 +91,7 @@ export const Header = () => {
                 </Link>
               ))}
               <Button variant="hero" size="sm" asChild className="w-full">
-                <Link to="/contact">Get Started</Link>
+                <Link to="/get-started">Get Started</Link>
               </Button>
             </div>
           </div>

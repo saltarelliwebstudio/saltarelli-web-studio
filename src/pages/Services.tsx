@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Download, CheckCircle, AlertCircle } from "lucide-react";
+import { Download, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Starfield } from "@/components/Starfield";
@@ -9,35 +9,32 @@ import { Footer } from "@/components/Footer";
 import { PricingCard } from "@/components/PricingCard";
 
 const Services = () => {
-  const basicFeatures = [
+  const creationFeatures = [
     "1-3 week turnaround",
-    "1 round of revisions",
-    "Built on Google Sites, Carrd.co, or Canva (your choice)",
-    "SEO basics & social media setup advice",
+    "1 round of revisions included",
+    "Professional design and build",
+    "Domain setup & basic SEO",
     "Mobile-responsive design",
     "Contact form integration",
-    "Basic analytics setup",
     "50% non-refundable deposit required",
   ];
 
-  const growthFeatures = [
+  const redesignFeatures = [
     "1-3 week turnaround",
-    "2 rounds of revisions",
-    "Premium platform options (Squarespace available)",
-    "Advanced SEO optimization",
-    "Enhanced design polish",
-    "Priority support",
-    "Content strategy consultation",
+    "1 round of revisions included",
+    "Modern, responsive design",
+    "SEO optimization",
+    "Content migration",
+    "Performance improvements",
     "50% non-refundable deposit required",
   ];
 
   const extras = [
-    { service: "Additional revisions", price: "$50 each" },
     { service: "Rush delivery (under 1 week)", price: "Quote on request" },
+    { service: "Additional revisions", price: "$50 each" },
+    { service: "Each new page", price: "$50" },
     { service: "Logo design", price: "$150" },
-    { service: "Content writing", price: "$75/page" },
     { service: "Domain setup assistance", price: "$25" },
-    { service: "Email setup", price: "$50" },
   ];
 
   const terms = [
@@ -72,74 +69,20 @@ const Services = () => {
         <div className="container mx-auto max-w-6xl">
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
             <PricingCard
-              title="Basic Plan"
+              title="Website Creation"
               price="$499"
-              description="Perfect for small businesses and startups"
-              features={basicFeatures}
+              description="Build your new website from scratch"
+              features={creationFeatures}
             />
             <PricingCard
-              title="Growth Plan"
-              price="$799"
-              description="Ideal for established businesses wanting more"
-              features={growthFeatures}
+              title="Website Redesign"
+              price="$499"
+              description="Refresh and modernize your existing site"
+              features={redesignFeatures}
               popular={true}
             />
           </div>
 
-          {/* Platform Options */}
-          <Card className="max-w-4xl mx-auto mb-16">
-            <CardHeader>
-              <CardTitle className="text-2xl font-heading">Platform Options</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <h3 className="font-semibold mb-3">Basic Plan Platforms</h3>
-                  <ul className="space-y-2">
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="text-primary mt-0.5" size={16} />
-                      <span className="text-sm">
-                        <strong>Google Sites:</strong> Free, easy to maintain, great for simple sites
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="text-primary mt-0.5" size={16} />
-                      <span className="text-sm">
-                        <strong>Carrd:</strong> Beautiful one-page sites, perfect for portfolios
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="text-primary mt-0.5" size={16} />
-                      <span className="text-sm">
-                        <strong>Canva:</strong> Visual design focus, easy editing
-                      </span>
-                    </li>
-                  </ul>
-                </div>
-                <div>
-                  <h3 className="font-semibold mb-3">Growth Plan Platforms</h3>
-                  <ul className="space-y-2">
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="text-primary mt-0.5" size={16} />
-                      <span className="text-sm">All Basic Plan platforms included</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="text-primary mt-0.5" size={16} />
-                      <span className="text-sm">
-                        <strong>Squarespace:</strong> Premium features, e-commerce ready
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="text-primary mt-0.5" size={16} />
-                      <span className="text-sm">
-                        <strong>Custom recommendations</strong> based on your needs
-                      </span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
 
           {/* Add-ons */}
           <Card className="max-w-4xl mx-auto mb-16">
@@ -159,24 +102,23 @@ const Services = () => {
           </Card>
 
           {/* Terms & Conditions */}
-          <Card className="max-w-4xl mx-auto mb-16">
-            <CardHeader>
-              <CardTitle className="text-2xl font-heading flex items-center gap-2">
-                <AlertCircle className="text-primary" size={24} />
-                Terms & Conditions
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-3">
-                {terms.map((term, index) => (
-                  <li key={index} className="flex items-start gap-2">
-                    <span className="text-primary mt-1">•</span>
-                    <span className="text-sm text-muted-foreground">{term}</span>
-                  </li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
+          <div className="text-center mb-16">
+            <Card className="max-w-xl mx-auto p-6">
+              <CardContent className="flex flex-col items-center gap-4 pt-6">
+                <AlertCircle className="text-primary" size={32} />
+                <h3 className="text-xl font-heading font-semibold">Terms of Service</h3>
+                <p className="text-sm text-muted-foreground">
+                  View our complete terms and conditions
+                </p>
+                <Button variant="cosmic" asChild>
+                  <a href="/terms-of-service.pdf" download>
+                    <Download size={20} className="mr-2" />
+                    Download Terms of Service
+                  </a>
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
 
           {/* Download PDF */}
           <div className="text-center">

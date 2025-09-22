@@ -38,19 +38,19 @@ const Index = () => {
   const workflowSteps = [
     {
       title: "Discovery",
-      description: "Intake form + 30-45 min kickoff call to capture goals, assets, and timelines.",
+      description: "Initial in-person/virtual consultation, signatures, understanding project scope.",
     },
     {
-      title: "Design (Canva Draft)",
-      description: "I'll create an initial Canva draft so you can give feedback visually. 1 revision included (2 for Growth plan).",
+      title: "Design",
+      description: "I create a concept wireframe (using Lovable/Canva). This is only a draft for approval. One included revision; further revisions are $50 each.",
     },
     {
       title: "Build",
-      description: "Convert approved design into a live site on the chosen platform (Google Sites, Carrd, Canva, or Squarespace).",
+      description: "I use my chosen design software to build the official website.",
     },
     {
       title: "Launch & Support",
-      description: "Domain setup, SEO basics, and a short post-launch support window. Final payment due within 72 hours.",
+      description: "Domain setup, basic SEO, and a short post-launch support period with light social media advice to help drive traffic. Final payment due within 72 hours.",
     },
   ];
 
@@ -70,8 +70,8 @@ const Index = () => {
                 className="h-32 w-32 mx-auto rounded-full bg-white p-2 shadow-glow"
               />
             </div>
-            <h1 className="text-5xl md:text-7xl font-heading font-bold mb-6 bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">
-              Turn your dreams into reality.
+            <h1 className="text-5xl md:text-7xl font-heading font-bold mb-6">
+              Turn your dreams into <span className="text-accent">reality</span>.
             </h1>
             <p className="text-xl md:text-2xl text-foreground/80 mb-8 max-w-3xl mx-auto">
               Bringing your vision to life with tailored web design solutions,
@@ -101,7 +101,7 @@ const Index = () => {
             I'm a web designer from Ontario who builds clean, engaging websites that help businesses thrive. 
             I combine practical design with quality workmanship — raised to believe if you won't do your best, don't bother.
           </p>
-          <Button variant="outline" asChild>
+          <Button variant="hero" asChild>
             <Link to="/about">Learn More About Me</Link>
           </Button>
         </div>
@@ -121,26 +121,26 @@ const Index = () => {
 
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-8">
             <PricingCard
-              title="Basic Plan"
+              title="Website Creation"
               price="$499"
-              description="Perfect for small businesses and startups"
+              description="Build your new website from scratch"
               features={[
                 "1-3 week turnaround",
-                "1 round of revisions",
-                "Built on Google Sites, Carrd.co, or Canva",
-                "SEO basics & social media setup advice",
+                "1 round of revisions included",
+                "Professional design and build",
+                "Domain setup & basic SEO",
                 "50% non-refundable deposit required",
               ]}
             />
             <PricingCard
-              title="Growth Plan"
-              price="$799"
-              description="Ideal for established businesses"
+              title="Website Redesign"
+              price="$499"
+              description="Refresh and modernize your existing site"
               features={[
                 "1-3 week turnaround",
-                "2 rounds of revisions",
-                "Advanced SEO tips and extra polish",
-                "Premium platform options",
+                "1 round of revisions included",
+                "Modern, responsive design",
+                "SEO optimization included",
                 "50% non-refundable deposit required",
               ]}
               popular={true}
@@ -155,7 +155,7 @@ const Index = () => {
               </a>
             </Button>
             <p className="text-sm text-muted-foreground mt-4">
-              Additional revisions: $50 each • Late fees may apply after 3 weeks
+              Additional revisions: $50 each • New pages: $50 each • Late fees may apply after 3 weeks
             </p>
           </div>
         </div>

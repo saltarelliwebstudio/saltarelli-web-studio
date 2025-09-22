@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Mail, Phone, Instagram, Facebook } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import logo from "@/assets/sws-logo.png";
 
 export const Footer = () => {
@@ -55,7 +56,6 @@ export const Footer = () => {
                 { href: "/about", label: "About" },
                 { href: "/services", label: "Services" },
                 { href: "/portfolio", label: "Portfolio" },
-                { href: "/contact", label: "Contact" },
               ].map((link) => (
                 <li key={link.href}>
                   <Link
@@ -74,19 +74,27 @@ export const Footer = () => {
             <h3 className="font-heading font-semibold mb-4">Contact</h3>
             <div className="space-y-3">
               <a
-                href="mailto:info@saltarelliwebstudio.com"
-                className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
-              >
-                <Mail size={16} />
-                <span className="text-sm">info@saltarelliwebstudio.com</span>
-              </a>
-              <a
-                href="tel:+1234567890"
+                href="tel:+12899314142"
                 className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
               >
                 <Phone size={16} />
-                <span className="text-sm">(123) 456-7890</span>
+                <span className="text-sm">289-931-4142</span>
               </a>
+              <a
+                href="mailto:saltarelliwebstudio@gmail.com"
+                className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
+              >
+                <Mail size={16} />
+                <span className="text-sm">saltarelliwebstudio@gmail.com</span>
+              </a>
+              <p className="text-sm text-muted-foreground italic">
+                Typical response time: 24-48 hours
+              </p>
+              <Link to="/get-started">
+                <Button variant="hero" size="sm" className="mt-4">
+                  Get Started
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

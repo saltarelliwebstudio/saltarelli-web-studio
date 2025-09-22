@@ -80,7 +80,7 @@ const Portfolio = () => {
       <section className="relative pt-32 pb-20 px-6">
         <div className="container mx-auto max-w-4xl relative z-10 text-center">
           <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6">
-            Our Portfolio
+            My Portfolio
           </h1>
           <p className="text-xl text-muted-foreground">
             Real websites for real businesses. See what's possible.
