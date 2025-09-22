@@ -53,7 +53,7 @@ const Index = () => {
               <img src={logo} alt="Saltarelli Web Studio" className="h-32 w-32 mx-auto rounded-full bg-white p-2 shadow-glow" />
             </div>
             <h1 className="text-5xl font-heading font-bold mb-6 md:text-7xl">
-              Turn your dreams into <span className="text-amber-500">reality</span>.
+              Turn your dreams into <span className="text-amber-500">reality</span>
             </h1>
             <p className="text-xl md:text-2xl text-foreground/80 mb-8 max-w-3xl mx-auto">
               Bringing your vision to life with tailored web design solutions,
