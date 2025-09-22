@@ -46,7 +46,7 @@ const Index = () => {
     },
     {
       title: "Build",
-      description: "I use my chosen design software to build the official website.",
+      description: "I use the approved draft to create the live, functioning website.",
     },
     {
       title: "Launch & Support",
