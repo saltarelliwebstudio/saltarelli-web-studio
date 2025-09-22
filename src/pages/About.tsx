@@ -112,8 +112,8 @@ const About = () => {
               <li className="flex items-start gap-3">
                 <span className="text-primary mt-1">•</span>
                 <div>
-                  <strong>Platform Flexibility:</strong> Whether you prefer Google Sites, 
-                  Carrd, Canva, or Squarespace, I work with what suits you best.
+                <strong>Platform Flexibility:</strong> I work with the platform that fits you best, 
+                  though I especially enjoy building on Carrd.co, Squarespace, and Lovable.
                 </div>
               </li>
               <li className="flex items-start gap-3">
