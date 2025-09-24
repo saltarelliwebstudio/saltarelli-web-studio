@@ -14,7 +14,8 @@ const Index = () => {
   const portfolioItems = [{
     title: "Genius Fitness & MMA",
     description: "Modern fitness studio website with class scheduling and member portal",
-    category: "Fitness & Wellness"
+    category: "Fitness & Wellness",
+    imageUrl: "/lovable-uploads/f85c8a0e-5816-4475-b06f-7f5e11fea28d.png"
   }, {
     title: "Mary N Mae's Tack N Feed",
     description: "E-commerce solution for equestrian supplies and feed store",
@@ -22,11 +23,13 @@ const Index = () => {
   }, {
     title: "The Carrot Effect",
     description: "Professional consulting firm website with resource library",
-    category: "Business Services"
+    category: "Business Services",
+    imageUrl: "/lovable-uploads/4a288da7-0dfe-401d-8145-ae4a58e5ac0b.png"
   }, {
     title: "Mom Duke's Authentic Jamaican Cuisine",
     description: "Restaurant website with online ordering and catering services",
-    category: "Food & Restaurant"
+    category: "Food & Restaurant",
+    imageUrl: "/lovable-uploads/52f46296-b829-46d0-8c4f-2729a1d3cf97.png"
   }];
   const workflowSteps = [{
     title: "Discovery",
