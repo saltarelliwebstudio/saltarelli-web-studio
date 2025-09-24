@@ -27,7 +27,7 @@ export const Footer = () => {
             </p>
             <div className="flex gap-4">
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/saltarelliwebstudio/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"
@@ -36,7 +36,7 @@ export const Footer = () => {
                 <Instagram size={20} />
               </a>
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/profile.php?id=61577498722193"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"
@@ -78,7 +78,7 @@ export const Footer = () => {
                 className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
               >
                 <Phone size={16} />
-                <span className="text-sm">289-931-4142</span>
+                <span className="text-sm">289 931 4142</span>
               </a>
               <a
                 href="mailto:saltarelliwebstudio@gmail.com"
@@ -103,12 +103,14 @@ export const Footer = () => {
           <p className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} Saltarelli Web Studio. All rights reserved.
           </p>
-          <Link
-            to="/terms"
+          <a
+            href="https://drive.google.com/file/d/1EXs1LRJiDeN5sCWgr-3OCDAVgrW9Fndg/view"
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-sm text-muted-foreground hover:text-primary transition-colors"
           >
             Terms of Service
-          </Link>
+          </a>
         </div>
       </div>
     </footer>
