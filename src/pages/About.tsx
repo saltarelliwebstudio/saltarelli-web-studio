@@ -7,7 +7,7 @@ import { Starfield } from "@/components/Starfield";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 const About = () => {
-  return <div className="min-h-screen bg-background text-foreground relative">
+  return <div className="min-h-screen bg-background text-foreground relative flex flex-col">
       <Starfield />
       <Header />
 

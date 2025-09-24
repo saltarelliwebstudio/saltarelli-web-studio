@@ -79,7 +79,7 @@ const Portfolio = () => {
       : portfolioItems.filter((item) => item.category === filter);
 
   return (
-    <div className="min-h-screen bg-background text-foreground relative">
+    <div className="min-h-screen bg-background text-foreground relative flex flex-col">
       <Starfield />
       <Header />
 

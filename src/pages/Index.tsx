@@ -44,7 +44,7 @@ const Index = () => {
     title: "Launch & Support",
     description: "Domain setup, basic SEO, and a short post-launch support period with light social media advice to help drive traffic. Final payment due within 72 hours."
   }];
-  return <div className="min-h-screen bg-background text-foreground relative">
+  return <div className="min-h-screen bg-background text-foreground relative flex flex-col">
       <Starfield />
       <Header />
 

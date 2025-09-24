@@ -6,7 +6,7 @@ import logo from "@/assets/sws-logo.png";
 
 export const Footer = () => {
   return (
-    <footer className="bg-card border-t border-border">
+    <footer className="relative z-20 bg-card border-t border-border mt-auto">
       <div className="container mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Logo and Description */}
