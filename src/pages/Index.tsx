@@ -107,13 +107,7 @@ const Index = () => {
           </div>
 
           <div className="text-center">
-            <Button variant="cosmic" asChild>
-              <a href="/pricing.pdf" download>
-                <Download size={16} className="mr-2" />
-                Download Pricing PDF
-              </a>
-            </Button>
-            <p className="text-sm text-muted-foreground mt-4">
+            <p className="text-sm text-muted-foreground">
               Additional revisions: $50 each • New pages: $50 each • Late fees may apply after 3 weeks
             </p>
           </div>
