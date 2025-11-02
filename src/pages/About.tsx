@@ -91,8 +91,13 @@ const About = () => {
               <li className="flex items-start gap-3">
                 <span className="text-primary mt-1">•</span>
                 <div>
-                  <strong>Fast Turnaround:</strong> Your website will be ready in 1-3 weeks, 
-                  not months. I respect your time and deadlines.
+                  <strong>Fast Turnaround:</strong> I can have a fully customized website up and running within a few days. I respect your time and deadlines.
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-primary mt-1">•</span>
+                <div>
+                  <strong>Upfront Value:</strong> I'll build you a complete homepage demo to give you an idea for what our project can look like before you even spend a penny.
                 </div>
               </li>
               <li className="flex items-start gap-3">
@@ -107,13 +112,6 @@ const About = () => {
                 <div>
                   <strong>Fair Pricing:</strong> Transparent costs with no hidden fees. 
                   You know exactly what you're paying for.
-                </div>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-primary mt-1">•</span>
-                <div>
-                <strong>Platform Flexibility:</strong> I work with the platform that fits you best, 
-                  though I especially enjoy building on Carrd.co, Squarespace, and Lovable.
                 </div>
               </li>
               <li className="flex items-start gap-3">
@@ -136,7 +134,7 @@ const About = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="hero" size="lg" asChild>
-                <Link to="/contact">
+                <Link to="/get-started">
                   Start Your Project <ArrowRight className="ml-2" size={20} />
                 </Link>
               </Button>

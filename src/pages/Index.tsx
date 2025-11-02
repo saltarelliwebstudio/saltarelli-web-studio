@@ -37,13 +37,13 @@ const Index = () => {
     description: "Initial in-person/virtual consultation, signatures, understanding project scope."
   }, {
     title: "Design",
-    description: "I create a concept wireframe (using Lovable/Canva). This is only a draft for approval. One included revision; further revisions are $50 each."
+    description: "I create a concept design in Lovable. This is only a draft for approval. One revision is included; further revisions are $50 each."
   }, {
     title: "Build",
     description: "I use the approved draft to create the live, functioning website."
   }, {
     title: "Launch & Support",
-    description: "Domain setup, basic SEO, and a short post-launch support period with light social media advice to help drive traffic. Final payment due within 72 hours."
+    description: "Domain setup, basic SEO, and a short post-launch support period with light social media advice to help drive traffic."
   }];
   return <div className="min-h-screen bg-background text-foreground relative flex flex-col">
       <Starfield />
@@ -65,7 +65,7 @@ const Index = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="hero" size="lg" asChild>
-                <Link to="/contact">
+                <Link to="/get-started">
                   Get Started <ArrowRight className="ml-2" size={20} />
                 </Link>
               </Button>
@@ -225,7 +225,7 @@ const Index = () => {
               Let's bring your vision to life with a website that works as hard as you do
             </p>
             <Button variant="cosmic" size="lg" asChild>
-              <Link to="/contact">Start Your Project</Link>
+              <Link to="/get-started">Start Your Project</Link>
             </Button>
           </div>
         </div>

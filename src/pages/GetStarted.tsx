@@ -16,7 +16,7 @@ const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
   businessName: z.string().min(2, "Business name must be at least 2 characters"),
   email: z.string().email("Please enter a valid email"),
-  phone: z.string().optional(),
+  phone: z.string().min(10, "Phone number must be at least 10 digits"),
   website: z.string().optional(),
   projectType: z.string().min(1, "Please select a project type"),
   brief: z.string().min(10, "Please provide a brief description"),
@@ -105,12 +105,17 @@ const GetStarted = () => {
                 </div>
 
                 <div>
-                  <Label htmlFor="phone">Phone (Optional)</Label>
+                  <Label htmlFor="phone">Phone *</Label>
                   <Input
                     id="phone"
                     {...register("phone")}
                     placeholder="Your phone number"
                   />
+                  {errors.phone && (
+                    <p className="text-sm text-destructive mt-1">
+                      {errors.phone.message as string}
+                    </p>
+                  )}
                 </div>
               </div>
 

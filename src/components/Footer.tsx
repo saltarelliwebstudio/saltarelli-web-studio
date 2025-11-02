@@ -90,11 +90,9 @@ export const Footer = () => {
               <p className="text-sm text-muted-foreground italic">
                 Typical response time: 24-48 hours
               </p>
-              <Link to="/get-started">
-                <Button variant="hero" size="sm" className="mt-4">
-                  Get Started
-                </Button>
-              </Link>
+              <Button variant="hero" size="sm" className="mt-4" asChild>
+                <Link to="/get-started">Get Started</Link>
+              </Button>
             </div>
           </div>
         </div>

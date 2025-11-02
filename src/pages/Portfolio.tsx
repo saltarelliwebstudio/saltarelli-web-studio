@@ -134,7 +134,7 @@ const Portfolio = () => {
               and measurable results. Contact me to discuss how we achieved these outcomes.
             </p>
             <Button variant="hero" asChild>
-              <Link to="/contact">Discuss Your Project</Link>
+              <Link to="/get-started">Discuss Your Project</Link>
             </Button>
           </div>
         </div>

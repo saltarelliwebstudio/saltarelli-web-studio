@@ -32,6 +32,7 @@ const Services = () => {
   const extras = [
     { service: "Additional revisions", price: "$50 each" },
     { service: "Each new page", price: "$50" },
+    { service: "Domain connection", price: "$25" },
     { service: "Website inspection plan", price: "$10/month", description: "Monthly health checks, SEO monitoring, and uptime verification" },
   ];
 
@@ -143,7 +144,7 @@ const Services = () => {
             Choose your plan and let's bring your website to life
           </p>
           <Button variant="hero" size="lg" asChild>
-            <Link to="/contact">Book Your Project</Link>
+            <Link to="/get-started">Book Your Project</Link>
           </Button>
         </div>
       </section>

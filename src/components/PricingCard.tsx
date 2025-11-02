@@ -51,7 +51,7 @@ export const PricingCard: React.FC<PricingCardProps> = ({
           className="w-full"
           asChild
         >
-          <Link to="/contact">Choose {title}</Link>
+          <Link to="/get-started">Choose {title}</Link>
         </Button>
       </CardContent>
     </Card>
