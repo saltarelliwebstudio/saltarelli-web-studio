@@ -30,11 +30,9 @@ const Services = () => {
   ];
 
   const extras = [
-    { service: "Rush delivery (under 1 week)", price: "Quote on request" },
     { service: "Additional revisions", price: "$50 each" },
     { service: "Each new page", price: "$50" },
-    { service: "Logo design", price: "$150" },
-    { service: "Domain setup assistance", price: "$25" },
+    { service: "Website inspection plan", price: "$10/month", description: "Monthly health checks, SEO monitoring, and uptime verification" },
   ];
 
   const terms = [

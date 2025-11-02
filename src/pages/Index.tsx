@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Download, Star, Sparkles } from "lucide-react";
+import { ArrowRight, Download, Star, Sparkles, Clock, DollarSign } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Starfield } from "@/components/Starfield";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -53,7 +54,7 @@ const Index = () => {
         <div className="container mx-auto max-w-6xl relative z-10">
           <div className="text-center">
             <div className="mb-8 animate-float">
-              <img src={logo} alt="Saltarelli Web Studio" className="h-32 w-32 mx-auto rounded-full bg-white p-2 shadow-glow" />
+              <img src={logo} alt="Saltarelli Web Studio" className="h-40 w-40 mx-auto rounded-full bg-white p-2" />
             </div>
             <h1 className="text-5xl font-heading font-bold mb-6 md:text-7xl">
               Turn your dreams into <span className="text-orange-500">reality.</span>
@@ -89,6 +90,49 @@ const Index = () => {
           <Button variant="hero" asChild>
             <Link to="/about">Learn More About Me</Link>
           </Button>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-20 px-6 relative z-10">
+        <div className="container mx-auto max-w-6xl">
+          <div className="grid md:grid-cols-3 gap-8">
+            <Card className="bg-card/30 backdrop-blur-sm hover-scale transition-transform duration-300">
+              <CardHeader>
+                <Clock className="text-primary mb-4" size={40} />
+                <CardTitle className="text-xl font-heading">Quick Turnaround</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Time Commitment? I can produce a fully custom website for you in just a few days!
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-card/30 backdrop-blur-sm hover-scale transition-transform duration-300">
+              <CardHeader>
+                <Star className="text-primary mb-4" size={40} />
+                <CardTitle className="text-xl font-heading">Proven Value</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Value Uncertainty? Check out some of my other pieces of work and the reviews!
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-card/30 backdrop-blur-sm hover-scale transition-transform duration-300">
+              <CardHeader>
+                <DollarSign className="text-primary mb-4" size={40} />
+                <CardTitle className="text-xl font-heading">Affordable Pricing</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Cost Worry? I build fully custom websites and redesigns for just $500
+                </p>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </section>
 

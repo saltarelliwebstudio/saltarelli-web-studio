@@ -19,7 +19,6 @@ const formSchema = z.object({
   phone: z.string().optional(),
   website: z.string().optional(),
   projectType: z.string().min(1, "Please select a project type"),
-  budget: z.string().min(1, "Please select a budget range"),
   brief: z.string().min(10, "Please provide a brief description"),
   startDate: z.string().min(1, "Please select a preferred start date"),
   consent: z.boolean().refine((val) => val === true, {
@@ -124,42 +123,22 @@ const GetStarted = () => {
                 />
               </div>
 
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <Label htmlFor="projectType">Project Type *</Label>
-                  <select
-                    id="projectType"
-                    {...register("projectType")}
-                    className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
-                  >
-                    <option value="">Select a project type</option>
-                    <option value="creation">Website Creation</option>
-                    <option value="redesign">Website Redesign</option>
-                  </select>
-                  {errors.projectType && (
-                    <p className="text-sm text-destructive mt-1">
-                      {errors.projectType.message as string}
-                    </p>
-                  )}
-                </div>
-
-                <div>
-                  <Label htmlFor="budget">Budget Range *</Label>
-                  <select
-                    id="budget"
-                    {...register("budget")}
-                    className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
-                  >
-                    <option value="">Select budget</option>
-                    <option value="499">$499 (Standard)</option>
-                    <option value="custom">Custom Quote</option>
-                  </select>
-                  {errors.budget && (
-                    <p className="text-sm text-destructive mt-1">
-                      {errors.budget.message as string}
-                    </p>
-                  )}
-                </div>
+              <div>
+                <Label htmlFor="projectType">Project Type *</Label>
+                <select
+                  id="projectType"
+                  {...register("projectType")}
+                  className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                >
+                  <option value="">Select a project type</option>
+                  <option value="creation">Website Creation</option>
+                  <option value="redesign">Website Redesign</option>
+                </select>
+                {errors.projectType && (
+                  <p className="text-sm text-destructive mt-1">
+                    {errors.projectType.message as string}
+                  </p>
+                )}
               </div>
 
               <div>
