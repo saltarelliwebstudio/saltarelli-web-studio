@@ -119,18 +119,6 @@ const Services = () => {
             </Card>
           </div>
 
-          {/* Download PDF */}
-          <div className="text-center">
-            <Button variant="cosmic" size="lg" asChild>
-              <a href="/pricing.pdf" download>
-                <Download size={20} className="mr-2" />
-                Download Complete Pricing Guide
-              </a>
-            </Button>
-            <p className="text-sm text-muted-foreground mt-4">
-              Get our full pricing guide with all details and terms
-            </p>
-          </div>
         </div>
       </section>
 
