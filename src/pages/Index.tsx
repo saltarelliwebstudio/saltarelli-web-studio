@@ -59,7 +59,7 @@ const Index = () => {
             <h1 className="text-5xl font-heading font-bold mb-6 md:text-6xl">
               Turn your dreams into <span className="text-orange-500">reality.</span>
             </h1>
-            <p className="text-xl md:text-2xl text-foreground/80 mb-8 max-w-3xl mx-auto">
+            <p className="text-xl text-foreground/80 mb-8 max-w-3xl mx-auto md:text-xl">
               Bringing your vision to life with tailored web design solutions,
               because your success is my priority.
             </p>
