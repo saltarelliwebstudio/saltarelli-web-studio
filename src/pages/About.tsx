@@ -29,7 +29,7 @@ const About = () => {
                 <img 
                   src={adamPhoto} 
                   alt="Adam - Web Designer" 
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-top"
                 />
               </div>
             </div>
