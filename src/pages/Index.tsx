@@ -103,9 +103,7 @@ const Index = () => {
                 <CardTitle className="text-xl font-heading">Quick Turnaround</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">
-                  Time Commitment? I can produce a fully custom website for you in just a few days!
-                </p>
+                <p className="text-muted-foreground">Time Commitment? I can produce a fully custom website for you in just a few days!</p>
               </CardContent>
             </Card>
 
@@ -115,9 +113,7 @@ const Index = () => {
                 <CardTitle className="text-xl font-heading">Proven Value</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">
-                  Value Uncertainty? Check out some of my other pieces of work and the reviews!
-                </p>
+                <p className="text-muted-foreground">Value Uncertainty? Check out some of my other pieces of work and the reviews!</p>
               </CardContent>
             </Card>
 
@@ -127,9 +123,7 @@ const Index = () => {
                 <CardTitle className="text-xl font-heading">Affordable Pricing</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">
-                  Cost Worry? I build fully custom websites and redesigns for just $500
-                </p>
+                <p className="text-muted-foreground">  Cost Concern?I build fully custom websites and redesigns for just $500</p>
               </CardContent>
             </Card>
           </div>
