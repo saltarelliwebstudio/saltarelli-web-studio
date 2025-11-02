@@ -20,7 +20,6 @@ const formSchema = z.object({
   website: z.string().optional(),
   projectType: z.string().min(1, "Please select a project type"),
   brief: z.string().min(10, "Please provide a brief description"),
-  startDate: z.string().min(1, "Please select a preferred start date"),
   consent: z.boolean().refine((val) => val === true, {
     message: "You must accept the terms",
   }),
@@ -38,7 +37,7 @@ const GetStarted = () => {
 
   const onSubmit = (data: any) => {
     const mailtoLink = `mailto:saltarelliwebstudio@gmail.com?subject=New Project Inquiry from ${encodeURIComponent(data.name)}&body=${encodeURIComponent(
-      `Name: ${data.name}\nBusiness Name: ${data.businessName}\nEmail: ${data.email}\nPhone: ${data.phone}\nWebsite: ${data.website || 'N/A'}\nProject Type: ${data.projectType}\nPreferred Start Date: ${data.startDate}\n\nProject Brief:\n${data.brief}`
+      `Name: ${data.name}\nBusiness Name: ${data.businessName}\nEmail: ${data.email}\nPhone: ${data.phone}\nWebsite: ${data.website || 'N/A'}\nProject Type: ${data.projectType}\n\nProject Brief:\n${data.brief}`
     )}`;
     window.location.href = mailtoLink;
     toast.success("Thank you! We'll be in touch within 24-48 hours.");
@@ -160,20 +159,6 @@ const GetStarted = () => {
                 {errors.brief && (
                   <p className="text-sm text-destructive mt-1">
                     {errors.brief.message as string}
-                  </p>
-                )}
-              </div>
-
-              <div>
-                <Label htmlFor="startDate">Preferred Start Date *</Label>
-                <Input
-                  id="startDate"
-                  type="date"
-                  {...register("startDate")}
-                />
-                {errors.startDate && (
-                  <p className="text-sm text-destructive mt-1">
-                    {errors.startDate.message as string}
                   </p>
                 )}
               </div>
