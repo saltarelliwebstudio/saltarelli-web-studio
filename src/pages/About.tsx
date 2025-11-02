@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Starfield } from "@/components/Starfield";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import adamPhoto from "@/assets/adam-photo.png";
 const About = () => {
   return <div className="min-h-screen bg-background text-foreground relative flex flex-col">
       <Starfield />
@@ -24,8 +25,12 @@ const About = () => {
         <div className="container mx-auto max-w-4xl">
           <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
             <div>
-              <div className="aspect-square rounded-2xl bg-gradient-cosmic flex items-center justify-center">
-                <span className="text-white/50">Photo Coming Soon</span>
+              <div className="aspect-square rounded-2xl overflow-hidden">
+                <img 
+                  src={adamPhoto} 
+                  alt="Adam - Web Designer" 
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
             <div>
