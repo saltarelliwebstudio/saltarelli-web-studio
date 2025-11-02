@@ -54,9 +54,9 @@ const Index = () => {
         <div className="container mx-auto max-w-6xl relative z-10">
           <div className="text-center">
             <div className="mb-8 animate-float flex justify-center">
-              <img src={logo} alt="Saltarelli Web Studio" className="h-32 w-32 drop-shadow-lg" />
+              <img src={logo} alt="Saltarelli Web Studio" className="h-48 w-48 drop-shadow-lg" />
             </div>
-            <h1 className="text-5xl font-heading font-bold mb-6 md:text-7xl">
+            <h1 className="text-5xl font-heading font-bold mb-6 md:text-6xl">
               Turn your dreams into <span className="text-orange-500">reality.</span>
             </h1>
             <p className="text-xl md:text-2xl text-foreground/80 mb-8 max-w-3xl mx-auto">
