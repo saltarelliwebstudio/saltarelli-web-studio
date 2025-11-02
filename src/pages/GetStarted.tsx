@@ -37,7 +37,10 @@ const GetStarted = () => {
   });
 
   const onSubmit = (data: any) => {
-    console.log(data);
+    const mailtoLink = `mailto:saltarelliwebstudio@gmail.com?subject=New Project Inquiry from ${encodeURIComponent(data.name)}&body=${encodeURIComponent(
+      `Name: ${data.name}\nBusiness Name: ${data.businessName}\nEmail: ${data.email}\nPhone: ${data.phone}\nWebsite: ${data.website || 'N/A'}\nProject Type: ${data.projectType}\nPreferred Start Date: ${data.startDate}\n\nProject Brief:\n${data.brief}`
+    )}`;
+    window.location.href = mailtoLink;
     toast.success("Thank you! We'll be in touch within 24-48 hours.");
     reset();
   };

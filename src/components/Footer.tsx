@@ -15,7 +15,7 @@ export const Footer = () => {
               <img
                 src={logo}
                 alt="Saltarelli Web Studio"
-                className="h-10 w-10 rounded-full bg-white p-1"
+                className="h-10 w-10"
               />
               <span className="font-heading font-bold text-lg">
                 Saltarelli Web Studio

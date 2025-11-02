@@ -39,7 +39,7 @@ export const Header = () => {
             <img
               src={logo}
               alt="Saltarelli Web Studio"
-              className="h-12 w-12 rounded-full bg-white p-1 group-hover:scale-110 transition-transform"
+              className="h-12 w-12 group-hover:scale-110 transition-transform"
             />
             <span className="font-heading font-bold text-xl text-foreground hidden sm:block">
               Saltarelli Web Studio
