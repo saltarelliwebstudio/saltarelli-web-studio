@@ -50,7 +50,7 @@ const Index = () => {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-6 pt-20">
+      <section className="relative min-h-screen flex items-center justify-center px-4 md:px-6 pt-20">
         <div className="container mx-auto max-w-6xl relative z-10">
           <div className="text-center">
             <div className="mb-8 animate-float flex justify-center">
@@ -78,7 +78,7 @@ const Index = () => {
       </section>
 
       {/* About Snapshot */}
-      <section className="py-20 px-6 relative z-10">
+      <section className="py-20 px-4 md:px-6 relative z-10">
         <div className="container mx-auto max-w-4xl text-center">
           <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6">
             Hi, I'm Adam
@@ -94,7 +94,7 @@ const Index = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 px-6 relative z-10">
+      <section className="py-20 px-4 md:px-6 relative z-10">
         <div className="container mx-auto max-w-6xl">
           <div className="grid md:grid-cols-3 gap-8">
             <Card className="bg-card/30 backdrop-blur-sm hover-scale transition-transform duration-300">
@@ -131,7 +131,7 @@ const Index = () => {
       </section>
 
       {/* Services & Pricing */}
-      <section id="pricing" className="py-20 px-6 relative z-10 bg-card/30 backdrop-blur-sm">
+      <section id="pricing" className="py-20 px-4 md:px-6 relative z-10 bg-card/30 backdrop-blur-sm">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
@@ -156,7 +156,7 @@ const Index = () => {
       </section>
 
       {/* Workflow */}
-      <section className="py-20 px-6 relative z-10">
+      <section className="py-20 px-4 md:px-6 relative z-10">
         <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
@@ -174,7 +174,7 @@ const Index = () => {
       </section>
 
       {/* Portfolio Preview */}
-      <section className="py-20 px-6 relative z-10 bg-card/30 backdrop-blur-sm">
+      <section className="py-20 px-4 md:px-6 relative z-10 bg-card/30 backdrop-blur-sm">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
@@ -198,7 +198,7 @@ const Index = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 px-6 relative z-10">
+      <section className="py-20 px-4 md:px-6 relative z-10">
         <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
@@ -214,7 +214,7 @@ const Index = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-6 relative z-10">
+      <section className="py-20 px-4 md:px-6 relative z-10">
         <div className="container mx-auto max-w-4xl text-center">
           <div className="bg-gradient-cosmic rounded-2xl p-12 shadow-card bg-amber-500">
             <Sparkles className="mx-auto mb-4 text-white" size={48} />

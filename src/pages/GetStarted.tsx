@@ -50,7 +50,7 @@ const GetStarted = () => {
       <Starfield />
       <Header />
 
-      <section className="relative pt-32 pb-20 px-6">
+      <section className="relative pt-32 pb-20 px-4 md:px-6">
         <div className="container mx-auto max-w-2xl relative z-10">
           <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6 text-center">
             Get Started

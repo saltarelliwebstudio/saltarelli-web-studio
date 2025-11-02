@@ -52,7 +52,7 @@ const Services = () => {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-6">
+      <section className="relative pt-32 pb-20 px-4 md:px-6">
         <div className="container mx-auto max-w-4xl relative z-10 text-center">
           <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6">
             Services & Pricing
@@ -64,7 +64,7 @@ const Services = () => {
       </section>
 
       {/* Pricing Plans */}
-      <section className="py-20 px-6 relative z-10">
+      <section className="py-20 px-4 md:px-6 relative z-10">
         <div className="container mx-auto max-w-6xl">
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
             <PricingCard
@@ -123,7 +123,7 @@ const Services = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-6 relative z-10 bg-card/30 backdrop-blur-sm">
+      <section className="py-20 px-4 md:px-6 relative z-10 bg-card/30 backdrop-blur-sm">
         <div className="container mx-auto max-w-4xl text-center">
           <h2 className="text-3xl font-heading font-bold mb-6">
             Ready to Get Started?

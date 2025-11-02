@@ -84,7 +84,7 @@ const Portfolio = () => {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-6">
+      <section className="relative pt-32 pb-20 px-4 md:px-6">
         <div className="container mx-auto max-w-4xl relative z-10 text-center">
           <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6">
             My Portfolio
@@ -96,7 +96,7 @@ const Portfolio = () => {
       </section>
 
       {/* Filter Section */}
-      <section className="py-8 px-6 relative z-10">
+      <section className="py-8 px-4 md:px-6 relative z-10">
         <div className="container mx-auto max-w-6xl">
           <div className="flex items-center gap-2 mb-8 flex-wrap justify-center">
             <Filter className="text-muted-foreground" size={20} />
@@ -116,7 +116,7 @@ const Portfolio = () => {
       </section>
 
       {/* Portfolio Grid */}
-      <section className="py-12 px-6 relative z-10">
+      <section className="py-12 px-4 md:px-6 relative z-10">
         <div className="container mx-auto max-w-6xl">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
             {filteredItems.map((item, index) => (
