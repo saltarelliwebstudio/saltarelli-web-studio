@@ -22,6 +22,7 @@ const Index = () => {
     title: "Mary N Mae's Tack N Feed",
     description: "E-commerce solution for equestrian supplies and feed store",
     category: "Retail & E-commerce",
+    imageUrl: "/lovable-uploads/mary-n-maes-storefront.png",
     liveUrl: "http://www.marynmaetacknfeed.com"
   }, {
     title: "The Carrot Effect",
