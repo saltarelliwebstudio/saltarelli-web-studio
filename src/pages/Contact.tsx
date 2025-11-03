@@ -241,7 +241,7 @@ const Contact = () => {
                             <SelectValue placeholder="Select budget" />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="basic">$499 - Basic Plan</SelectItem>
+                            <SelectItem value="basic">$699 - Basic Plan</SelectItem>
                             <SelectItem value="growth">$799 - Growth Plan</SelectItem>
                             <SelectItem value="custom">Custom Quote Needed</SelectItem>
                           </SelectContent>

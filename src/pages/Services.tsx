@@ -69,13 +69,13 @@ const Services = () => {
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
             <PricingCard
               title="Website Creation"
-              price="$499"
+              price="$699"
               description="Build your new website from scratch"
               features={creationFeatures}
             />
             <PricingCard
               title="Website Redesign"
-              price="$499"
+              price="$699"
               description="Refresh and modernize your existing site"
               features={redesignFeatures}
               popular={true}
