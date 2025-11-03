@@ -110,7 +110,7 @@ const Services = () => {
                   View our complete terms and conditions
                 </p>
                 <Button variant="cosmic" asChild>
-                  <a href="/terms-of-service.pdf" download>
+                  <a href="/terms-of-service.pdf" download="Saltarelli_Web_Studio_Terms_of_Service.pdf" rel="noopener noreferrer">
                     <Download size={20} className="mr-2" />
                     Download Terms of Service
                   </a>

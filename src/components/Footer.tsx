@@ -103,7 +103,7 @@ export const Footer = () => {
           </p>
           <a
             href="/terms-of-service.pdf"
-            target="_blank"
+            download="Saltarelli_Web_Studio_Terms_of_Service.pdf"
             rel="noopener noreferrer"
             className="text-sm text-muted-foreground hover:text-primary transition-colors"
           >
