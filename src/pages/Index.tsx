@@ -16,21 +16,25 @@ const Index = () => {
     title: "Genius Fitness & MMA",
     description: "Modern fitness studio website with class scheduling and member portal",
     category: "Fitness & Wellness",
-    imageUrl: "/lovable-uploads/f85c8a0e-5816-4475-b06f-7f5e11fea28d.png"
+    imageUrl: "/lovable-uploads/f85c8a0e-5816-4475-b06f-7f5e11fea28d.png",
+    liveUrl: "https://www.geniusfitnessandmma.com"
   }, {
     title: "Mary N Mae's Tack N Feed",
     description: "E-commerce solution for equestrian supplies and feed store",
-    category: "Retail & E-commerce"
+    category: "Retail & E-commerce",
+    liveUrl: "http://www.marynmaetacknfeed.com"
   }, {
     title: "The Carrot Effect",
     description: "Professional consulting firm website with resource library",
     category: "Business Services",
-    imageUrl: "/lovable-uploads/4a288da7-0dfe-401d-8145-ae4a58e5ac0b.png"
+    imageUrl: "/lovable-uploads/4a288da7-0dfe-401d-8145-ae4a58e5ac0b.png",
+    liveUrl: "https://thecarroteffect.ca"
   }, {
     title: "Mom Duke's Authentic Jamaican Cuisine",
     description: "Restaurant website with online ordering and catering services",
     category: "Food & Restaurant",
-    imageUrl: "/lovable-uploads/52f46296-b829-46d0-8c4f-2729a1d3cf97.png"
+    imageUrl: "/lovable-uploads/52f46296-b829-46d0-8c4f-2729a1d3cf97.png",
+    liveUrl: "https://www.momdukes2020.com"
   }];
   const workflowSteps = [{
     title: "Discovery",
