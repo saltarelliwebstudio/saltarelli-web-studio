@@ -19,11 +19,11 @@ const Index = () => {
     imageUrl: "/lovable-uploads/f85c8a0e-5816-4475-b06f-7f5e11fea28d.png",
     liveUrl: "https://www.geniusfitnessandmma.com"
   }, {
-    title: "Mary N Mae's Tack N Feed",
-    description: "E-commerce solution for equestrian supplies and feed store",
-    category: "Retail & E-commerce",
-    imageUrl: "/lovable-uploads/mary-n-maes-storefront.png",
-    liveUrl: "http://www.marynmaetacknfeed.com"
+    title: "CDS Lawn Care Services",
+    description: "Professional lawn care service website with service packages, online quotes, and seasonal maintenance scheduling.",
+    category: "Home Services",
+    imageUrl: "/lovable-uploads/2f0cdffd-2fae-4ffa-85d7-d2d01a0cc1d5.png",
+    liveUrl: "https://sites.google.com/view/cds-lawn-care-services/home?authuser=1"
   }, {
     title: "The Carrot Effect",
     description: "Professional consulting firm website with resource library",

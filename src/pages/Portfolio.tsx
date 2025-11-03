@@ -22,7 +22,6 @@ const Portfolio = () => {
       title: "Mary N Mae's Tack N Feed",
       description: "E-commerce solution for equestrian supplies and feed store. Features product catalog, online ordering, and inventory management integration.",
       category: "Retail & E-commerce",
-      imageUrl: "/lovable-uploads/mary-n-maes-storefront.png",
       liveUrl: "http://www.marynmaetacknfeed.com",
     },
     {
