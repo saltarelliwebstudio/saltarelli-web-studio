@@ -102,7 +102,7 @@ export const Footer = () => {
             © {new Date().getFullYear()} Saltarelli Web Studio. All rights reserved.
           </p>
           <a
-            href="https://drive.google.com/file/d/1EXs1LRJiDeN5sCWgr-3OCDAVgrW9Fndg/view"
+            href="/terms-of-service.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm text-muted-foreground hover:text-primary transition-colors"
