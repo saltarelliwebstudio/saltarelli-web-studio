@@ -16,7 +16,7 @@ const Services = () => {
     "Domain setup & basic SEO",
     "Mobile-responsive design",
     "Contact form integration",
-    "50% deposit required",
+    "Additional features may increase cost",
   ];
 
   const redesignFeatures = [
@@ -26,7 +26,7 @@ const Services = () => {
     "SEO optimization",
     "Content migration",
     "Performance improvements",
-    "50% deposit required",
+    "Additional features may increase cost",
   ];
 
   const extras = [
