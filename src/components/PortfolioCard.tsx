@@ -21,13 +21,13 @@ export const PortfolioCard: React.FC<PortfolioCardProps> = ({
   const [imageError, setImageError] = useState(false);
 
   return (
-    <Card className="group overflow-hidden hover:shadow-card transition-all duration-300">
+    <Card className="group overflow-hidden hover:shadow-card transition-all duration-500 hover:-translate-y-2">
       <div className="aspect-video relative overflow-hidden bg-gradient-cosmic">
         {imageUrl && !imageError ? (
           <img
             src={imageUrl}
             alt={title}
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
             onError={() => setImageError(true)}
           />
         ) : (
@@ -36,8 +36,8 @@ export const PortfolioCard: React.FC<PortfolioCardProps> = ({
           </div>
         )}
         {liveUrl && (
-          <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-            <Button variant="cosmic" size="sm" asChild>
+          <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center backdrop-blur-sm">
+            <Button variant="cosmic" size="sm" asChild className="transform scale-90 group-hover:scale-100 transition-transform duration-300">
               <a href={liveUrl} target="_blank" rel="noopener noreferrer">
                 View Live <ArrowUpRight size={16} />
               </a>

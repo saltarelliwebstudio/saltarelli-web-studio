@@ -52,9 +52,9 @@ export const Header = () => {
               <Link
                 key={link.href}
                 to={link.href}
-                className={`text-foreground/80 hover:text-primary transition-colors ${
+                className={`text-foreground/80 hover:text-primary transition-all duration-300 relative ${
                   location.pathname === link.href ? "text-primary" : ""
-                }`}
+                } after:content-[''] after:absolute after:w-full after:h-0.5 after:bg-primary after:bottom-0 after:left-0 after:origin-right after:scale-x-0 hover:after:origin-left hover:after:scale-x-100 after:transition-transform after:duration-300`}
               >
                 {link.label}
               </Link>
@@ -76,21 +76,22 @@ export const Header = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden -mx-6 mt-4 pb-4 border-t border-border/20 pt-4 bg-background/95 backdrop-blur-lg shadow-lg">
+          <div className="md:hidden -mx-6 mt-4 pb-4 border-t border-border/20 pt-4 bg-background/95 backdrop-blur-lg shadow-lg animate-slide-up">
             <div className="flex flex-col gap-4 px-6">
-              {navLinks.map((link) => (
+              {navLinks.map((link, index) => (
                 <Link
                   key={link.href}
                   to={link.href}
-                  className={`text-foreground/80 hover:text-primary transition-colors ${
-                    location.pathname === link.href ? "text-primary" : ""
+                  className={`text-foreground/80 hover:text-primary transition-all duration-300 animate-fade-in ${
+                    location.pathname === link.href ? "text-primary font-semibold" : ""
                   }`}
+                  style={{ animationDelay: `${index * 0.1}s` }}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {link.label}
                 </Link>
               ))}
-              <Button variant="hero" size="sm" asChild className="w-full">
+              <Button variant="hero" size="sm" asChild className="w-full animate-fade-in" style={{ animationDelay: '0.4s' }}>
                 <Link to="/get-started">Get Started</Link>
               </Button>
             </div>

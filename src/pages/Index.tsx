@@ -61,14 +61,14 @@ const Index = () => {
             <div className="mb-8 animate-float flex justify-center">
               <img src={logo} alt="Saltarelli Web Studio" className="h-48 w-48 drop-shadow-lg" />
             </div>
-            <h1 className="text-5xl font-heading font-bold mb-6 md:text-6xl">
+            <h1 className="text-5xl font-heading font-bold mb-6 md:text-6xl animate-fade-in">
               Turn your dreams into <span className="text-orange-500">reality.</span>
             </h1>
-            <p className="text-xl text-foreground/80 mb-8 max-w-3xl mx-auto md:text-xl">
+            <p className="text-xl text-foreground/80 mb-8 max-w-3xl mx-auto md:text-xl animate-fade-in stagger-1">
               Bringing your vision to life with tailored web design solutions,
               because your success is my priority.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in stagger-2">
               <Button variant="hero" size="lg" asChild>
                 <Link to="/get-started">
                   Get Started <ArrowRight className="ml-2" size={20} />
@@ -102,9 +102,9 @@ const Index = () => {
       <section className="py-20 px-4 md:px-6 relative z-10">
         <div className="container mx-auto max-w-6xl">
           <div className="grid md:grid-cols-3 gap-8">
-            <Card className="bg-card/30 backdrop-blur-sm hover-scale transition-transform duration-300">
+            <Card className="bg-card/30 backdrop-blur-sm hover-scale transition-all duration-300 hover:shadow-card animate-fade-in">
               <CardHeader>
-                <Clock className="text-primary mb-4" size={40} />
+                <Clock className="text-primary mb-4 transition-transform duration-300 hover:scale-110" size={40} />
                 <CardTitle className="text-xl font-heading">Quick Turnaround</CardTitle>
               </CardHeader>
               <CardContent>
@@ -112,9 +112,9 @@ const Index = () => {
               </CardContent>
             </Card>
 
-            <Card className="bg-card/30 backdrop-blur-sm hover-scale transition-transform duration-300">
+            <Card className="bg-card/30 backdrop-blur-sm hover-scale transition-all duration-300 hover:shadow-card animate-fade-in stagger-1">
               <CardHeader>
-                <Star className="text-primary mb-4" size={40} />
+                <Star className="text-primary mb-4 transition-transform duration-300 hover:scale-110" size={40} />
                 <CardTitle className="text-xl font-heading">Proven Value</CardTitle>
               </CardHeader>
               <CardContent>
@@ -122,9 +122,9 @@ const Index = () => {
               </CardContent>
             </Card>
 
-            <Card className="bg-card/30 backdrop-blur-sm hover-scale transition-transform duration-300">
+            <Card className="bg-card/30 backdrop-blur-sm hover-scale transition-all duration-300 hover:shadow-card animate-fade-in stagger-2">
               <CardHeader>
-                <DollarSign className="text-primary mb-4" size={40} />
+                <DollarSign className="text-primary mb-4 transition-transform duration-300 hover:scale-110" size={40} />
                 <CardTitle className="text-xl font-heading">Affordable Pricing</CardTitle>
               </CardHeader>
               <CardContent>

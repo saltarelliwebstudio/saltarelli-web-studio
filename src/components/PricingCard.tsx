@@ -21,8 +21,8 @@ export const PricingCard: React.FC<PricingCardProps> = ({
 }) => {
   return (
     <Card
-      className={`relative overflow-hidden transition-all duration-300 hover:shadow-card ${
-        popular ? "border-primary scale-105" : ""
+      className={`relative overflow-hidden transition-all duration-500 hover:shadow-card hover:-translate-y-2 ${
+        popular ? "border-primary scale-105 animate-scale-in" : "animate-fade-in"
       }`}
     >
       {popular && (

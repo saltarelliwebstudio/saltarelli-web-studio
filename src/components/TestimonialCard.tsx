@@ -16,7 +16,7 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
   rating = 5,
 }) => {
   return (
-    <Card className="bg-card/50 backdrop-blur-sm border-border/50">
+    <Card className="bg-card/50 backdrop-blur-sm border-border/50 hover:shadow-card transition-all duration-500 hover:-translate-y-1 animate-fade-in">
       <CardContent className="pt-6">
         <div className="flex gap-1 mb-4">
           {[...Array(5)].map((_, i) => (
