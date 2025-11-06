@@ -148,8 +148,8 @@ const Index = () => {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-8">
-            <PricingCard title="Website Creation" price="$699" description="Build your new website from scratch" features={["1-3 week turnaround", "1 round of revisions included", "Professional design and build", "Domain setup & basic SEO", "50% deposit required"]} />
-            <PricingCard title="Website Redesign" price="$699" description="Refresh and modernize your existing site" features={["1-3 week turnaround", "1 round of revisions included", "Modern, responsive design", "SEO optimization included", "50% deposit required"]} popular={true} />
+            <PricingCard title="Website Creation" price="$699" description="Build your new website from scratch" features={["1-3 week turnaround", "1 round of revisions included", "Professional design and build", "Domain setup & basic SEO", "Additional features may increase cost"]} />
+            <PricingCard title="Website Redesign" price="$699" description="Refresh and modernize your existing site" features={["1-3 week turnaround", "1 round of revisions included", "Modern, responsive design", "SEO optimization included", "Additional features may increase cost"]} popular={true} />
           </div>
 
           <div className="text-center">
