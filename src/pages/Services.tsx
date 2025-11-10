@@ -33,8 +33,6 @@ const Services = () => {
     { service: "Additional revisions", price: "$50 each" },
     { service: "Each new page", price: "$50" },
     { service: "Domain connection", price: "$25" },
-    { service: "Website Chatbot", price: "$100" },
-    { service: "AI phone receptionist", price: "$250" },
     { service: "Website inspection plan", price: "$10/month", description: "Monthly health checks, SEO monitoring, and uptime verification" },
   ];
 
