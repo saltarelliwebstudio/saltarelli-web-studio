@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -11,15 +12,13 @@ export const StickyBookButton = () => {
         className="shadow-2xl hover:scale-105 transition-transform duration-300"
         asChild
       >
-        <a 
-          href="https://calendly.com/saltarelliwebstudio/30min" 
-          target="_blank" 
-          rel="noopener noreferrer"
+        <Link 
+          to="/get-started"
           className="flex items-center gap-2"
         >
           <Calendar size={20} />
           <span className="hidden sm:inline">Book a Call</span>
-        </a>
+        </Link>
       </Button>
     </div>
   );

@@ -132,9 +132,9 @@ const Services = () => {
             Choose your plan and let's bring your website to life
           </p>
           <Button variant="hero" size="lg" asChild>
-            <a href="https://calendly.com/saltarelliwebstudio/30min" target="_blank" rel="noopener noreferrer">
+            <Link to="/get-started">
               Book a Discovery Call
-            </a>
+            </Link>
           </Button>
         </div>
       </section>

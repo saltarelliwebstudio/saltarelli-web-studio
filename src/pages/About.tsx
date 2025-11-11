@@ -139,9 +139,9 @@ const About = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="hero" size="lg" asChild>
-                <a href="https://calendly.com/saltarelliwebstudio/30min" target="_blank" rel="noopener noreferrer">
+                <Link to="/get-started">
                   Book a Discovery Call <ArrowRight className="ml-2" size={20} />
-                </a>
+                </Link>
               </Button>
               <Button variant="cosmic" size="lg" asChild>
                 <Link to="/portfolio">View My Work</Link>

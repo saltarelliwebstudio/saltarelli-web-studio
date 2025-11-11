@@ -51,13 +51,9 @@ export const PricingCard: React.FC<PricingCardProps> = ({
           className="w-full"
           asChild
         >
-          <a 
-            href="https://calendly.com/saltarelliwebstudio/30min" 
-            target="_blank" 
-            rel="noopener noreferrer"
-          >
+          <Link to="/get-started">
             Choose {title}
-          </a>
+          </Link>
         </Button>
       </CardContent>
     </Card>

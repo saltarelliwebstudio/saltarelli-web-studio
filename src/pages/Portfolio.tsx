@@ -134,9 +134,9 @@ const Portfolio = () => {
               and measurable results. Contact me to discuss how we achieved these outcomes.
             </p>
             <Button variant="hero" asChild>
-              <a href="https://calendly.com/saltarelliwebstudio/30min" target="_blank" rel="noopener noreferrer">
+              <Link to="/get-started">
                 Book a Discovery Call
-              </a>
+              </Link>
             </Button>
           </div>
         </div>

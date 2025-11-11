@@ -69,9 +69,9 @@ const Index = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in stagger-2">
               <Button variant="hero" size="lg" asChild>
-                <a href="https://calendly.com/saltarelliwebstudio/30min" target="_blank" rel="noopener noreferrer">
+                <Link to="/get-started">
                   Book a Discovery Call <ArrowRight className="ml-2" size={20} />
-                </a>
+                </Link>
               </Button>
               <Button variant="cosmic" size="lg" asChild>
                 <a href="#pricing">View Pricing</a>
@@ -226,12 +226,12 @@ const Index = () => {
               Ready to Discuss Your Website?
             </h2>
             <p className="text-xl text-white/90 mb-8">
-              Schedule a free 30-minute call and let's explore how we can make your website dreams a reality
+              Schedule a free 15-minute call and let's explore how we can make your website dreams a reality
             </p>
             <Button variant="cosmic" size="lg" asChild>
-              <a href="https://calendly.com/saltarelliwebstudio/30min" target="_blank" rel="noopener noreferrer">
+              <Link to="/get-started">
                 Book Your Discovery Call
-              </a>
+              </Link>
             </Button>
           </div>
         </div>

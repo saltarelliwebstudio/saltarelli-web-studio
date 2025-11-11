@@ -94,9 +94,9 @@ export const Footer = () => {
                 Ready to get started?
               </p>
               <Button variant="hero" size="sm" className="mt-2" asChild>
-                <a href="https://calendly.com/saltarelliwebstudio/30min" target="_blank" rel="noopener noreferrer">
+                <Link to="/get-started">
                   Book a Call
-                </a>
+                </Link>
               </Button>
             </div>
           </div>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Starfield } from "@/components/Starfield";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -7,13 +7,6 @@ import { Button } from "@/components/ui/button";
 import { Calendar, Clock, CheckCircle } from "lucide-react";
 
 const GetStarted = () => {
-  // Automatically redirect to Calendly after 3 seconds
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      window.location.href = "https://calendly.com/saltarelliwebstudio/30min";
-    }, 3000);
-    return () => clearTimeout(timer);
-  }, []);
 
   return (
     <div className="min-h-screen bg-background text-foreground relative flex flex-col">
@@ -28,7 +21,7 @@ const GetStarted = () => {
               Let's Build Something Amazing Together
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
-              Book a free 30-minute discovery call to discuss your website vision, 
+              Book a free 15-minute discovery call to discuss your website vision, 
               goals, and how we can collaborate to make it happen.
             </p>
           </div>
@@ -48,7 +41,7 @@ const GetStarted = () => {
               <div className="flex items-start gap-4">
                 <Clock className="text-primary mt-1 flex-shrink-0" size={24} />
                 <div>
-                  <h3 className="font-heading font-semibold mb-2">30 Minutes, Your Schedule</h3>
+                  <h3 className="font-heading font-semibold mb-2">15 Minutes, Your Schedule</h3>
                   <p className="text-muted-foreground">
                     Pick a time that works for you—virtual or in-person, whatever's convenient
                   </p>
@@ -68,13 +61,10 @@ const GetStarted = () => {
 
             <div className="text-center">
               <Button variant="hero" size="lg" className="w-full md:w-auto" asChild>
-                <a href="https://calendly.com/saltarelliwebstudio/30min" target="_blank" rel="noopener noreferrer">
+                <a href="https://calendly.com/saltarelliwebstudio/15min" target="_blank" rel="noopener noreferrer">
                   Schedule Your Free Discovery Call
                 </a>
               </Button>
-              <p className="text-sm text-muted-foreground mt-4">
-                Redirecting to booking calendar in a few seconds...
-              </p>
             </div>
           </Card>
         </div>
