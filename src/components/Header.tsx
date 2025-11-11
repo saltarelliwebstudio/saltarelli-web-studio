@@ -60,7 +60,9 @@ export const Header = () => {
               </Link>
             ))}
             <Button variant="hero" size="sm" asChild>
-              <Link to="/get-started">Get Started</Link>
+              <a href="https://calendly.com/saltarelliwebstudio/30min" target="_blank" rel="noopener noreferrer">
+                Book a Call
+              </a>
             </Button>
           </div>
 
@@ -92,7 +94,9 @@ export const Header = () => {
                 </Link>
               ))}
               <Button variant="hero" size="sm" asChild className="w-full animate-fade-in" style={{ animationDelay: '0.4s' }}>
-                <Link to="/get-started">Get Started</Link>
+                <a href="https://calendly.com/saltarelliwebstudio/30min" target="_blank" rel="noopener noreferrer">
+                  Book a Call
+                </a>
               </Button>
             </div>
           </div>

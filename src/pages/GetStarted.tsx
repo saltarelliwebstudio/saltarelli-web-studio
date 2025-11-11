@@ -1,189 +1,81 @@
-import React from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
+import React, { useEffect } from "react";
 import { Starfield } from "@/components/Starfield";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Card } from "@/components/ui/card";
-import { toast } from "sonner";
-
-const formSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters"),
-  businessName: z.string().min(2, "Business name must be at least 2 characters"),
-  email: z.string().email("Please enter a valid email"),
-  phone: z.string().min(10, "Phone number must be at least 10 digits"),
-  website: z.string().optional(),
-  projectType: z.string().min(1, "Please select a project type"),
-  brief: z.string().min(10, "Please provide a brief description"),
-  consent: z.boolean().refine((val) => val === true, {
-    message: "You must accept the terms",
-  }),
-});
+import { Button } from "@/components/ui/button";
+import { Calendar, Clock, CheckCircle } from "lucide-react";
 
 const GetStarted = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm({
-    resolver: zodResolver(formSchema),
-  });
-
-  const onSubmit = (data: any) => {
-    const mailtoLink = `mailto:saltarelliwebstudio@gmail.com?subject=New Project Inquiry from ${encodeURIComponent(data.name)}&body=${encodeURIComponent(
-      `Name: ${data.name}\nBusiness Name: ${data.businessName}\nEmail: ${data.email}\nPhone: ${data.phone}\nWebsite: ${data.website || 'N/A'}\nProject Type: ${data.projectType}\n\nProject Brief:\n${data.brief}`
-    )}`;
-    window.location.href = mailtoLink;
-    toast.success("Thank you! We'll be in touch within 24-48 hours.");
-    reset();
-  };
+  // Automatically redirect to Calendly after 3 seconds
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      window.location.href = "https://calendly.com/saltarelliwebstudio/30min";
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div className="min-h-screen bg-background text-foreground relative flex flex-col">
       <Starfield />
       <Header />
 
-      <section className="relative pt-32 pb-20 px-4 md:px-6">
-        <div className="container mx-auto max-w-2xl relative z-10">
-          <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6 text-center">
-            Get Started
-          </h1>
-          <p className="text-xl text-muted-foreground text-center mb-12">
-            Tell us about your project and let's bring your vision to life
-          </p>
+      <section className="relative pt-32 pb-20 px-4 md:px-6 flex-1 flex items-center">
+        <div className="container mx-auto max-w-3xl relative z-10">
+          <div className="text-center mb-12">
+            <Calendar className="mx-auto mb-6 text-primary" size={64} />
+            <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6">
+              Let's Build Something Amazing Together
+            </h1>
+            <p className="text-xl text-muted-foreground mb-8">
+              Book a free 30-minute discovery call to discuss your website vision, 
+              goals, and how we can collaborate to make it happen.
+            </p>
+          </div>
 
-          <Card className="p-8">
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
+          <Card className="p-8 md:p-12 bg-card/50 backdrop-blur-sm">
+            <div className="space-y-6 mb-8">
+              <div className="flex items-start gap-4">
+                <CheckCircle className="text-primary mt-1 flex-shrink-0" size={24} />
                 <div>
-                  <Label htmlFor="name">Name *</Label>
-                  <Input
-                    id="name"
-                    {...register("name")}
-                    placeholder="Your name"
-                  />
-                  {errors.name && (
-                    <p className="text-sm text-destructive mt-1">
-                      {errors.name.message as string}
-                    </p>
-                  )}
-                </div>
-
-                <div>
-                  <Label htmlFor="businessName">Business Name *</Label>
-                  <Input
-                    id="businessName"
-                    {...register("businessName")}
-                    placeholder="Your business name"
-                  />
-                  {errors.businessName && (
-                    <p className="text-sm text-destructive mt-1">
-                      {errors.businessName.message as string}
-                    </p>
-                  )}
-                </div>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <Label htmlFor="email">Email *</Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    {...register("email")}
-                    placeholder="your@email.com"
-                  />
-                  {errors.email && (
-                    <p className="text-sm text-destructive mt-1">
-                      {errors.email.message as string}
-                    </p>
-                  )}
-                </div>
-
-                <div>
-                  <Label htmlFor="phone">Phone *</Label>
-                  <Input
-                    id="phone"
-                    {...register("phone")}
-                    placeholder="Your phone number"
-                  />
-                  {errors.phone && (
-                    <p className="text-sm text-destructive mt-1">
-                      {errors.phone.message as string}
-                    </p>
-                  )}
-                </div>
-              </div>
-
-              <div>
-                <Label htmlFor="website">Current Website (Optional)</Label>
-                <Input
-                  id="website"
-                  {...register("website")}
-                  placeholder="https://yourwebsite.com"
-                />
-              </div>
-
-              <div>
-                <Label htmlFor="projectType">Project Type *</Label>
-                <select
-                  id="projectType"
-                  {...register("projectType")}
-                  className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
-                >
-                  <option value="">Select a project type</option>
-                  <option value="creation">Website Creation</option>
-                  <option value="redesign">Website Redesign</option>
-                </select>
-                {errors.projectType && (
-                  <p className="text-sm text-destructive mt-1">
-                    {errors.projectType.message as string}
+                  <h3 className="font-heading font-semibold mb-2">No Pressure, Just Conversation</h3>
+                  <p className="text-muted-foreground">
+                    We'll chat about your business, your goals, and explore if we're a good fit
                   </p>
-                )}
+                </div>
               </div>
-
-              <div>
-                <Label htmlFor="brief">Project Brief *</Label>
-                <Textarea
-                  id="brief"
-                  {...register("brief")}
-                  placeholder="Tell us about your project, goals, and any specific requirements..."
-                  rows={5}
-                />
-                {errors.brief && (
-                  <p className="text-sm text-destructive mt-1">
-                    {errors.brief.message as string}
+              
+              <div className="flex items-start gap-4">
+                <Clock className="text-primary mt-1 flex-shrink-0" size={24} />
+                <div>
+                  <h3 className="font-heading font-semibold mb-2">30 Minutes, Your Schedule</h3>
+                  <p className="text-muted-foreground">
+                    Pick a time that works for you—virtual or in-person, whatever's convenient
                   </p>
-                )}
+                </div>
               </div>
-
-              <div className="flex items-start space-x-2">
-                <input
-                  type="checkbox"
-                  id="consent"
-                  {...register("consent")}
-                  className="mt-1"
-                />
-                <Label htmlFor="consent" className="text-sm">
-                  I accept that the above information will be used to contact me about my project inquiry. *
-                </Label>
+              
+              <div className="flex items-start gap-4">
+                <CheckCircle className="text-primary mt-1 flex-shrink-0" size={24} />
+                <div>
+                  <h3 className="font-heading font-semibold mb-2">Get Clear Next Steps</h3>
+                  <p className="text-muted-foreground">
+                    Leave the call with a clear understanding of timeline, process, and pricing
+                  </p>
+                </div>
               </div>
-              {errors.consent && (
-                <p className="text-sm text-destructive">
-                  {errors.consent.message as string}
-                </p>
-              )}
+            </div>
 
-              <Button type="submit" variant="hero" size="lg" className="w-full">
-                Launch Your Website
+            <div className="text-center">
+              <Button variant="hero" size="lg" className="w-full md:w-auto" asChild>
+                <a href="https://calendly.com/saltarelliwebstudio/30min" target="_blank" rel="noopener noreferrer">
+                  Schedule Your Free Discovery Call
+                </a>
               </Button>
-            </form>
+              <p className="text-sm text-muted-foreground mt-4">
+                Redirecting to booking calendar in a few seconds...
+              </p>
+            </div>
           </Card>
         </div>
       </section>

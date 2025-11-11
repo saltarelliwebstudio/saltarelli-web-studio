@@ -64,21 +64,40 @@ const Index = () => {
             <h1 className="text-5xl font-heading font-bold mb-6 md:text-6xl animate-fade-in">
               Turn your dreams into <span className="text-orange-500">reality.</span>
             </h1>
-            <p className="text-xl text-foreground/80 mb-8 max-w-3xl mx-auto md:text-xl animate-fade-in stagger-1">
-              Bringing your vision to life with tailored web design solutions,
-              because your success is my priority.
+            <p className="text-xl text-foreground/80 mb-4 max-w-3xl mx-auto md:text-xl animate-fade-in stagger-1">
+              Let's collaborate to create something amazing. Book a free discovery call and let's discuss how we can turn your vision into a beautiful, functional website.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in stagger-2">
               <Button variant="hero" size="lg" asChild>
-                <Link to="/get-started">
-                  Get Started <ArrowRight className="ml-2" size={20} />
-                </Link>
+                <a href="https://calendly.com/saltarelliwebstudio/30min" target="_blank" rel="noopener noreferrer">
+                  Book a Discovery Call <ArrowRight className="ml-2" size={20} />
+                </a>
               </Button>
               <Button variant="cosmic" size="lg" asChild>
                 <a href="#pricing">View Pricing</a>
               </Button>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Book Discovery Call Section */}
+      <section className="py-16 px-4 md:px-6 relative z-10">
+        <div className="container mx-auto max-w-4xl">
+          <Card className="bg-gradient-to-br from-orange-500/10 to-amber-500/10 border-2 border-orange-500/20 p-8 md:p-12 text-center">
+            <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
+              Let's Talk About Your Vision
+            </h2>
+            <p className="text-lg text-muted-foreground mb-6 max-w-2xl mx-auto">
+              Schedule a free 30-minute discovery call to start planning your new website. 
+              We'll discuss your goals, explore possibilities, and see how we can bring your vision to life together.
+            </p>
+            <Button variant="hero" size="lg" asChild>
+              <a href="https://calendly.com/saltarelliwebstudio/30min" target="_blank" rel="noopener noreferrer">
+                Book Your Free Discovery Call
+              </a>
+            </Button>
+          </Card>
         </div>
       </section>
 
@@ -224,13 +243,15 @@ const Index = () => {
           <div className="bg-gradient-cosmic rounded-2xl p-12 shadow-card bg-amber-500">
             <Sparkles className="mx-auto mb-4 text-white" size={48} />
             <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4 text-white">
-              Ready to Launch Your Website?
+              Ready to Discuss Your Website?
             </h2>
             <p className="text-xl text-white/90 mb-8">
-              Let's bring your vision to life with a website that works as hard as you do
+              Schedule a free 30-minute call and let's explore how we can make your website dreams a reality
             </p>
             <Button variant="cosmic" size="lg" asChild>
-              <Link to="/get-started">Start Your Project</Link>
+              <a href="https://calendly.com/saltarelliwebstudio/30min" target="_blank" rel="noopener noreferrer">
+                Book Your Discovery Call
+              </a>
             </Button>
           </div>
         </div>

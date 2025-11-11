@@ -90,8 +90,13 @@ export const Footer = () => {
               <p className="text-sm text-muted-foreground italic">
                 Typical response time: 24-48 hours
               </p>
-              <Button variant="hero" size="sm" className="mt-4" asChild>
-                <Link to="/get-started">Get Started</Link>
+              <p className="text-sm text-foreground font-semibold mt-4">
+                Ready to get started?
+              </p>
+              <Button variant="hero" size="sm" className="mt-2" asChild>
+                <a href="https://calendly.com/saltarelliwebstudio/30min" target="_blank" rel="noopener noreferrer">
+                  Book a Call
+                </a>
               </Button>
             </div>
           </div>
