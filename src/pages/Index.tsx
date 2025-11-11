@@ -81,26 +81,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Book Discovery Call Section */}
-      <section className="py-16 px-4 md:px-6 relative z-10">
-        <div className="container mx-auto max-w-4xl">
-          <Card className="bg-gradient-to-br from-orange-500/10 to-amber-500/10 border-2 border-orange-500/20 p-8 md:p-12 text-center">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
-              Let's Talk About Your Vision
-            </h2>
-            <p className="text-lg text-muted-foreground mb-6 max-w-2xl mx-auto">
-              Schedule a free 30-minute discovery call to start planning your new website. 
-              We'll discuss your goals, explore possibilities, and see how we can bring your vision to life together.
-            </p>
-            <Button variant="hero" size="lg" asChild>
-              <a href="https://calendly.com/saltarelliwebstudio/30min" target="_blank" rel="noopener noreferrer">
-                Book Your Free Discovery Call
-              </a>
-            </Button>
-          </Card>
-        </div>
-      </section>
-
       {/* About Snapshot */}
       <section className="py-20 px-4 md:px-6 relative z-10">
         <div className="container mx-auto max-w-4xl text-center">
