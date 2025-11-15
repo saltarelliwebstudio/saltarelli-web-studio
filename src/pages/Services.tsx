@@ -11,22 +11,20 @@ import { PricingCard } from "@/components/PricingCard";
 const Services = () => {
   const creationFeatures = [
     "1-3 week turnaround",
-    "1 round of revisions included",
+    "Collaborative revision process",
     "Professional design and build",
     "Domain setup & basic SEO",
     "Mobile-responsive design",
     "Contact form integration",
-    "Additional features may increase cost",
   ];
 
   const redesignFeatures = [
     "1-3 week turnaround",
-    "1 round of revisions included",
+    "Collaborative revision process",
     "Modern, responsive design",
     "SEO optimization",
     "Content migration",
     "Performance improvements",
-    "Additional features may increase cost",
   ];
 
   const extras = [
@@ -55,10 +53,10 @@ const Services = () => {
       <section className="relative pt-32 pb-20 px-4 md:px-6">
         <div className="container mx-auto max-w-4xl relative z-10 text-center">
           <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6">
-            Services & Pricing
+            Services
           </h1>
           <p className="text-xl text-muted-foreground">
-            Simple plans, transparent pricing, quality results
+            Quality web solutions tailored to your needs
           </p>
         </div>
       </section>
@@ -67,38 +65,49 @@ const Services = () => {
       <section className="py-20 px-4 md:px-6 relative z-10">
         <div className="container mx-auto max-w-6xl">
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
-            <PricingCard
-              title="Website Creation"
-              price="$699"
-              description="Build your new website from scratch"
-              features={creationFeatures}
-            />
-            <PricingCard
-              title="Website Redesign"
-              price="$699"
-              description="Refresh and modernize your existing site"
-              features={redesignFeatures}
-              popular={true}
-            />
-          </div>
+            <Card className="relative overflow-hidden transition-all duration-500 hover:shadow-card hover:-translate-y-2 animate-fade-in">
+              <CardHeader>
+                <CardTitle className="text-2xl font-heading">Website Creation</CardTitle>
+                <p className="text-sm text-muted-foreground">Build your new website from scratch</p>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-3 mb-6">
+                  {creationFeatures.map((feature, index) => (
+                    <li key={index} className="flex items-start gap-2">
+                      <span className="text-primary mt-1">✓</span>
+                      <span className="text-sm text-muted-foreground">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Button variant="outline" className="w-full" asChild>
+                  <Link to="/get-started">Get a Quote</Link>
+                </Button>
+              </CardContent>
+            </Card>
 
-
-          {/* Add-ons */}
-          <Card className="max-w-4xl mx-auto mb-16">
-            <CardHeader>
-              <CardTitle className="text-2xl font-heading">Additional Services</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid sm:grid-cols-2 gap-4">
-                {extras.map((extra, index) => (
-                  <div key={index} className="flex justify-between items-center p-3 bg-background rounded-lg">
-                    <span className="text-sm">{extra.service}</span>
-                    <span className="font-semibold text-primary">{extra.price}</span>
-                  </div>
-                ))}
+            <Card className="relative overflow-hidden transition-all duration-500 hover:shadow-card hover:-translate-y-2 border-primary scale-105 animate-scale-in">
+              <div className="absolute top-0 right-0 bg-primary text-primary-foreground px-3 py-1 text-xs font-semibold rounded-bl-lg">
+                MOST POPULAR
               </div>
-            </CardContent>
-          </Card>
+              <CardHeader>
+                <CardTitle className="text-2xl font-heading">Website Redesign</CardTitle>
+                <p className="text-sm text-muted-foreground">Refresh and modernize your existing site</p>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-3 mb-6">
+                  {redesignFeatures.map((feature, index) => (
+                    <li key={index} className="flex items-start gap-2">
+                      <span className="text-primary mt-1">✓</span>
+                      <span className="text-sm text-muted-foreground">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Button variant="hero" className="w-full" asChild>
+                  <Link to="/get-started">Get a Quote</Link>
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
 
           {/* Terms & Conditions */}
           <div className="text-center mb-16">
@@ -129,7 +138,7 @@ const Services = () => {
             Ready to Get Started?
           </h2>
           <p className="text-lg text-muted-foreground mb-8">
-            Choose your plan and let's bring your website to life
+            Let's discuss your project and create a custom quote
           </p>
           <Button variant="hero" size="lg" asChild>
             <Link to="/get-started">
