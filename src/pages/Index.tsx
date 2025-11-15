@@ -42,7 +42,7 @@ const Index = () => {
     description: "Initial in-person/virtual consultation, signatures, understanding project scope."
   }, {
     title: "Design",
-    description: "I create a concept design in Lovable. This is only a draft for approval. One revision is included; further revisions are $50 each."
+    description: "I create a concept design in Lovable. This is only a draft for approval, and we'll collaborate on revisions as needed."
   }, {
     title: "Build",
     description: "I use the approved draft to create the live, functioning website."
@@ -123,41 +123,17 @@ const Index = () => {
 
             <Card className="bg-card/30 backdrop-blur-sm hover-scale transition-all duration-300 hover:shadow-card animate-fade-in stagger-2">
               <CardHeader>
-                <DollarSign className="text-primary mb-4 transition-transform duration-300 hover:scale-110" size={40} />
-                <CardTitle className="text-xl font-heading">Affordable Pricing</CardTitle>
+                <Sparkles className="text-primary mb-4 transition-transform duration-300 hover:scale-110" size={40} />
+                <CardTitle className="text-xl font-heading">Custom Solutions</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">Cost Concern? I build fully custom websites and redesigns for just $699</p>
+                <p className="text-muted-foreground">Every project is unique. I provide custom quotes based on your specific needs and goals.</p>
               </CardContent>
             </Card>
           </div>
         </div>
       </section>
 
-      {/* Services & Pricing */}
-      <section id="pricing" className="py-20 px-4 md:px-6 relative z-10 bg-card/30 backdrop-blur-sm">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
-              Simple, Transparent Pricing
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Choose the plan that fits your needs and budget
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-8">
-            <PricingCard title="Website Creation" price="$699" description="Build your new website from scratch" features={["1-3 week turnaround", "1 round of revisions included", "Professional design and build", "Domain setup & basic SEO", "Additional features may increase cost"]} />
-            <PricingCard title="Website Redesign" price="$699" description="Refresh and modernize your existing site" features={["1-3 week turnaround", "1 round of revisions included", "Modern, responsive design", "SEO optimization included", "Additional features may increase cost"]} popular={true} />
-          </div>
-
-          <div className="text-center">
-            <p className="text-sm text-muted-foreground">
-              Additional revisions: $50 each • New pages: $50 each • Late fees may apply after 3 weeks
-            </p>
-          </div>
-        </div>
-      </section>
 
       {/* Workflow */}
       <section className="py-20 px-4 md:px-6 relative z-10">
