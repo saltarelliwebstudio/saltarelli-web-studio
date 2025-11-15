@@ -123,11 +123,11 @@ const Index = () => {
 
             <Card className="bg-card/30 backdrop-blur-sm hover-scale transition-all duration-300 hover:shadow-card animate-fade-in stagger-2">
               <CardHeader>
-                <Sparkles className="text-primary mb-4 transition-transform duration-300 hover:scale-110" size={40} />
-                <CardTitle className="text-xl font-heading">Custom Solutions</CardTitle>
+                <DollarSign className="text-primary mb-4 transition-transform duration-300 hover:scale-110" size={40} />
+                <CardTitle className="text-xl font-heading">Tight Budget?</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">Every project is unique. I provide custom quotes based on your specific needs and goals.</p>
+                <p className="text-muted-foreground">I can deliver a fully functional, professional website to you for just a few hundred dollars.</p>
               </CardContent>
             </Card>
           </div>
