@@ -127,7 +127,7 @@ const Index = () => {
                 <CardTitle className="text-xl font-heading">Tight Budget?</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">                  Cost Concern? I can deliver a fully functional website to you for just a few hundred dollars.</p>
+                <p className="text-muted-foreground">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             Cost Concern? I can deliver a fully functional website to you for just a few hundred dollars.</p>
               </CardContent>
             </Card>
           </div>
