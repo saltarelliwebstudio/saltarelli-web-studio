@@ -33,7 +33,6 @@ const Services = () => {
     { service: "Additional revisions", price: "$50 each" },
     { service: "Each new page", price: "$50" },
     { service: "Domain connection", price: "$25" },
-    { service: "Website inspection plan", price: "$10/month", description: "Monthly health checks, SEO monitoring, and uptime verification" },
   ];
 
   const terms = [
@@ -69,13 +68,13 @@ const Services = () => {
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
             <PricingCard
               title="Website Creation"
-              price="$699"
+              price=""
               description="Build your new website from scratch"
               features={creationFeatures}
             />
             <PricingCard
               title="Website Redesign"
-              price="$699"
+              price=""
               description="Refresh and modernize your existing site"
               features={redesignFeatures}
               popular={true}

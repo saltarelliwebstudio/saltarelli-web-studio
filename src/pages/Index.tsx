@@ -64,7 +64,7 @@ const Index = () => {
             <h1 className="text-5xl font-heading font-bold mb-6 md:text-6xl animate-fade-in">
               Turn your dreams into <span className="text-orange-500">reality.</span>
             </h1>
-            <p className="text-xl text-foreground/80 mb-4 max-w-3xl mx-auto md:text-xl animate-fade-in stagger-1">
+            <p className="text-lg text-foreground/80 mb-4 max-w-3xl mx-auto animate-fade-in stagger-1">
               Let's collaborate to create something amazing. Book a free discovery call and let's discuss how we can turn your vision into a beautiful, functional website.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in stagger-2">
@@ -127,7 +127,7 @@ const Index = () => {
                 <CardTitle className="text-xl font-heading">Affordable Pricing</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">Cost Concern? I build fully custom websites and redesigns for just $699</p>
+                <p className="text-muted-foreground">Cost Concern? I build fully custom websites and redesigns for just a few hundred!</p>
               </CardContent>
             </Card>
           </div>
@@ -147,8 +147,8 @@ const Index = () => {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-8">
-            <PricingCard title="Website Creation" price="$699" description="Build your new website from scratch" features={["1-3 week turnaround", "1 round of revisions included", "Professional design and build", "Domain setup & basic SEO", "Additional features may increase cost"]} />
-            <PricingCard title="Website Redesign" price="$699" description="Refresh and modernize your existing site" features={["1-3 week turnaround", "1 round of revisions included", "Modern, responsive design", "SEO optimization included", "Additional features may increase cost"]} popular={true} />
+            <PricingCard title="Website Creation" price="" description="Build your new website from scratch" features={["1-3 week turnaround", "1 round of revisions included", "Professional design and build", "Domain setup & basic SEO", "Additional features may increase cost"]} />
+            <PricingCard title="Website Redesign" price="" description="Refresh and modernize your existing site" features={["1-3 week turnaround", "1 round of revisions included", "Modern, responsive design", "SEO optimization included", "Additional features may increase cost"]} popular={true} />
           </div>
 
           <div className="text-center">
