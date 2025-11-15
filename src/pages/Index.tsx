@@ -64,7 +64,7 @@ const Index = () => {
             <h1 className="text-5xl font-heading font-bold mb-6 md:text-6xl animate-fade-in">
               Turn your dreams into <span className="text-orange-500">reality.</span>
             </h1>
-            <p className="text-lg text-foreground/80 mb-4 max-w-3xl mx-auto animate-fade-in stagger-1">
+            <p className="text-lg text-foreground/80 mb-6 max-w-3xl mx-auto animate-fade-in stagger-1">
               Let's collaborate to create something amazing. Book a free discovery call and let's discuss how we can turn your vision into a beautiful, functional website.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in stagger-2">
