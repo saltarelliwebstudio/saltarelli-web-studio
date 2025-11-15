@@ -56,13 +56,13 @@ const Services = () => {
             Services
           </h1>
           <p className="text-xl text-muted-foreground">
-            Quality web solutions tailored to your needs
+            Your vision, brought to life with care and expertise
           </p>
         </div>
       </section>
 
       {/* Pricing Plans */}
-      <section className="py-20 px-4 md:px-6 relative z-10">
+      <section className="pt-8 pb-20 px-4 md:px-6 relative z-10">
         <div className="container mx-auto max-w-6xl">
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
             <Card className="relative overflow-hidden transition-all duration-500 hover:shadow-card hover:-translate-y-2 animate-fade-in">

@@ -137,7 +137,7 @@ const Index = () => {
       {/* Services Section */}
       <section className="container mx-auto px-4 py-24">
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4">
+          <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4 text-foreground">
             Our Services
           </h2>
           <p className="text-xl text-muted-foreground">
