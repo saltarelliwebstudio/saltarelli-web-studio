@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Download, Star, Sparkles, Clock, DollarSign, Check } from "lucide-react";
+import { ArrowRight, Download, Star, Sparkles, Clock, DollarSign } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Starfield } from "@/components/Starfield";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -42,7 +42,7 @@ const Index = () => {
     description: "Initial in-person/virtual consultation, signatures, understanding project scope."
   }, {
     title: "Design",
-    description: "I create a concept design in Lovable. This is only a draft for approval, and we'll collaborate on revisions as needed."
+    description: "I create a concept design in Lovable. This is only a draft for approval. One revision is included; further revisions are $50 each."
   }, {
     title: "Build",
     description: "I use the approved draft to create the live, functioning website."
@@ -117,115 +117,45 @@ const Index = () => {
                 <CardTitle className="text-xl font-heading">Proven Value</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">Value Uncertainty? Check out some of my other pieces of work inside of the portfolio!                                    </p>
+                <p className="text-muted-foreground">Value Uncertainty? Check out some of my other pieces of work and the reviews!</p>
               </CardContent>
             </Card>
 
             <Card className="bg-card/30 backdrop-blur-sm hover-scale transition-all duration-300 hover:shadow-card animate-fade-in stagger-2">
               <CardHeader>
                 <DollarSign className="text-primary mb-4 transition-transform duration-300 hover:scale-110" size={40} />
-                <CardTitle className="text-xl font-heading">Tight Budget?</CardTitle>
+                <CardTitle className="text-xl font-heading">Affordable Pricing</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             Cost Concern? I can deliver a fully functional website to you for just a few hundred dollars.</p>
+                <p className="text-muted-foreground">Cost Concern? I build fully custom websites and redesigns for just $699</p>
               </CardContent>
             </Card>
           </div>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="container mx-auto px-4 py-24">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4 text-foreground">
-            Our Services
-          </h2>
-          <p className="text-xl text-muted-foreground">
-            Professional web solutions tailored to your needs
-          </p>
-        </div>
+      {/* Services & Pricing */}
+      <section id="pricing" className="py-20 px-4 md:px-6 relative z-10 bg-card/30 backdrop-blur-sm">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
+              Simple, Transparent Pricing
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Choose the plan that fits your needs and budget
+            </p>
+          </div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {/* Website Creation */}
-          <Card className="relative overflow-hidden transition-all duration-500 hover:shadow-card hover:-translate-y-2 animate-fade-in">
-            <CardHeader>
-              <CardTitle className="text-2xl font-heading">Website Creation</CardTitle>
-              <CardDescription>Build your new website from scratch</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-3 mb-6">
-                <li className="flex items-start gap-2">
-                  <Check className="text-primary mt-1" size={16} />
-                  <span className="text-sm text-muted-foreground">1-3 week turnaround</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="text-primary mt-1" size={16} />
-                  <span className="text-sm text-muted-foreground">Collaborative revision process</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="text-primary mt-1" size={16} />
-                  <span className="text-sm text-muted-foreground">Professional design and build</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="text-primary mt-1" size={16} />
-                  <span className="text-sm text-muted-foreground">Domain setup & basic SEO</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="text-primary mt-1" size={16} />
-                  <span className="text-sm text-muted-foreground">Mobile-responsive design</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="text-primary mt-1" size={16} />
-                  <span className="text-sm text-muted-foreground">Contact form integration</span>
-                </li>
-              </ul>
-              <Button variant="outline" className="w-full" asChild>
-                <Link to="/get-started">Get a Quote</Link>
-              </Button>
-            </CardContent>
-          </Card>
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-8">
+            <PricingCard title="Website Creation" price="$699" description="Build your new website from scratch" features={["1-3 week turnaround", "1 round of revisions included", "Professional design and build", "Domain setup & basic SEO", "Additional features may increase cost"]} />
+            <PricingCard title="Website Redesign" price="$699" description="Refresh and modernize your existing site" features={["1-3 week turnaround", "1 round of revisions included", "Modern, responsive design", "SEO optimization included", "Additional features may increase cost"]} popular={true} />
+          </div>
 
-          {/* Website Redesign */}
-          <Card className="relative overflow-hidden transition-all duration-500 hover:shadow-card hover:-translate-y-2 border-primary scale-105 animate-scale-in">
-            <div className="absolute top-0 right-0 bg-primary text-primary-foreground px-3 py-1 text-xs font-semibold rounded-bl-lg">
-              MOST POPULAR
-            </div>
-            <CardHeader>
-              <CardTitle className="text-2xl font-heading">Website Redesign</CardTitle>
-              <CardDescription>Refresh and modernize your existing site</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-3 mb-6">
-                <li className="flex items-start gap-2">
-                  <Check className="text-primary mt-1" size={16} />
-                  <span className="text-sm text-muted-foreground">1-3 week turnaround</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="text-primary mt-1" size={16} />
-                  <span className="text-sm text-muted-foreground">Collaborative revision process</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="text-primary mt-1" size={16} />
-                  <span className="text-sm text-muted-foreground">Modern, responsive design</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="text-primary mt-1" size={16} />
-                  <span className="text-sm text-muted-foreground">SEO optimization</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="text-primary mt-1" size={16} />
-                  <span className="text-sm text-muted-foreground">Content migration</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="text-primary mt-1" size={16} />
-                  <span className="text-sm text-muted-foreground">Performance improvements</span>
-                </li>
-              </ul>
-              <Button variant="hero" className="w-full" asChild>
-                <Link to="/get-started">Get a Quote</Link>
-              </Button>
-            </CardContent>
-          </Card>
+          <div className="text-center">
+            <p className="text-sm text-muted-foreground">
+              Additional revisions: $50 each • New pages: $50 each • Late fees may apply after 3 weeks
+            </p>
+          </div>
         </div>
       </section>
 
