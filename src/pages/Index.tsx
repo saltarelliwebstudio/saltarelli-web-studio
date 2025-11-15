@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Download, Star, Sparkles, Clock, DollarSign } from "lucide-react";
+import { ArrowRight, Download, Star, Sparkles, Clock, DollarSign, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Starfield } from "@/components/Starfield";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -134,6 +134,100 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Services Section */}
+      <section className="container mx-auto px-4 py-24">
+        <div className="text-center mb-16 animate-fade-in">
+          <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4">
+            Our Services
+          </h2>
+          <p className="text-xl text-muted-foreground">
+            Professional web solutions tailored to your needs
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          {/* Website Creation */}
+          <Card className="relative overflow-hidden transition-all duration-500 hover:shadow-card hover:-translate-y-2 animate-fade-in">
+            <CardHeader>
+              <CardTitle className="text-2xl font-heading">Website Creation</CardTitle>
+              <CardDescription>Build your new website from scratch</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-start gap-2">
+                  <Check className="text-primary mt-1" size={16} />
+                  <span className="text-sm text-muted-foreground">1-3 week turnaround</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="text-primary mt-1" size={16} />
+                  <span className="text-sm text-muted-foreground">Collaborative revision process</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="text-primary mt-1" size={16} />
+                  <span className="text-sm text-muted-foreground">Professional design and build</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="text-primary mt-1" size={16} />
+                  <span className="text-sm text-muted-foreground">Domain setup & basic SEO</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="text-primary mt-1" size={16} />
+                  <span className="text-sm text-muted-foreground">Mobile-responsive design</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="text-primary mt-1" size={16} />
+                  <span className="text-sm text-muted-foreground">Contact form integration</span>
+                </li>
+              </ul>
+              <Button variant="outline" className="w-full" asChild>
+                <Link to="/get-started">Get a Quote</Link>
+              </Button>
+            </CardContent>
+          </Card>
+
+          {/* Website Redesign */}
+          <Card className="relative overflow-hidden transition-all duration-500 hover:shadow-card hover:-translate-y-2 border-primary scale-105 animate-scale-in">
+            <div className="absolute top-0 right-0 bg-primary text-primary-foreground px-3 py-1 text-xs font-semibold rounded-bl-lg">
+              MOST POPULAR
+            </div>
+            <CardHeader>
+              <CardTitle className="text-2xl font-heading">Website Redesign</CardTitle>
+              <CardDescription>Refresh and modernize your existing site</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-start gap-2">
+                  <Check className="text-primary mt-1" size={16} />
+                  <span className="text-sm text-muted-foreground">1-3 week turnaround</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="text-primary mt-1" size={16} />
+                  <span className="text-sm text-muted-foreground">Collaborative revision process</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="text-primary mt-1" size={16} />
+                  <span className="text-sm text-muted-foreground">Modern, responsive design</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="text-primary mt-1" size={16} />
+                  <span className="text-sm text-muted-foreground">SEO optimization</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="text-primary mt-1" size={16} />
+                  <span className="text-sm text-muted-foreground">Content migration</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="text-primary mt-1" size={16} />
+                  <span className="text-sm text-muted-foreground">Performance improvements</span>
+                </li>
+              </ul>
+              <Button variant="hero" className="w-full" asChild>
+                <Link to="/get-started">Get a Quote</Link>
+              </Button>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
 
       {/* Workflow */}
       <section className="py-20 px-4 md:px-6 relative z-10">
