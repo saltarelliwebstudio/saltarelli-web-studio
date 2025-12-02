@@ -32,7 +32,6 @@ const Services = () => {
   const extras = [
     { service: "Additional revisions", price: "$50 each" },
     { service: "Each new page", price: "$50" },
-    { service: "Domain connection", price: "$25" },
   ];
 
   const terms = [
