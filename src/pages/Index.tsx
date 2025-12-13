@@ -39,16 +39,16 @@ const Index = () => {
   }];
   const workflowSteps = [{
     title: "Discovery",
-    description: "Initial in-person/virtual consultation, signatures, understanding project scope."
+    description: "We connect to discuss your vision and understand your project scope — what you need, who you're reaching, and how we can bring it to life."
   }, {
     title: "Design",
-    description: "I create a concept design in Lovable. This is only a draft for approval. One revision is included; further revisions are $50 each."
+    description: "I create a free concept website based on your ideas, giving you a clear visual of what you'll be getting before any commitment."
   }, {
     title: "Build",
-    description: "I use the approved draft to create the live, functioning website."
+    description: "After signatures and payment, we collaborate to refine the concept and perfect every detail until the website matches your vision."
   }, {
     title: "Launch & Support",
-    description: "Domain setup, basic SEO, and a short post-launch support period with light social media advice to help drive traffic."
+    description: "I handle domain setup, provide solid SEO, and offer ongoing maintenance. Prefer full ownership? A one-time buyout option is available."
   }];
   return <div className="min-h-screen bg-background text-foreground relative flex flex-col">
       <Starfield />
