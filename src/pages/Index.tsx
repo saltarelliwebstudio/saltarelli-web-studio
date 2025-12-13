@@ -74,7 +74,7 @@ const Index = () => {
                 </Link>
               </Button>
               <Button variant="cosmic" size="lg" asChild>
-                <a href="tel:+12898138298">Call Our AI Assistant</a>
+                <a href="#pricing">View Services</a>
               </Button>
             </div>
           </div>
