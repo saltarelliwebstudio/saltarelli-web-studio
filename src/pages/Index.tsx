@@ -59,7 +59,7 @@ const Index = () => {
         <div className="container mx-auto max-w-6xl relative z-10">
           <div className="text-center">
             <div className="mb-8 animate-float flex justify-center">
-              <img src={logo} alt="Saltarelli Web Studio" className="h-48 w-48 drop-shadow-lg" />
+              <img src={logo} alt="Saltarelli Web Studio" className="h-48 w-48 drop-shadow-lg" width={192} height={192} fetchPriority="high" />
             </div>
             <h1 className="text-5xl font-heading font-bold mb-6 md:text-6xl animate-fade-in">
               Turn your dreams into <span className="text-orange-500">reality.</span>
