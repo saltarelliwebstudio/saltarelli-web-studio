@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { ExternalLink, ArrowUpRight } from "lucide-react";
+import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
@@ -21,53 +22,58 @@ export const PortfolioCard: React.FC<PortfolioCardProps> = ({
   const [imageError, setImageError] = useState(false);
 
   return (
-    <Card className="group overflow-hidden hover:shadow-card transition-all duration-500 hover:-translate-y-2">
-      <div className="aspect-video relative overflow-hidden bg-gradient-cosmic">
-        {imageUrl && !imageError ? (
-          <img
-            src={imageUrl}
-            alt={title}
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-            loading="lazy"
-            onError={() => setImageError(true)}
-          />
-        ) : (
-          <div className="w-full h-full flex items-center justify-center">
-            <span className="text-white/50 text-sm">Preview Coming Soon</span>
-          </div>
-        )}
-        {liveUrl && (
-          <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center backdrop-blur-sm">
-            <Button variant="cosmic" size="sm" asChild className="transform scale-90 group-hover:scale-100 transition-transform duration-300">
-              <a href={liveUrl} target="_blank" rel="noopener noreferrer">
-                View Live <ArrowUpRight size={16} />
-              </a>
-            </Button>
-          </div>
-        )}
-      </div>
-      <CardHeader>
-        <div className="flex items-start justify-between">
-          <div>
-            <CardTitle className="text-lg">{title}</CardTitle>
-            <p className="text-xs text-primary mt-1">{category}</p>
-          </div>
+    <motion.div
+      whileHover={{ y: -8 }}
+      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+    >
+      <Card className="group overflow-hidden glass hover:shadow-glow transition-all duration-500 h-full">
+        <div className="aspect-video relative overflow-hidden bg-gradient-to-br from-primary/20 to-accent/20">
+          {imageUrl && !imageError ? (
+            <img
+              src={imageUrl}
+              alt={title}
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+              loading="lazy"
+              onError={() => setImageError(true)}
+            />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center">
+              <span className="text-muted-foreground text-sm">Preview Coming Soon</span>
+            </div>
+          )}
           {liveUrl && (
-            <a
-              href={liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-colors"
-              aria-label={`Visit ${title}`}
-            >
-              <ExternalLink size={18} />
-            </a>
+            <div className="absolute inset-0 bg-background/80 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center backdrop-blur-sm">
+              <Button variant="hero" size="sm" asChild>
+                <a href={liveUrl} target="_blank" rel="noopener noreferrer" className="gap-2">
+                  View Live <ArrowUpRight size={16} />
+                </a>
+              </Button>
+            </div>
           )}
         </div>
-      </CardHeader>
-      <CardContent>
-        <p className="text-sm text-muted-foreground">{description}</p>
-      </CardContent>
-    </Card>
+        <CardHeader className="pb-2">
+          <div className="flex items-start justify-between">
+            <div>
+              <CardTitle className="text-lg font-heading">{title}</CardTitle>
+              <p className="text-xs text-primary mt-1 font-medium">{category}</p>
+            </div>
+            {liveUrl && (
+              <a
+                href={liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-primary transition-colors"
+                aria-label={`Visit ${title}`}
+              >
+                <ExternalLink size={18} />
+              </a>
+            )}
+          </div>
+        </CardHeader>
+        <CardContent>
+          <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
+        </CardContent>
+      </Card>
+    </motion.div>
   );
 };

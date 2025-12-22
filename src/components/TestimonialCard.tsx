@@ -1,5 +1,5 @@
 import React from "react";
-import { Star } from "lucide-react";
+import { Star, Quote } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
 interface TestimonialCardProps {
@@ -16,13 +16,14 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
   rating = 5,
 }) => {
   return (
-    <Card className="bg-card/50 backdrop-blur-sm border-border/50 hover:shadow-card transition-all duration-500 hover:-translate-y-1 animate-fade-in">
-      <CardContent className="pt-6">
-        <div className="flex gap-1 mb-4">
+    <Card className="glass-strong hover:shadow-glow transition-all duration-500">
+      <CardContent className="pt-8 pb-8 px-6 md:px-8">
+        <Quote className="text-primary/30 mb-4" size={40} />
+        <div className="flex gap-1 mb-6">
           {[...Array(5)].map((_, i) => (
             <Star
               key={i}
-              size={18}
+              size={20}
               className={
                 i < rating
                   ? "fill-primary text-primary"
@@ -31,9 +32,11 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
             />
           ))}
         </div>
-        <blockquote className="text-lg mb-4 italic">"{quote}"</blockquote>
+        <blockquote className="text-lg md:text-xl mb-6 leading-relaxed text-foreground/90">
+          "{quote}"
+        </blockquote>
         <div>
-          <p className="font-semibold">{author}</p>
+          <p className="font-semibold font-heading text-foreground">{author}</p>
           <p className="text-sm text-muted-foreground">{business}</p>
         </div>
       </CardContent>

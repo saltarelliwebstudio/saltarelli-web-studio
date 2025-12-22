@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/sws-logo.png";
 
@@ -18,89 +19,217 @@ export const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Close menu on route change
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location.pathname]);
+
+  // Prevent body scroll when menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMenuOpen]);
+
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/about", label: "About" },
-              { href: "/services", label: "Services" },
-              { href: "/portfolio", label: "Portfolio" },
+    { href: "/services", label: "Services" },
+    { href: "/portfolio", label: "Portfolio" },
   ];
+
+  const menuVariants = {
+    closed: {
+      x: "100%",
+      transition: {
+        type: "spring" as const,
+        stiffness: 400,
+        damping: 40,
+      },
+    },
+    open: {
+      x: 0,
+      transition: {
+        type: "spring" as const,
+        stiffness: 400,
+        damping: 40,
+      },
+    },
+  };
+
+  const linkVariants = {
+    closed: { opacity: 0, x: 20 },
+    open: (i: number) => ({
+      opacity: 1,
+      x: 0,
+      transition: {
+        delay: i * 0.1 + 0.2,
+        duration: 0.4,
+        ease: [0.22, 1, 0.36, 1] as const,
+      },
+    }),
+  };
 
   return (
     <header
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+      className={`fixed top-0 w-full z-50 transition-all duration-500 ${
         isScrolled
-          ? "bg-background/80 backdrop-blur-lg border-b border-border"
+          ? "bg-background/70 backdrop-blur-2xl border-b border-border/50 shadow-lg shadow-background/20"
           : "bg-transparent"
       }`}
     >
-      <nav className="container mx-auto px-6 py-4">
+      <nav className="container mx-auto px-5 md:px-6 py-4">
         <div className="flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-3 group">
-            <img
+          {/* Logo */}
+          <Link to="/" className="flex items-center gap-3 group relative z-50">
+            <motion.img
               src={logo}
               alt="Saltarelli Web Studio"
-              className="h-12 w-12 group-hover:scale-110 transition-transform"
+              className="h-10 w-10 md:h-12 md:w-12"
+              whileHover={{ scale: 1.1, rotate: 5 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
             />
-            <span className="font-heading font-bold text-xl text-foreground hidden sm:block">
+            <span className="font-heading font-bold text-lg md:text-xl text-foreground hidden sm:block">
               Saltarelli Web Studio
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-10">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 to={link.href}
-                className={`text-foreground/80 hover:text-primary transition-all duration-300 relative ${
-                  location.pathname === link.href ? "text-primary" : ""
-                } after:content-[''] after:absolute after:w-full after:h-0.5 after:bg-primary after:bottom-0 after:left-0 after:origin-right after:scale-x-0 hover:after:origin-left hover:after:scale-x-100 after:transition-transform after:duration-300`}
+                className={`relative text-sm font-medium transition-colors duration-300 ${
+                  location.pathname === link.href
+                    ? "text-primary"
+                    : "text-foreground/70 hover:text-foreground"
+                }`}
               >
                 {link.label}
+                {location.pathname === link.href && (
+                  <motion.div
+                    layoutId="activeNav"
+                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-primary to-accent rounded-full"
+                  />
+                )}
               </Link>
             ))}
-            <Button variant="hero" size="sm" asChild>
-              <Link to="/get-started">
+            <Button variant="hero" size="sm" asChild className="ml-2">
+              <Link to="/get-started" className="gap-2">
                 Book a Call
+                <ArrowRight size={16} />
               </Link>
             </Button>
           </div>
 
           {/* Mobile Menu Toggle */}
-          <button
+          <motion.button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden text-foreground"
+            className="lg:hidden relative z-50 w-10 h-10 flex items-center justify-center text-foreground"
             aria-label="Toggle menu"
+            whileTap={{ scale: 0.9 }}
           >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+            <AnimatePresence mode="wait">
+              {isMenuOpen ? (
+                <motion.div
+                  key="close"
+                  initial={{ rotate: -90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: 90, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <X size={24} />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="menu"
+                  initial={{ rotate: 90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: -90, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Menu size={24} />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.button>
         </div>
 
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden -mx-6 mt-4 pb-4 border-t border-border/20 pt-4 bg-background/95 backdrop-blur-lg shadow-lg animate-slide-up">
-            <div className="flex flex-col gap-4 px-6">
-              {navLinks.map((link, index) => (
-                <Link
-                  key={link.href}
-                  to={link.href}
-                  className={`text-foreground/80 hover:text-primary transition-all duration-300 animate-fade-in ${
-                    location.pathname === link.href ? "text-primary font-semibold" : ""
-                  }`}
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {link.label}
-                </Link>
-              ))}
-              <Button variant="hero" size="sm" asChild className="w-full animate-fade-in" style={{ animationDelay: '0.4s' }}>
-                <Link to="/get-started">
-                  Book a Call
-                </Link>
-              </Button>
-            </div>
-          </div>
-        )}
+        {/* Mobile Navigation Overlay */}
+        <AnimatePresence>
+          {isMenuOpen && (
+            <>
+              {/* Backdrop */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="fixed inset-0 bg-background/80 backdrop-blur-sm lg:hidden"
+                onClick={() => setIsMenuOpen(false)}
+                style={{ top: 0, left: 0 }}
+              />
+
+              {/* Slide-in Menu */}
+              <motion.div
+                variants={menuVariants}
+                initial="closed"
+                animate="open"
+                exit="closed"
+                className="fixed top-0 right-0 h-screen w-[80%] max-w-sm bg-card/95 backdrop-blur-2xl border-l border-border/50 lg:hidden flex flex-col"
+                style={{ zIndex: 40 }}
+              >
+                <div className="flex flex-col h-full pt-24 px-8 pb-8">
+                  <div className="flex flex-col gap-6 flex-1">
+                    {navLinks.map((link, index) => (
+                      <motion.div
+                        key={link.href}
+                        custom={index}
+                        variants={linkVariants}
+                        initial="closed"
+                        animate="open"
+                      >
+                        <Link
+                          to={link.href}
+                          className={`text-2xl font-heading font-semibold transition-colors duration-300 block ${
+                            location.pathname === link.href
+                              ? "text-primary"
+                              : "text-foreground/80 hover:text-foreground"
+                          }`}
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          {link.label}
+                        </Link>
+                      </motion.div>
+                    ))}
+                  </div>
+                  
+                  {/* CTA Button */}
+                  <motion.div
+                    custom={navLinks.length}
+                    variants={linkVariants}
+                    initial="closed"
+                    animate="open"
+                    className="mt-auto"
+                  >
+                    <Button variant="hero" size="lg" asChild className="w-full">
+                      <Link to="/get-started" className="gap-2">
+                        Book a Call
+                        <ArrowRight size={18} />
+                      </Link>
+                    </Button>
+                  </motion.div>
+                </div>
+              </motion.div>
+            </>
+          )}
+        </AnimatePresence>
       </nav>
     </header>
   );
