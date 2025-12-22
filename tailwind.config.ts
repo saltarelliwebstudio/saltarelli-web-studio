@@ -48,9 +48,10 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
         cosmic: {
-          purple: "hsl(var(--cosmic-purple))",
-          blue: "hsl(var(--space-blue))",
+          blue: "hsl(var(--cosmic-blue))",
+          electric: "hsl(var(--electric-blue))",
           orange: "hsl(var(--warm-orange))",
+          bright: "hsl(var(--bright-orange))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
