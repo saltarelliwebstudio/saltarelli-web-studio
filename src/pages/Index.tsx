@@ -20,7 +20,7 @@ const Index = () => {
       title: "Pop's Landscaping",
       description: "Professional website creation to amplify their online presence and attract higher quality leads",
       category: "Landscaping",
-      imageUrl: "/lovable-uploads/pops-landscaping.png",
+      imageUrl: "/lovable-uploads/pops-landscaping.png?v=2",
       liveUrl: "https://popslandscaping.ca",
     },
     {
