@@ -17,6 +17,13 @@ import logo from "@/assets/sws-logo.png";
 const Index = () => {
   const portfolioItems = [
     {
+      title: "Pop's Landscaping",
+      description: "Professional website creation to amplify their online presence and attract higher quality leads",
+      category: "Landscaping",
+      imageUrl: "/lovable-uploads/pops-landscaping.png",
+      liveUrl: "https://popslandscaping.ca",
+    },
+    {
       title: "Genius Fitness & MMA",
       description: "Modern fitness studio website with class scheduling and member portal",
       category: "Fitness & Wellness",
@@ -369,8 +376,8 @@ const Index = () => {
               transition={{ type: "spring", stiffness: 300 }}
               className="relative overflow-hidden rounded-3xl"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-electric-violet via-space-blue to-cosmic-purple opacity-95" />
-              <div className="absolute inset-0 bg-mesh opacity-30" />
+              <div className="absolute inset-0 bg-gradient-to-r from-secondary via-accent to-secondary opacity-95" />
+              <div className="absolute inset-0 bg-gradient-to-t from-transparent to-white/10" />
               <div className="relative p-8 md:p-12 lg:p-16 text-center">
                 <motion.div
                   animate={{ rotate: 360 }}
@@ -388,7 +395,7 @@ const Index = () => {
                 <Button
                   size="lg"
                   asChild
-                  className="bg-white text-primary hover:bg-white/90 hover:text-primary font-semibold"
+                  className="bg-background text-foreground hover:bg-background/90 font-semibold shadow-lg"
                 >
                   <Link to="/get-started" className="gap-2">
                     Book Your Discovery Call
