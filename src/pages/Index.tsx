@@ -128,15 +128,7 @@ const Index = () => {
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold mb-6 leading-tight"
             >
               Turn your dreams into{" "}
-              <span className="text-gradient relative">
-                reality
-                <motion.span
-                  className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-primary to-accent rounded-full"
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: 1 }}
-                  transition={{ duration: 0.8, delay: 0.8 }}
-                />
-              </span>
+              <span className="text-primary glow-text">reality</span>
             </motion.h1>
 
             {/* Subtitle */}
@@ -191,7 +183,7 @@ const Index = () => {
         <div className="container mx-auto max-w-4xl">
           <FadeIn className="text-center">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-6">
-              Hi, I'm <span className="text-gradient">Adam</span>
+              Hi, I'm <span className="text-primary">Adam</span>
             </h2>
             <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">
               I'm a web designer from Ontario who builds clean, engaging websites that help businesses thrive.
@@ -238,7 +230,7 @@ const Index = () => {
         <div className="container mx-auto max-w-6xl">
           <FadeIn className="text-center mb-12 md:mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-4">
-              Your Website, <span className="text-gradient">Your Way</span>
+              Your Website, <span className="text-primary">Your Way</span>
             </h2>
             <p className="text-lg md:text-xl text-muted-foreground">
               Custom solutions for new builds and redesigns
@@ -290,7 +282,7 @@ const Index = () => {
         <div className="container mx-auto max-w-4xl">
           <FadeIn className="text-center mb-12 md:mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-4">
-              My Simple <span className="text-gradient">4-Step Process</span>
+              My Simple <span className="text-primary">4-Step Process</span>
             </h2>
             <p className="text-lg md:text-xl text-muted-foreground">
               From concept to launch in just 1-3 weeks
@@ -312,7 +304,7 @@ const Index = () => {
         <div className="container mx-auto max-w-6xl">
           <FadeIn className="text-center mb-12 md:mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-4">
-              Featured <span className="text-gradient">Work</span>
+              Featured <span className="text-primary">Work</span>
             </h2>
             <p className="text-lg md:text-xl text-muted-foreground">
               Real results for real businesses
@@ -340,7 +332,7 @@ const Index = () => {
         <div className="container mx-auto max-w-4xl">
           <FadeIn className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-4">
-              What Clients <span className="text-gradient">Say</span>
+              What Clients <span className="text-primary">Say</span>
             </h2>
             <div className="flex justify-center gap-1 mb-6">
               {[...Array(5)].map((_, i) => (
@@ -377,8 +369,8 @@ const Index = () => {
               transition={{ type: "spring", stiffness: 300 }}
               className="relative overflow-hidden rounded-3xl"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-primary via-accent to-secondary opacity-90" />
-              <div className="absolute inset-0 bg-mesh opacity-50" />
+              <div className="absolute inset-0 bg-gradient-to-br from-electric-violet via-space-blue to-cosmic-purple opacity-95" />
+              <div className="absolute inset-0 bg-mesh opacity-30" />
               <div className="relative p-8 md:p-12 lg:p-16 text-center">
                 <motion.div
                   animate={{ rotate: 360 }}

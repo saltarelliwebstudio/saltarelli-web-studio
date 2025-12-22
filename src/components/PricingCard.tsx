@@ -43,7 +43,7 @@ export const PricingCard: React.FC<PricingCardProps> = ({
           <CardDescription className="text-muted-foreground">{description}</CardDescription>
           {price && (
             <div className="mt-4">
-              <span className="text-4xl font-bold text-gradient">{price}</span>
+              <span className="text-4xl font-bold text-primary">{price}</span>
             </div>
           )}
         </CardHeader>
