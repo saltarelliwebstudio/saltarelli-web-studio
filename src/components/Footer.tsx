@@ -6,43 +6,24 @@ import logo from "@/assets/sws-logo.png";
 
 export const Footer = () => {
   return (
-    <footer className="relative z-20 bg-card border-t border-border mt-auto">
-      <div className="container mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+    <footer className="relative z-20 glass-strong border-t border-border/50 mt-auto">
+      <div className="container mx-auto px-5 md:px-6 py-12 md:py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
           {/* Logo and Description */}
-          <div className="col-span-1 md:col-span-2">
+          <div className="sm:col-span-2">
             <div className="flex items-center gap-3 mb-4">
-              <img
-                src={logo}
-                alt="Saltarelli Web Studio"
-                className="h-10 w-10"
-              />
-              <span className="font-heading font-bold text-lg">
-                Saltarelli Web Studio
-              </span>
+              <img src={logo} alt="Saltarelli Web Studio" className="h-10 w-10" />
+              <span className="font-heading font-bold text-lg">Saltarelli Web Studio</span>
             </div>
-            <p className="text-muted-foreground mb-4">
-              Bringing your vision to life with tailored web design solutions,
-              because your success is my priority.
+            <p className="text-muted-foreground mb-6 max-w-sm leading-relaxed">
+              Bringing your vision to life with tailored web design solutions, because your success is my priority.
             </p>
             <div className="flex gap-4">
-              <a
-                href="https://www.instagram.com/saltarelliwebstudio/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors"
-                aria-label="Instagram"
-              >
-                <Instagram size={20} />
+              <a href="https://www.instagram.com/saltarelliwebstudio/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-all" aria-label="Instagram">
+                <Instagram size={18} />
               </a>
-              <a
-                href="https://www.facebook.com/profile.php?id=61577498722193"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors"
-                aria-label="Facebook"
-              >
-                <Facebook size={20} />
+              <a href="https://www.facebook.com/profile.php?id=61577498722193" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-all" aria-label="Facebook">
+                <Facebook size={18} />
               </a>
             </div>
           </div>
@@ -50,20 +31,10 @@ export const Footer = () => {
           {/* Quick Links */}
           <div>
             <h3 className="font-heading font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              {[
-                { href: "/", label: "Home" },
-                { href: "/about", label: "About" },
-                { href: "/services", label: "Services" },
-                { href: "/portfolio", label: "Portfolio" },
-              ].map((link) => (
+            <ul className="space-y-3">
+              {[{ href: "/", label: "Home" }, { href: "/about", label: "About" }, { href: "/services", label: "Services" }, { href: "/portfolio", label: "Portfolio" }].map((link) => (
                 <li key={link.href}>
-                  <Link
-                    to={link.href}
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    {link.label}
-                  </Link>
+                  <Link to={link.href} className="text-muted-foreground hover:text-primary transition-colors">{link.label}</Link>
                 </li>
               ))}
             </ul>
@@ -73,47 +44,25 @@ export const Footer = () => {
           <div>
             <h3 className="font-heading font-semibold mb-4">Contact</h3>
             <div className="space-y-3">
-              <a
-                href="tel:+12892715716"
-                className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
-              >
+              <a href="tel:+12892715716" className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors">
                 <Phone size={16} />
                 <span className="text-sm">(289) 271-5716</span>
               </a>
-              <a
-                href="mailto:saltarelliwebstudio@gmail.com"
-                className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
-              >
+              <a href="mailto:saltarelliwebstudio@gmail.com" className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors">
                 <Mail size={16} />
                 <span className="text-sm">saltarelliwebstudio@gmail.com</span>
               </a>
-              <p className="text-sm text-muted-foreground italic">
-                Typical response time: 24-48 hours
-              </p>
-              <p className="text-sm text-foreground font-semibold mt-4">
-                Ready to get started?
-              </p>
-              <Button variant="hero" size="sm" className="mt-2" asChild>
-                <Link to="/get-started">
-                  Book a Call
-                </Link>
+              <p className="text-sm text-muted-foreground italic pt-2">Response time: 24-48 hours</p>
+              <Button variant="hero" size="sm" className="mt-4 w-full sm:w-auto" asChild>
+                <Link to="/get-started">Book a Call</Link>
               </Button>
             </div>
           </div>
         </div>
 
-        <div className="mt-8 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Saltarelli Web Studio. All rights reserved.
-          </p>
-          <a
-            href="/terms-of-service.pdf"
-            download="Saltarelli_Web_Studio_Terms_of_Service.pdf"
-            rel="noopener noreferrer"
-            className="text-sm text-muted-foreground hover:text-primary transition-colors"
-          >
-            Terms of Service
-          </a>
+        <div className="mt-10 pt-8 border-t border-border/50 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-sm text-muted-foreground">© {new Date().getFullYear()} Saltarelli Web Studio. All rights reserved.</p>
+          <a href="/terms-of-service.pdf" download="Saltarelli_Web_Studio_Terms_of_Service.pdf" className="text-sm text-muted-foreground hover:text-primary transition-colors">Terms of Service</a>
         </div>
       </div>
     </footer>
