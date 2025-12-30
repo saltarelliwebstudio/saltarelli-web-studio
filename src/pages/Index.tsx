@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Star, Sparkles, Clock, DollarSign, Zap } from "lucide-react";
+import { ArrowRight, Star, Sparkles, Clock, DollarSign, Zap, Bot } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -60,15 +60,15 @@ const Index = () => {
     },
     {
       title: "Design",
-      description: "I create a free concept website based on your ideas, giving you a clear visual of what you'll be getting before any commitment.",
+      description: "I create a free concept website or AI agent demo based on your ideas, giving you a clear visual of exactly what you'll be getting before any commitment.",
     },
     {
       title: "Build",
-      description: "After signatures and payment, we collaborate to refine the concept and perfect every detail until the website matches your vision.",
+      description: "After signatures and payment, we collaborate to refine the concept and perfect every detail until the project matches your vision exactly.",
     },
     {
       title: "Launch & Support",
-      description: "I handle domain setup, provide solid SEO, and offer ongoing maintenance. Prefer full ownership? A one-time buyout option is available.",
+      description: "For websites, I handle domain setup, provide solid SEO, and offer ongoing maintenance. For AI agents, I ensure everything runs smoothly and your customers always get the best experience.",
     },
   ];
 
@@ -76,7 +76,7 @@ const Index = () => {
     {
       icon: Clock,
       title: "Quick Turnaround",
-      description: "Get a fully custom website in just a few days, not weeks.",
+      description: "Get a fully custom website or AI agent in just a few days, not weeks.",
     },
     {
       icon: Star,
@@ -86,7 +86,7 @@ const Index = () => {
     {
       icon: DollarSign,
       title: "Affordable Pricing",
-      description: "Custom websites and redesigns for just a few hundred dollars.",
+      description: "Custom websites and AI agents for just a few hundred dollars.",
     },
   ];
 
@@ -145,7 +145,7 @@ const Index = () => {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed px-4"
             >
-              Let's collaborate to create something amazing. Book a free discovery call and turn your vision into a beautiful, functional website.
+              Let's collaborate to create something amazing. Book a free discovery call and turn your vision into a stunning website or intelligent AI agent.
             </motion.p>
 
             {/* CTA Buttons */}
@@ -162,7 +162,10 @@ const Index = () => {
                 </Link>
               </Button>
               <Button variant="cosmic" size="lg" asChild className="text-base">
-                <a href="#pricing">View Services</a>
+                <Link to="/ai-agents" className="gap-2">
+                  <Bot size={18} />
+                  Explore AI Agents
+                </Link>
               </Button>
             </motion.div>
           </div>
@@ -193,7 +196,7 @@ const Index = () => {
               Hi, I'm <span className="text-primary">Adam</span>
             </h2>
             <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">
-              I'm a web designer from Ontario who builds clean, engaging websites that help businesses thrive.
+              I'm a web designer from Ontario who builds clean, engaging websites and intelligent AI agents that help businesses thrive.
               I combine practical design with quality workmanship — raised to believe if you won't do your best, don't bother.
             </p>
             <Button variant="hero" asChild>
@@ -237,14 +240,14 @@ const Index = () => {
         <div className="container mx-auto max-w-6xl">
           <FadeIn className="text-center mb-12 md:mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-4">
-              Your Website, <span className="text-primary">Your Way</span>
+              Your Project, <span className="text-primary">Your Way</span>
             </h2>
             <p className="text-lg md:text-xl text-muted-foreground">
-              Custom solutions for new builds and redesigns
+              Custom websites and intelligent AI agents
             </p>
           </FadeIn>
 
-          <StaggerContainer className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto mb-8">
+          <StaggerContainer className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto mb-6">
             <StaggerItem>
               <PricingCard
                 title="Website Creation"
@@ -275,6 +278,35 @@ const Index = () => {
               />
             </StaggerItem>
           </StaggerContainer>
+
+          {/* AI Agent Block */}
+          <FadeIn delay={0.3}>
+            <Card className="relative overflow-hidden bg-gradient-to-r from-accent/20 via-accent/10 to-accent/20 border-accent/40 hover:border-accent/60 transition-all duration-500 max-w-4xl mx-auto mb-8">
+              <div className="absolute top-0 right-0 bg-gradient-to-r from-accent to-primary text-white px-4 py-1.5 text-xs font-bold rounded-bl-xl">
+                NEW SERVICE
+              </div>
+              <CardContent className="p-8 md:p-10 flex flex-col md:flex-row items-center gap-6 md:gap-10">
+                <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-gradient-to-br from-accent to-primary flex items-center justify-center flex-shrink-0 shadow-glow">
+                  <Bot className="w-10 h-10 md:w-12 md:h-12 text-white" />
+                </div>
+                <div className="flex-1 text-center md:text-left">
+                  <h3 className="text-2xl md:text-3xl font-heading font-bold mb-3">AI Agents</h3>
+                  <p className="text-muted-foreground mb-4">
+                    Voice and text agents that answer calls, capture leads, and respond to customers 24/7 with your exact business knowledge. Powered by Retell.ai with smart integrations.
+                  </p>
+                  <ul className="flex flex-wrap gap-2 justify-center md:justify-start mb-4">
+                    <li className="text-xs bg-accent/20 text-accent-foreground px-3 py-1 rounded-full">24/7 Availability</li>
+                    <li className="text-xs bg-accent/20 text-accent-foreground px-3 py-1 rounded-full">Call & Text</li>
+                    <li className="text-xs bg-accent/20 text-accent-foreground px-3 py-1 rounded-full">Google Sheets Logging</li>
+                    <li className="text-xs bg-accent/20 text-accent-foreground px-3 py-1 rounded-full">Custom Knowledge Base</li>
+                  </ul>
+                  <Button variant="hero" asChild>
+                    <Link to="/ai-agents">Learn More</Link>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </FadeIn>
 
           <FadeIn delay={0.4} className="text-center">
             <p className="text-sm text-muted-foreground">
@@ -387,10 +419,10 @@ const Index = () => {
                   <Sparkles className="text-white" size={48} />
                 </motion.div>
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold mb-4 text-white">
-                  Ready to Discuss Your Website?
+                  Ready to Discuss Your Project?
                 </h2>
                 <p className="text-base sm:text-lg md:text-xl text-white/90 mb-8 max-w-xl mx-auto">
-                  Schedule a free 15-minute call and let's explore how we can make your website dreams a reality
+                  Schedule a free 15-minute call and let's explore how we can bring your vision to life
                 </p>
                 <Button
                   size="lg"
