@@ -39,7 +39,7 @@ export const Header = () => {
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/about", label: "About" },
-    { href: "/services", label: "Services" },
+    { href: "/services", label: "Websites" },
     { href: "/ai-agents", label: "AI Agents" },
     { href: "/portfolio", label: "Portfolio" },
   ];
