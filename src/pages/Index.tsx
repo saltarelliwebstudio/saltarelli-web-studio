@@ -162,9 +162,9 @@ const Index = () => {
                 </Link>
               </Button>
               <Button variant="cosmic" size="lg" asChild className="text-base">
-                <Link to="/ai-agents" className="gap-2">
-                  <Bot size={18} />
-                  Explore AI Agents
+                <Link to="/services" className="gap-2">
+                  <Sparkles size={18} />
+                  View Services
                 </Link>
               </Button>
             </motion.div>

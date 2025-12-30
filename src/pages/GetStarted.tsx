@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { Starfield } from "@/components/Starfield";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -9,14 +10,35 @@ import { Calendar, Clock, CheckCircle } from "lucide-react";
 const GetStarted = () => {
 
   return (
-    <div className="min-h-screen bg-background text-foreground relative flex flex-col">
+    <div className="min-h-screen bg-background text-foreground relative flex flex-col overflow-x-hidden">
       <Starfield />
+      
+      {/* Mesh gradient overlay */}
+      <div className="fixed inset-0 bg-mesh pointer-events-none z-0" />
+      
       <Header />
 
-      <section className="relative pt-32 pb-20 px-4 md:px-6 flex-1 flex items-center">
+      <section className="relative min-h-[80svh] flex items-center justify-center px-4 md:px-6 pt-20 pb-10">
         <div className="container mx-auto max-w-3xl relative z-10">
           <div className="text-center mb-12">
-            <Calendar className="mx-auto mb-6 text-primary" size={64} />
+            {/* Glowing Calendar Icon */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.5, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              className="mb-8 flex justify-center"
+            >
+              <motion.div
+                animate={{ y: [-10, 10, -10] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                className="relative"
+              >
+                <div className="absolute inset-0 blur-3xl bg-primary/30 rounded-full scale-150" />
+                <div className="relative z-10 w-32 h-32 md:w-40 md:h-40 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-glow">
+                  <Calendar className="w-16 h-16 md:w-20 md:h-20 text-white" />
+                </div>
+              </motion.div>
+            </motion.div>
             <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6">
               Let's Build Something Amazing Together
             </h1>
