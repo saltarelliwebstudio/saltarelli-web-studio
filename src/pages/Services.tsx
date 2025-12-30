@@ -29,10 +29,6 @@ const Services = () => {
     "Additional features may increase cost",
   ];
 
-  const extras = [
-    { service: "Additional revisions", price: "$50 each" },
-    { service: "Each new page", price: "$50" },
-  ];
 
   const terms = [
     "50% deposit required to begin work (non-refundable)",
@@ -53,10 +49,10 @@ const Services = () => {
       <section className="relative pt-32 pb-20 px-4 md:px-6">
         <div className="container mx-auto max-w-4xl relative z-10 text-center">
           <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6">
-            Websites & Pricing
+            Custom Websites
           </h1>
           <p className="text-xl text-muted-foreground">
-            Simple plans, transparent pricing, quality results
+            Simple plans, transparent process, quality results
           </p>
         </div>
       </section>
@@ -80,23 +76,6 @@ const Services = () => {
             />
           </div>
 
-
-          {/* Add-ons */}
-          <Card className="max-w-4xl mx-auto mb-16">
-            <CardHeader>
-              <CardTitle className="text-2xl font-heading">Additional Services</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid sm:grid-cols-2 gap-4">
-                {extras.map((extra, index) => (
-                  <div key={index} className="flex justify-between items-center p-3 bg-background rounded-lg">
-                    <span className="text-sm">{extra.service}</span>
-                    <span className="font-semibold text-primary">{extra.price}</span>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
 
           {/* Terms & Conditions */}
           <div className="text-center mb-16">
