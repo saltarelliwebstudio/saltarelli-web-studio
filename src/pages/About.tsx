@@ -37,7 +37,7 @@ const About = () => {
               <h2 className="text-3xl font-heading font-bold mb-6">
                 Hi, I'm Adam
               </h2>
-              <p className="text-lg text-muted-foreground mb-4">I'm a web designer from Ontario who builds clean, engaging websites that help businesses thrive. I combine practical design with quality workmanship — raised to believe if you won't do your best, don't bother.</p>
+              <p className="text-lg text-muted-foreground mb-4">I'm a web designer from Ontario who builds clean, engaging websites and intelligent AI agents that help businesses thrive. I combine practical design with quality workmanship — raised to believe if you won't do your best, don't bother.</p>
               <p className="text-lg text-muted-foreground mb-4">
                 Outside of design I train for marathons and practice MMA; that focus 
                 shows up in my attention to detail. Every project gets my full effort 
@@ -96,13 +96,13 @@ const About = () => {
               <li className="flex items-start gap-3">
                 <span className="text-primary mt-1">•</span>
                 <div>
-                  <strong>Fast Turnaround:</strong> I can have a fully customized website up and running within a few days. I respect your time and deadlines.
+                  <strong>Fast Turnaround:</strong> I can have a fully customized website or AI agent up and running within a few days. I respect your time and deadlines.
                 </div>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-primary mt-1">•</span>
                 <div>
-                  <strong>Upfront Value:</strong> I'll build you a complete homepage demo to give you an idea for what our project can look like before you even spend a penny.
+                  <strong>Upfront Value:</strong> I'll build you a complete homepage demo or AI agent demo to give you an idea for what our project can look like before you even spend a penny.
                 </div>
               </li>
               <li className="flex items-start gap-3">

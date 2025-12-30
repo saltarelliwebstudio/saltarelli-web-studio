@@ -21,7 +21,7 @@ const GetStarted = () => {
               Let's Build Something Amazing Together
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
-              Book a free 15-minute discovery call to discuss your website vision, 
+              Book a free 15-minute discovery call to discuss your project, 
               goals, and how we can collaborate to make it happen.
             </p>
           </div>
@@ -33,7 +33,7 @@ const GetStarted = () => {
                 <div>
                   <h3 className="font-heading font-semibold mb-2">No Pressure, Just Conversation</h3>
                   <p className="text-muted-foreground">
-                    We'll chat about your business, your goals, and explore if we're a good fit
+                    We'll chat about your business, your goals, and explore if we're a good fit for your project
                   </p>
                 </div>
               </div>

@@ -164,6 +164,10 @@
   text-shadow: 0 0 40px hsl(var(--primary) / 0.5);
 }
 
+.glow-text-accent {
+  text-shadow: 0 0 40px hsl(var(--accent) / 0.5);
+}
+
 /* Custom animations */
 @keyframes twinkle {
   0%, 100% { opacity: 0.2; }
