@@ -53,7 +53,7 @@ const Services = () => {
       <section className="relative pt-32 pb-20 px-4 md:px-6">
         <div className="container mx-auto max-w-4xl relative z-10 text-center">
           <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6">
-            Services & Pricing
+            Websites & Pricing
           </h1>
           <p className="text-xl text-muted-foreground">
             Simple plans, transparent pricing, quality results
