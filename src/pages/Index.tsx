@@ -162,10 +162,10 @@ const Index = () => {
                 </Link>
               </Button>
               <Button variant="cosmic" size="lg" asChild className="text-base">
-                <Link to="/services" className="gap-2">
+                <a href="#services" className="gap-2">
                   <Sparkles size={18} />
                   View Services
-                </Link>
+                </a>
               </Button>
             </motion.div>
           </div>
@@ -236,7 +236,7 @@ const Index = () => {
       </section>
 
       {/* Services & Pricing */}
-      <section id="pricing" className="py-20 md:py-28 px-4 md:px-6 relative z-10">
+      <section id="services" className="py-20 md:py-28 px-4 md:px-6 relative z-10">
         <div className="container mx-auto max-w-6xl">
           <FadeIn className="text-center mb-12 md:mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-4">
@@ -249,33 +249,43 @@ const Index = () => {
 
           <StaggerContainer className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto mb-6">
             <StaggerItem>
-              <PricingCard
-                title="Website Creation"
-                price=""
-                description="Build your new website from scratch"
-                features={[
-                  "1-3 week turnaround",
-                  "1 round of revisions included",
-                  "Professional design and build",
-                  "Domain setup & basic SEO",
-                  "Additional features may increase cost",
-                ]}
-              />
+              <Card className="h-full bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all duration-300">
+                <CardHeader>
+                  <CardTitle className="text-xl font-heading">Website Creation</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <p className="text-muted-foreground">Build your new website from scratch with professional design and modern features.</p>
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    <li>• 1-3 week turnaround</li>
+                    <li>• 1 round of revisions included</li>
+                    <li>• Domain setup & basic SEO</li>
+                  </ul>
+                  <Button variant="outline" asChild className="w-full mt-4">
+                    <Link to="/services">Learn More</Link>
+                  </Button>
+                </CardContent>
+              </Card>
             </StaggerItem>
             <StaggerItem>
-              <PricingCard
-                title="Website Redesign"
-                price=""
-                description="Refresh and modernize your existing site"
-                features={[
-                  "1-3 week turnaround",
-                  "1 round of revisions included",
-                  "Modern, responsive design",
-                  "SEO optimization included",
-                  "Additional features may increase cost",
-                ]}
-                popular={true}
-              />
+              <Card className="h-full bg-card/50 backdrop-blur-sm border-primary/50 hover:border-primary transition-all duration-300 relative">
+                <div className="absolute top-0 right-0 bg-primary text-primary-foreground px-3 py-1 text-xs font-bold rounded-bl-lg">
+                  POPULAR
+                </div>
+                <CardHeader>
+                  <CardTitle className="text-xl font-heading">Website Redesign</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <p className="text-muted-foreground">Refresh and modernize your existing site with a new look and improved performance.</p>
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    <li>• 1-3 week turnaround</li>
+                    <li>• Modern, responsive design</li>
+                    <li>• SEO optimization included</li>
+                  </ul>
+                  <Button variant="outline" asChild className="w-full mt-4">
+                    <Link to="/services">Learn More</Link>
+                  </Button>
+                </CardContent>
+              </Card>
             </StaggerItem>
           </StaggerContainer>
 
