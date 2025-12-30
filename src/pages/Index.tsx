@@ -256,7 +256,7 @@ const Index = () => {
                 <CardContent className="space-y-4">
                   <p className="text-muted-foreground">Build your new website from scratch with professional design and modern features.</p>
                   <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li>• 1-3 week turnaround</li>
+                    <li>• Full domain setup & configuration</li>
                     <li>• 1 round of revisions included</li>
                     <li>• Domain setup & basic SEO</li>
                   </ul>
@@ -277,7 +277,7 @@ const Index = () => {
                 <CardContent className="space-y-4">
                   <p className="text-muted-foreground">Refresh and modernize your existing site with a new look and improved performance.</p>
                   <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li>• 1-3 week turnaround</li>
+                    <li>• Seamless transfer to your existing domain</li>
                     <li>• Modern, responsive design</li>
                     <li>• SEO optimization included</li>
                   </ul>
