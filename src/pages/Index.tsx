@@ -318,11 +318,6 @@ const Index = () => {
             </Card>
           </FadeIn>
 
-          <FadeIn delay={0.4} className="text-center">
-            <p className="text-sm text-muted-foreground">
-              Additional revisions: $50 each • New pages: $50 each • Late fees may apply after 3 weeks
-            </p>
-          </FadeIn>
         </div>
       </section>
 
