@@ -66,6 +66,13 @@ const Portfolio = () => {
       imageUrl: "/lovable-uploads/2f0cdffd-2fae-4ffa-85d7-d2d01a0cc1d5.png",
       liveUrl: "https://sites.google.com/view/cds-lawn-care-services/home?authuser=1",
     },
+    {
+      title: "Pop's Landscaping",
+      description: "Full-service landscaping company website with project gallery, service offerings, and quote request functionality.",
+      category: "Home Services",
+      imageUrl: "/lovable-uploads/pops-landscaping.png",
+      liveUrl: undefined,
+    },
   ];
 
   const categories = [
