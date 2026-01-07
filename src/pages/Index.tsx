@@ -401,6 +401,14 @@ const Index = () => {
               rating={5}
             />
           </ScaleIn>
+
+          <FadeIn delay={0.3} className="text-center mt-8">
+            <Button variant="outline" size="lg" asChild>
+              <a href="https://share.google/KUKqro0A4qFmdJWDn" target="_blank" rel="noopener noreferrer">
+                View More!
+              </a>
+            </Button>
+          </FadeIn>
         </div>
       </section>
 
