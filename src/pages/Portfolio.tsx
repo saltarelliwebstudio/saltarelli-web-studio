@@ -71,7 +71,7 @@ const Portfolio = () => {
       description: "Full-service landscaping company website with project gallery, service offerings, and quote request functionality.",
       category: "Home Services",
       imageUrl: "/lovable-uploads/pops-landscaping.png",
-      liveUrl: undefined,
+      liveUrl: "https://popslandscaping.ca/",
     },
   ];
 
