@@ -60,9 +60,8 @@ export const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-10 pt-8 border-t border-border/50 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="mt-10 pt-8 border-t border-border/50 text-center">
           <p className="text-sm text-muted-foreground">© {new Date().getFullYear()} Saltarelli Web Studio. All rights reserved.</p>
-          <a href="/terms-of-service.pdf" download="Saltarelli_Web_Studio_Terms_of_Service.pdf" className="text-sm text-muted-foreground hover:text-primary transition-colors">Terms of Service</a>
         </div>
       </div>
     </footer>

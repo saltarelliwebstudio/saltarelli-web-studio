@@ -77,25 +77,6 @@ const Services = () => {
           </div>
 
 
-          {/* Terms & Conditions */}
-          <div className="text-center mb-16">
-            <Card className="max-w-xl mx-auto p-6">
-              <CardContent className="flex flex-col items-center gap-4 pt-6">
-                <AlertCircle className="text-primary" size={32} />
-                <h3 className="text-xl font-heading font-semibold">Terms of Service</h3>
-                <p className="text-sm text-muted-foreground">
-                  View our complete terms and conditions
-                </p>
-                <Button variant="cosmic" asChild>
-                  <a href="/terms-of-service.pdf" download="Saltarelli_Web_Studio_Terms_of_Service.pdf" rel="noopener noreferrer">
-                    <Download size={20} className="mr-2" />
-                    Download Terms of Service
-                  </a>
-                </Button>
-              </CardContent>
-            </Card>
-          </div>
-
         </div>
       </section>
 
