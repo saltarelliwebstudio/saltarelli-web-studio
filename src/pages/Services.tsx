@@ -1,8 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Download, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Starfield } from "@/components/Starfield";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
