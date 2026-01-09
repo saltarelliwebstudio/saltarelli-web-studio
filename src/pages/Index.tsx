@@ -393,16 +393,36 @@ const Index = () => {
             </div>
           </FadeIn>
 
-          <ScaleIn>
-            <TestimonialCard
-              quote="I would highly recommend Adam if you are looking to refresh your website. He did a fantastic job for us and we are really happy with the results"
-              author="Owner"
-              business="Mom Duke's Authentic Jamaican Cuisine"
-              rating={5}
-            />
-          </ScaleIn>
+          <div className="grid gap-6 md:gap-8">
+            <ScaleIn>
+              <TestimonialCard
+                quote="I would highly recommend Adam if you are looking to refresh your website. He did a fantastic job for us and we are really happy with the results"
+                author="Owner"
+                business="Mom Duke's Authentic Jamaican Cuisine"
+                rating={5}
+              />
+            </ScaleIn>
 
-          <FadeIn delay={0.3} className="text-center mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+            <ScaleIn delay={0.1}>
+              <TestimonialCard
+                quote="Adam does a fantastic job putting together your dream website. Definitely recommend to any business."
+                author="Owner"
+                business="Genius Fitness & MMA"
+                rating={5}
+              />
+            </ScaleIn>
+
+            <ScaleIn delay={0.2}>
+              <TestimonialCard
+                quote="Adam did an amazing job designing our website from start to finish. He was professional, easy to communicate with, and really took the time to understand what I wanted. The final site looks great, runs smoothly, and was delivered on time. I'd highly recommend Adam to anyone looking for a reliable and talented website designer."
+                author="Owner"
+                business="Pop's Landscaping"
+                rating={5}
+              />
+            </ScaleIn>
+          </div>
+
+          <FadeIn delay={0.4} className="text-center mt-8 flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="outline" size="lg" asChild>
               <a href="https://share.google/KUKqro0A4qFmdJWDn" target="_blank" rel="noopener noreferrer">
                 View More!
