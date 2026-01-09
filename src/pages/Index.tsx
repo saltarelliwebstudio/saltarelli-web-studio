@@ -402,10 +402,15 @@ const Index = () => {
             />
           </ScaleIn>
 
-          <FadeIn delay={0.3} className="text-center mt-8">
+          <FadeIn delay={0.3} className="text-center mt-8 flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="outline" size="lg" asChild>
               <a href="https://share.google/KUKqro0A4qFmdJWDn" target="_blank" rel="noopener noreferrer">
                 View More!
+              </a>
+            </Button>
+            <Button variant="hero" size="lg" asChild>
+              <a href="https://g.page/r/CXhxacLPmqCqEBM/review" target="_blank" rel="noopener noreferrer">
+                Write A Review!
               </a>
             </Button>
           </FadeIn>
