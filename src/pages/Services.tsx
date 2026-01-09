@@ -1,10 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Monitor } from "lucide-react";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Starfield } from "@/components/Starfield";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { PricingCard } from "@/components/PricingCard";
+import { FadeIn, ScaleIn } from "@/components/motion";
 
 const Services = () => {
   const creationFeatures = [
@@ -39,19 +42,46 @@ const Services = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background text-foreground relative flex flex-col">
+    <div className="min-h-screen bg-background text-foreground relative flex flex-col overflow-x-hidden">
       <Starfield />
+      
+      {/* Mesh gradient overlay */}
+      <div className="fixed inset-0 bg-mesh pointer-events-none z-0" />
+      
       <Header />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-4 md:px-6">
+      <section className="relative min-h-[60svh] flex items-center justify-center px-4 md:px-6 pt-20 pb-10">
         <div className="container mx-auto max-w-4xl relative z-10 text-center">
-          <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6">
-            Custom Websites
-          </h1>
-          <p className="text-xl text-muted-foreground">
-            Simple plans, transparent process, quality results
-          </p>
+          {/* Monitor Icon */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="mb-8 flex justify-center"
+          >
+            <motion.div
+              animate={{ y: [-10, 10, -10] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              className="relative"
+            >
+              <div className="absolute inset-0 blur-3xl bg-primary/30 rounded-full scale-150" />
+              <div className="relative z-10 w-28 h-28 md:w-36 md:h-36 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-glow">
+                <Monitor className="w-14 h-14 md:w-18 md:h-18 text-white" />
+              </div>
+            </motion.div>
+          </motion.div>
+
+          <FadeIn delay={0.2}>
+            <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6">
+              Custom Websites
+            </h1>
+          </FadeIn>
+          <FadeIn delay={0.3}>
+            <p className="text-xl text-muted-foreground">
+              Simple plans, transparent process, quality results
+            </p>
+          </FadeIn>
         </div>
       </section>
 
