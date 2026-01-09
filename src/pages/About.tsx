@@ -1,22 +1,52 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Award, Target, Heart } from "lucide-react";
+import { ArrowRight, Award, Target, Heart, User } from "lucide-react";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Starfield } from "@/components/Starfield";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { FadeIn } from "@/components/motion";
 import adamPhoto from "@/assets/adam-photo.png";
+
 const About = () => {
-  return <div className="min-h-screen bg-background text-foreground relative flex flex-col">
+  return <div className="min-h-screen bg-background text-foreground relative flex flex-col overflow-x-hidden">
       <Starfield />
+      
+      {/* Mesh gradient overlay */}
+      <div className="fixed inset-0 bg-mesh pointer-events-none z-0" />
+      
       <Header />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-4 md:px-6">
-        <div className="container mx-auto max-w-4xl relative z-10">
-          <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6 text-center">About Me</h1>
-          <p className="text-xl text-center text-muted-foreground">Web Designer • Runner • Martial Artist</p>
+      <section className="relative min-h-[50svh] flex items-center justify-center px-4 md:px-6 pt-20 pb-10">
+        <div className="container mx-auto max-w-4xl relative z-10 text-center">
+          {/* User Icon */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="mb-8 flex justify-center"
+          >
+            <motion.div
+              animate={{ y: [-10, 10, -10] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              className="relative"
+            >
+              <div className="absolute inset-0 blur-3xl bg-accent/30 rounded-full scale-150" />
+              <div className="relative z-10 w-28 h-28 md:w-36 md:h-36 rounded-full bg-gradient-to-br from-accent to-primary flex items-center justify-center shadow-glow">
+                <User className="w-14 h-14 md:w-18 md:h-18 text-white" />
+              </div>
+            </motion.div>
+          </motion.div>
+
+          <FadeIn delay={0.2}>
+            <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6">About Me</h1>
+          </FadeIn>
+          <FadeIn delay={0.3}>
+            <p className="text-xl text-muted-foreground">Web Designer • Runner • Martial Artist</p>
+          </FadeIn>
         </div>
       </section>
 
