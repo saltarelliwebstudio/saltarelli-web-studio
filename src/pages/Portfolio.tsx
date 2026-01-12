@@ -43,17 +43,10 @@ const Portfolio = () => {
     },
     {
       title: "Molon's Orthodontics",
-      description: "Concept design for modern orthodontic practice. Features patient portal, appointment booking, and treatment information.",
+      description: "Concept website design for a modern orthodontic practice. Showcases patient portal, appointment booking, and treatment information layouts.",
       category: "Healthcare",
       imageUrl: "/lovable-uploads/12bf1319-8fb6-4f87-ab56-02eaf20e2767.png",
       liveUrl: "https://molonsorthodontics.crd.co",
-    },
-    {
-      title: "Sophia's Sweets & Café",
-      description: "Bakery and café website with online ordering for custom cakes, daily specials, and catering menu. Instagram integration for showcasing creations.",
-      category: "Food & Restaurant",
-      imageUrl: "/lovable-uploads/5b3b4050-2ba2-4f7d-a116-3fb2422da4e5.png",
-      liveUrl: "https://sites.google.com/view/sophiassweetscafe/home?authuser=1",
     },
     {
       title: "Keeda's Home Bakery",
