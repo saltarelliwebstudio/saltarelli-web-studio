@@ -79,18 +79,21 @@ const Portfolio = () => {
       title: "G&D Landscaping",
       description: "Professional landscaping website featuring lawn care, garden maintenance, and snow removal services. Clean design with easy quote requests.",
       category: "Home Services",
+      imageUrl: "/lovable-uploads/gd-landscaping.png",
       liveUrl: "https://gdlandscaping.ca/",
     },
     {
       title: "Bluewater Stone Hardscaping",
       description: "Premium hardscaping company website showcasing custom stonework, retaining walls, and outdoor living spaces. Features gallery and free quote system.",
       category: "Home Services",
+      imageUrl: "/lovable-uploads/bluewater-stone.png",
       liveUrl: "https://bluewaterstone.ca/",
     },
     {
       title: "Cassar Electric",
       description: "Industrial and commercial electrical services website for the Niagara region. Professional design with service information and contact functionality.",
       category: "Home Services",
+      imageUrl: "/lovable-uploads/cassar-electric.png",
       liveUrl: "https://cassarelectric.ca/",
     },
   ];
