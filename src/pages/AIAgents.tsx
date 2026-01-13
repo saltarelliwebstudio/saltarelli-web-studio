@@ -8,6 +8,7 @@ import { Starfield } from "@/components/Starfield";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { FadeIn, StaggerContainer, StaggerItem, ScaleIn } from "@/components/motion";
+import { SEO } from "@/components/SEO";
 
 const AIAgents = () => {
   const features = [
@@ -43,6 +44,12 @@ const AIAgents = () => {
   ];
 
   return (
+    <>
+      <SEO
+        canonical="/ai-agents"
+        title="AI Agents — Voice & Text Automation for Your Business"
+        description="Never miss a call or lead again. AI-powered voice and text agents answer customer questions 24/7 with your exact business knowledge. Smart automation for Ontario businesses."
+      />
     <div className="min-h-screen bg-background text-foreground relative flex flex-col overflow-x-hidden">
       <Starfield />
       
@@ -229,6 +236,7 @@ const AIAgents = () => {
 
       <Footer />
     </div>
+    </>
   );
 };
 

@@ -8,10 +8,18 @@ import { Starfield } from "@/components/Starfield";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { FadeIn } from "@/components/motion";
+import { SEO } from "@/components/SEO";
 import adamPhoto from "@/assets/adam-photo.png";
 
 const About = () => {
-  return <div className="min-h-screen bg-background text-foreground relative flex flex-col overflow-x-hidden">
+  return (
+    <>
+      <SEO
+        canonical="/about"
+        title="About Adam Saltarelli — Ontario Web Designer"
+        description="Meet Adam Saltarelli, a web designer from Ontario who builds clean, engaging websites and AI agents. Quality workmanship, fair pricing, and personal attention to every project."
+      />
+    <div className="min-h-screen bg-background text-foreground relative flex flex-col overflow-x-hidden">
       <Starfield />
       
       {/* Mesh gradient overlay */}
@@ -182,6 +190,8 @@ const About = () => {
       </section>
 
       <Footer />
-    </div>;
+    </div>
+    </>
+  );
 };
 export default About;

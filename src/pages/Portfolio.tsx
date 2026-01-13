@@ -8,6 +8,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { PortfolioCard } from "@/components/PortfolioCard";
 import { FadeIn } from "@/components/motion";
+import { SEO } from "@/components/SEO";
 
 const Portfolio = () => {
   const [filter, setFilter] = useState("all");
@@ -103,6 +104,12 @@ const Portfolio = () => {
       : portfolioItems.filter((item) => item.category === filter);
 
   return (
+    <>
+      <SEO
+        canonical="/portfolio"
+        title="Web Design Portfolio — Real Projects for Real Businesses"
+        description="Browse our portfolio of custom websites for Ontario businesses. Fitness studios, restaurants, landscaping, and more. See what's possible for your business."
+      />
     <div className="min-h-screen bg-background text-foreground relative flex flex-col overflow-x-hidden">
       <Starfield />
       
@@ -195,6 +202,7 @@ const Portfolio = () => {
 
       <Footer />
     </div>
+    </>
   );
 };
 
