@@ -12,6 +12,7 @@ import { TestimonialCard } from "@/components/TestimonialCard";
 import { PortfolioCard } from "@/components/PortfolioCard";
 import { WorkflowStep } from "@/components/WorkflowStep";
 import { FadeIn, StaggerContainer, StaggerItem, ScaleIn } from "@/components/motion";
+import { SEO } from "@/components/SEO";
 import logo from "@/assets/sws-logo.png";
 
 const Index = () => {
@@ -91,6 +92,12 @@ const Index = () => {
   ];
 
   return (
+    <>
+      <SEO 
+        canonical="/"
+        title="Saltarelli Web Studio — Web Design in Ontario"
+        description="Professional web design in Ontario. Custom websites and AI agents for small businesses. Fast turnaround, affordable pricing. Book a free discovery call today."
+      />
     <div className="min-h-screen bg-background text-foreground relative flex flex-col overflow-x-hidden">
       <Starfield />
       
@@ -480,6 +487,7 @@ const Index = () => {
 
       <Footer />
     </div>
+    </>
   );
 };
 

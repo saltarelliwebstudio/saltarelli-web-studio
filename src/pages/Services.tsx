@@ -8,6 +8,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { PricingCard } from "@/components/PricingCard";
 import { FadeIn, ScaleIn } from "@/components/motion";
+import { SEO } from "@/components/SEO";
 
 const Services = () => {
   const creationFeatures = [
@@ -42,6 +43,12 @@ const Services = () => {
   ];
 
   return (
+    <>
+      <SEO
+        canonical="/services"
+        title="Web Design Services & Pricing — Custom Websites"
+        description="Affordable web design services in Ontario. Website creation and redesign starting at a few hundred dollars. Mobile-responsive, SEO-optimized, fast turnaround."
+      />
     <div className="min-h-screen bg-background text-foreground relative flex flex-col overflow-x-hidden">
       <Starfield />
       
@@ -127,6 +134,7 @@ const Services = () => {
 
       <Footer />
     </div>
+    </>
   );
 };
 

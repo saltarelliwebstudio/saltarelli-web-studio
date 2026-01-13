@@ -6,10 +6,17 @@ import { Footer } from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Calendar, Clock, CheckCircle } from "lucide-react";
+import { SEO } from "@/components/SEO";
 
 const GetStarted = () => {
 
   return (
+    <>
+      <SEO
+        canonical="/get-started"
+        title="Book a Free Discovery Call — Get Started Today"
+        description="Schedule a free 15-minute discovery call to discuss your web design project. No pressure, just conversation about your goals and how we can help."
+      />
     <div className="min-h-screen bg-background text-foreground relative flex flex-col overflow-x-hidden">
       <Starfield />
       
@@ -94,6 +101,7 @@ const GetStarted = () => {
 
       <Footer />
     </div>
+    </>
   );
 };
 
