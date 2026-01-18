@@ -91,6 +91,13 @@ const Portfolio = () => {
       imageUrl: "/lovable-uploads/cassar-electric.png",
       liveUrl: "https://cassarelectric.ca/",
     },
+    {
+      title: "Tree and Stump Removal",
+      description: "Professional tree and stump removal services website for Port Colborne and the Niagara region. Features service information, gallery, and quote request functionality.",
+      category: "Home Services",
+      imageUrl: "/lovable-uploads/tree-stump-removal.png",
+      liveUrl: "https://treeandstumpremoval.ca/",
+    },
   ];
 
   const categories = [
