@@ -44,9 +44,9 @@ export const Footer = () => {
           <div>
             <h3 className="font-heading font-semibold mb-4">Contact</h3>
             <div className="space-y-3">
-              <a href="tel:+12892715716" className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors">
+              <a href="tel:+12899314142" className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors">
                 <Phone size={16} />
-                <span className="text-sm">(289) 271-5716</span>
+                <span className="text-sm">(289) 931-4142</span>
               </a>
               <a href="mailto:saltarelliwebstudio@gmail.com" className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors">
                 <Mail size={16} />
