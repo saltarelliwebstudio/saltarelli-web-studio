@@ -11,6 +11,7 @@ import Services from "./pages/Services";
 import Portfolio from "./pages/Portfolio";
 import GetStarted from "./pages/GetStarted";
 import AIAgents from "./pages/AIAgents";
+import Automations from "./pages/Automations";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,6 +31,7 @@ const App = () => (
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/get-started" element={<GetStarted />} />
           <Route path="/ai-agents" element={<AIAgents />} />
+          <Route path="/automations" element={<Automations />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
