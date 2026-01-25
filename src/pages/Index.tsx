@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Star, Sparkles, Clock, DollarSign, Zap, Bot } from "lucide-react";
+import { ArrowRight, Star, Sparkles, Clock, DollarSign, Zap, Bot, Workflow } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -32,11 +32,11 @@ const Index = () => {
       liveUrl: "https://www.geniusfitnessandmma.com",
     },
     {
-      title: "CDS Lawn Care Services",
-      description: "Professional lawn care service website with service packages, online quotes, and seasonal maintenance scheduling.",
+      title: "Cassar Electric",
+      description: "Professional electrical services website with service listings and contact integration.",
       category: "Home Services",
-      imageUrl: "/lovable-uploads/2f0cdffd-2fae-4ffa-85d7-d2d01a0cc1d5.png",
-      liveUrl: "https://sites.google.com/view/cds-lawn-care-services/home?authuser=1",
+      imageUrl: "/lovable-uploads/cassar-electric.png",
+      liveUrl: "https://cassarelectric.ca",
     },
     {
       title: "The Carrot Effect",
@@ -46,11 +46,10 @@ const Index = () => {
       liveUrl: "https://thecarroteffect.ca",
     },
     {
-      title: "Mom Duke's Authentic Jamaican Cuisine",
-      description: "Restaurant website with online ordering and catering services",
-      category: "Food & Restaurant",
-      imageUrl: "/lovable-uploads/52f46296-b829-46d0-8c4f-2729a1d3cf97.png",
-      liveUrl: "https://www.momdukes2020.com",
+      title: "Genius Fitness Automation",
+      description: "AI-powered lead management automation with email capture, Google Sheets logging, and SMS notifications",
+      category: "Business Automation",
+      imageUrl: "/lovable-uploads/genius-fitness-automation.png",
     },
   ];
 
@@ -61,7 +60,7 @@ const Index = () => {
     },
     {
       title: "Design",
-      description: "I create a free concept website or AI agent demo based on your ideas, giving you a clear visual of exactly what you'll be getting before any commitment.",
+      description: "I create a free concept website, AI agent demo, or automation walkthrough based on your ideas, giving you a clear visual of exactly what you'll be getting before any commitment.",
     },
     {
       title: "Build",
@@ -69,7 +68,7 @@ const Index = () => {
     },
     {
       title: "Launch & Support",
-      description: "For websites, I handle domain setup, provide solid SEO, and offer ongoing maintenance. For AI agents, I ensure everything runs smoothly and your customers always get the best experience.",
+      description: "For websites, I handle domain setup, provide solid SEO, and offer ongoing maintenance. For AI agents and automations, I ensure everything runs smoothly and your customers always get the best experience.",
     },
   ];
 
@@ -152,7 +151,7 @@ const Index = () => {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed px-4"
             >
-              Let's collaborate to create something amazing. Book a free discovery call and turn your vision into a stunning website or intelligent AI agent.
+              Let's collaborate to create something amazing. Book a free discovery call and turn your vision into a stunning website, intelligent AI agent, or powerful automation.
             </motion.p>
 
             {/* CTA Buttons */}
@@ -203,7 +202,7 @@ const Index = () => {
               Hi, I'm <span className="text-primary">Adam</span>
             </h2>
             <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">
-              I'm a web designer from Ontario who builds clean, engaging websites and intelligent AI agents that help businesses thrive.
+              I'm a tech-savvy guy from Ontario who builds websites, AI agents, and business automations that help companies thrive.
               I combine practical design with quality workmanship — raised to believe if you won't do your best, don't bother.
             </p>
             <Button variant="hero" asChild>
@@ -250,10 +249,11 @@ const Index = () => {
               Your Project, <span className="text-primary">Your Way</span>
             </h2>
             <p className="text-lg md:text-xl text-muted-foreground">
-              Custom websites and intelligent AI agents
+              Custom websites, intelligent AI agents, and powerful automations
             </p>
           </FadeIn>
 
+          {/* Website Services Row */}
           <StaggerContainer className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto mb-6">
             <StaggerItem>
               <Card className="h-full bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all duration-300">
@@ -274,10 +274,7 @@ const Index = () => {
               </Card>
             </StaggerItem>
             <StaggerItem>
-              <Card className="h-full bg-card/50 backdrop-blur-sm border-primary/50 hover:border-primary transition-all duration-300 relative">
-                <div className="absolute top-0 right-0 bg-primary text-primary-foreground px-3 py-1 text-xs font-bold rounded-bl-lg">
-                  POPULAR
-                </div>
+              <Card className="h-full bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all duration-300">
                 <CardHeader>
                   <CardTitle className="text-xl font-heading">Website Redesign</CardTitle>
                 </CardHeader>
@@ -296,34 +293,57 @@ const Index = () => {
             </StaggerItem>
           </StaggerContainer>
 
-          {/* AI Agent Block */}
-          <FadeIn delay={0.3}>
-            <Card className="relative overflow-hidden bg-gradient-to-r from-accent/20 via-accent/10 to-accent/20 border-accent/40 hover:border-accent/60 transition-all duration-500 max-w-4xl mx-auto mb-8">
-              <div className="absolute top-0 right-0 bg-gradient-to-r from-accent to-primary text-white px-4 py-1.5 text-xs font-bold rounded-bl-xl">
-                NEW SERVICE
-              </div>
-              <CardContent className="p-8 md:p-10 flex flex-col md:flex-row items-center gap-6 md:gap-10">
-                <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-gradient-to-br from-accent to-primary flex items-center justify-center flex-shrink-0 shadow-glow">
-                  <Bot className="w-10 h-10 md:w-12 md:h-12 text-white" />
+          {/* AI & Automation Services Row */}
+          <StaggerContainer className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto mb-8">
+            <StaggerItem>
+              <Card className="h-full relative overflow-hidden bg-gradient-to-br from-accent/20 via-accent/10 to-transparent border-accent/40 hover:border-accent/60 transition-all duration-500">
+                <div className="absolute top-0 right-0 bg-gradient-to-r from-accent to-primary text-white px-3 py-1 text-xs font-bold rounded-bl-lg">
+                  NEW
                 </div>
-                <div className="flex-1 text-center md:text-left">
-                  <h3 className="text-2xl md:text-3xl font-heading font-bold mb-3">AI Agents</h3>
-                  <p className="text-muted-foreground mb-4">
-                    Voice and text agents that answer calls, capture leads, and respond to customers 24/7 with your exact business knowledge. Powered by Retell.ai with smart integrations.
+                <CardContent className="p-6 flex flex-col h-full">
+                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-accent to-primary flex items-center justify-center flex-shrink-0 shadow-glow mb-4">
+                    <Bot className="w-7 h-7 text-white" />
+                  </div>
+                  <h3 className="text-xl font-heading font-bold mb-2">AI Agents</h3>
+                  <p className="text-muted-foreground mb-4 flex-1">
+                    Voice and text agents that answer calls, capture leads, and respond to customers 24/7.
                   </p>
-                  <ul className="flex flex-wrap gap-2 justify-center md:justify-start mb-4">
-                    <li className="text-xs bg-accent/20 text-accent-foreground px-3 py-1 rounded-full">24/7 Availability</li>
-                    <li className="text-xs bg-accent/20 text-accent-foreground px-3 py-1 rounded-full">Call & Text</li>
-                    <li className="text-xs bg-accent/20 text-accent-foreground px-3 py-1 rounded-full">Google Sheets Logging</li>
-                    <li className="text-xs bg-accent/20 text-accent-foreground px-3 py-1 rounded-full">Custom Knowledge Base</li>
+                  <ul className="flex flex-wrap gap-2 mb-4">
+                    <li className="text-xs bg-accent/20 text-accent-foreground px-2 py-1 rounded-full">24/7</li>
+                    <li className="text-xs bg-accent/20 text-accent-foreground px-2 py-1 rounded-full">Call & Text</li>
+                    <li className="text-xs bg-accent/20 text-accent-foreground px-2 py-1 rounded-full">Lead Capture</li>
                   </ul>
-                  <Button variant="hero" asChild>
+                  <Button variant="hero" asChild className="w-full">
                     <Link to="/ai-agents">Learn More</Link>
                   </Button>
+                </CardContent>
+              </Card>
+            </StaggerItem>
+            <StaggerItem>
+              <Card className="h-full relative overflow-hidden bg-gradient-to-br from-primary/20 via-primary/10 to-transparent border-primary/40 hover:border-primary/60 transition-all duration-500">
+                <div className="absolute top-0 right-0 bg-gradient-to-r from-primary to-accent text-white px-3 py-1 text-xs font-bold rounded-bl-lg">
+                  NEW
                 </div>
-              </CardContent>
-            </Card>
-          </FadeIn>
+                <CardContent className="p-6 flex flex-col h-full">
+                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center flex-shrink-0 shadow-glow mb-4">
+                    <Workflow className="w-7 h-7 text-white" />
+                  </div>
+                  <h3 className="text-xl font-heading font-bold mb-2">Automations</h3>
+                  <p className="text-muted-foreground mb-4 flex-1">
+                    Custom workflows that handle repetitive tasks — lead capture, notifications, and more.
+                  </p>
+                  <ul className="flex flex-wrap gap-2 mb-4">
+                    <li className="text-xs bg-primary/20 text-primary-foreground px-2 py-1 rounded-full">Make.com</li>
+                    <li className="text-xs bg-primary/20 text-primary-foreground px-2 py-1 rounded-full">AI-Powered</li>
+                    <li className="text-xs bg-primary/20 text-primary-foreground px-2 py-1 rounded-full">SMS Alerts</li>
+                  </ul>
+                  <Button variant="hero" asChild className="w-full">
+                    <Link to="/automations">Learn More</Link>
+                  </Button>
+                </CardContent>
+              </Card>
+            </StaggerItem>
+          </StaggerContainer>
 
         </div>
       </section>

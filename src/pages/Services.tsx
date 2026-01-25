@@ -101,13 +101,13 @@ const Services = () => {
               price=""
               description="Build your new website from scratch"
               features={creationFeatures}
+              popular={true}
             />
             <PricingCard
               title="Website Redesign"
               price=""
               description="Refresh and modernize your existing site"
               features={redesignFeatures}
-              popular={true}
             />
           </div>
 
