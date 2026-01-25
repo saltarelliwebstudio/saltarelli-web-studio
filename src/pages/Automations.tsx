@@ -40,7 +40,7 @@ const Automations = () => {
     "AI-powered data organization",
     "Seamless Google Sheets integration",
     "SMS alerts to your phone",
-    "Built on Make.com or n8n",
+    "Built on Make.com or Claude Code",
   ];
 
   return (
@@ -48,7 +48,7 @@ const Automations = () => {
       <SEO
         canonical="/automations"
         title="Business Automations — AI-Powered Workflow Automation"
-        description="Automate your business processes with AI-powered workflows. From lead capture to SMS notifications, we build custom automations using Make.com and n8n."
+        description="Automate your business processes with AI-powered workflows. From lead capture to SMS notifications, we build custom automations using Make.com and Claude Code."
       />
       <div className="min-h-screen bg-background text-foreground relative flex flex-col overflow-x-hidden">
         <Starfield />
@@ -98,7 +98,7 @@ const Automations = () => {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed px-4"
               >
-                Custom automations that handle the repetitive work for you. From lead capture to SMS notifications — built with AI and powered by Make.com or n8n.
+                Custom automations that handle the repetitive work for you. From lead capture to SMS notifications — built with AI and powered by Make.com or Claude Code.
               </motion.p>
 
               {/* CTA Buttons */}
