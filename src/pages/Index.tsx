@@ -382,13 +382,49 @@ const Index = () => {
             </p>
           </FadeIn>
 
-          <StaggerContainer className="grid sm:grid-cols-2 gap-6 md:gap-8 mb-10">
-            {portfolioItems.map((item, index) => (
+          <StaggerContainer className="grid sm:grid-cols-2 gap-6 md:gap-8 mb-8">
+            {portfolioItems.filter(item => item.category !== "Business Automation").map((item, index) => (
               <StaggerItem key={index}>
                 <PortfolioCard {...item} />
               </StaggerItem>
             ))}
           </StaggerContainer>
+
+          {/* Full-width Automation Showcase */}
+          <FadeIn className="mb-10">
+            <Link to="/automations" className="block group">
+              <Card className="overflow-hidden bg-card/50 backdrop-blur-sm border-accent/30 hover:border-accent/60 transition-all duration-500 hover:shadow-glow">
+                <div className="grid md:grid-cols-3 gap-0">
+                  <div className="md:col-span-2 relative overflow-hidden">
+                    <img 
+                      src="/lovable-uploads/genius-fitness-automation.png" 
+                      alt="Genius Fitness & MMA automation workflow - Make.com scenario with email capture, AI processing, Google Sheets, and SMS notifications"
+                      className="w-full h-full object-cover object-center min-h-[200px] md:min-h-[280px] group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute top-4 left-4 bg-gradient-to-r from-accent to-primary text-white px-3 py-1 text-xs font-bold rounded-lg">
+                      AUTOMATION
+                    </div>
+                  </div>
+                  <div className="p-6 md:p-8 flex flex-col justify-center">
+                    <h3 className="text-xl md:text-2xl font-heading font-bold mb-3 group-hover:text-accent transition-colors">
+                      Genius Fitness Automation
+                    </h3>
+                    <p className="text-muted-foreground mb-4 text-sm md:text-base">
+                      AI-powered lead management automation with email capture, Google Sheets logging, and instant SMS notifications to coaches.
+                    </p>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      <span className="text-xs bg-accent/20 text-accent-foreground px-2 py-1 rounded-full">Make.com</span>
+                      <span className="text-xs bg-accent/20 text-accent-foreground px-2 py-1 rounded-full">AI Processing</span>
+                      <span className="text-xs bg-accent/20 text-accent-foreground px-2 py-1 rounded-full">SMS Alerts</span>
+                    </div>
+                    <span className="text-accent font-semibold text-sm inline-flex items-center gap-2 group-hover:gap-3 transition-all">
+                      View Case Study <ArrowRight size={16} />
+                    </span>
+                  </div>
+                </div>
+              </Card>
+            </Link>
+          </FadeIn>
 
           <FadeIn className="text-center">
             <Button variant="outline" size="lg" asChild>

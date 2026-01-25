@@ -186,7 +186,7 @@ const Automations = () => {
             <FadeIn delay={0.2}>
               <Card className="overflow-hidden border-accent/20">
                 <div className="p-6 md:p-8">
-                  <div className="mb-6">
+                  <div className="mb-6 bg-white rounded-lg overflow-hidden">
                     <img 
                       src="/lovable-uploads/genius-fitness-automation.png" 
                       alt="Genius Fitness & MMA automation workflow showing email capture, AI processing, Google Sheets logging, and SMS notifications"
