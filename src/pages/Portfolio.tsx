@@ -98,6 +98,13 @@ const Portfolio = () => {
       imageUrl: "/lovable-uploads/tree-stump-removal.png",
       liveUrl: "https://treeandstumpremoval.ca/",
     },
+    {
+      title: "Claude's Roofing",
+      description: "Professional roofing services website for Brantford and Southern Ontario. Features shingle roofing, repairs, skylights, and snow removal with 30+ years of experience.",
+      category: "Home Services",
+      imageUrl: "/lovable-uploads/claudes-roofing.png",
+      liveUrl: "https://claudesroofing.ca/",
+    },
   ];
 
   const categories = [
