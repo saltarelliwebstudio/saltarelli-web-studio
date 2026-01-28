@@ -9,6 +9,29 @@ type Message = {
   content: string;
 };
 
+// Helper to render URLs as clickable links
+const renderMessageContent = (content: string) => {
+  const urlRegex = /(https?:\/\/[^\s]+)/g;
+  const parts = content.split(urlRegex);
+  
+  return parts.map((part, index) => {
+    if (part.match(urlRegex)) {
+      return (
+        <a
+          key={index}
+          href={part}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline hover:opacity-80 transition-opacity"
+        >
+          {part}
+        </a>
+      );
+    }
+    return part;
+  });
+};
+
 const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/website-chat`;
 
 export const Chatbot = () => {
@@ -192,7 +215,9 @@ export const Chatbot = () => {
                         : "bg-card/80 text-foreground border border-border/50 rounded-bl-md"
                     )}
                   >
-                    {msg.content || (
+                    {msg.content ? (
+                      renderMessageContent(msg.content)
+                    ) : (
                       <span className="flex items-center gap-2 text-muted-foreground">
                         <Loader2 size={14} className="animate-spin" />
                         Thinking...
