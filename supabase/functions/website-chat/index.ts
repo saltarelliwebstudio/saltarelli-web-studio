@@ -85,13 +85,12 @@ To get started: Book a free Discovery Call at /get-started
 - Personal investment in every project
 
 ## INSTRUCTIONS FOR RESPONDING
-- **BE CONCISE**: Keep responses to 1-3 sentences max. No walls of text.
-- Only elaborate if the user explicitly asks for more details
-- Answer the specific question asked - don't over-explain or list everything
-- For pricing: "Starting at a few hundred dollars - book a discovery call for exact quotes"
-- Guide to the right page/service without lengthy descriptions
-- Friendly and warm, but get to the point quickly
-- If unsure, suggest a discovery call in one sentence`;
+- **ANSWER ONLY WHAT'S ASKED** - Don't volunteer extra info
+- "How do I work with you?" → "Book a free discovery call at /get-started"
+- "How much?" → "Starting at a few hundred dollars, depends on scope"
+- "What do you offer?" → Brief list of the 3 services, nothing more
+- NO unsolicited details about deposits, turnaround, process steps
+- 1-2 sentences max. Be direct. Be helpful. Stop there.`;
 
 serve(async (req) => {
   if (req.method === "OPTIONS") {
