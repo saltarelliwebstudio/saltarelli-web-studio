@@ -6,6 +6,136 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
+// Rate limiting configuration
+const RATE_LIMIT_WINDOW_MS = 60000; // 1 minute
+const MAX_REQUESTS_PER_WINDOW = 10; // 10 requests per minute per IP
+const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
+
+// Input validation limits
+const MAX_MESSAGE_LENGTH = 1000;
+const MAX_MESSAGES_IN_CONTEXT = 20;
+const MAX_SESSION_ID_LENGTH = 100;
+const MAX_SOURCE_URL_LENGTH = 500;
+
+function getClientIP(req: Request): string {
+  // Check various headers for the real IP
+  const forwardedFor = req.headers.get("x-forwarded-for");
+  if (forwardedFor) {
+    return forwardedFor.split(",")[0].trim();
+  }
+  const realIp = req.headers.get("x-real-ip");
+  if (realIp) {
+    return realIp;
+  }
+  return "unknown";
+}
+
+function checkRateLimit(clientIP: string): { allowed: boolean; retryAfter?: number } {
+  const now = Date.now();
+  const clientData = rateLimitMap.get(clientIP);
+
+  // Clean up old entries periodically
+  if (rateLimitMap.size > 1000) {
+    for (const [key, value] of rateLimitMap.entries()) {
+      if (now > value.resetTime) {
+        rateLimitMap.delete(key);
+      }
+    }
+  }
+
+  if (!clientData || now > clientData.resetTime) {
+    // New window
+    rateLimitMap.set(clientIP, { count: 1, resetTime: now + RATE_LIMIT_WINDOW_MS });
+    return { allowed: true };
+  }
+
+  if (clientData.count >= MAX_REQUESTS_PER_WINDOW) {
+    const retryAfter = Math.ceil((clientData.resetTime - now) / 1000);
+    return { allowed: false, retryAfter };
+  }
+
+  clientData.count++;
+  return { allowed: true };
+}
+
+function validateInput(data: unknown): { 
+  valid: boolean; 
+  error?: string; 
+  messages?: Array<{ role: string; content: string }>; 
+  session_id?: string; 
+  source_url?: string 
+} {
+  if (!data || typeof data !== "object") {
+    return { valid: false, error: "Invalid request body" };
+  }
+
+  const { messages, session_id, source_url } = data as Record<string, unknown>;
+
+  // Validate messages array
+  if (!Array.isArray(messages) || messages.length === 0) {
+    return { valid: false, error: "Messages array is required" };
+  }
+
+  if (messages.length > MAX_MESSAGES_IN_CONTEXT) {
+    return { valid: false, error: `Too many messages. Maximum is ${MAX_MESSAGES_IN_CONTEXT}` };
+  }
+
+  // Validate each message
+  const validatedMessages: Array<{ role: string; content: string }> = [];
+  for (const msg of messages) {
+    if (!msg || typeof msg !== "object") {
+      return { valid: false, error: "Invalid message format" };
+    }
+    
+    const { role, content } = msg as Record<string, unknown>;
+    
+    if (typeof role !== "string" || !["user", "assistant", "system"].includes(role)) {
+      return { valid: false, error: "Invalid message role" };
+    }
+    
+    if (typeof content !== "string") {
+      return { valid: false, error: "Message content must be a string" };
+    }
+    
+    if (content.length > MAX_MESSAGE_LENGTH) {
+      return { valid: false, error: `Message too long. Maximum is ${MAX_MESSAGE_LENGTH} characters` };
+    }
+
+    validatedMessages.push({ role, content: content.trim() });
+  }
+
+  // Validate session_id
+  let validatedSessionId: string | undefined;
+  if (session_id !== undefined) {
+    if (typeof session_id !== "string" || session_id.length > MAX_SESSION_ID_LENGTH) {
+      return { valid: false, error: "Invalid session_id" };
+    }
+    validatedSessionId = session_id;
+  }
+
+  // Validate source_url
+  let validatedSourceUrl: string | undefined;
+  if (source_url !== undefined) {
+    if (typeof source_url !== "string" || source_url.length > MAX_SOURCE_URL_LENGTH) {
+      return { valid: false, error: "Invalid source_url" };
+    }
+    // Basic URL validation
+    try {
+      new URL(source_url);
+      validatedSourceUrl = source_url;
+    } catch {
+      return { valid: false, error: "Invalid source_url format" };
+    }
+  }
+
+  return { 
+    valid: true, 
+    messages: validatedMessages, 
+    session_id: validatedSessionId, 
+    source_url: validatedSourceUrl 
+  };
+}
+
 const KNOWLEDGE_BASE = `You are the helpful assistant for Saltarelli Web Studio, a web design and automation business in Ontario, Canada run by Adam Saltarelli.
 
 ## ABOUT THE BUSINESS
@@ -125,7 +255,44 @@ serve(async (req) => {
   }
 
   try {
-    const { messages, session_id, source_url } = await req.json();
+    // Rate limiting check
+    const clientIP = getClientIP(req);
+    const rateCheck = checkRateLimit(clientIP);
+    
+    if (!rateCheck.allowed) {
+      return new Response(
+        JSON.stringify({ error: "Too many requests. Please try again later." }), 
+        {
+          status: 429,
+          headers: { 
+            ...corsHeaders, 
+            "Content-Type": "application/json",
+            "Retry-After": String(rateCheck.retryAfter || 60)
+          },
+        }
+      );
+    }
+
+    // Parse and validate input
+    let rawData: unknown;
+    try {
+      rawData = await req.json();
+    } catch {
+      return new Response(JSON.stringify({ error: "Invalid JSON body" }), {
+        status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    const validation = validateInput(rawData);
+    if (!validation.valid) {
+      return new Response(JSON.stringify({ error: validation.error }), {
+        status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    const { messages, session_id, source_url } = validation;
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     
     if (!LOVABLE_API_KEY) {
@@ -133,7 +300,7 @@ serve(async (req) => {
     }
 
     // Get the latest user message for logging
-    const latestUserMessage = messages[messages.length - 1]?.content || "";
+    const latestUserMessage = messages![messages!.length - 1]?.content || "";
 
     const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
@@ -145,7 +312,7 @@ serve(async (req) => {
         model: "google/gemini-3-flash-preview",
         messages: [
           { role: "system", content: KNOWLEDGE_BASE },
-          ...messages,
+          ...messages!,
         ],
         stream: true,
       }),
@@ -229,7 +396,7 @@ serve(async (req) => {
     });
   } catch (e) {
     console.error("Chat error:", e);
-    return new Response(JSON.stringify({ error: e instanceof Error ? e.message : "Unknown error" }), {
+    return new Response(JSON.stringify({ error: "An error occurred" }), {
       status: 500,
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
