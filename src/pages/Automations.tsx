@@ -47,8 +47,8 @@ const Automations = () => {
     <>
       <SEO
         canonical="/automations"
-        title="Business Automations — AI-Powered Workflow Automation"
-        description="Automate your business processes with AI-powered workflows. From lead capture to SMS notifications, we build custom automations using Make.com and Claude Code."
+        title="Managed Business Automations — AI-Powered Workflow Automation"
+        description="Managed business automations that run around the clock. Lead capture, notifications, and workflows — set up and handled for you."
       />
       <div className="min-h-screen bg-background text-foreground relative flex flex-col overflow-x-hidden">
         <Starfield />
@@ -96,10 +96,10 @@ const Automations = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
-                className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed px-4"
-              >
-                Custom automations that handle the repetitive work for you. From lead capture to SMS notifications — built with AI and powered by Make.com or Claude Code.
-              </motion.p>
+              className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed px-4"
+            >
+              Custom automations that handle the repetitive work — continuously running, monitored, and improved so you never have to think about them.
+            </motion.p>
 
               {/* CTA Buttons */}
               <motion.div
@@ -141,7 +141,7 @@ const Automations = () => {
                 How It <span className="text-accent">Works</span>
               </h2>
               <p className="text-lg md:text-xl text-muted-foreground">
-                Intelligent automation that runs while you sleep
+                Intelligent automation that runs around the clock — managed for you
               </p>
             </FadeIn>
 
@@ -208,7 +208,7 @@ const Automations = () => {
                       <li>Notifies the coach via SMS (Twilio) with lead details</li>
                     </ul>
                     <p className="text-lg">
-                      <strong className="text-foreground">The Result:</strong> Zero manual work. Coaches get instant SMS notifications, prospects get immediate next steps, and every lead is automatically tracked.
+                      <strong className="text-foreground">The Result:</strong> Zero manual work, zero maintenance headaches. The automation runs 24/7 and is continuously monitored to ensure coaches get instant notifications and every lead is tracked.
                     </p>
                   </div>
                 </div>
@@ -262,7 +262,7 @@ const Automations = () => {
                     Let's Automate Your Business
                   </h2>
                   <p className="text-base sm:text-lg md:text-xl text-white/90 mb-8 max-w-xl mx-auto">
-                    Book a quick demo call and I'll show you exactly what automation can do for your specific workflow
+                    Book a quick demo call and I'll show you how a fully managed automation can handle your workflow — setup to ongoing care
                   </p>
                   <Button
                     size="lg"

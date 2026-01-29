@@ -15,8 +15,8 @@ const GetStarted = () => {
     <>
       <SEO
         canonical="/get-started"
-        title="Book a Free Discovery Call — Get Started Today"
-        description="Schedule a free 15-minute discovery call to discuss your web design project. No pressure, just conversation about your goals and how we can help."
+        title="Book a Free Consultation — Get Started Today"
+        description="Schedule a free 15-minute consultation to discuss your managed website, AI agent, or automation. No pressure, just conversation about your goals."
       />
     <div className="min-h-screen bg-background text-foreground relative flex flex-col overflow-x-hidden">
       <Starfield />
@@ -48,11 +48,11 @@ const GetStarted = () => {
               </motion.div>
             </motion.div>
             <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6">
-              Let's Build Something Amazing Together
+              Let's Get Your Systems Running
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
-              Book a free 15-minute discovery call to discuss your project, 
-              goals, and how we can collaborate to make it happen.
+              Book a free 15-minute consultation to discuss your business goals 
+              and how I can set up and manage the systems you need.
             </p>
           </div>
 
@@ -63,7 +63,7 @@ const GetStarted = () => {
                 <div>
                   <h3 className="font-heading font-semibold mb-2">No Pressure, Just Conversation</h3>
                   <p className="text-muted-foreground">
-                    We'll chat about your business, your goals, and explore if we're a good fit for your project
+                    We'll chat about your business, your goals, and explore how I can take the tech work off your plate
                   </p>
                 </div>
               </div>
@@ -83,7 +83,7 @@ const GetStarted = () => {
                 <div>
                   <h3 className="font-heading font-semibold mb-2">Get Clear Next Steps</h3>
                   <p className="text-muted-foreground">
-                    Leave the call with a clear understanding of timeline, process, and pricing
+                    Leave the call with a clear understanding of setup timeline, ongoing services, and simple pricing
                   </p>
                 </div>
               </div>
