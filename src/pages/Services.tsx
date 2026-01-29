@@ -12,23 +12,23 @@ import { TrackedLink } from "@/components/TrackedLink";
 
 const Services = () => {
   const creationFeatures = [
-    "1-3 week turnaround",
-    "1 round of revisions included",
-    "Professional design and build",
-    "Domain setup & basic SEO",
+    "1-3 week setup",
+    "Ongoing updates and refinements",
+    "Professional design and managed hosting",
+    "Domain, hosting, and continuous SEO",
     "Mobile-responsive design",
     "Contact form integration",
-    "Additional features may increase cost",
+    "Custom features available as add-ons",
   ];
 
   const redesignFeatures = [
-    "1-3 week turnaround",
-    "1 round of revisions included",
+    "1-3 week migration",
+    "Ongoing updates and refinements",
     "Modern, responsive design",
-    "SEO optimization",
+    "Continuous SEO optimization",
     "Content migration",
-    "Performance improvements",
-    "Additional features may increase cost",
+    "Ongoing performance monitoring",
+    "Custom features available as add-ons",
   ];
 
 
@@ -46,8 +46,8 @@ const Services = () => {
     <>
       <SEO
         canonical="/services"
-        title="Web Design Services & Pricing — Custom Websites"
-        description="Affordable web design services in Ontario. Website creation and redesign starting at a few hundred dollars. Mobile-responsive, SEO-optimized, fast turnaround."
+        title="Managed Web Services & Pricing — Professional Websites"
+        description="Managed web services in Ontario. Professional websites with ongoing support, optimization, and care. Simple monthly plans."
       />
     <div className="min-h-screen bg-background text-foreground relative flex flex-col overflow-x-hidden">
       <Starfield />
@@ -86,7 +86,7 @@ const Services = () => {
           </FadeIn>
           <FadeIn delay={0.3}>
             <p className="text-xl text-muted-foreground">
-              Simple plans, transparent process, quality results
+              Simple monthly plans, transparent process, ongoing support
             </p>
           </FadeIn>
         </div>
@@ -99,14 +99,14 @@ const Services = () => {
             <PricingCard
               title="Website Creation"
               price=""
-              description="Build your new website from scratch"
+              description="Launch a professionally managed website"
               features={creationFeatures}
               popular={true}
             />
             <PricingCard
               title="Website Redesign"
               price=""
-              description="Refresh and modernize your existing site"
+              description="Migrate to a modern, managed website"
               features={redesignFeatures}
             />
           </div>
@@ -122,7 +122,7 @@ const Services = () => {
             Ready to Get Started?
           </h2>
           <p className="text-lg text-muted-foreground mb-8">
-            Choose your plan and let's bring your website to life
+            Choose your plan and let your website work for you
           </p>
           <Button variant="hero" size="lg" asChild>
             <TrackedLink to="/get-started" trackingLabel="services_book_call">

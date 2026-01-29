@@ -75,7 +75,7 @@ const About = () => {
               <h2 className="text-3xl font-heading font-bold mb-6">
                 Hi, I'm Adam
               </h2>
-              <p className="text-lg text-muted-foreground mb-4">I'm a tech-savvy guy from Ontario who builds websites, AI agents, and business automations that help companies thrive. I combine practical design with quality workmanship — raised to believe if you won't do your best, don't bother.</p>
+              <p className="text-lg text-muted-foreground mb-4">I'm a tech-savvy guy from Ontario who sets up and manages websites, AI agents, and business automations — ongoing systems that keep your business running smoothly. I combine practical design with quality workmanship — raised to believe if you won't do your best, don't bother.</p>
               <p className="text-lg text-muted-foreground mb-4">
                 Outside of design I train for marathons and practice MMA; that focus 
                 shows up in my attention to detail. Every project gets my full effort 
@@ -134,13 +134,13 @@ const About = () => {
               <li className="flex items-start gap-3">
                 <span className="text-primary mt-1">•</span>
                 <div>
-                  <strong>Fast Turnaround:</strong> I can have a fully customized website, AI agent, or automation up and running within a few days. I respect your time and deadlines.
+                  <strong>Fast Setup:</strong> I can have your system set up and running within a few days — then I handle everything ongoing so you never have to think about it.
                 </div>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-primary mt-1">•</span>
                 <div>
-                  <strong>Upfront Value:</strong> I'll build you a free concept website, AI agent demo, or automation walkthrough to give you an idea for what our project can look like before you even spend a penny.
+                  <strong>Upfront Value:</strong> I'll create a free concept website, AI agent demo, or automation walkthrough so you can see exactly what your managed system will look like before committing.
                 </div>
               </li>
               <li className="flex items-start gap-3">

@@ -58,27 +58,27 @@ const Index = () => {
   const workflowSteps = [
     {
       title: "Discovery",
-      description: "We connect to discuss your vision and understand your project scope — what you need, who you're reaching, and how we can bring it to life.",
+      description: "We connect to discuss your vision and understand your needs — what you're looking for, who you're reaching, and how I can set up systems that work for you.",
     },
     {
       title: "Design",
-      description: "I create a free concept website, AI agent demo, or automation walkthrough based on your ideas, giving you a clear visual of exactly what you'll be getting before any commitment.",
+      description: "I create a free concept website, AI agent demo, or automation walkthrough based on your ideas, giving you a clear visual of exactly what your managed system will look like before any commitment.",
     },
     {
-      title: "Build",
-      description: "After signatures and payment, we collaborate to refine the concept and perfect every detail until the project matches your vision exactly.",
+      title: "Setup",
+      description: "After onboarding, we collaborate to refine the concept and perfect every detail until your system is ready to go live.",
     },
     {
-      title: "Launch & Support",
-      description: "For websites, I handle domain setup, provide solid SEO, and offer ongoing maintenance. For AI agents and automations, I ensure everything runs smoothly and your customers always get the best experience.",
+      title: "Go Live & Ongoing Care",
+      description: "Your system goes live and I take care of everything from there — hosting, updates, security, SEO, and performance. You run your business; I keep your systems running smoothly.",
     },
   ];
 
   const features = [
     {
       icon: Clock,
-      title: "Quick Turnaround",
-      description: "Get a fully custom website or AI agent in just a few days, not weeks.",
+      title: "Fast Setup",
+      description: "Get up and running fast — your system is live in days, then continuously refined.",
     },
     {
       icon: Star,
@@ -87,8 +87,8 @@ const Index = () => {
     },
     {
       icon: DollarSign,
-      title: "Affordable Pricing",
-      description: "Custom websites and AI agents for just a few hundred dollars.",
+      title: "Simple Monthly Pricing",
+      description: "Predictable monthly pricing — no surprise costs, just reliable service.",
     },
   ];
 
@@ -96,8 +96,8 @@ const Index = () => {
     <>
       <SEO 
         canonical="/"
-        title="Saltarelli Web Studio — Web Design in Ontario"
-        description="Professional web design in Ontario. Custom websites and AI agents for small businesses. Fast turnaround, affordable pricing. Book a free discovery call today."
+        title="Saltarelli Web Studio — Managed Websites in Ontario"
+        description="Managed websites and AI agents for Ontario businesses. Setup in days, then handled ongoing. Simple monthly pricing. Book a free consultation today."
       />
     <div className="min-h-screen bg-background text-foreground relative flex flex-col overflow-x-hidden">
       <Starfield />
@@ -153,7 +153,7 @@ const Index = () => {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed px-4"
             >
-              Let's collaborate to create something amazing. Book a free discovery call and turn your vision into a stunning website, intelligent AI agent, or powerful automation.
+              Let's set up the systems your business deserves. Book a free consultation and get a website, AI agent, or automation that's managed, optimized, and always working for you.
             </motion.p>
 
             {/* CTA Buttons */}
@@ -204,7 +204,7 @@ const Index = () => {
               Hi, I'm <span className="text-primary">Adam</span>
             </h2>
             <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">
-              I'm a tech-savvy guy from Ontario who builds websites, AI agents, and business automations that help companies thrive.
+              I'm a tech-savvy guy from Ontario who sets up and manages websites, AI agents, and business automations — so you can focus on running your business while I handle the tech.
               I combine practical design with quality workmanship — raised to believe if you won't do your best, don't bother.
             </p>
             <Button variant="hero" asChild>
@@ -248,10 +248,10 @@ const Index = () => {
         <div className="container mx-auto max-w-6xl">
           <FadeIn className="text-center mb-12 md:mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-4">
-              Your Project, <span className="text-primary">Your Way</span>
+              Your Systems, <span className="text-primary">Always Running</span>
             </h2>
             <p className="text-lg md:text-xl text-muted-foreground">
-              Custom websites, intelligent AI agents, and powerful automations
+              Managed websites, intelligent AI agents, and reliable automations
             </p>
           </FadeIn>
 
@@ -263,11 +263,11 @@ const Index = () => {
                   <CardTitle className="text-xl font-heading">Website Creation</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <p className="text-muted-foreground">Build your new website from scratch with professional design and modern features.</p>
+                  <p className="text-muted-foreground">Launch a professionally designed website that's continuously maintained and optimized for your business.</p>
                   <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li>• Full domain setup & configuration</li>
-                    <li>• 1 round of revisions included</li>
-                    <li>• Domain setup & basic SEO</li>
+                    <li>• Full domain setup & ongoing management</li>
+                    <li>• Ongoing updates as your business evolves</li>
+                    <li>• Hosting and continuous SEO optimization</li>
                   </ul>
                   <Button variant="outline" asChild className="w-full mt-4">
                     <TrackedLink to="/services" trackingLabel="services_learn_more_creation">Learn More</TrackedLink>
@@ -281,11 +281,11 @@ const Index = () => {
                   <CardTitle className="text-xl font-heading">Website Redesign</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <p className="text-muted-foreground">Refresh and modernize your existing site with a new look and improved performance.</p>
+                  <p className="text-muted-foreground">Migrate to a modern, professionally managed website with ongoing improvements and support.</p>
                   <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li>• Seamless transfer to your existing domain</li>
-                    <li>• Modern, responsive design</li>
-                    <li>• SEO optimization included</li>
+                    <li>• Seamless migration with zero downtime</li>
+                    <li>• Modern design with continuous refinements</li>
+                    <li>• Ongoing SEO monitoring and optimization</li>
                   </ul>
                   <Button variant="outline" asChild className="w-full mt-4">
                     <TrackedLink to="/services" trackingLabel="services_learn_more_redesign">Learn More</TrackedLink>
@@ -358,7 +358,7 @@ const Index = () => {
               My Simple <span className="text-primary">4-Step Process</span>
             </h2>
             <p className="text-lg md:text-xl text-muted-foreground">
-              From concept to launch in just 1-3 weeks
+              Setup takes 1-3 weeks, then I handle everything ongoing
             </p>
           </FadeIn>
 
@@ -522,10 +522,10 @@ const Index = () => {
                   <Sparkles className="text-white" size={48} />
                 </motion.div>
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold mb-4 text-white">
-                  Ready to Discuss Your Project?
+                  Ready to Get Your Systems Handled?
                 </h2>
                 <p className="text-base sm:text-lg md:text-xl text-white/90 mb-8 max-w-xl mx-auto">
-                  Schedule a free 15-minute call and let's explore how we can bring your vision to life
+                  Schedule a free consultation and let's explore how I can take the tech off your plate
                 </p>
                 <Button
                   size="lg"

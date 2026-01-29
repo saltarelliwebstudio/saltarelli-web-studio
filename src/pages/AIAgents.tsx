@@ -40,15 +40,15 @@ const AIAgents = () => {
     "Free up your time for important work",
     "Professional voice experience",
     "Seamless Google Sheets integration",
-    "Ongoing maintenance included",
+    "Continuously monitored and optimized",
   ];
 
   return (
     <>
       <SEO
         canonical="/ai-agents"
-        title="AI Agents — Voice & Text Automation for Your Business"
-        description="Never miss a call or lead again. AI-powered voice and text agents answer customer questions 24/7 with your exact business knowledge. Smart automation for Ontario businesses."
+        title="Managed AI Agents — Voice & Text Automation for Your Business"
+        description="Never miss a call again. Managed AI agents answer calls 24/7 — professionally set up, monitored, and continuously improved. Smart automation for Ontario businesses."
       />
     <div className="min-h-screen bg-background text-foreground relative flex flex-col overflow-x-hidden">
       <Starfield />
@@ -98,7 +98,7 @@ const AIAgents = () => {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed px-4"
             >
-              AI-powered voice and text agents that answer calls, capture leads, and respond to customers with your exact business knowledge — 24/7.
+              AI-powered voice and text agents that answer calls, capture leads, and respond to customers 24/7 — professionally managed and continuously improved.
             </motion.p>
 
             {/* CTA Buttons */}
@@ -216,7 +216,7 @@ const AIAgents = () => {
                   Ready to Never Miss Another Lead?
                 </h2>
                 <p className="text-base sm:text-lg md:text-xl text-white/90 mb-8 max-w-xl mx-auto">
-                  Let's discuss how an AI agent can transform your customer experience
+                  Let's discuss how a managed AI agent can handle your customer calls around the clock
                 </p>
                 <Button
                   size="lg"

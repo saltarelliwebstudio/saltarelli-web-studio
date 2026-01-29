@@ -17,7 +17,7 @@ export const Footer = () => {
               <span className="font-heading font-bold text-lg">Saltarelli Web Studio</span>
             </div>
             <p className="text-muted-foreground mb-6 max-w-sm leading-relaxed">
-              Tailored website solutions and AI agents that help your business thrive — because your success is my priority.
+              Managed websites, AI agents, and automations that keep your business running — because your success is my priority.
             </p>
             <div className="flex gap-4">
               <a href="https://www.instagram.com/saltarelliwebstudio/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-all" aria-label="Instagram">
