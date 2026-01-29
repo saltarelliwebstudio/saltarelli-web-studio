@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { Filter, FolderOpen } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -9,6 +8,7 @@ import { Footer } from "@/components/Footer";
 import { PortfolioCard } from "@/components/PortfolioCard";
 import { FadeIn } from "@/components/motion";
 import { SEO } from "@/components/SEO";
+import { TrackedLink } from "@/components/TrackedLink";
 
 const Portfolio = () => {
   const [filter, setFilter] = useState("all");
@@ -206,9 +206,9 @@ const Portfolio = () => {
               and measurable results. Contact me to discuss how we achieved these outcomes.
             </p>
             <Button variant="hero" asChild>
-              <Link to="/get-started">
+              <TrackedLink to="/get-started" trackingLabel="portfolio_book_call">
                 Book a Discovery Call
-              </Link>
+              </TrackedLink>
             </Button>
           </div>
         </div>

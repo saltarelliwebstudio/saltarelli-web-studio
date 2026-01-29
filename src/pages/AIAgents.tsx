@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { ArrowRight, Bot, Phone, MessageSquare, FileText, CheckCircle, Zap } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -9,6 +8,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { FadeIn, StaggerContainer, StaggerItem, ScaleIn } from "@/components/motion";
 import { SEO } from "@/components/SEO";
+import { TrackedLink } from "@/components/TrackedLink";
 
 const AIAgents = () => {
   const features = [
@@ -109,10 +109,10 @@ const AIAgents = () => {
               className="flex flex-col sm:flex-row gap-4 justify-center px-4"
             >
               <Button variant="hero" size="lg" asChild className="text-base">
-                <Link to="/get-started" className="gap-2">
+                <TrackedLink to="/get-started" trackingLabel="ai_agents_hero_book_call" className="gap-2">
                   Book a Discovery Call
                   <ArrowRight size={18} />
-                </Link>
+                </TrackedLink>
               </Button>
             </motion.div>
           </div>
@@ -223,10 +223,10 @@ const AIAgents = () => {
                   asChild
                   className="bg-background text-foreground hover:bg-background/90 font-semibold shadow-lg"
                 >
-                  <Link to="/get-started" className="gap-2">
+                  <TrackedLink to="/get-started" trackingLabel="ai_agents_cta_book_call" className="gap-2">
                     Book Your Discovery Call
                     <ArrowRight size={18} />
-                  </Link>
+                  </TrackedLink>
                 </Button>
               </div>
             </motion.div>

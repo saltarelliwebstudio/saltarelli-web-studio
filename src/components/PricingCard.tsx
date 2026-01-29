@@ -3,7 +3,7 @@ import { Check } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Link } from "react-router-dom";
+import { TrackedLink } from "@/components/TrackedLink";
 
 interface PricingCardProps {
   title: string;
@@ -20,6 +20,9 @@ export const PricingCard: React.FC<PricingCardProps> = ({
   features,
   popular = false,
 }) => {
+  // Create a tracking label from the title
+  const trackingLabel = `pricing_choose_${title.toLowerCase().replace(/\s+/g, '_')}`;
+
   return (
     <motion.div
       whileHover={{ y: -8 }}
@@ -63,7 +66,7 @@ export const PricingCard: React.FC<PricingCardProps> = ({
             className="w-full"
             asChild
           >
-            <Link to="/get-started">Choose {title}</Link>
+            <TrackedLink to="/get-started" trackingLabel={trackingLabel}>Choose {title}</TrackedLink>
           </Button>
         </CardContent>
       </Card>

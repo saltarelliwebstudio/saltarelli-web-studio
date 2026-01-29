@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { TrackedLink } from "@/components/TrackedLink";
 import logo from "@/assets/sws-logo.png";
 
 export const Header = () => {
@@ -123,10 +124,10 @@ export const Header = () => {
               </Link>
             ))}
             <Button variant="hero" size="sm" asChild className="ml-2">
-              <Link to="/get-started" className="gap-2">
+              <TrackedLink to="/get-started" trackingLabel="header_book_call" className="gap-2">
                 Book a Call
                 <ArrowRight size={16} />
-              </Link>
+              </TrackedLink>
             </Button>
           </div>
 
@@ -221,10 +222,10 @@ export const Header = () => {
                     className="mt-auto"
                   >
                     <Button variant="hero" size="lg" asChild className="w-full">
-                      <Link to="/get-started" className="gap-2">
+                      <TrackedLink to="/get-started" trackingLabel="header_mobile_book_call" className="gap-2">
                         Book a Call
                         <ArrowRight size={18} />
-                      </Link>
+                      </TrackedLink>
                     </Button>
                   </motion.div>
                 </div>

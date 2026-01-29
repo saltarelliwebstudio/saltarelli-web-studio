@@ -13,6 +13,8 @@ import { PortfolioCard } from "@/components/PortfolioCard";
 import { WorkflowStep } from "@/components/WorkflowStep";
 import { FadeIn, StaggerContainer, StaggerItem, ScaleIn } from "@/components/motion";
 import { SEO } from "@/components/SEO";
+import { TrackedLink } from "@/components/TrackedLink";
+import { TrackedExternalLink } from "@/components/TrackedExternalLink";
 import logo from "@/assets/sws-logo.png";
 
 const Index = () => {
@@ -162,16 +164,16 @@ const Index = () => {
               className="flex flex-col sm:flex-row gap-4 justify-center px-4"
             >
               <Button variant="hero" size="lg" asChild className="text-base">
-                <Link to="/get-started" className="gap-2">
+                <TrackedLink to="/get-started" trackingLabel="hero_book_discovery_call" className="gap-2">
                   Book a Discovery Call
                   <ArrowRight size={18} />
-                </Link>
+                </TrackedLink>
               </Button>
               <Button variant="cosmic" size="lg" asChild className="text-base">
-                <a href="#services" className="gap-2">
+                <TrackedExternalLink href="#services" trackingLabel="hero_view_services" className="gap-2">
                   <Sparkles size={18} />
                   View Services
-                </a>
+                </TrackedExternalLink>
               </Button>
             </motion.div>
           </div>
@@ -206,7 +208,7 @@ const Index = () => {
               I combine practical design with quality workmanship — raised to believe if you won't do your best, don't bother.
             </p>
             <Button variant="hero" asChild>
-              <Link to="/about">Learn More About Me</Link>
+              <TrackedLink to="/about" trackingLabel="about_learn_more">Learn More About Me</TrackedLink>
             </Button>
           </FadeIn>
         </div>
@@ -268,7 +270,7 @@ const Index = () => {
                     <li>• Domain setup & basic SEO</li>
                   </ul>
                   <Button variant="outline" asChild className="w-full mt-4">
-                    <Link to="/services">Learn More</Link>
+                    <TrackedLink to="/services" trackingLabel="services_learn_more_creation">Learn More</TrackedLink>
                   </Button>
                 </CardContent>
               </Card>
@@ -286,7 +288,7 @@ const Index = () => {
                     <li>• SEO optimization included</li>
                   </ul>
                   <Button variant="outline" asChild className="w-full mt-4">
-                    <Link to="/services">Learn More</Link>
+                    <TrackedLink to="/services" trackingLabel="services_learn_more_redesign">Learn More</TrackedLink>
                   </Button>
                 </CardContent>
               </Card>
@@ -314,7 +316,7 @@ const Index = () => {
                     <li className="text-xs bg-accent/20 text-accent-foreground px-2 py-1 rounded-full">Lead Capture</li>
                   </ul>
                   <Button variant="hero" asChild className="w-full">
-                    <Link to="/ai-agents">Learn More</Link>
+                    <TrackedLink to="/ai-agents" trackingLabel="services_learn_more_ai_agents">Learn More</TrackedLink>
                   </Button>
                 </CardContent>
               </Card>
@@ -338,7 +340,7 @@ const Index = () => {
                     <li className="text-xs bg-primary/20 text-primary-foreground px-2 py-1 rounded-full">SMS Alerts</li>
                   </ul>
                   <Button variant="hero" asChild className="w-full">
-                    <Link to="/automations">Learn More</Link>
+                    <TrackedLink to="/automations" trackingLabel="services_learn_more_automations">Learn More</TrackedLink>
                   </Button>
                 </CardContent>
               </Card>
@@ -392,7 +394,7 @@ const Index = () => {
 
           {/* Full-width Automation Showcase */}
           <FadeIn className="mb-10">
-            <Link to="/automations" className="block group">
+            <TrackedLink to="/automations" trackingLabel="portfolio_automation_case_study" className="block group">
               <Card className="overflow-hidden bg-card/50 backdrop-blur-sm border-accent/30 hover:border-accent/60 transition-all duration-500 hover:shadow-glow">
                 <div className="grid md:grid-cols-3 gap-0">
                   <div className="md:col-span-2 relative overflow-hidden">
@@ -423,12 +425,12 @@ const Index = () => {
                   </div>
                 </div>
               </Card>
-            </Link>
+            </TrackedLink>
           </FadeIn>
 
           <FadeIn className="text-center">
             <Button variant="outline" size="lg" asChild>
-              <Link to="/portfolio">View All Projects</Link>
+              <TrackedLink to="/portfolio" trackingLabel="portfolio_view_all">View All Projects</TrackedLink>
             </Button>
           </FadeIn>
         </div>
@@ -487,14 +489,14 @@ const Index = () => {
 
           <FadeIn delay={0.4} className="text-center mt-8 flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="outline" size="lg" asChild>
-              <a href="https://share.google/KUKqro0A4qFmdJWDn" target="_blank" rel="noopener noreferrer">
+              <TrackedExternalLink href="https://share.google/KUKqro0A4qFmdJWDn" trackingLabel="reviews_view_more" target="_blank" rel="noopener noreferrer">
                 View More!
-              </a>
+              </TrackedExternalLink>
             </Button>
             <Button variant="hero" size="lg" asChild>
-              <a href="https://g.page/r/CXhxacLPmqCqEBM/review" target="_blank" rel="noopener noreferrer">
+              <TrackedExternalLink href="https://g.page/r/CXhxacLPmqCqEBM/review" trackingLabel="reviews_write_review" target="_blank" rel="noopener noreferrer">
                 Write A Review!
-              </a>
+              </TrackedExternalLink>
             </Button>
           </FadeIn>
         </div>
@@ -530,10 +532,10 @@ const Index = () => {
                   asChild
                   className="bg-background text-foreground hover:bg-background/90 font-semibold shadow-lg"
                 >
-                  <Link to="/get-started" className="gap-2">
+                  <TrackedLink to="/get-started" trackingLabel="homepage_cta_book_call" className="gap-2">
                     Book Your Discovery Call
                     <ArrowRight size={18} />
-                  </Link>
+                  </TrackedLink>
                 </Button>
               </div>
             </motion.div>

@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { Monitor } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -9,6 +8,7 @@ import { Footer } from "@/components/Footer";
 import { PricingCard } from "@/components/PricingCard";
 import { FadeIn, ScaleIn } from "@/components/motion";
 import { SEO } from "@/components/SEO";
+import { TrackedLink } from "@/components/TrackedLink";
 
 const Services = () => {
   const creationFeatures = [
@@ -125,9 +125,9 @@ const Services = () => {
             Choose your plan and let's bring your website to life
           </p>
           <Button variant="hero" size="lg" asChild>
-            <Link to="/get-started">
+            <TrackedLink to="/get-started" trackingLabel="services_book_call">
               Book a Discovery Call
-            </Link>
+            </TrackedLink>
           </Button>
         </div>
       </section>
