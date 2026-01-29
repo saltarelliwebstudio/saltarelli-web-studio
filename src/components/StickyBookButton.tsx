@@ -1,7 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { TrackedLink } from "@/components/TrackedLink";
 
 export const StickyBookButton = () => {
   return (
@@ -12,13 +12,14 @@ export const StickyBookButton = () => {
         className="shadow-2xl hover:scale-105 transition-transform duration-300"
         asChild
       >
-        <Link 
+        <TrackedLink 
           to="/get-started"
+          trackingLabel="sticky_book_call"
           className="flex items-center gap-2"
         >
           <Calendar size={20} />
           <span className="hidden sm:inline">Book a Call</span>
-        </Link>
+        </TrackedLink>
       </Button>
     </div>
   );

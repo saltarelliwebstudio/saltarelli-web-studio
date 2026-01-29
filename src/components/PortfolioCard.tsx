@@ -3,6 +3,7 @@ import { ExternalLink, ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { TrackedExternalLink } from "@/components/TrackedExternalLink";
 
 interface PortfolioCardProps {
   title: string;
@@ -20,6 +21,9 @@ export const PortfolioCard: React.FC<PortfolioCardProps> = ({
   liveUrl,
 }) => {
   const [imageError, setImageError] = useState(false);
+  
+  // Create a tracking label from the title
+  const trackingLabel = `portfolio_view_${title.toLowerCase().replace(/[^a-z0-9]+/g, '_')}`;
 
   return (
     <motion.div
@@ -44,9 +48,15 @@ export const PortfolioCard: React.FC<PortfolioCardProps> = ({
           {liveUrl && (
             <div className="absolute inset-0 bg-background/80 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center backdrop-blur-sm">
               <Button variant="hero" size="sm" asChild>
-                <a href={liveUrl} target="_blank" rel="noopener noreferrer" className="gap-2">
+                <TrackedExternalLink 
+                  href={liveUrl} 
+                  trackingLabel={trackingLabel}
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="gap-2"
+                >
                   View Live <ArrowUpRight size={16} />
-                </a>
+                </TrackedExternalLink>
               </Button>
             </div>
           )}
@@ -58,15 +68,16 @@ export const PortfolioCard: React.FC<PortfolioCardProps> = ({
               <p className="text-xs text-primary mt-1 font-medium">{category}</p>
             </div>
             {liveUrl && (
-              <a
+              <TrackedExternalLink
                 href={liveUrl}
+                trackingLabel={trackingLabel}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"
                 aria-label={`Visit ${title}`}
               >
                 <ExternalLink size={18} />
-              </a>
+              </TrackedExternalLink>
             )}
           </div>
         </CardHeader>

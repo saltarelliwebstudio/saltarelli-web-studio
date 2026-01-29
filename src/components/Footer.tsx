@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Mail, Phone, Instagram, Facebook } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { TrackedLink } from "@/components/TrackedLink";
 import logo from "@/assets/sws-logo.png";
 
 export const Footer = () => {
@@ -54,7 +55,7 @@ export const Footer = () => {
               </a>
               <p className="text-sm text-muted-foreground italic pt-2">Response time: 24-48 hours</p>
               <Button variant="hero" size="sm" className="mt-4 w-full sm:w-auto" asChild>
-                <Link to="/get-started">Book a Call</Link>
+                <TrackedLink to="/get-started" trackingLabel="footer_book_call">Book a Call</TrackedLink>
               </Button>
             </div>
           </div>

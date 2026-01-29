@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { ArrowRight, Award, Target, Heart, User } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -9,6 +8,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { FadeIn } from "@/components/motion";
 import { SEO } from "@/components/SEO";
+import { TrackedLink } from "@/components/TrackedLink";
 import adamPhoto from "@/assets/adam-photo.png";
 
 const About = () => {
@@ -177,12 +177,12 @@ const About = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="hero" size="lg" asChild>
-                <Link to="/get-started">
+                <TrackedLink to="/get-started" trackingLabel="about_book_call">
                   Book a Discovery Call <ArrowRight className="ml-2" size={20} />
-                </Link>
+                </TrackedLink>
               </Button>
               <Button variant="cosmic" size="lg" asChild>
-                <Link to="/portfolio">View My Work</Link>
+                <TrackedLink to="/portfolio" trackingLabel="about_view_portfolio">View My Work</TrackedLink>
               </Button>
             </div>
           </div>
