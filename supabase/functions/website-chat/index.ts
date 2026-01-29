@@ -1,4 +1,5 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -92,18 +93,47 @@ To get started: Book a free Discovery Call at /get-started
 - NO unsolicited details about deposits, turnaround, process steps
 - 1-2 sentences max. Be direct. Be helpful. Stop there.`;
 
+// Initialize Supabase client for logging
+const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
+const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+const supabase = createClient(supabaseUrl, supabaseServiceKey);
+
+async function logConversation(
+  sessionId: string,
+  sourceUrl: string | null,
+  userMessage: string,
+  assistantMessage: string
+) {
+  try {
+    const { error } = await supabase.from("chat_logs").insert({
+      session_id: sessionId,
+      source_url: sourceUrl,
+      user_message: userMessage,
+      assistant_message: assistantMessage,
+    });
+    if (error) {
+      console.error("Failed to log conversation:", error);
+    }
+  } catch (e) {
+    console.error("Error logging conversation:", e);
+  }
+}
+
 serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
 
   try {
-    const { messages } = await req.json();
+    const { messages, session_id, source_url } = await req.json();
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     
     if (!LOVABLE_API_KEY) {
       throw new Error("LOVABLE_API_KEY is not configured");
     }
+
+    // Get the latest user message for logging
+    const latestUserMessage = messages[messages.length - 1]?.content || "";
 
     const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
@@ -142,7 +172,59 @@ serve(async (req) => {
       });
     }
 
-    return new Response(response.body, {
+    // Create a TransformStream to intercept and collect the response
+    const reader = response.body!.getReader();
+    const encoder = new TextEncoder();
+    const decoder = new TextDecoder();
+    let fullAssistantResponse = "";
+
+    const stream = new ReadableStream({
+      async start(controller) {
+        try {
+          while (true) {
+            const { done, value } = await reader.read();
+            if (done) break;
+
+            // Pass through to client
+            controller.enqueue(value);
+
+            // Also collect the response for logging
+            const chunk = decoder.decode(value, { stream: true });
+            const lines = chunk.split("\n");
+            
+            for (const line of lines) {
+              if (line.startsWith("data: ") && line !== "data: [DONE]") {
+                try {
+                  const json = JSON.parse(line.slice(6));
+                  const content = json.choices?.[0]?.delta?.content;
+                  if (content) {
+                    fullAssistantResponse += content;
+                  }
+                } catch {
+                  // Ignore parse errors for incomplete chunks
+                }
+              }
+            }
+          }
+          controller.close();
+
+          // Log the conversation after stream completes
+          if (session_id && fullAssistantResponse) {
+            await logConversation(
+              session_id,
+              source_url || null,
+              latestUserMessage,
+              fullAssistantResponse
+            );
+          }
+        } catch (e) {
+          console.error("Stream error:", e);
+          controller.error(e);
+        }
+      },
+    });
+
+    return new Response(stream, {
       headers: { ...corsHeaders, "Content-Type": "text/event-stream" },
     });
   } catch (e) {
