@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useMemo } from "react";
 import { MessageCircle, X, Send, Loader2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -32,6 +32,11 @@ const renderMessageContent = (content: string) => {
   });
 };
 
+// Generate a unique session ID
+const generateSessionId = () => {
+  return `${Date.now()}-${Math.random().toString(36).substring(2, 11)}`;
+};
+
 const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/website-chat`;
 
 export const Chatbot = () => {
@@ -46,6 +51,9 @@ export const Chatbot = () => {
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  
+  // Generate session ID once when component mounts
+  const sessionId = useMemo(() => generateSessionId(), []);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -73,7 +81,11 @@ export const Chatbot = () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
         },
-        body: JSON.stringify({ messages: newMessages }),
+        body: JSON.stringify({ 
+          messages: newMessages,
+          session_id: sessionId,
+          source_url: window.location.origin
+        }),
       });
 
       if (!resp.ok || !resp.body) {
