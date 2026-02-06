@@ -104,25 +104,31 @@ const Services = () => {
       <section className="py-20 px-4 md:px-6 relative z-10">
         <div className="container mx-auto max-w-6xl">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
-            <PricingCard
-              title="Website Creation"
-              price=""
-              description="Launch a professionally managed website"
-              features={creationFeatures}
-              popular={true}
-            />
-            <PricingCard
-              title="Website Redesign"
-              price=""
-              description="Migrate to a modern, managed website"
-              features={redesignFeatures}
-            />
-            <PricingCard
-              title="Chat Widget"
-              price=""
-              description="An AI assistant on your site that knows your business"
-              features={chatWidgetFeatures}
-            />
+            <div className="order-2 lg:order-1">
+              <PricingCard
+                title="Website Redesign"
+                price=""
+                description="Migrate to a modern, managed website"
+                features={redesignFeatures}
+              />
+            </div>
+            <div className="order-1 lg:order-2">
+              <PricingCard
+                title="Website Creation"
+                price=""
+                description="Launch a professionally managed website"
+                features={creationFeatures}
+                popular={true}
+              />
+            </div>
+            <div className="order-3">
+              <PricingCard
+                title="Chat Widget"
+                price=""
+                description="An AI assistant on your site that knows your business"
+                features={chatWidgetFeatures}
+              />
+            </div>
           </div>
 
 
