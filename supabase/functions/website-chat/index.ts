@@ -199,7 +199,7 @@ Custom workflows that handle repetitive tasks:
 4. **Launch & Support**: Domain setup, SEO, and ongoing maintenance
 
 ## CONTACT
-To get started: Book a free Discovery Call at /get-started
+To get started: Book a free Discovery Call at https://calendly.com/saltarelliwebstudio/30min
 
 ## PORTFOLIO HIGHLIGHTS
 - Pop's Landscaping (popslandscaping.ca) - Landscaping website
