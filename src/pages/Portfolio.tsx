@@ -15,6 +15,13 @@ const Portfolio = () => {
 
   const portfolioItems = [
     {
+      title: "WS Construction",
+      description: "Home renovation company website for Fort Erie's experts. Showcases bathrooms, kitchens, windows, and more with a premium, modern design.",
+      category: "Home Services",
+      imageUrl: "/lovable-uploads/ws-construction.png",
+      liveUrl: "https://ws-construction.ca",
+    },
+    {
       title: "Genius Fitness & MMA",
       description: "Modern fitness studio website with class scheduling, member portal, and integrated booking system. Built to drive memberships and streamline operations.",
       category: "Fitness & Wellness",
