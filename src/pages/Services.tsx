@@ -31,6 +31,14 @@ const Services = () => {
     "Custom features available as add-ons",
   ];
 
+  const chatWidgetFeatures = [
+    "Trained on your business knowledge",
+    "Answers customer questions 24/7",
+    "Qualifies leads automatically",
+    "Seamless website integration",
+    "Continuously improved and monitored",
+    "Matches your brand's look and feel",
+  ];
 
   const terms = [
     "50% deposit required to begin work (non-refundable)",
@@ -95,7 +103,7 @@ const Services = () => {
       {/* Pricing Plans */}
       <section className="py-20 px-4 md:px-6 relative z-10">
         <div className="container mx-auto max-w-6xl">
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
             <PricingCard
               title="Website Creation"
               price=""
@@ -108,6 +116,12 @@ const Services = () => {
               price=""
               description="Migrate to a modern, managed website"
               features={redesignFeatures}
+            />
+            <PricingCard
+              title="Chat Widget"
+              price=""
+              description="An AI assistant on your site that knows your business"
+              features={chatWidgetFeatures}
             />
           </div>
 

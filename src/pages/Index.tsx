@@ -256,7 +256,7 @@ const Index = () => {
           </FadeIn>
 
           {/* Website Services Row */}
-          <StaggerContainer className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto mb-6">
+          <StaggerContainer className="grid md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto mb-6">
             <StaggerItem>
               <Card className="h-full bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all duration-300">
                 <CardHeader>
@@ -289,6 +289,24 @@ const Index = () => {
                   </ul>
                   <Button variant="outline" asChild className="w-full mt-4">
                     <TrackedLink to="/services" trackingLabel="services_learn_more_redesign">Learn More</TrackedLink>
+                  </Button>
+                </CardContent>
+              </Card>
+            </StaggerItem>
+            <StaggerItem>
+              <Card className="h-full bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all duration-300">
+                <CardHeader>
+                  <CardTitle className="text-xl font-heading">Chat Widget</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <p className="text-muted-foreground">An AI-powered chat assistant trained on your business that answers questions and qualifies leads 24/7.</p>
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    <li>• Trained on your specific business knowledge</li>
+                    <li>• Qualifies leads automatically</li>
+                    <li>• Seamlessly integrated into your website</li>
+                  </ul>
+                  <Button variant="outline" asChild className="w-full mt-4">
+                    <TrackedLink to="/services" trackingLabel="services_learn_more_chat_widget">Learn More</TrackedLink>
                   </Button>
                 </CardContent>
               </Card>
