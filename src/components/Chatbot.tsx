@@ -142,7 +142,7 @@ export const Chatbot = () => {
       console.error("Chat error:", error);
       setMessages((prev) => [
         ...prev,
-        { role: "assistant", content: "Sorry, I'm having trouble connecting right now. Please try again or book a discovery call directly!" },
+        { role: "assistant", content: "Sorry, I'm having trouble connecting right now. Please try again or book a discovery call directly: https://calendly.com/saltarelliwebstudio/30min" },
       ]);
     } finally {
       setIsLoading(false);
