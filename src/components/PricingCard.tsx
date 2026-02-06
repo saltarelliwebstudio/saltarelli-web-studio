@@ -30,7 +30,7 @@ export const PricingCard: React.FC<PricingCardProps> = ({
       className="h-full"
     >
       <Card
-        className={`relative overflow-hidden h-full transition-all duration-500 ${
+        className={`relative overflow-hidden h-full flex flex-col transition-all duration-500 ${
           popular
             ? "glass-strong border-primary/50 shadow-glow"
             : "glass"
@@ -50,8 +50,8 @@ export const PricingCard: React.FC<PricingCardProps> = ({
             </div>
           )}
         </CardHeader>
-        <CardContent>
-          <ul className="space-y-3 mb-8">
+        <CardContent className="flex flex-col flex-1">
+          <ul className="space-y-3 flex-1">
             {features.map((feature, index) => (
               <li key={index} className="flex items-start gap-3">
                 <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-0.5">
@@ -63,7 +63,7 @@ export const PricingCard: React.FC<PricingCardProps> = ({
           </ul>
           <Button
             variant={popular ? "hero" : "outline"}
-            className="w-full"
+            className="w-full mt-8"
             asChild
           >
             <TrackedLink to="/get-started" trackingLabel={trackingLabel}>Choose {title}</TrackedLink>
