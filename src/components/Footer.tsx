@@ -23,7 +23,7 @@ export const Footer = () => {
               <a href="https://www.instagram.com/saltarelliwebstudio/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-all" aria-label="Instagram">
                 <Instagram size={18} />
               </a>
-              <a href="https://www.facebook.com/profile.php?id=61577498722193" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-all" aria-label="Facebook">
+              <a href="https://www.facebook.com/profile.php?id=61585437915197&sk=directory_intro" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-all" aria-label="Facebook">
                 <Facebook size={18} />
               </a>
             </div>
