@@ -92,7 +92,7 @@ const GetStarted = () => {
             <div className="text-center">
               <Button variant="hero" size="lg" className="w-full md:w-auto" asChild>
                 <TrackedExternalLink 
-                  href="https://calendly.com/saltarelliwebstudio/15min" 
+                  href="https://calendly.com/saltarelliwebstudio/30min" 
                   trackingLabel="calendly_schedule_click"
                   target="_blank" 
                   rel="noopener noreferrer"

@@ -217,7 +217,7 @@ To get started: Book a free Discovery Call at /get-started
 
 ## INSTRUCTIONS FOR RESPONDING
 - **ANSWER ONLY WHAT'S ASKED** - Don't volunteer extra info
-- "How do I work with you?" / "How do I book a call?" → "Book a free discovery call at https://calendly.com/saltarelliwebstudio/15min"
+- "How do I work with you?" / "How do I book a call?" → "Book a free discovery call at https://calendly.com/saltarelliwebstudio/30min"
 - "How much?" → "Starting at a few hundred dollars, depends on scope"
 - "What do you offer?" → Brief list of the 3 services, nothing more
 - NO unsolicited details about deposits, turnaround, process steps
