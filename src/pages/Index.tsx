@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Star, Sparkles, Clock, DollarSign, Zap, Bot, Workflow } from "lucide-react";
+import { ArrowRight, Star, Sparkles, Clock, DollarSign, Zap, Bot, Workflow, ShieldCheck } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -176,6 +176,16 @@ const Index = () => {
                 </TrackedExternalLink>
               </Button>
             </motion.div>
+
+            {/* Trust Badge */}
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              className="text-sm text-muted-foreground mt-4"
+            >
+              🔒 Backed by our 30-day money-back guarantee
+            </motion.p>
           </div>
         </div>
 
@@ -365,6 +375,30 @@ const Index = () => {
             </StaggerItem>
           </StaggerContainer>
 
+        </div>
+      </section>
+
+      {/* 30-Day Money-Back Guarantee */}
+      <section className="py-20 md:py-28 px-4 md:px-6 relative z-10">
+        <div className="container mx-auto max-w-3xl">
+          <FadeIn>
+            <div className="relative rounded-2xl border border-primary/30 bg-card/50 backdrop-blur-sm p-8 md:p-12 text-center shadow-glow">
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/5 to-accent/5 pointer-events-none" />
+              <div className="relative z-10">
+                <div className="flex justify-center mb-6">
+                  <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center">
+                    <ShieldCheck className="text-primary" size={32} />
+                  </div>
+                </div>
+                <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
+                  30-Day Money-Back Guarantee
+                </h2>
+                <p className="text-muted-foreground text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
+                  We build systems that actually work — and we stand behind every one of them. If you're not completely satisfied with your website, AI agent, or automation within 30 days of delivery, we'll refund 100% of your purchase. No questions asked. Zero risk for you.
+                </p>
+              </div>
+            </div>
+          </FadeIn>
         </div>
       </section>
 

@@ -61,13 +61,16 @@ export const PricingCard: React.FC<PricingCardProps> = ({
               </li>
             ))}
           </ul>
-          <Button
-            variant={popular ? "hero" : "outline"}
-            className="w-full mt-8"
-            asChild
-          >
-            <TrackedLink to="/get-started" trackingLabel={trackingLabel}>Choose {title}</TrackedLink>
-          </Button>
+          <div className="mt-8 space-y-3">
+            <Button
+              variant={popular ? "hero" : "outline"}
+              className="w-full"
+              asChild
+            >
+              <TrackedLink to="/get-started" trackingLabel={trackingLabel}>Choose {title}</TrackedLink>
+            </Button>
+            <p className="text-xs text-muted-foreground text-center">✅ 30-day satisfaction guarantee included</p>
+          </div>
         </CardContent>
       </Card>
     </motion.div>
