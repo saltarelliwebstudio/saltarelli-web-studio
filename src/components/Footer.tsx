@@ -61,7 +61,8 @@ export const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-10 pt-8 border-t border-border/50 text-center">
+        <div className="mt-10 pt-8 border-t border-border/50 text-center space-y-2">
+          <p className="text-sm text-muted-foreground">All services backed by a 30-day money-back guarantee.</p>
           <p className="text-sm text-muted-foreground">© {new Date().getFullYear()} Saltarelli Web Studio. All rights reserved.</p>
         </div>
       </div>
