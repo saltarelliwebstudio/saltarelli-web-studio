@@ -44,6 +44,7 @@ export const Header = () => {
     { href: "/ai-agents", label: "AI Agents" },
     { href: "/automations", label: "Automations" },
     { href: "/portfolio", label: "Portfolio" },
+    { href: "https://saltarelli-hub.vercel.app/login", label: "Dashboard", external: true },
   ];
 
   const menuVariants = {
@@ -104,25 +105,37 @@ export const Header = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-10">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                to={link.href}
-                className={`relative text-sm font-medium transition-colors duration-300 ${
-                  location.pathname === link.href
-                    ? "text-primary"
-                    : "text-foreground/70 hover:text-foreground"
-                }`}
-              >
-                {link.label}
-                {location.pathname === link.href && (
-                  <motion.div
-                    layoutId="activeNav"
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-primary to-accent rounded-full"
-                  />
-                )}
-              </Link>
-            ))}
+            {navLinks.map((link) =>
+              link.external ? (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative text-sm font-medium transition-colors duration-300 text-foreground/70 hover:text-foreground"
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  className={`relative text-sm font-medium transition-colors duration-300 ${
+                    location.pathname === link.href
+                      ? "text-primary"
+                      : "text-foreground/70 hover:text-foreground"
+                  }`}
+                >
+                  {link.label}
+                  {location.pathname === link.href && (
+                    <motion.div
+                      layoutId="activeNav"
+                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-primary to-accent rounded-full"
+                    />
+                  )}
+                </Link>
+              )
+            )}
             <Button variant="hero" size="sm" asChild className="ml-2">
               <TrackedLink to="/get-started" trackingLabel="header_book_call" className="gap-2">
                 Book a Call
@@ -198,17 +211,29 @@ export const Header = () => {
                         initial="closed"
                         animate="open"
                       >
-                        <Link
-                          to={link.href}
-                          className={`text-2xl font-heading font-semibold transition-colors duration-300 block ${
-                            location.pathname === link.href
-                              ? "text-primary"
-                              : "text-foreground/80 hover:text-foreground"
-                          }`}
-                          onClick={() => setIsMenuOpen(false)}
-                        >
-                          {link.label}
-                        </Link>
+                        {link.external ? (
+                          <a
+                            href={link.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-2xl font-heading font-semibold transition-colors duration-300 block text-foreground/80 hover:text-foreground"
+                            onClick={() => setIsMenuOpen(false)}
+                          >
+                            {link.label}
+                          </a>
+                        ) : (
+                          <Link
+                            to={link.href}
+                            className={`text-2xl font-heading font-semibold transition-colors duration-300 block ${
+                              location.pathname === link.href
+                                ? "text-primary"
+                                : "text-foreground/80 hover:text-foreground"
+                            }`}
+                            onClick={() => setIsMenuOpen(false)}
+                          >
+                            {link.label}
+                          </Link>
+                        )}
                       </motion.div>
                     ))}
                   </div>
