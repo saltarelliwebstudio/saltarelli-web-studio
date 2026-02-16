@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Mail, Phone, Instagram, Facebook } from "lucide-react";
+import { Mail, Phone, Instagram, Facebook, Podcast } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { TrackedLink } from "@/components/TrackedLink";
 import logo from "@/assets/sws-logo.png";
@@ -25,6 +25,9 @@ export const Footer = () => {
               </a>
               <a href="https://www.facebook.com/profile.php?id=61585437915197&sk=directory_intro" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-all" aria-label="Facebook">
                 <Facebook size={18} />
+              </a>
+              <a href="https://open.spotify.com/show/4Ifud59mNiYzwigcWg7lV0?si=iReDilhCTcaZ3MCSpD8A6g" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-all" aria-label="The Tech Frontier Podcast">
+                <Podcast size={18} />
               </a>
             </div>
           </div>
