@@ -25,7 +25,11 @@ export const SEO = ({
     ? title
     : `${title} | ${siteName}`;
 
-  const pageUrl = canonical ? `${siteUrl}${canonical}` : siteUrl;
+  const fullCanonical = canonical
+    ? canonical.startsWith("http") ? canonical : `${siteUrl}${canonical}`
+    : siteUrl;
+
+  const pageUrl = fullCanonical;
 
   const defaultSchema = {
     "@context": "https://schema.org",

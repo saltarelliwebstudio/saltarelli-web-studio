@@ -47,8 +47,8 @@ const AIAgents = () => {
     <>
       <SEO
         canonical="/ai-agents"
-        title="Managed AI Agents — Voice & Text Automation for Your Business"
-        description="Never miss a call again. Managed AI agents answer calls 24/7 — professionally set up, monitored, and continuously improved. Smart automation for Ontario businesses."
+        title="AI Agents for Small Business"
+        description="AI-powered chat widgets, voice agents & text agents for Ontario small businesses. Capture leads 24/7, answer customer questions automatically."
       />
     <div className="min-h-screen bg-background text-foreground relative flex flex-col overflow-x-hidden">
       <Starfield />

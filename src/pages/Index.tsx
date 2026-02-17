@@ -96,8 +96,29 @@ const Index = () => {
     <>
       <SEO 
         canonical="/"
-        title="Saltarelli Web Studio — Managed Websites in Ontario"
-        description="Managed websites and AI agents for Ontario businesses. Setup in days, then handled ongoing. Simple monthly pricing. Book a free consultation today."
+        title="Web Design Ontario"
+        description="Custom web design, AI agents & automation for Ontario small businesses. Managed monthly services with a 30-day money-back guarantee. Book your free discovery call."
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "ProfessionalService",
+          "name": "Saltarelli Web Studio",
+          "url": "https://saltarelliwebstudio.ca",
+          "logo": "https://saltarelliwebstudio.ca/sws-logo.png",
+          "description": "Custom web design, AI agents, and business automation services for Ontario small businesses.",
+          "telephone": "+12895135284",
+          "email": "saltarelliwebstudio@gmail.com",
+          "areaServed": [{"@type": "State", "name": "Ontario", "containedInPlace": {"@type": "Country", "name": "Canada"}}],
+          "founder": {"@type": "Person", "name": "Adam Saltarelli"},
+          "serviceType": ["Web Design", "Website Redesign", "AI Chat Widgets", "AI Voice Agents", "Business Automation", "SEO Optimization"],
+          "priceRange": "$$",
+          "knowsLanguage": "en",
+          "aggregateRating": {"@type": "AggregateRating", "ratingValue": "5", "reviewCount": "3"},
+          "review": [
+            {"@type": "Review", "author": {"@type": "Person", "name": "Owner, Mom Duke's Authentic Jamaican Cuisine"}, "reviewRating": {"@type": "Rating", "ratingValue": "5"}, "reviewBody": "I would highly recommend Adam if you are looking to refresh your website. He did a fantastic job for us and we are really happy with the results."},
+            {"@type": "Review", "author": {"@type": "Person", "name": "Owner, Genius Fitness & MMA"}, "reviewRating": {"@type": "Rating", "ratingValue": "5"}, "reviewBody": "Adam does a fantastic job putting together your dream website. Definitely recommend to any business."},
+            {"@type": "Review", "author": {"@type": "Person", "name": "Owner, Pop's Landscaping"}, "reviewRating": {"@type": "Rating", "ratingValue": "5"}, "reviewBody": "Adam did an amazing job designing our website from start to finish. He was professional, easy to communicate with, and really took the time to understand what I wanted."}
+          ]
+        }}
       />
     <div className="min-h-screen bg-background text-foreground relative flex flex-col overflow-x-hidden">
       <Starfield />

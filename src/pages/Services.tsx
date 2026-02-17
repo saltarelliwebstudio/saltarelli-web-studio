@@ -54,8 +54,8 @@ const Services = () => {
     <>
       <SEO
         canonical="/services"
-        title="Managed Web Services & Pricing — Professional Websites"
-        description="Managed web services in Ontario. Professional websites with ongoing support, optimization, and care. Simple monthly plans."
+        title="Custom Website Design Ontario"
+        description="Professional website creation and redesign for Ontario businesses. Mobile-responsive, SEO-optimized, fully managed monthly. Free concept included."
       />
     <div className="min-h-screen bg-background text-foreground relative flex flex-col overflow-x-hidden">
       <Starfield />

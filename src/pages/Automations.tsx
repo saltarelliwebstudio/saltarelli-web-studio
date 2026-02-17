@@ -47,8 +47,8 @@ const Automations = () => {
     <>
       <SEO
         canonical="/automations"
-        title="Managed Business Automations — AI-Powered Workflow Automation"
-        description="Managed business automations that run around the clock. Lead capture, notifications, and workflows — set up and handled for you."
+        title="Business Automation Services"
+        description="Custom business automations for Ontario small businesses. Make.com workflows, SMS alerts, lead capture, and AI-powered notifications. Save hours every week."
       />
       <div className="min-h-screen bg-background text-foreground relative flex flex-col overflow-x-hidden">
         <Starfield />

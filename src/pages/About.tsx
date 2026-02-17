@@ -16,8 +16,8 @@ const About = () => {
     <>
       <SEO
         canonical="/about"
-        title="About Adam Saltarelli — Ontario Web Designer"
-        description="Meet Adam Saltarelli, a web designer from Ontario who builds clean, engaging websites and AI agents. Quality workmanship, fair pricing, and personal attention to every project."
+        title="About Adam Saltarelli | Ontario Web Designer"
+        description="Meet Adam Saltarelli — Ontario web designer specializing in custom websites, AI agents, and business automations for small businesses."
       />
     <div className="min-h-screen bg-background text-foreground relative flex flex-col overflow-x-hidden">
       <Starfield />

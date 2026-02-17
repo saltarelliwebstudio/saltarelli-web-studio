@@ -15,8 +15,8 @@ const GetStarted = () => {
     <>
       <SEO
         canonical="/get-started"
-        title="Book a Free Consultation — Get Started Today"
-        description="Schedule a free 15-minute consultation to discuss your managed website, AI agent, or automation. No pressure, just conversation about your goals."
+        title="Contact Us | Free Discovery Call"
+        description="Ready to get started? Book a free discovery call with Saltarelli Web Studio. Web design, AI agents, and automations for Ontario small businesses."
       />
     <div className="min-h-screen bg-background text-foreground relative flex flex-col overflow-x-hidden">
       <Starfield />
