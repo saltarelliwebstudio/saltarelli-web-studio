@@ -128,8 +128,8 @@ const Portfolio = () => {
     <>
       <SEO
         canonical="/portfolio"
-        title="Web Design Portfolio — Real Projects for Real Businesses"
-        description="Browse our portfolio of custom websites for Ontario businesses. Fitness studios, restaurants, landscaping, and more. See what's possible for your business."
+        title="Web Design Portfolio"
+        description="See our work — custom websites, AI integrations, and automations built for Ontario businesses. Real results for Pop's Landscaping, Genius Fitness & more."
       />
     <div className="min-h-screen bg-background text-foreground relative flex flex-col overflow-x-hidden">
       <Starfield />
