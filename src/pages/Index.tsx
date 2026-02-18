@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Star, Sparkles, Clock, DollarSign, Zap, Bot, Workflow, ShieldCheck } from "lucide-react";
+import { ArrowRight, Star, Sparkles, Clock, DollarSign, Zap, Bot, Workflow, ShieldCheck, Globe, Check } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -295,115 +295,77 @@ const Index = () => {
             </p>
           </FadeIn>
 
-          {/* Website Services Row */}
-          <StaggerContainer className="grid md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto mb-6">
+          {/* Clean 3-Column Services Grid */}
+          <StaggerContainer className="grid md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto mb-10">
+            {/* Website Creation & Redesign */}
             <StaggerItem>
-              <Card className="h-full bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all duration-300">
-                <CardHeader>
-                  <CardTitle className="text-xl font-heading">Website Creation</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <p className="text-muted-foreground">Launch a professionally designed website that's continuously maintained and optimized for your business.</p>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li>• Full domain setup & ongoing management</li>
-                    <li>• Ongoing updates as your business evolves</li>
-                    <li>• Hosting and continuous SEO optimization</li>
-                  </ul>
-                  <Button variant="outline" asChild className="w-full mt-4">
-                    <TrackedLink to="/services" trackingLabel="services_learn_more_creation">Learn More</TrackedLink>
-                  </Button>
-                </CardContent>
-              </Card>
+              <div className="glass rounded-2xl p-6 h-full hover:border-primary/30 transition-all duration-300">
+                <div className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center mb-5">
+                  <Globe className="w-5 h-5 text-primary" />
+                </div>
+                <h3 className="text-xl font-heading font-bold mb-3">Website Creation & Redesign</h3>
+                <p className="text-muted-foreground text-sm mb-5">
+                  A professionally designed, fully managed website that's continuously optimized and updated as your business grows.
+                </p>
+                <ul className="space-y-2.5">
+                  {["Full domain setup & ongoing management", "Ongoing updates as your business evolves", "Hosting and continuous SEO optimization", "Seamless migration with zero downtime"].map((item) => (
+                    <li key={item} className="flex items-start gap-2.5 text-sm text-muted-foreground">
+                      <Check className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </StaggerItem>
+
+            {/* AI Agents & Chat Widgets */}
             <StaggerItem>
-              <Card className="h-full bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all duration-300">
-                <CardHeader>
-                  <CardTitle className="text-xl font-heading">Website Redesign</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <p className="text-muted-foreground">Migrate to a modern, professionally managed website with ongoing improvements and support.</p>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li>• Seamless migration with zero downtime</li>
-                    <li>• Modern design with continuous refinements</li>
-                    <li>• Ongoing SEO monitoring and optimization</li>
-                  </ul>
-                  <Button variant="outline" asChild className="w-full mt-4">
-                    <TrackedLink to="/services" trackingLabel="services_learn_more_redesign">Learn More</TrackedLink>
-                  </Button>
-                </CardContent>
-              </Card>
+              <div className="glass rounded-2xl p-6 h-full hover:border-primary/30 transition-all duration-300">
+                <div className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center mb-5">
+                  <Bot className="w-5 h-5 text-primary" />
+                </div>
+                <h3 className="text-xl font-heading font-bold mb-3">AI Agents & Chat Widgets</h3>
+                <p className="text-muted-foreground text-sm mb-5">
+                  Voice and text AI agents trained on your business that capture leads and answer customers around the clock.
+                </p>
+                <ul className="space-y-2.5">
+                  {["Trained on your specific business knowledge", "Voice and text agent capabilities", "24/7 call & text lead capture", "Seamlessly integrated into your website"].map((item) => (
+                    <li key={item} className="flex items-start gap-2.5 text-sm text-muted-foreground">
+                      <Check className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </StaggerItem>
+
+            {/* Automations */}
             <StaggerItem>
-              <Card className="h-full bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all duration-300">
-                <CardHeader>
-                  <CardTitle className="text-xl font-heading">Chat Widget</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <p className="text-muted-foreground">An AI-powered chat assistant trained on your business that answers questions and qualifies leads 24/7.</p>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li>• Trained on your specific business knowledge</li>
-                    <li>• Qualifies leads automatically</li>
-                    <li>• Seamlessly integrated into your website</li>
-                  </ul>
-                  <Button variant="outline" asChild className="w-full mt-4">
-                    <TrackedLink to="/services" trackingLabel="services_learn_more_chat_widget">Learn More</TrackedLink>
-                  </Button>
-                </CardContent>
-              </Card>
+              <div className="glass rounded-2xl p-6 h-full hover:border-primary/30 transition-all duration-300">
+                <div className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center mb-5">
+                  <Workflow className="w-5 h-5 text-primary" />
+                </div>
+                <h3 className="text-xl font-heading font-bold mb-3">Automations</h3>
+                <p className="text-muted-foreground text-sm mb-5">
+                  Custom workflows that eliminate repetitive tasks — from lead capture to notifications and reporting.
+                </p>
+                <ul className="space-y-2.5">
+                  {["Make.com powered workflows", "AI-powered processing", "SMS & email notifications", "Google Sheets integrations"].map((item) => (
+                    <li key={item} className="flex items-start gap-2.5 text-sm text-muted-foreground">
+                      <Check className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </StaggerItem>
           </StaggerContainer>
 
-          {/* AI & Automation Services Row */}
-          <StaggerContainer className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto mb-8">
-            <StaggerItem>
-              <Card className="h-full relative overflow-hidden bg-gradient-to-br from-accent/20 via-accent/10 to-transparent border-accent/40 hover:border-accent/60 transition-all duration-500">
-                <div className="absolute top-0 right-0 bg-gradient-to-r from-accent to-primary text-white px-3 py-1 text-xs font-bold rounded-bl-lg">
-                  NEW
-                </div>
-                <CardContent className="p-6 flex flex-col h-full">
-                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-accent to-primary flex items-center justify-center flex-shrink-0 shadow-glow mb-4">
-                    <Bot className="w-7 h-7 text-white" />
-                  </div>
-                  <h3 className="text-xl font-heading font-bold mb-2">AI Agents</h3>
-                  <p className="text-muted-foreground mb-4 flex-1">
-                    Voice and text agents that answer calls, capture leads, and respond to customers 24/7.
-                  </p>
-                  <ul className="flex flex-wrap gap-2 mb-4">
-                    <li className="text-xs bg-accent/20 text-accent-foreground px-2 py-1 rounded-full">24/7</li>
-                    <li className="text-xs bg-accent/20 text-accent-foreground px-2 py-1 rounded-full">Call & Text</li>
-                    <li className="text-xs bg-accent/20 text-accent-foreground px-2 py-1 rounded-full">Lead Capture</li>
-                  </ul>
-                  <Button variant="hero" asChild className="w-full">
-                    <TrackedLink to="/ai-agents" trackingLabel="services_learn_more_ai_agents">Learn More</TrackedLink>
-                  </Button>
-                </CardContent>
-              </Card>
-            </StaggerItem>
-            <StaggerItem>
-              <Card className="h-full relative overflow-hidden bg-gradient-to-br from-primary/20 via-primary/10 to-transparent border-primary/40 hover:border-primary/60 transition-all duration-500">
-                <div className="absolute top-0 right-0 bg-gradient-to-r from-primary to-accent text-white px-3 py-1 text-xs font-bold rounded-bl-lg">
-                  NEW
-                </div>
-                <CardContent className="p-6 flex flex-col h-full">
-                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center flex-shrink-0 shadow-glow mb-4">
-                    <Workflow className="w-7 h-7 text-white" />
-                  </div>
-                  <h3 className="text-xl font-heading font-bold mb-2">Automations</h3>
-                  <p className="text-muted-foreground mb-4 flex-1">
-                    Custom workflows that handle repetitive tasks — lead capture, notifications, and more.
-                  </p>
-                  <ul className="flex flex-wrap gap-2 mb-4">
-                    <li className="text-xs bg-primary/20 text-primary-foreground px-2 py-1 rounded-full">Make.com</li>
-                    <li className="text-xs bg-primary/20 text-primary-foreground px-2 py-1 rounded-full">AI-Powered</li>
-                    <li className="text-xs bg-primary/20 text-primary-foreground px-2 py-1 rounded-full">SMS Alerts</li>
-                  </ul>
-                  <Button variant="hero" asChild className="w-full">
-                    <TrackedLink to="/automations" trackingLabel="services_learn_more_automations">Learn More</TrackedLink>
-                  </Button>
-                </CardContent>
-              </Card>
-            </StaggerItem>
-          </StaggerContainer>
+          <FadeIn className="text-center">
+            <Button variant="default" asChild size="lg">
+              <TrackedLink to="/services" trackingLabel="services_view_all">View All Services</TrackedLink>
+            </Button>
+          </FadeIn>
 
         </div>
       </section>
