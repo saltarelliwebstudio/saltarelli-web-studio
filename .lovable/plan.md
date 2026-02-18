@@ -1,41 +1,22 @@
 
-## Move 30-Day Guarantee Card Directly Under the Hero
+## Clean Up the Funnel Results Page
 
-### Current Page Order
-1. Hero — "Turn your dreams into reality" + CTAs
-2. About Snapshot — "Hi, I'm Adam"
-3. Features — Fast Setup, Proven Value, Simple Pricing
-4. Services & Pricing
-5. **30-Day Guarantee** ← currently here
-6. Workflow
-7. Portfolio
-8. Testimonials
-9. CTA
+### What's Being Removed
+From the results page (Step 4), two elements are being cut entirely:
 
-### Target Page Order
-1. Hero — "Turn your dreams into reality" + CTAs
-2. **30-Day Guarantee** ← moved here
-3. About Snapshot — "Hi, I'm Adam"
-4. Features
-5. Services & Pricing
-6. Workflow
-7. Portfolio
-8. Testimonials
-9. CTA
+1. The **"30-day money-back guarantee on all services"** trust badge (lines 560–563) — the shield icon + text row beneath the Book a Call button
+2. The **"Not ready to talk? Get the free guide..."** secondary link / guide message toggle (lines 566–581) — the entire conditional block including both the button and the confirmation message states
 
-### What Changes
+### What Stays
+- The animated revenue loss number (count-up)
+- The supporting copy ("That's how much you could be leaving on the table...")
+- The AI Voice Agent pitch card
+- The "Book a Free Strategy Call with Adam" CTA button
 
-One file, one surgical move: `src/pages/Index.tsx`
-
-- Cut the entire `{/* 30-Day Money-Back Guarantee */}` section block (lines 387–409)
-- Paste it immediately after the closing `</section>` tag of the Hero section (after line 213)
-- The section's styling, animation, and content stay completely untouched — just repositioned
-
-### Why This Works Well
-
-Placing the guarantee immediately after the bold hero claim ("Turn your dreams into reality") removes the risk objection right at the moment a visitor might feel skeptical. It acts as a trust anchor before they scroll into any sales content — the "Hi, I'm Adam" intro then lands on a warmed-up, lower-resistance reader.
+### Result
+The results page ends cleanly with the CTA button — no secondary distractions pulling the visitor's eye away from the one action you want them to take (book the call).
 
 ### Files Changed
 | File | Change |
 |---|---|
-| `src/pages/Index.tsx` | Move the 30-Day Guarantee `<section>` block from after the Services section to immediately after the Hero `<section>` closing tag |
+| `src/pages/Funnel.tsx` | Remove the trust badge row and the guide link/message block from Step 4 |
