@@ -41,6 +41,45 @@ export type Database = {
         }
         Relationships: []
       }
+      funnel_leads: {
+        Row: {
+          avg_job_value: string
+          business_name: string
+          calculated_annual_loss: number
+          created_at: string
+          email: string
+          id: string
+          industry: string
+          missed_calls_per_week: string
+          name: string
+          phone: string
+        }
+        Insert: {
+          avg_job_value: string
+          business_name: string
+          calculated_annual_loss: number
+          created_at?: string
+          email: string
+          id?: string
+          industry: string
+          missed_calls_per_week: string
+          name: string
+          phone: string
+        }
+        Update: {
+          avg_job_value?: string
+          business_name?: string
+          calculated_annual_loss?: number
+          created_at?: string
+          email?: string
+          id?: string
+          industry?: string
+          missed_calls_per_week?: string
+          name?: string
+          phone?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
