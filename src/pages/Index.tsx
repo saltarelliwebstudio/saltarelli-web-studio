@@ -185,16 +185,16 @@ const Index = () => {
               className="flex flex-col sm:flex-row gap-4 justify-center px-4"
             >
               <Button variant="hero" size="lg" asChild className="text-base">
-                <TrackedLink to="/get-started" trackingLabel="hero_book_discovery_call" className="gap-2">
-                  Book a Discovery Call
-                  <ArrowRight size={18} />
+                <TrackedLink to="/funnel" trackingLabel="hero_calculate_revenue_loss" className="gap-2">
+                  <Sparkles size={18} />
+                  Calculate Your Revenue Loss →
                 </TrackedLink>
               </Button>
               <Button variant="cosmic" size="lg" asChild className="text-base">
-                <TrackedLink to="/funnel" trackingLabel="hero_view_services" className="gap-2">
-                  <Sparkles size={18} />
-                  Calculate My Revenue Loss
-                </TrackedLink>
+                <TrackedExternalLink href="https://calendly.com/saltarelliwebstudio/30min" trackingLabel="hero_book_a_call" className="gap-2 inline-flex items-center justify-center">
+                  Book a Call
+                  <ArrowRight size={18} />
+                </TrackedExternalLink>
               </Button>
             </motion.div>
 
