@@ -219,14 +219,14 @@ export default function Funnel() {
   const Step1 = (
     <div className="flex flex-col items-center justify-center text-center px-6 py-12 max-w-2xl mx-auto">
       <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
+        initial={{ opacity: 0, scale: 0.7 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.6 }}
-        className="mb-8"
+        transition={{ duration: 0.5 }}
+        className="mb-6"
       >
-        <div className="relative inline-block">
-          <div className="absolute inset-0 blur-3xl bg-primary/25 rounded-full scale-150" />
-          <img src={logo} alt="Saltarelli Web Studio" className="h-20 w-20 relative z-10 drop-shadow-2xl" />
+        <div className="relative inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary/10 border border-primary/30">
+          <div className="absolute inset-0 blur-xl bg-primary/20 rounded-2xl" />
+          <PhoneCall size={28} className="text-primary relative z-10" />
         </div>
       </motion.div>
 
