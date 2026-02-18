@@ -191,10 +191,10 @@ const Index = () => {
                 </TrackedLink>
               </Button>
               <Button variant="cosmic" size="lg" asChild className="text-base">
-                <TrackedExternalLink href="#services" trackingLabel="hero_view_services" className="gap-2">
+                <TrackedLink to="/funnel" trackingLabel="hero_view_services" className="gap-2">
                   <Sparkles size={18} />
                   View Services
-                </TrackedExternalLink>
+                </TrackedLink>
               </Button>
             </motion.div>
 
