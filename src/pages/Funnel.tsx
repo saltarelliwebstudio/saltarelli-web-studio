@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { ArrowRight, ShieldCheck, PhoneCall } from "lucide-react";
@@ -49,7 +49,6 @@ function useCountUp(target: number, duration = 1600) {
       if (!startRef.current) startRef.current = timestamp;
       const elapsed = timestamp - startRef.current;
       const progress = Math.min(elapsed / duration, 1);
-      // ease-out cubic
       const eased = 1 - Math.pow(1 - progress, 3);
       setValue(Math.round(eased * target));
       if (progress < 1) {
@@ -66,13 +65,9 @@ function useCountUp(target: number, duration = 1600) {
   return value;
 }
 
-// ─── Zod schema ────────────────────────────────────────────────────────────
+// ─── Zod schemas ────────────────────────────────────────────────────────────
 
-const funnelSchema = z.object({
-  name: z.string().trim().min(1, "Full name is required").max(100),
-  email: z.string().trim().email("Please enter a valid email").max(255),
-  phone: z.string().trim().min(7, "Please enter a valid phone number").max(30),
-  business_name: z.string().trim().min(1, "Business name is required").max(150),
+const statsSchema = z.object({
   industry: z.enum(["Roofing", "Concrete", "Landscaping", "HVAC", "Plumbing", "General Contractor", "Other"], {
     required_error: "Please select your industry",
   }),
@@ -84,7 +79,17 @@ const funnelSchema = z.object({
   }),
 });
 
+const contactSchema = z.object({
+  name: z.string().trim().min(1, "Full name is required").max(100),
+  email: z.string().trim().email("Please enter a valid email").max(255),
+  phone: z.string().trim().min(7, "Please enter a valid phone number").max(30),
+  business_name: z.string().trim().min(1, "Business name is required").max(150),
+});
+
+const funnelSchema = statsSchema.merge(contactSchema);
 type FunnelFormData = z.infer<typeof funnelSchema>;
+type StatsData = z.infer<typeof statsSchema>;
+type ContactData = z.infer<typeof contactSchema>;
 
 // ─── Page slide variants ───────────────────────────────────────────────────
 
@@ -105,10 +110,12 @@ const transition = { duration: 0.45, ease: [0.22, 1, 0.36, 1] as const };
 // ─── Component ────────────────────────────────────────────────────────────
 
 export default function Funnel() {
+  // step 0 = hook, 1 = stats, 2 = contact, 3 = results
   const [step, setStep] = useState(0);
   const [direction, setDirection] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const [savedStats, setSavedStats] = useState<StatsData | null>(null);
   const [formData, setFormData] = useState<FunnelFormData | null>(null);
   const [showGuideMessage, setShowGuideMessage] = useState(false);
 
@@ -116,24 +123,28 @@ export default function Funnel() {
     ? calcAnnualLoss(formData.missed_calls_per_week, formData.avg_job_value)
     : 0;
 
-  const countUpValue = useCountUp(step === 2 ? annualLoss : 0);
+  const countUpValue = useCountUp(step === 3 ? annualLoss : 0);
 
-  const {
-    register,
-    handleSubmit,
-    setValue,
-    formState: { errors },
-  } = useForm<FunnelFormData>({ resolver: zodResolver(funnelSchema) });
+  const statsForm = useForm<StatsData>({ resolver: zodResolver(statsSchema) });
+  const contactForm = useForm<ContactData>({ resolver: zodResolver(contactSchema) });
 
   const goTo = (nextStep: number) => {
     setDirection(nextStep > step ? 1 : -1);
     setStep(nextStep);
   };
 
-  const onSubmit = async (data: FunnelFormData) => {
+  const onStatsSubmit = (data: StatsData) => {
+    setSavedStats(data);
+    goTo(2);
+  };
+
+  const onContactSubmit = async (data: ContactData) => {
+    if (!savedStats) return;
     setIsSubmitting(true);
     setSubmitError(null);
-    const loss = calcAnnualLoss(data.missed_calls_per_week, data.avg_job_value);
+
+    const fullData: FunnelFormData = { ...savedStats, ...data };
+    const loss = calcAnnualLoss(fullData.missed_calls_per_week, fullData.avg_job_value);
 
     try {
       const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
@@ -147,7 +158,7 @@ export default function Funnel() {
             apikey: SUPABASE_ANON_KEY,
             Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
           },
-          body: JSON.stringify({ ...data, calculated_annual_loss: loss }),
+          body: JSON.stringify({ ...fullData, calculated_annual_loss: loss }),
         }
       );
 
@@ -156,8 +167,8 @@ export default function Funnel() {
         throw new Error(err?.error ?? "Submission failed");
       }
 
-      setFormData(data);
-      goTo(2);
+      setFormData(fullData);
+      goTo(3);
     } catch (err: unknown) {
       setSubmitError(
         err instanceof Error ? err.message : "Something went wrong. Please try again."
@@ -262,99 +273,145 @@ export default function Funnel() {
     </div>
   );
 
-  // ─── Step 2 — Form ────────────────────────────────────────────────────────
+  // ─── Step 2 — Stats ───────────────────────────────────────────────────────
 
   const Step2 = (
     <div className="w-full max-w-lg mx-auto px-6 py-10">
       <div className="text-center mb-8">
         <p className="text-sm text-primary font-semibold mb-2">Step 1 of 2</p>
         <h2 className="text-2xl sm:text-3xl font-heading font-bold mb-2">
-          Tell Us About Your Business
+          About Your Business
+        </h2>
+        <p className="text-muted-foreground text-sm">
+          Answer 3 quick questions to calculate your revenue loss.
+        </p>
+      </div>
+
+      <form onSubmit={statsForm.handleSubmit(onStatsSubmit)} className="space-y-5">
+        <Field label="Industry" id="industry" error={statsForm.formState.errors.industry?.message}>
+          <Controller
+            control={statsForm.control}
+            name="industry"
+            render={({ field }) => (
+              <Select value={field.value} onValueChange={field.onChange}>
+                <SelectTrigger id="industry" className="bg-input border-border h-11">
+                  <SelectValue placeholder="Select your industry" />
+                </SelectTrigger>
+                <SelectContent className="bg-popover border-border z-[200]">
+                  {["Roofing", "Concrete", "Landscaping", "HVAC", "Plumbing", "General Contractor", "Other"].map((opt) => (
+                    <SelectItem key={opt} value={opt}>{opt}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            )}
+          />
+        </Field>
+
+        <Field label="Average Job Value" id="avg_job_value" error={statsForm.formState.errors.avg_job_value?.message}>
+          <Controller
+            control={statsForm.control}
+            name="avg_job_value"
+            render={({ field }) => (
+              <Select value={field.value} onValueChange={field.onChange}>
+                <SelectTrigger id="avg_job_value" className="bg-input border-border h-11">
+                  <SelectValue placeholder="What's your average job worth?" />
+                </SelectTrigger>
+                <SelectContent className="bg-popover border-border z-[200]">
+                  {["$500", "$1,000", "$2,500", "$5,000", "$10,000+"].map((opt) => (
+                    <SelectItem key={opt} value={opt}>{opt}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            )}
+          />
+        </Field>
+
+        <Field label="Estimated Missed Calls Per Week" id="missed_calls_per_week" error={statsForm.formState.errors.missed_calls_per_week?.message}>
+          <Controller
+            control={statsForm.control}
+            name="missed_calls_per_week"
+            render={({ field }) => (
+              <Select value={field.value} onValueChange={field.onChange}>
+                <SelectTrigger id="missed_calls_per_week" className="bg-input border-border h-11">
+                  <SelectValue placeholder="How many calls go unanswered?" />
+                </SelectTrigger>
+                <SelectContent className="bg-popover border-border z-[200]">
+                  {["1-3", "4-7", "8-12", "12+"].map((opt) => (
+                    <SelectItem key={opt} value={opt}>{opt} per week</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            )}
+          />
+        </Field>
+
+        <Button
+          type="submit"
+          variant="hero"
+          size="lg"
+          className="w-full text-base py-6 h-auto font-semibold mt-2"
+        >
+          Next: Enter Your Details
+          <ArrowRight size={18} />
+        </Button>
+      </form>
+    </div>
+  );
+
+  // ─── Step 3 — Contact ─────────────────────────────────────────────────────
+
+  const Step3 = (
+    <div className="w-full max-w-lg mx-auto px-6 py-10">
+      <div className="text-center mb-8">
+        <p className="text-sm text-primary font-semibold mb-2">Step 2 of 2</p>
+        <h2 className="text-2xl sm:text-3xl font-heading font-bold mb-2">
+          Where Should We Send Your Results?
         </h2>
         <p className="text-muted-foreground text-sm">
           We'll calculate your estimated annual revenue loss from missed calls.
         </p>
       </div>
 
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+      <form onSubmit={contactForm.handleSubmit(onContactSubmit)} className="space-y-5">
         <div className="grid sm:grid-cols-2 gap-5">
-          <Field label="Full Name" id="name" error={errors.name?.message}>
+          <Field label="Full Name" id="name" error={contactForm.formState.errors.name?.message}>
             <Input
               id="name"
               placeholder="John Smith"
-              {...register("name")}
+              {...contactForm.register("name")}
               className="bg-input border-border focus:border-primary h-11"
             />
           </Field>
-          <Field label="Email Address" id="email" error={errors.email?.message}>
+          <Field label="Email Address" id="email" error={contactForm.formState.errors.email?.message}>
             <Input
               id="email"
               type="email"
               placeholder="john@example.com"
-              {...register("email")}
+              {...contactForm.register("email")}
               className="bg-input border-border focus:border-primary h-11"
             />
           </Field>
         </div>
 
         <div className="grid sm:grid-cols-2 gap-5">
-          <Field label="Phone Number" id="phone" error={errors.phone?.message}>
+          <Field label="Phone Number" id="phone" error={contactForm.formState.errors.phone?.message}>
             <Input
               id="phone"
               type="tel"
               placeholder="(555) 123-4567"
-              {...register("phone")}
+              {...contactForm.register("phone")}
               className="bg-input border-border focus:border-primary h-11"
             />
           </Field>
-          <Field label="Business Name" id="business_name" error={errors.business_name?.message}>
+          <Field label="Business Name" id="business_name" error={contactForm.formState.errors.business_name?.message}>
             <Input
               id="business_name"
               placeholder="Smith Roofing Co."
-              {...register("business_name")}
+              {...contactForm.register("business_name")}
               className="bg-input border-border focus:border-primary h-11"
             />
           </Field>
         </div>
-
-        <Field label="Industry" id="industry" error={errors.industry?.message}>
-          <Select onValueChange={(v) => setValue("industry", v as FunnelFormData["industry"], { shouldValidate: true })}>
-            <SelectTrigger id="industry" className="bg-input border-border h-11">
-              <SelectValue placeholder="Select your industry" />
-            </SelectTrigger>
-            <SelectContent className="bg-popover border-border z-50">
-              {["Roofing", "Concrete", "Landscaping", "HVAC", "Plumbing", "General Contractor", "Other"].map((opt) => (
-                <SelectItem key={opt} value={opt}>{opt}</SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </Field>
-
-        <Field label="Average Job Value" id="avg_job_value" error={errors.avg_job_value?.message}>
-          <Select onValueChange={(v) => setValue("avg_job_value", v as FunnelFormData["avg_job_value"], { shouldValidate: true })}>
-            <SelectTrigger id="avg_job_value" className="bg-input border-border h-11">
-              <SelectValue placeholder="What's your average job worth?" />
-            </SelectTrigger>
-            <SelectContent className="bg-popover border-border z-50">
-              {["$500", "$1,000", "$2,500", "$5,000", "$10,000+"].map((opt) => (
-                <SelectItem key={opt} value={opt}>{opt}</SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </Field>
-
-        <Field label="Estimated Missed Calls Per Week" id="missed_calls_per_week" error={errors.missed_calls_per_week?.message}>
-          <Select onValueChange={(v) => setValue("missed_calls_per_week", v as FunnelFormData["missed_calls_per_week"], { shouldValidate: true })}>
-            <SelectTrigger id="missed_calls_per_week" className="bg-input border-border h-11">
-              <SelectValue placeholder="How many calls go unanswered?" />
-            </SelectTrigger>
-            <SelectContent className="bg-popover border-border z-50">
-              {["1-3", "4-7", "8-12", "12+"].map((opt) => (
-                <SelectItem key={opt} value={opt}>{opt} per week</SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </Field>
 
         {submitError && (
           <p className="text-sm text-destructive text-center bg-destructive/10 rounded-lg p-3">
@@ -362,16 +419,27 @@ export default function Funnel() {
           </p>
         )}
 
-        <Button
-          type="submit"
-          variant="hero"
-          size="lg"
-          disabled={isSubmitting}
-          className="w-full text-base py-6 h-auto font-semibold mt-2"
-        >
-          {isSubmitting ? "Calculating..." : "Show Me My Results"}
-          {!isSubmitting && <ArrowRight size={18} />}
-        </Button>
+        <div className="flex flex-col sm:flex-row gap-3">
+          <Button
+            type="button"
+            variant="outline"
+            size="lg"
+            className="sm:w-auto py-6 h-auto"
+            onClick={() => goTo(1)}
+          >
+            ← Back
+          </Button>
+          <Button
+            type="submit"
+            variant="hero"
+            size="lg"
+            disabled={isSubmitting}
+            className="flex-1 text-base py-6 h-auto font-semibold"
+          >
+            {isSubmitting ? "Calculating..." : "Show Me My Results"}
+            {!isSubmitting && <ArrowRight size={18} />}
+          </Button>
+        </div>
 
         <p className="text-center text-xs text-muted-foreground">
           🔒 Your information is private and never shared.
@@ -380,9 +448,9 @@ export default function Funnel() {
     </div>
   );
 
-  // ─── Step 3 — Results ─────────────────────────────────────────────────────
+  // ─── Step 4 — Results ─────────────────────────────────────────────────────
 
-  const Step3 = (
+  const Step4 = (
     <div className="flex flex-col items-center text-center px-6 py-10 max-w-2xl mx-auto">
       <motion.p
         initial={{ opacity: 0, y: 10 }}
@@ -482,7 +550,7 @@ export default function Funnel() {
     </div>
   );
 
-  const steps = [Step1, Step2, Step3];
+  const steps = [Step1, Step2, Step3, Step4];
 
   return (
     <div className="min-h-screen bg-background text-foreground relative flex flex-col overflow-x-hidden">
@@ -501,7 +569,7 @@ export default function Funnel() {
         <motion.div
           className="h-full bg-primary"
           initial={false}
-          animate={{ width: `${((step + 1) / 3) * 100}%` }}
+          animate={{ width: `${((step + 1) / 4) * 100}%` }}
           transition={{ duration: 0.4, ease: "easeInOut" }}
         />
       </div>
