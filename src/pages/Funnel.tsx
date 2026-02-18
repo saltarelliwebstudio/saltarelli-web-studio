@@ -556,29 +556,6 @@ export default function Funnel() {
           </a>
         </Button>
 
-        {/* Trust badge */}
-        <div className="flex items-center gap-2 text-sm text-muted-foreground">
-          <ShieldCheck size={16} className="text-primary flex-shrink-0" />
-          30-day money-back guarantee on all services
-        </div>
-
-        {/* Secondary link */}
-        {!showGuideMessage ? (
-          <button
-            onClick={() => setShowGuideMessage(true)}
-            className="text-sm text-muted-foreground underline underline-offset-4 hover:text-foreground transition-colors mt-1"
-          >
-            Not ready to talk? Get the free guide: 3 Ways Contractors Lose Leads Without Knowing
-          </button>
-        ) : (
-          <motion.p
-            initial={{ opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-sm text-primary font-medium mt-1 glass rounded-xl px-4 py-3"
-          >
-            ✅ You're all set! Since you've already shared your email, we'll send the guide straight to your inbox.
-          </motion.p>
-        )}
       </motion.div>
     </div>
   );
