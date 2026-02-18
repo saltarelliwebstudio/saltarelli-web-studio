@@ -28,9 +28,20 @@ const jobValueMap: Record<string, number> = {
   "$10,000+": 10000,
 };
 
-function calcAnnualLoss(missedCalls: string, jobValue: string): number {
+const closeRateMap: Record<string, number> = {
+  "10%": 0.10,
+  "20%": 0.20,
+  "30%": 0.30,
+  "50%": 0.50,
+  "70%+": 0.70,
+};
+
+function calcAnnualLoss(missedCalls: string, jobValue: string, closeRate: string): number {
   return Math.round(
-    (missedCallsMidpoints[missedCalls] ?? 0) * (jobValueMap[jobValue] ?? 0) * 50
+    (missedCallsMidpoints[missedCalls] ?? 0) *
+    (closeRateMap[closeRate] ?? 0.3) *
+    (jobValueMap[jobValue] ?? 0) *
+    50
   );
 }
 
@@ -77,6 +88,9 @@ const statsSchema = z.object({
   missed_calls_per_week: z.enum(["1-3", "4-7", "8-12", "12+"], {
     required_error: "Please select missed calls per week",
   }),
+  close_rate: z.enum(["10%", "20%", "30%", "50%", "70%+"], {
+    required_error: "Please select your close rate",
+  }),
 });
 
 const contactSchema = z.object({
@@ -120,7 +134,7 @@ export default function Funnel() {
   const [showGuideMessage, setShowGuideMessage] = useState(false);
 
   const annualLoss = formData
-    ? calcAnnualLoss(formData.missed_calls_per_week, formData.avg_job_value)
+    ? calcAnnualLoss(formData.missed_calls_per_week, formData.avg_job_value, formData.close_rate)
     : 0;
 
   const countUpValue = useCountUp(step === 3 ? annualLoss : 0);
@@ -144,7 +158,7 @@ export default function Funnel() {
     setSubmitError(null);
 
     const fullData: FunnelFormData = { ...savedStats, ...data };
-    const loss = calcAnnualLoss(fullData.missed_calls_per_week, fullData.avg_job_value);
+    const loss = calcAnnualLoss(fullData.missed_calls_per_week, fullData.avg_job_value, fullData.close_rate);
 
     try {
       const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
@@ -283,7 +297,7 @@ export default function Funnel() {
           About Your Business
         </h2>
         <p className="text-muted-foreground text-sm">
-          Answer 3 quick questions to calculate your revenue loss.
+          Answer 4 quick questions to calculate your revenue loss.
         </p>
       </div>
 
@@ -338,6 +352,25 @@ export default function Funnel() {
                 <SelectContent className="bg-popover border-border z-[200]">
                   {["1-3", "4-7", "8-12", "12+"].map((opt) => (
                     <SelectItem key={opt} value={opt}>{opt} per week</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            )}
+          />
+        </Field>
+
+        <Field label="Your Close Rate (calls that become jobs)" id="close_rate" error={statsForm.formState.errors.close_rate?.message}>
+          <Controller
+            control={statsForm.control}
+            name="close_rate"
+            render={({ field }) => (
+              <Select value={field.value} onValueChange={field.onChange}>
+                <SelectTrigger id="close_rate" className="bg-input border-border h-11">
+                  <SelectValue placeholder="What % of calls turn into jobs?" />
+                </SelectTrigger>
+                <SelectContent className="bg-popover border-border z-[200]">
+                  {["10%", "20%", "30%", "50%", "70%+"].map((opt) => (
+                    <SelectItem key={opt} value={opt}>{opt}</SelectItem>
                   ))}
                 </SelectContent>
               </Select>
