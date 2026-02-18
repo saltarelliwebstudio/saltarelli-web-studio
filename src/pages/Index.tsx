@@ -193,7 +193,7 @@ const Index = () => {
               <Button variant="cosmic" size="lg" asChild className="text-base">
                 <TrackedLink to="/funnel" trackingLabel="hero_view_services" className="gap-2">
                   <Sparkles size={18} />
-                  View Services
+                  Calculate My Revenue Loss
                 </TrackedLink>
               </Button>
             </motion.div>
