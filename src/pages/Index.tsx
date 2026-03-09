@@ -205,14 +205,14 @@ const Index = () => {
               transition={{ duration: 0.6, delay: 0.8 }}
               className="text-sm text-muted-foreground mt-4"
             >
-              🔒 Backed by our 30-day money-back guarantee
+              🔒 Backed by our Clean Hands Guarantee
             </motion.p>
           </div>
         </div>
 
       </section>
 
-      {/* 30-Day Money-Back Guarantee */}
+      {/* Clean Hands Guarantee */}
       <section className="py-20 md:py-28 px-4 md:px-6 relative z-10">
         <div className="container mx-auto max-w-3xl">
           <FadeIn>
@@ -225,10 +225,10 @@ const Index = () => {
                   </div>
                 </div>
                 <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
-                  30-Day Money-Back Guarantee
+                  Clean Hands Guarantee
                 </h2>
                 <p className="text-muted-foreground text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
-                  We build systems that actually work — and we stand behind every one of them. If you're not completely satisfied with your website, AI agent, or automation within 30 days of delivery, we'll refund 100% of your purchase. No questions asked. Zero risk for you.
+                  If our systems aren't working harder than your youngest apprentice after 30 days, we'll refund every dollar you paid. No awkward conversation.
                 </p>
               </div>
             </div>
