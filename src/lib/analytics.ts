@@ -1,3 +1,5 @@
+import { trackEvent } from "@/components/PageTracker";
+
 // Google Analytics button click tracking utility
 
 declare global {
@@ -7,7 +9,7 @@ declare global {
 }
 
 /**
- * Tracks a button click event in Google Analytics
+ * Tracks a button click event in Google Analytics + Supabase
  * @param label - Unique identifier for the button (e.g., "hero_book_discovery_call")
  * @param buttonText - The visible text on the button
  * @param destination - Where the click leads (URL or path)
@@ -17,6 +19,7 @@ export const trackButtonClick = (
   buttonText: string,
   destination: string
 ): void => {
+  // Google Analytics
   if (typeof window !== "undefined" && window.gtag) {
     window.gtag("event", "cta_click", {
       button_label: label,
@@ -25,4 +28,13 @@ export const trackButtonClick = (
       page_location: window.location.pathname,
     });
   }
+
+  // Supabase (our custom analytics)
+  const isCalendly = destination.includes("calendly");
+  trackEvent(isCalendly ? "calendly_click" : "cta_click", {
+    label,
+    buttonText,
+    destination,
+    from: label,
+  });
 };

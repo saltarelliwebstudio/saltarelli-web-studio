@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { trackEvent } from "./PageTracker";
 
 const SUPABASE_URL = "https://veyhxazlqekiweynjxhf.supabase.co";
 const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZleWh4YXpscWVraXdleW5qeGhmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA2MDU2MDUsImV4cCI6MjA4NjE4MTYwNX0.h5EyoyPZzP2yBVtDir9Ko4A2I_C_v_7qYxkR2MFL9fc";
@@ -282,6 +283,7 @@ export const AfterHoursAudit = () => {
         hoursLost: results.yearlyAdminHoursLost,
         answers,
       });
+      trackEvent("audit_complete", { score, revenueLeak: results.totalRevenueLeak });
       goTo(resultsScreen);
     }
   };
@@ -316,16 +318,16 @@ export const AfterHoursAudit = () => {
         {currentScreen === 0 && (
           <div className="glass-strong rounded-2xl p-8 md:p-10 text-center">
             <h3 className="text-2xl md:text-3xl font-heading font-bold mb-3">
-              How much are you losing after hours?
+              How much is leaking from your bucket?
             </h3>
             <p className="text-muted-foreground mb-6 text-sm max-w-md mx-auto">
               9 quick questions based on your actual numbers. Takes less than a minute.
             </p>
             <button
-              onClick={() => goTo(1)}
+              onClick={() => { trackEvent("audit_start"); goTo(1); }}
               className="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 py-3 rounded-lg transition-all duration-200 text-base shadow-glow"
             >
-              Start the Audit →
+              Find My Leaks →
             </button>
           </div>
         )}
@@ -438,7 +440,7 @@ export const AfterHoursAudit = () => {
         {currentScreen === resultsScreen && (
           <div className="glass-strong rounded-2xl p-8 md:p-12 text-center">
             <p className="text-sm text-muted-foreground mb-2">
-              {firstName ? `${firstName}, here's` : "Here's"} your After-Hours Readiness Score
+              {firstName ? `${firstName}, here's` : "Here's"} your Leaky Bucket Score
             </p>
 
             {/* Score badge */}
@@ -475,9 +477,10 @@ export const AfterHoursAudit = () => {
               href="https://calendly.com/saltarelliwebstudio/30min"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackEvent("calendly_click", { from: "audit_results" })}
               className="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 py-3 rounded-lg transition-all duration-200 text-base shadow-glow mb-3"
             >
-              Book a Free Strategy Call →
+              Let's Plug the Leaks →
             </a>
 
             <div className="mb-8">
@@ -491,7 +494,7 @@ export const AfterHoursAudit = () => {
 
             {/* Breakdown */}
             <div className="mb-8 max-w-lg mx-auto text-left">
-              <p className="text-xs text-muted-foreground mb-3 uppercase tracking-wider text-center">How we got these numbers</p>
+              <p className="text-xs text-muted-foreground mb-3 uppercase tracking-wider text-center">Where your bucket is leaking</p>
               <div className="space-y-2">
                 <div className="p-3 rounded-lg bg-card/30">
                   <div className="flex justify-between items-center mb-1">
