@@ -1,610 +1,943 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { ArrowRight, Star, Sparkles, Clock, DollarSign, Zap, Bot, Workflow, ShieldCheck } from "lucide-react";
+import React, { useState } from "react";
+import { ArrowRight, Sparkles, ShieldCheck, Star } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Starfield } from "@/components/Starfield";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { PricingCard } from "@/components/PricingCard";
 import { TestimonialCard } from "@/components/TestimonialCard";
-import { PortfolioCard } from "@/components/PortfolioCard";
-import { WorkflowStep } from "@/components/WorkflowStep";
 import { FadeIn, StaggerContainer, StaggerItem, ScaleIn } from "@/components/motion";
 import { SEO } from "@/components/SEO";
 import { TrackedLink } from "@/components/TrackedLink";
 import { TrackedExternalLink } from "@/components/TrackedExternalLink";
+import { AfterHoursAudit } from "@/components/AfterHoursAudit";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import logo from "@/assets/sws-logo.png";
 
+const smartStackCards = [
+  {
+    emoji: "🌐",
+    name: "Managed Website",
+    tagline: "Your 24/7 digital storefront",
+    detail:
+      "Custom-designed, mobile-optimized site with hosting, SSL, updates, and ongoing SEO — all included.",
+  },
+  {
+    emoji: "🤖",
+    name: "AI Chat Widget",
+    tagline: "Answers questions while you sleep",
+    detail:
+      "Trained on your business. Qualifies leads, answers FAQs, and books appointments — even at 2 AM.",
+  },
+  {
+    emoji: "📞",
+    name: "AI Phone Agent",
+    tagline: "Never miss a call again",
+    detail:
+      "An AI receptionist that picks up, qualifies callers, and routes hot leads to your phone instantly.",
+  },
+  {
+    emoji: "⚡",
+    name: "Lead Automations",
+    tagline: "Capture → Notify → Follow up",
+    detail:
+      "New lead comes in? You get a text. They get a reply. The CRM gets updated. Zero manual work.",
+  },
+  {
+    emoji: "⭐",
+    name: "Review Engine",
+    tagline: "5-star reviews on autopilot",
+    detail:
+      "Automated post-job review requests via SMS. More reviews = higher Google ranking = more calls.",
+  },
+  {
+    emoji: "📊",
+    name: "CRM Dashboard",
+    tagline: "See every lead in one place",
+    detail:
+      "Track leads, follow-ups, and revenue — no spreadsheets. Built for trades, not enterprise.",
+  },
+  {
+    emoji: "📋",
+    name: "Online Estimates",
+    tagline: "Quote faster, close sooner",
+    detail:
+      "Customers request quotes from your site. You review and send — branded, professional, fast.",
+  },
+  {
+    emoji: "🛡️",
+    name: "Ongoing Management",
+    tagline: "We handle the tech, you handle the work",
+    detail:
+      "Hosting, security, updates, monitoring, and priority support — all bundled in your monthly plan.",
+  },
+];
+
+const faqItems = [
+  {
+    q: "What kind of businesses is the Smart Stack Pack for?",
+    a: "It's built for Niagara-region trades and fitness businesses — electricians, landscapers, HVAC, gyms, martial arts studios, and similar. If you rely on phone calls, quotes, and local reputation, this is for you.",
+  },
+  {
+    q: "Do I need to buy each piece separately?",
+    a: "No — we figure out which pieces fit your business and build around what you already have. If your website is solid, we won't redo it. We just plug in the AI, automations, and systems that are missing. You only pay for what makes sense.",
+  },
+  {
+    q: "How long does setup take?",
+    a: "Most clients are fully live within 2–3 weeks. We handle everything — you just show up for a discovery call and approve the final setup.",
+  },
+  {
+    q: "What if it doesn't work for my business?",
+    a: "That's what the Clean Hands Guarantee is for. If the systems aren't outperforming your current setup after 30 days, you get a full refund. No awkward conversation.",
+  },
+  {
+    q: "Do I need to be tech-savvy?",
+    a: "Not at all. We manage everything. You'll get a simple dashboard to see leads and reviews, but you never have to touch code, hosting, or settings.",
+  },
+  {
+    q: "Can I keep my current website?",
+    a: "Yes — we can integrate the AI agent, automations, and review engine with your existing site. But most clients choose the full stack because a managed site is included at no extra cost.",
+  },
+];
+
+const tickerItems = [
+  "CALLS ANSWERED",
+  "LEADS CAPTURED",
+  "ESTIMATES AUTOMATED",
+  "REVIEWS COLLECTED",
+  "ZERO MANUAL WORK",
+];
+
 const Index = () => {
-  const portfolioItems = [
-    {
-      title: "Pop's Landscaping",
-      description: "Professional website creation to amplify their online presence and attract higher quality leads",
-      category: "Landscaping",
-      imageUrl: "/lovable-uploads/pops-landscaping.png?v=2",
-      liveUrl: "https://popslandscaping.ca",
-    },
-    {
-      title: "Genius Fitness & MMA",
-      description: "Modern fitness studio website with class scheduling and member portal",
-      category: "Fitness & Wellness",
-      imageUrl: "/lovable-uploads/f85c8a0e-5816-4475-b06f-7f5e11fea28d.png",
-      liveUrl: "https://www.geniusfitnessandmma.com",
-    },
-    {
-      title: "Cassar Electric",
-      description: "Professional electrical services website with service listings and contact integration.",
-      category: "Home Services",
-      imageUrl: "/lovable-uploads/cassar-electric.png",
-      liveUrl: "https://cassarelectric.ca",
-    },
-    {
-      title: "The Carrot Effect",
-      description: "Professional consulting firm website with resource library",
-      category: "Business Services",
-      imageUrl: "/lovable-uploads/4a288da7-0dfe-401d-8145-ae4a58e5ac0b.png",
-      liveUrl: "https://thecarroteffect.ca",
-    },
-    {
-      title: "Genius Fitness Automation",
-      description: "AI-powered lead management automation with email capture, Google Sheets logging, and SMS notifications",
-      category: "Business Automation",
-      imageUrl: "/lovable-uploads/genius-fitness-automation.png",
-    },
-  ];
-
-  const workflowSteps = [
-    {
-      title: "Discovery",
-      description: "We connect to discuss your vision and understand your needs — what you're looking for, who you're reaching, and how I can set up systems that work for you.",
-    },
-    {
-      title: "Design",
-      description: "I create a free concept website, AI agent demo, or automation walkthrough based on your ideas, giving you a clear visual of exactly what your managed system will look like before any commitment.",
-    },
-    {
-      title: "Setup",
-      description: "After onboarding, we collaborate to refine the concept and perfect every detail until your system is ready to go live.",
-    },
-    {
-      title: "Go Live & Ongoing Care",
-      description: "Your system goes live and I take care of everything from there — hosting, updates, security, SEO, and performance. You run your business; I keep your systems running smoothly.",
-    },
-  ];
-
-  const features = [
-    {
-      icon: Clock,
-      title: "Fast Setup",
-      description: "Get up and running fast — your system is live in days, then continuously refined.",
-    },
-    {
-      icon: Star,
-      title: "Proven Value",
-      description: "See real results from real clients with verified reviews.",
-    },
-    {
-      icon: DollarSign,
-      title: "Simple Monthly Pricing",
-      description: "Predictable monthly pricing — no surprise costs, just reliable service.",
-    },
-  ];
-
   return (
     <>
-      <SEO 
+      <SEO
         canonical="/"
-        title="Web Design Ontario"
-        description="Custom web design, AI agents & automation for Ontario small businesses. Managed monthly services with a 30-day money-back guarantee. Book your free discovery call."
+        title="Saltarelli Web Studio | Smart Systems for Niagara Businesses"
+        description="Website, AI agents, and automations bundled into one managed monthly plan for Niagara trades and fitness businesses. Take the free After-Hours Audit."
         schema={{
           "@context": "https://schema.org",
           "@type": "ProfessionalService",
-          "name": "Saltarelli Web Studio",
-          "url": "https://saltarelliwebstudio.ca",
-          "logo": "https://saltarelliwebstudio.ca/sws-logo.png",
-          "description": "Custom web design, AI agents, and business automation services for Ontario small businesses.",
-          "telephone": "+12895135284",
-          "email": "saltarelliwebstudio@gmail.com",
-          "areaServed": [{"@type": "State", "name": "Ontario", "containedInPlace": {"@type": "Country", "name": "Canada"}}],
-          "founder": {"@type": "Person", "name": "Adam Saltarelli"},
-          "serviceType": ["Web Design", "Website Redesign", "AI Chat Widgets", "AI Voice Agents", "Business Automation", "SEO Optimization"],
-          "priceRange": "$$",
-          "knowsLanguage": "en",
-          "aggregateRating": {"@type": "AggregateRating", "ratingValue": "5", "reviewCount": "3"},
-          "review": [
-            {"@type": "Review", "author": {"@type": "Person", "name": "Owner, Mom Duke's Authentic Jamaican Cuisine"}, "reviewRating": {"@type": "Rating", "ratingValue": "5"}, "reviewBody": "I would highly recommend Adam if you are looking to refresh your website. He did a fantastic job for us and we are really happy with the results."},
-            {"@type": "Review", "author": {"@type": "Person", "name": "Owner, Genius Fitness & MMA"}, "reviewRating": {"@type": "Rating", "ratingValue": "5"}, "reviewBody": "Adam does a fantastic job putting together your dream website. Definitely recommend to any business."},
-            {"@type": "Review", "author": {"@type": "Person", "name": "Owner, Pop's Landscaping"}, "reviewRating": {"@type": "Rating", "ratingValue": "5"}, "reviewBody": "Adam did an amazing job designing our website from start to finish. He was professional, easy to communicate with, and really took the time to understand what I wanted."}
-          ]
+          name: "Saltarelli Web Studio",
+          url: "https://saltarelliwebstudio.ca",
+          logo: "https://saltarelliwebstudio.ca/sws-logo.png",
+          description:
+            "Smart systems for Niagara trades & fitness businesses — websites, AI, and automations bundled into one managed stack.",
+          telephone: "+12895135284",
+          email: "saltarelliwebstudio@gmail.com",
+          areaServed: [
+            {
+              "@type": "State",
+              name: "Ontario",
+              containedInPlace: { "@type": "Country", name: "Canada" },
+            },
+          ],
+          founder: { "@type": "Person", name: "Adam Saltarelli" },
+          serviceType: [
+            "Web Design",
+            "AI Chat Widgets",
+            "AI Voice Agents",
+            "Business Automation",
+            "CRM",
+            "Review Management",
+          ],
+          priceRange: "$$",
+          knowsLanguage: "en",
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: "5",
+            reviewCount: "12",
+          },
+          review: [
+            {
+              "@type": "Review",
+              author: { "@type": "Person", name: "Anthony, Genius Fitness & MMA" },
+              reviewRating: { "@type": "Rating", ratingValue: "5" },
+              reviewBody:
+                "Adam built our full member portal and automated our check-ins. Runs like clockwork — I barely touch it.",
+            },
+            {
+              "@type": "Review",
+              author: { "@type": "Person", name: "Owner, Pop's Landscaping" },
+              reviewRating: { "@type": "Rating", ratingValue: "5" },
+              reviewBody:
+                "Adam did an amazing job designing our website from start to finish. Professional, easy to communicate with, and delivered on time.",
+            },
+            {
+              "@type": "Review",
+              author: {
+                "@type": "Person",
+                name: "Owner, Mom Duke's Authentic Jamaican Cuisine",
+              },
+              reviewRating: { "@type": "Rating", ratingValue: "5" },
+              reviewBody:
+                "I would highly recommend Adam if you are looking to refresh your website. He did a fantastic job for us.",
+            },
+            {
+              "@type": "Review",
+              author: { "@type": "Person", name: "Claude Chaisson" },
+              reviewRating: { "@type": "Rating", ratingValue: "5" },
+              reviewBody:
+                "I'm glad I found Adam to do this website for me. He made it easy and I appreciate it working with him and I. Thank you",
+            },
+          ],
         }}
       />
-    <div className="min-h-screen bg-background text-foreground relative flex flex-col overflow-x-hidden">
-      <Starfield />
-      
-      {/* Mesh gradient overlay */}
-      <div className="fixed inset-0 bg-mesh pointer-events-none z-0" />
-      
-      <Header />
+      <div className="min-h-screen bg-background text-foreground relative flex flex-col overflow-x-hidden">
+        <Starfield />
+        <div className="fixed inset-0 bg-mesh pointer-events-none z-0" />
+        <Header />
 
-      {/* Hero Section */}
-      <section className="relative min-h-[100svh] flex items-center justify-center px-4 md:px-6 pt-20 pb-10">
-        <div className="container mx-auto max-w-6xl relative z-10">
-          <div className="text-center">
-            {/* Floating Logo */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.5, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="mb-8 flex justify-center"
-            >
+        {/* ──────────── HERO ──────────── */}
+        <section className="relative min-h-[100svh] flex items-center justify-center px-4 md:px-6 pt-20 pb-10">
+          <div className="container mx-auto max-w-6xl relative z-10">
+            <div className="text-center">
+              {/* Floating Logo */}
               <motion.div
-                animate={{ y: [-10, 10, -10] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                className="relative"
+                initial={{ opacity: 0, scale: 0.5, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                className="mb-8 flex justify-center"
               >
-                <div className="absolute inset-0 blur-3xl bg-primary/30 rounded-full scale-150" />
-                <img
-                  src={logo}
-                  alt="Saltarelli Web Studio"
-                  className="h-32 w-32 md:h-40 md:w-40 relative z-10 drop-shadow-2xl"
-                  width={160}
-                  height={160}
-                  fetchPriority="high"
-                />
+                <motion.div
+                  animate={{ y: [-10, 10, -10] }}
+                  transition={{
+                    duration: 6,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                  className="relative"
+                >
+                  <div className="absolute inset-0 blur-3xl bg-primary/30 rounded-full scale-150" />
+                  <img
+                    src={logo}
+                    alt="Saltarelli Web Studio"
+                    className="h-32 w-32 md:h-40 md:w-40 relative z-10 drop-shadow-2xl"
+                    width={160}
+                    height={160}
+                    fetchPriority="high"
+                  />
+                </motion.div>
               </motion.div>
-            </motion.div>
 
-            {/* Main Heading */}
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold mb-6 leading-tight"
-            >
-              Turn your dreams into{" "}
-              <span className="text-primary glow-text">reality</span>
-            </motion.h1>
+              {/* Main Heading */}
+              <motion.h1
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.8,
+                  delay: 0.2,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-heading font-bold mb-6 leading-tight max-w-5xl mx-auto"
+              >
+                YOUR BUSINESS SHOULD{" "}
+                <span className="text-primary glow-text">RUN WITHOUT YOU</span>{" "}
+                BABYSITTING IT.
+              </motion.h1>
 
-            {/* Subtitle */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed px-4"
-            >
-              Let's set up the systems your business deserves. Book a free consultation and get a website, AI agent, or automation that's managed, optimized, and always working for you.
-            </motion.p>
+              {/* Subtitle */}
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed px-4"
+              >
+                We set up the systems. You get back to work.
+              </motion.p>
 
-            {/* CTA Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center px-4"
-            >
-              <Button variant="hero" size="lg" asChild className="text-base">
-                <TrackedLink to="/funnel" trackingLabel="hero_calculate_revenue_loss" className="gap-2">
-                  <Sparkles size={18} />
-                  Calculate Your Revenue Loss →
-                </TrackedLink>
-              </Button>
-              <Button variant="cosmic" size="lg" asChild className="text-base">
-                <TrackedExternalLink href="https://calendly.com/saltarelliwebstudio/30min" trackingLabel="hero_book_a_call" className="gap-2 inline-flex items-center justify-center">
-                  Book a Call
+              {/* CTA Buttons */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                className="flex flex-col sm:flex-row gap-4 justify-center px-4"
+              >
+                <Button variant="hero" size="lg" asChild className="text-base">
+                  <a href="#audit" className="gap-2">
+                    <Sparkles size={18} />
+                    Take the Free Audit →
+                  </a>
+                </Button>
+                <Button
+                  variant="cosmic"
+                  size="lg"
+                  asChild
+                  className="text-base"
+                >
+                  <a
+                    href="#smart-stack"
+                    className="gap-2 inline-flex items-center justify-center"
+                  >
+                    See What's Included
+                    <ArrowRight size={18} />
+                  </a>
+                </Button>
+              </motion.div>
+
+              {/* Trust Badge */}
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+                className="text-sm text-muted-foreground mt-4"
+              >
+                Backed by our Clean Hands Guarantee
+              </motion.p>
+            </div>
+          </div>
+        </section>
+
+        {/* ──────────── SCROLLING TICKER BAR ──────────── */}
+        <div className="relative z-10 overflow-hidden bg-primary py-3">
+          <div className="ticker-track">
+            {[...tickerItems, ...tickerItems].map((item, i) => (
+              <span
+                key={i}
+                className="inline-block whitespace-nowrap text-white font-bold text-sm tracking-widest mx-8"
+              >
+                {item}
+              </span>
+            ))}
+            {[...tickerItems, ...tickerItems].map((item, i) => (
+              <span
+                key={`dup-${i}`}
+                className="inline-block whitespace-nowrap text-white font-bold text-sm tracking-widest mx-8"
+              >
+                {item}
+              </span>
+            ))}
+          </div>
+          <style>{`
+            .ticker-track {
+              display: flex;
+              width: max-content;
+              animation: ticker 30s linear infinite;
+            }
+            @keyframes ticker {
+              0% { transform: translateX(0); }
+              100% { transform: translateX(-50%); }
+            }
+          `}</style>
+        </div>
+
+        {/* ──────────── GENIUS FITNESS CASE STUDY ──────────── */}
+        <section className="py-20 md:py-28 px-4 md:px-6 relative z-10">
+          <div className="container mx-auto max-w-6xl">
+            <FadeIn className="text-center mb-12">
+              <span className="text-primary font-bold text-sm tracking-widest uppercase mb-3 block">
+                Featured Client
+              </span>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-4">
+                See Why UFC Contender Series Fighter{" "}
+                <span className="text-primary">Anthony Romero</span> Uses the Stack
+              </h2>
+              <p className="text-sm text-muted-foreground">
+                PFL World Champion · Owner, Genius Fitness & MMA — Port Colborne, Ontario
+              </p>
+            </FadeIn>
+
+            {/* Video embed */}
+            <FadeIn className="mb-6 max-w-3xl mx-auto">
+              <div className="rounded-2xl overflow-hidden border border-white/10 bg-card/50">
+                <video
+                  src="/genius-fitness-case-study.mp4"
+                  controls
+                  playsInline
+                  preload="metadata"
+                  poster="/genius-fitness-poster.jpg"
+                  className="w-full aspect-video"
+                >
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </FadeIn>
+
+            {/* Info strip */}
+            <StaggerContainer className="grid md:grid-cols-3 gap-6">
+              <StaggerItem>
+                <div className="glass rounded-xl p-6 text-center h-full">
+                  <p className="text-primary font-bold text-sm tracking-widest uppercase mb-2">
+                    The Client
+                  </p>
+                  <p className="text-muted-foreground">
+                    Genius Fitness & MMA — a Niagara combat sports gym with 80+ active members and growing.
+                  </p>
+                </div>
+              </StaggerItem>
+              <StaggerItem>
+                <div className="glass rounded-xl p-6 text-center h-full">
+                  <p className="text-primary font-bold text-sm tracking-widest uppercase mb-2">
+                    The Problem
+                  </p>
+                  <p className="text-muted-foreground">
+                    Manual check-ins, missed leads, no online scheduling, and zero follow-up automation.
+                  </p>
+                </div>
+              </StaggerItem>
+              <StaggerItem>
+                <div className="glass rounded-xl p-6 text-center h-full">
+                  <p className="text-primary font-bold text-sm tracking-widest uppercase mb-2">
+                    The Result
+                  </p>
+                  <p className="text-muted-foreground">
+                    Full member portal, kiosk check-in, automated notifications, and a coach who barely touches the tech.
+                  </p>
+                </div>
+              </StaggerItem>
+            </StaggerContainer>
+          </div>
+        </section>
+
+        {/* ──────────── GOOGLE REVIEW BOMB ──────────── */}
+        <section className="py-20 md:py-28 px-4 md:px-6 relative z-10">
+          <div className="container mx-auto max-w-6xl">
+            <FadeIn className="text-center mb-12">
+              <span className="text-primary font-bold text-sm tracking-widest uppercase mb-3 block">
+                Real Clients. Real Results.
+              </span>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-4">
+                What Niagara Business Owners Are Saying
+              </h2>
+              <p className="text-sm text-muted-foreground">All reviews verified on Google.</p>
+            </FadeIn>
+
+            <div className="columns-1 md:columns-2 lg:columns-3 gap-5 space-y-5">
+              {/* CARD 1 — Zachary Melnyk (featured) */}
+              <ScaleIn>
+                <div className="break-inside-avoid glass-strong rounded-2xl p-6 border border-primary/30 shadow-glow">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 rounded-full bg-indigo-600 flex items-center justify-center text-white font-bold text-sm">Z</div>
+                    <div>
+                      <p className="font-heading font-semibold text-foreground">Zachary Melnyk</p>
+                      <p className="text-xs text-muted-foreground">Melnyk Concrete — Automations Client</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="flex gap-0.5">{[...Array(5)].map((_, i) => <Star key={i} size={16} className="fill-primary text-primary" />)}</div>
+                    <span className="text-xs text-muted-foreground">1 month ago</span>
+                  </div>
+                  <p className="text-foreground/90 text-sm leading-relaxed">
+                    "Adam has been a huge help to the business. He built out multiple automations to streamline our admin processes and took a lot of repetitive work off our plate. What stood out most was how responsive and thorough he was throughout the entire process. Anytime I needed adjustments, variations, or wanted to fine-tune how the automation worked, he handled it quickly and made sure everything was dialed in properly with our company's operating procedures. He's knowledgeable, easy to communicate with, and clearly cares about doing things the right way, not just rushing to 'get it done.' We'll definitely be continuing to work with Adam moving forward and I'd recommend him to anyone looking to improve their systems and automate tasks the right way."
+                  </p>
+                </div>
+              </ScaleIn>
+
+              {/* CARD 6 — Joseph Ruscica (NEW) */}
+              <ScaleIn delay={0.05}>
+                <div className="break-inside-avoid glass rounded-xl p-5 border border-white/10">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 rounded-full bg-emerald-600 flex items-center justify-center text-white font-bold text-sm">J</div>
+                    <div>
+                      <p className="font-heading font-semibold text-foreground">Joseph Ruscica</p>
+                      <p className="text-xs text-muted-foreground">Website Client</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="flex gap-0.5">{[...Array(5)].map((_, i) => <Star key={i} size={16} className="fill-primary text-primary" />)}</div>
+                    <span className="text-xs text-muted-foreground">1 week ago</span>
+                    <span className="text-[10px] font-bold bg-primary/20 text-primary px-2 py-0.5 rounded-full">NEW</span>
+                  </div>
+                  <p className="text-foreground/90 text-sm leading-relaxed">
+                    "Easy to work with, amazing pricing, and even better workmanship. Adam really goes above and beyond any big name web designers and at a fraction of the price. Will be referring him to anybody in need of a quality website from now on."
+                  </p>
+                </div>
+              </ScaleIn>
+
+              {/* CARD 2 — 360 Property Maintenance */}
+              <ScaleIn delay={0.1}>
+                <div className="break-inside-avoid glass rounded-xl p-5 border border-white/10">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 rounded-full bg-sky-600 flex items-center justify-center text-white font-bold text-sm">3</div>
+                    <div>
+                      <p className="font-heading font-semibold text-foreground">360 Property Maintenance</p>
+                      <p className="text-xs text-muted-foreground">Website Client</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="flex gap-0.5">{[...Array(5)].map((_, i) => <Star key={i} size={16} className="fill-primary text-primary" />)}</div>
+                    <span className="text-xs text-muted-foreground">1 month ago</span>
+                  </div>
+                  <p className="text-foreground/90 text-sm leading-relaxed">
+                    "I can't say enough good things about working with Adam Saltarelli Web Studio. From the first call, everything was organized and professional. He listened to what I wanted, gave great suggestions, and created a website that looks modern, clean, and is very easy to navigate (even added a FAQs section that I hadn't thought of which by the way is brilliant). The site works perfectly on mobile or Desktop loads quickly. I've already received compliments and new inquiries since launching. Highly recommend!"
+                  </p>
+                </div>
+              </ScaleIn>
+
+              {/* CARD 7 — Arlene Austin (NEW) */}
+              <ScaleIn delay={0.15}>
+                <div className="break-inside-avoid glass rounded-xl p-5 border border-white/10">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 rounded-full bg-green-600 flex items-center justify-center text-white font-bold text-sm">A</div>
+                    <div>
+                      <p className="font-heading font-semibold text-foreground">Arlene Austin</p>
+                      <p className="text-xs text-muted-foreground">Website Client</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="flex gap-0.5">{[...Array(5)].map((_, i) => <Star key={i} size={16} className="fill-primary text-primary" />)}</div>
+                    <span className="text-xs text-muted-foreground">2 weeks ago</span>
+                    <span className="text-[10px] font-bold bg-primary/20 text-primary px-2 py-0.5 rounded-full">NEW</span>
+                  </div>
+                  <p className="text-foreground/90 text-sm leading-relaxed">
+                    "Working with Adam was definitely a 100/10 experience He is knowledgeable, forward thinking, readily accessible and willing to suggest ways to set-up your platform. I would highly recommend Adam to anyone looking for a talented web designer, to show case your business."
+                  </p>
+                </div>
+              </ScaleIn>
+
+              {/* CARD 3 — Pop's Landscaping */}
+              <ScaleIn delay={0.2}>
+                <div className="break-inside-avoid glass rounded-xl p-5 border border-white/10">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 rounded-full bg-lime-700 flex items-center justify-center text-white font-bold text-sm">P</div>
+                    <div>
+                      <p className="font-heading font-semibold text-foreground">Pop's Landscaping</p>
+                      <p className="text-xs text-muted-foreground">Website Client</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="flex gap-0.5">{[...Array(5)].map((_, i) => <Star key={i} size={16} className="fill-primary text-primary" />)}</div>
+                    <span className="text-xs text-muted-foreground">2 months ago</span>
+                  </div>
+                  <p className="text-foreground/90 text-sm leading-relaxed">
+                    "Adam did an amazing job designing our website from start to finish. He was professional, easy to communicate with, and really took the time to understand what I wanted. The final site looks great, runs smoothly, and was delivered on time. I'd highly recommend Adam to anyone looking for a reliable and talented website designer."
+                  </p>
+                </div>
+              </ScaleIn>
+
+              {/* CARD 4 — Brandon Cassar */}
+              <ScaleIn delay={0.25}>
+                <div className="break-inside-avoid glass rounded-xl p-5 border border-white/10">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 rounded-full bg-amber-600 flex items-center justify-center text-white font-bold text-sm">B</div>
+                    <div>
+                      <p className="font-heading font-semibold text-foreground">Brandon Cassar</p>
+                      <p className="text-xs text-muted-foreground">Cassar Electric — Website Client</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="flex gap-0.5">{[...Array(5)].map((_, i) => <Star key={i} size={16} className="fill-primary text-primary" />)}</div>
+                    <span className="text-xs text-muted-foreground">2 months ago</span>
+                  </div>
+                  <p className="text-foreground/90 text-sm leading-relaxed">
+                    "Adam is fantastic! We used SWS for the design and creation for our website and we couldn't be happier with his services. We will continue use SWS in the future for website content and branding needs!"
+                  </p>
+                </div>
+              </ScaleIn>
+
+              {/* CARD 5 — Joe Eddleston */}
+              <ScaleIn delay={0.3}>
+                <div className="break-inside-avoid glass rounded-xl p-5 border border-white/10">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 rounded-full bg-stone-600 flex items-center justify-center text-white font-bold text-sm">J</div>
+                    <div>
+                      <p className="font-heading font-semibold text-foreground">Joe Eddleston</p>
+                      <p className="text-xs text-muted-foreground">Bluewater Stone — Website Client</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="flex gap-0.5">{[...Array(5)].map((_, i) => <Star key={i} size={16} className="fill-primary text-primary" />)}</div>
+                    <span className="text-xs text-muted-foreground">2 months ago</span>
+                  </div>
+                  <p className="text-foreground/90 text-sm leading-relaxed">
+                    "We had an amazing experience working with our web designer on the Bluewater Stone website. From start to finish, the process was smooth, professional, and efficient. They truly understood our brand and translated our vision into a clean, modern site that represents our hardscaping work perfectly. Communication was excellent, turnaround times were fast, and the final product exceeded our expectations. I would highly recommend them to any business looking for top-quality web design."
+                  </p>
+                </div>
+              </ScaleIn>
+
+              {/* CARD — Anthony Romero */}
+              <ScaleIn delay={0.35}>
+                <div className="break-inside-avoid glass rounded-xl p-5 border border-white/10">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 rounded-full bg-blue-700 flex items-center justify-center text-white font-bold text-sm">A</div>
+                    <div>
+                      <p className="font-heading font-semibold text-foreground">Anthony Romero</p>
+                      <p className="text-xs text-muted-foreground">Genius Fitness & MMA — Website & Portal Client</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="flex gap-0.5">{[...Array(5)].map((_, i) => <Star key={i} size={16} className="fill-primary text-primary" />)}</div>
+                    <span className="text-xs text-muted-foreground">2 months ago</span>
+                  </div>
+                  <p className="text-foreground/90 text-sm leading-relaxed">
+                    "Adam does a fantastic job putting together your dream website. Definitely recommend to any business."
+                  </p>
+                </div>
+              </ScaleIn>
+
+              {/* CARD — Joseph Ballouz */}
+              <ScaleIn delay={0.4}>
+                <div className="break-inside-avoid glass rounded-xl p-5 border border-white/10">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 rounded-full bg-slate-600 flex items-center justify-center text-white font-bold text-sm">J</div>
+                    <div>
+                      <p className="font-heading font-semibold text-foreground">Joseph Ballouz</p>
+                      <p className="text-xs text-muted-foreground">Streetball.ai — Website Client</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="flex gap-0.5">{[...Array(5)].map((_, i) => <Star key={i} size={16} className="fill-primary text-primary" />)}</div>
+                    <span className="text-xs text-muted-foreground">2 months ago</span>
+                  </div>
+                  <p className="text-foreground/90 text-sm leading-relaxed">
+                    "Amazing product and service! Adam is very nice and professional, he listens carefully to your needs and delivers exactly that. For my landing page streetball.ai, I described via text what I wanted, then Adam did a free prototype, then we refined it together. Highly recommend!"
+                  </p>
+                </div>
+              </ScaleIn>
+
+              {/* CARD — Olivier Michel */}
+              <ScaleIn delay={0.45}>
+                <div className="break-inside-avoid glass rounded-xl p-5 border border-white/10">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 rounded-full bg-purple-600 flex items-center justify-center text-white font-bold text-sm">O</div>
+                    <div>
+                      <p className="font-heading font-semibold text-foreground">Olivier Michel</p>
+                      <p className="text-xs text-muted-foreground">Website Client</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="flex gap-0.5">{[...Array(5)].map((_, i) => <Star key={i} size={16} className="fill-primary text-primary" />)}</div>
+                    <span className="text-xs text-muted-foreground">2 months ago</span>
+                  </div>
+                  <p className="text-foreground/90 text-sm leading-relaxed">
+                    "Saltarelli web studio delivers high quality and timely websites. I highly recommend Adam because he's amazing to work with."
+                  </p>
+                </div>
+              </ScaleIn>
+
+              {/* CARD — Colton Saliba */}
+              <ScaleIn delay={0.5}>
+                <div className="break-inside-avoid glass rounded-xl p-5 border border-white/10">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 rounded-full bg-orange-700 flex items-center justify-center text-white font-bold text-sm">C</div>
+                    <div>
+                      <p className="font-heading font-semibold text-foreground">Colton Saliba</p>
+                      <p className="text-xs text-muted-foreground">Website Client</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="flex gap-0.5">{[...Array(5)].map((_, i) => <Star key={i} size={16} className="fill-primary text-primary" />)}</div>
+                    <span className="text-xs text-muted-foreground">1 month ago</span>
+                  </div>
+                  <p className="text-foreground/90 text-sm leading-relaxed">
+                    "Thank Adam for making such a great website, it surpassed my expectations by far. For anyone looking for a website for their business I 100% recommend Adam."
+                  </p>
+                </div>
+              </ScaleIn>
+
+              {/* CARD — Claude Chaisson */}
+              <ScaleIn delay={0.55}>
+                <div className="break-inside-avoid glass rounded-xl p-5 border border-white/10">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 rounded-full bg-yellow-700 flex items-center justify-center text-white font-bold text-sm">C</div>
+                    <div>
+                      <p className="font-heading font-semibold text-foreground">Claude Chaisson</p>
+                      <p className="text-xs text-muted-foreground">Website Client</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="flex gap-0.5">{[...Array(5)].map((_, i) => <Star key={i} size={16} className="fill-primary text-primary" />)}</div>
+                    <span className="text-xs text-muted-foreground">1 month ago</span>
+                    <span className="text-[10px] font-bold bg-primary/20 text-primary px-2 py-0.5 rounded-full">NEW</span>
+                  </div>
+                  <p className="text-foreground/90 text-sm leading-relaxed">
+                    "I'm glad I found Adam to do this website for me. He made it easy and I appreciate it working with him and I. Thank you"
+                  </p>
+                </div>
+              </ScaleIn>
+            </div>
+
+            <FadeIn className="text-center mt-8">
+              <p className="text-sm text-muted-foreground">All reviews posted on Google · Niagara Region, Ontario</p>
+            </FadeIn>
+          </div>
+        </section>
+
+        {/* ──────────── AFTER-HOURS AUDIT ──────────── */}
+        <section
+          id="audit"
+          className="py-20 md:py-28 px-4 md:px-6 relative z-10"
+        >
+          <div className="container mx-auto max-w-6xl">
+            <FadeIn className="text-center mb-10">
+              <span className="text-primary font-bold text-sm tracking-widest uppercase mb-3 block">
+                Free Audit (less than one minute)
+              </span>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold">
+                Find Out What's Leaking
+              </h2>
+            </FadeIn>
+            <AfterHoursAudit />
+          </div>
+        </section>
+
+        {/* ──────────── SMART STACK PACK ──────────── */}
+        <section
+          id="smart-stack"
+          className="py-20 md:py-28 px-4 md:px-6 relative z-10"
+        >
+          <div className="container mx-auto max-w-6xl">
+            <FadeIn className="text-center mb-12">
+              <span className="text-primary font-bold text-sm tracking-widest uppercase mb-3 block">
+                The Offer
+              </span>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-4">
+                The Smart Stack Pack
+              </h2>
+            </FadeIn>
+
+            <StaggerContainer className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-5 mb-8">
+              {smartStackCards.map((card, i) => (
+                <StaggerItem key={i}>
+                  <SmartStackCard {...card} />
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
+
+            <FadeIn className="text-center">
+              <p className="text-sm text-muted-foreground mb-6 max-w-xl mx-auto">
+                Everything above is bundled into one simple monthly plan. No
+                contracts. Cancel anytime.
+              </p>
+              <Button variant="hero" size="lg" asChild>
+                <TrackedExternalLink
+                  href="https://calendly.com/saltarelliwebstudio/30min"
+                  trackingLabel="smart_stack_book_call"
+                  className="gap-2 inline-flex items-center justify-center"
+                >
+                  Book a Discovery Call
                   <ArrowRight size={18} />
                 </TrackedExternalLink>
               </Button>
-            </motion.div>
-
-            {/* Trust Badge */}
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-              className="text-sm text-muted-foreground mt-4"
-            >
-              🔒 Backed by our Clean Hands Guarantee
-            </motion.p>
+            </FadeIn>
           </div>
-        </div>
+        </section>
 
-      </section>
+        {/* ──────────── HOW IT WORKS ──────────── */}
+        <section className="py-20 md:py-28 px-4 md:px-6 relative z-10">
+          <div className="container mx-auto max-w-4xl">
+            <FadeIn className="text-center mb-12 md:mb-16">
+              <span className="text-primary font-bold text-sm tracking-widest uppercase mb-3 block">
+                The Process
+              </span>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-4">
+                Three Steps. Then It Just{" "}
+                <span className="text-primary">Runs.</span>
+              </h2>
+            </FadeIn>
 
-      {/* Clean Hands Guarantee */}
-      <section className="py-20 md:py-28 px-4 md:px-6 relative z-10">
-        <div className="container mx-auto max-w-3xl">
-          <FadeIn>
-            <div className="relative rounded-2xl border border-primary/30 bg-card/50 backdrop-blur-sm p-8 md:p-12 text-center shadow-glow">
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/5 to-accent/5 pointer-events-none" />
-              <div className="relative z-10">
-                <div className="flex justify-center mb-6">
-                  <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center">
-                    <ShieldCheck className="text-primary" size={32} />
-                  </div>
-                </div>
-                <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
-                  Clean Hands Guarantee
-                </h2>
-                <p className="text-muted-foreground text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
-                  If our systems aren't working harder than your youngest apprentice after 30 days, we'll refund every dollar you paid. No awkward conversation.
-                </p>
-              </div>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* About Snapshot */}
-      <section className="py-20 md:py-28 px-4 md:px-6 relative z-10">
-        <div className="container mx-auto max-w-4xl">
-          <FadeIn className="text-center">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-6">
-              Hi, I'm <span className="text-primary">Adam</span>
-            </h2>
-            <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">
-              I'm a tech-savvy guy from Ontario who sets up and manages websites, AI agents, and business automations — so you can focus on running your business while I handle the tech.
-              I combine practical design with quality workmanship — raised to believe if you won't do your best, don't bother.
-            </p>
-            <Button variant="hero" asChild>
-              <TrackedLink to="/about" trackingLabel="about_learn_more">Learn More About Me</TrackedLink>
-            </Button>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section className="py-20 md:py-28 px-4 md:px-6 relative z-10">
-        <div className="container mx-auto max-w-6xl">
-          <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {features.map((feature, index) => (
-              <StaggerItem key={index}>
-                <Card className="glass group hover:shadow-glow transition-all duration-500 hover:-translate-y-2 h-full">
-                  <CardHeader>
-                    <motion.div
-                      whileHover={{ scale: 1.1, rotate: 5 }}
-                      transition={{ type: "spring", stiffness: 400 }}
-                    >
-                      <feature.icon
-                        className="text-primary mb-4"
-                        size={44}
-                      />
-                    </motion.div>
-                    <CardTitle className="text-xl font-heading">{feature.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground">{feature.description}</p>
-                  </CardContent>
-                </Card>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-        </div>
-      </section>
-
-      {/* Services & Pricing */}
-      <section id="services" className="py-20 md:py-28 px-4 md:px-6 relative z-10">
-        <div className="container mx-auto max-w-6xl">
-          <FadeIn className="text-center mb-12 md:mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-4">
-              Your Systems, <span className="text-primary">Always Running</span>
-            </h2>
-            <p className="text-lg md:text-xl text-muted-foreground">
-              Managed websites, intelligent AI agents, and reliable automations
-            </p>
-          </FadeIn>
-
-          {/* Website Services Row */}
-          <StaggerContainer className="grid md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto mb-6">
-            <StaggerItem>
-              <Card className="h-full bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all duration-300">
-                <CardHeader>
-                  <CardTitle className="text-xl font-heading">Website Creation</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <p className="text-muted-foreground">Launch a professionally designed website that's continuously maintained and optimized for your business.</p>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li>• Full domain setup & ongoing management</li>
-                    <li>• Ongoing updates as your business evolves</li>
-                    <li>• Hosting and continuous SEO optimization</li>
-                  </ul>
-                  <Button variant="outline" asChild className="w-full mt-4">
-                    <TrackedLink to="/services" trackingLabel="services_learn_more_creation">Learn More</TrackedLink>
-                  </Button>
-                </CardContent>
-              </Card>
-            </StaggerItem>
-            <StaggerItem>
-              <Card className="h-full bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all duration-300">
-                <CardHeader>
-                  <CardTitle className="text-xl font-heading">Website Redesign</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <p className="text-muted-foreground">Migrate to a modern, professionally managed website with ongoing improvements and support.</p>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li>• Seamless migration with zero downtime</li>
-                    <li>• Modern design with continuous refinements</li>
-                    <li>• Ongoing SEO monitoring and optimization</li>
-                  </ul>
-                  <Button variant="outline" asChild className="w-full mt-4">
-                    <TrackedLink to="/services" trackingLabel="services_learn_more_redesign">Learn More</TrackedLink>
-                  </Button>
-                </CardContent>
-              </Card>
-            </StaggerItem>
-            <StaggerItem>
-              <Card className="h-full bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all duration-300">
-                <CardHeader>
-                  <CardTitle className="text-xl font-heading">Chat Widget</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <p className="text-muted-foreground">An AI-powered chat assistant trained on your business that answers questions and qualifies leads 24/7.</p>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li>• Trained on your specific business knowledge</li>
-                    <li>• Qualifies leads automatically</li>
-                    <li>• Seamlessly integrated into your website</li>
-                  </ul>
-                  <Button variant="outline" asChild className="w-full mt-4">
-                    <TrackedLink to="/services" trackingLabel="services_learn_more_chat_widget">Learn More</TrackedLink>
-                  </Button>
-                </CardContent>
-              </Card>
-            </StaggerItem>
-          </StaggerContainer>
-
-          {/* AI & Automation Services Row */}
-          <StaggerContainer className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto mb-8">
-            <StaggerItem>
-              <Card className="h-full relative overflow-hidden bg-gradient-to-br from-accent/20 via-accent/10 to-transparent border-accent/40 hover:border-accent/60 transition-all duration-500">
-                <div className="absolute top-0 right-0 bg-gradient-to-r from-accent to-primary text-white px-3 py-1 text-xs font-bold rounded-bl-lg">
-                  NEW
-                </div>
-                <CardContent className="p-6 flex flex-col h-full">
-                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-accent to-primary flex items-center justify-center flex-shrink-0 shadow-glow mb-4">
-                    <Bot className="w-7 h-7 text-white" />
-                  </div>
-                  <h3 className="text-xl font-heading font-bold mb-2">AI Agents</h3>
-                  <p className="text-muted-foreground mb-4 flex-1">
-                    Voice and text agents that answer calls, capture leads, and respond to customers 24/7.
-                  </p>
-                  <ul className="flex flex-wrap gap-2 mb-4">
-                    <li className="text-xs bg-accent/20 text-accent-foreground px-2 py-1 rounded-full">24/7</li>
-                    <li className="text-xs bg-accent/20 text-accent-foreground px-2 py-1 rounded-full">Call & Text</li>
-                    <li className="text-xs bg-accent/20 text-accent-foreground px-2 py-1 rounded-full">Lead Capture</li>
-                  </ul>
-                  <Button variant="hero" asChild className="w-full">
-                    <TrackedLink to="/ai-agents" trackingLabel="services_learn_more_ai_agents">Learn More</TrackedLink>
-                  </Button>
-                </CardContent>
-              </Card>
-            </StaggerItem>
-            <StaggerItem>
-              <Card className="h-full relative overflow-hidden bg-gradient-to-br from-primary/20 via-primary/10 to-transparent border-primary/40 hover:border-primary/60 transition-all duration-500">
-                <div className="absolute top-0 right-0 bg-gradient-to-r from-primary to-accent text-white px-3 py-1 text-xs font-bold rounded-bl-lg">
-                  NEW
-                </div>
-                <CardContent className="p-6 flex flex-col h-full">
-                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center flex-shrink-0 shadow-glow mb-4">
-                    <Workflow className="w-7 h-7 text-white" />
-                  </div>
-                  <h3 className="text-xl font-heading font-bold mb-2">Automations</h3>
-                  <p className="text-muted-foreground mb-4 flex-1">
-                    Custom workflows that handle repetitive tasks — lead capture, notifications, and more.
-                  </p>
-                  <ul className="flex flex-wrap gap-2 mb-4">
-                    <li className="text-xs bg-primary/20 text-primary-foreground px-2 py-1 rounded-full">Make.com</li>
-                    <li className="text-xs bg-primary/20 text-primary-foreground px-2 py-1 rounded-full">AI-Powered</li>
-                    <li className="text-xs bg-primary/20 text-primary-foreground px-2 py-1 rounded-full">SMS Alerts</li>
-                  </ul>
-                  <Button variant="hero" asChild className="w-full">
-                    <TrackedLink to="/automations" trackingLabel="services_learn_more_automations">Learn More</TrackedLink>
-                  </Button>
-                </CardContent>
-              </Card>
-            </StaggerItem>
-          </StaggerContainer>
-
-        </div>
-      </section>
-
-      {/* Workflow */}
-      <section className="py-20 md:py-28 px-4 md:px-6 relative z-10">
-        <div className="container mx-auto max-w-4xl">
-          <FadeIn className="text-center mb-12 md:mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-4">
-              My Simple <span className="text-primary">4-Step Process</span>
-            </h2>
-            <p className="text-lg md:text-xl text-muted-foreground">
-              Setup takes 1-3 weeks, then I handle everything ongoing
-            </p>
-          </FadeIn>
-
-          <div className="max-w-2xl mx-auto">
-            {workflowSteps.map((step, index) => (
-              <FadeIn key={index} delay={index * 0.15}>
-                <WorkflowStep number={index + 1} title={step.title} description={step.description} />
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Portfolio Preview */}
-      <section className="py-20 md:py-28 px-4 md:px-6 relative z-10">
-        <div className="container mx-auto max-w-6xl">
-          <FadeIn className="text-center mb-12 md:mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-4">
-              Featured <span className="text-primary">Work</span>
-            </h2>
-            <p className="text-lg md:text-xl text-muted-foreground">
-              Real results for real businesses
-            </p>
-          </FadeIn>
-
-          <StaggerContainer className="grid sm:grid-cols-2 gap-6 md:gap-8 mb-8">
-            {portfolioItems.filter(item => item.category !== "Business Automation").map((item, index) => (
-              <StaggerItem key={index}>
-                <PortfolioCard {...item} />
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-
-          {/* Full-width Automation Showcase */}
-          <FadeIn className="mb-10">
-            <TrackedLink to="/automations" trackingLabel="portfolio_automation_case_study" className="block group">
-              <Card className="overflow-hidden bg-card/50 backdrop-blur-sm border-accent/30 hover:border-accent/60 transition-all duration-500 hover:shadow-glow">
-                <div className="grid md:grid-cols-3 gap-0">
-                  <div className="md:col-span-2 relative overflow-hidden">
-                    <img 
-                      src="/lovable-uploads/genius-fitness-automation.png" 
-                      alt="Genius Fitness & MMA automation workflow - Make.com scenario with email capture, AI processing, Google Sheets, and SMS notifications"
-                      className="w-full h-full object-cover object-center min-h-[200px] md:min-h-[280px] group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute top-4 left-4 bg-gradient-to-r from-accent to-primary text-white px-3 py-1 text-xs font-bold rounded-lg">
-                      AUTOMATION
+            <div className="max-w-2xl mx-auto">
+              {[
+                {
+                  num: 1,
+                  title: "Discovery Call",
+                  desc: "We hop on a 30-minute call to map out your current setup, pain points, and goals. No pitch — just clarity.",
+                },
+                {
+                  num: 2,
+                  title: "Build & Setup",
+                  desc: "We design your site, train your AI agents, and wire up your automations. You approve everything before it goes live.",
+                },
+                {
+                  num: 3,
+                  title: "It Runs. You Work.",
+                  desc: "Your stack goes live. Leads get answered, reviews get collected, and you get back to the work that actually makes you money.",
+                },
+              ].map((step, idx) => (
+                <FadeIn key={idx} delay={idx * 0.15}>
+                  <div className="relative flex gap-4 md:gap-6 group">
+                    <div className="flex flex-col items-center">
+                      <motion.div
+                        whileHover={{ scale: 1.1 }}
+                        className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-primary-foreground font-bold text-lg shadow-glow transition-shadow duration-300"
+                      >
+                        {step.num}
+                      </motion.div>
+                      {idx < 2 && (
+                        <div className="w-0.5 h-full bg-border mt-3 group-hover:bg-primary/50 transition-colors duration-500" />
+                      )}
+                    </div>
+                    <div className="flex-1 pb-10 md:pb-12">
+                      <h3 className="font-heading font-semibold text-lg md:text-xl mb-2 group-hover:text-primary transition-colors duration-300">
+                        {step.title}
+                      </h3>
+                      <p className="text-muted-foreground leading-relaxed">
+                        {step.desc}
+                      </p>
                     </div>
                   </div>
-                  <div className="p-6 md:p-8 flex flex-col justify-center">
-                    <h3 className="text-xl md:text-2xl font-heading font-bold mb-3 group-hover:text-accent transition-colors">
-                      Genius Fitness Automation
-                    </h3>
-                    <p className="text-muted-foreground mb-4 text-sm md:text-base">
-                      AI-powered lead management automation with email capture, Google Sheets logging, and instant SMS notifications to coaches.
-                    </p>
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      <span className="text-xs bg-accent/20 text-accent-foreground px-2 py-1 rounded-full">Make.com</span>
-                      <span className="text-xs bg-accent/20 text-accent-foreground px-2 py-1 rounded-full">AI Processing</span>
-                      <span className="text-xs bg-accent/20 text-accent-foreground px-2 py-1 rounded-full">SMS Alerts</span>
-                    </div>
-                    <span className="text-accent font-semibold text-sm inline-flex items-center gap-2 group-hover:gap-3 transition-all">
-                      View Case Study <ArrowRight size={16} />
-                    </span>
-                  </div>
-                </div>
-              </Card>
-            </TrackedLink>
-          </FadeIn>
-
-          <FadeIn className="text-center">
-            <Button variant="outline" size="lg" asChild>
-              <TrackedLink to="/portfolio" trackingLabel="portfolio_view_all">View All Projects</TrackedLink>
-            </Button>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="py-20 md:py-28 px-4 md:px-6 relative z-10">
-        <div className="container mx-auto max-w-4xl">
-          <FadeIn className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-4">
-              What Clients <span className="text-primary">Say</span>
-            </h2>
-            <div className="flex justify-center gap-1 mb-6">
-              {[...Array(5)].map((_, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, scale: 0 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 + 0.3 }}
-                >
-                  <Star size={24} className="fill-primary text-primary" />
-                </motion.div>
+                </FadeIn>
               ))}
             </div>
-          </FadeIn>
+          </div>
+        </section>
 
-          <div className="grid gap-6 md:gap-8">
+        {/* ──────────── CLEAN HANDS GUARANTEE ──────────── */}
+        <section className="py-20 md:py-28 px-4 md:px-6 relative z-10">
+          <div className="container mx-auto max-w-3xl">
+            <FadeIn>
+              <div className="relative rounded-2xl border border-primary/30 bg-card/50 backdrop-blur-sm p-8 md:p-12 text-center shadow-glow overflow-hidden">
+                <div className="absolute top-0 left-0 right-0 h-1 bg-primary" />
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/5 to-accent/5 pointer-events-none" />
+                <div className="relative z-10">
+                  <div className="flex justify-center mb-6">
+                    <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center">
+                      <ShieldCheck className="text-primary" size={32} />
+                    </div>
+                  </div>
+                  <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
+                    Clean Hands Guarantee
+                  </h2>
+                  <p className="text-muted-foreground text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-4">
+                    If our systems aren't working harder than your youngest
+                    apprentice after 30 days, we'll refund every dollar you
+                    paid. No awkward conversation. No fine print.
+                  </p>
+                  <p className="text-sm text-muted-foreground italic">
+                    We only win when your business runs better.
+                  </p>
+                </div>
+              </div>
+            </FadeIn>
+          </div>
+        </section>
+
+        {/* ──────────── FAQ ──────────── */}
+        <section className="py-20 md:py-28 px-4 md:px-6 relative z-10">
+          <div className="container mx-auto max-w-[760px]">
+            <FadeIn className="text-center mb-12">
+              <span className="text-primary font-bold text-sm tracking-widest uppercase mb-3 block">
+                Questions
+              </span>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-4">
+                Common Questions
+              </h2>
+            </FadeIn>
+
+            <FadeIn>
+              <Accordion type="single" collapsible className="space-y-3">
+                {faqItems.map((item, i) => (
+                  <AccordionItem
+                    key={i}
+                    value={`faq-${i}`}
+                    className="glass rounded-xl border border-white/10 px-6 overflow-hidden"
+                  >
+                    <AccordionTrigger className="text-left font-heading font-semibold text-base md:text-lg hover:no-underline py-5">
+                      {item.q}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-muted-foreground text-base leading-relaxed">
+                      {item.a}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </FadeIn>
+          </div>
+        </section>
+
+        {/* ──────────── FINAL CTA ──────────── */}
+        <section className="py-20 md:py-28 px-4 md:px-6 relative z-10">
+          <div className="container mx-auto max-w-4xl">
             <ScaleIn>
-              <TestimonialCard
-                quote="I would highly recommend Adam if you are looking to refresh your website. He did a fantastic job for us and we are really happy with the results"
-                author="Owner"
-                business="Mom Duke's Authentic Jamaican Cuisine"
-                rating={5}
-              />
-            </ScaleIn>
-
-            <ScaleIn delay={0.1}>
-              <TestimonialCard
-                quote="Adam does a fantastic job putting together your dream website. Definitely recommend to any business."
-                author="Owner"
-                business="Genius Fitness & MMA"
-                rating={5}
-              />
-            </ScaleIn>
-
-            <ScaleIn delay={0.2}>
-              <TestimonialCard
-                quote="Adam did an amazing job designing our website from start to finish. He was professional, easy to communicate with, and really took the time to understand what I wanted. The final site looks great, runs smoothly, and was delivered on time. I'd highly recommend Adam to anyone looking for a reliable and talented website designer."
-                author="Owner"
-                business="Pop's Landscaping"
-                rating={5}
-              />
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300 }}
+                className="relative overflow-hidden rounded-3xl"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-secondary via-accent to-secondary opacity-95" />
+                <div className="absolute inset-0 bg-gradient-to-t from-transparent to-white/10" />
+                <div className="relative p-8 md:p-12 lg:p-16 text-center">
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{
+                      duration: 20,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
+                    className="inline-block mb-6"
+                  >
+                    <Sparkles className="text-white" size={48} />
+                  </motion.div>
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold mb-4 text-white">
+                    Ready to Get Your Systems{" "}
+                    <span className="text-primary">Handled</span>?
+                  </h2>
+                  <p className="text-base sm:text-lg md:text-xl text-white/90 mb-8 max-w-xl mx-auto">
+                    20 minutes on your schedule. We'll map out how the Smart
+                    Stack Pack can run your business while you focus on the
+                    work.
+                  </p>
+                  <Button
+                    size="lg"
+                    asChild
+                    className="bg-background text-foreground hover:bg-background/90 font-semibold shadow-lg"
+                  >
+                    <TrackedLink
+                      to="/get-started"
+                      trackingLabel="homepage_cta_book_call"
+                      className="gap-2"
+                    >
+                      Book Your Discovery Call
+                      <ArrowRight size={18} />
+                    </TrackedLink>
+                  </Button>
+                </div>
+              </motion.div>
             </ScaleIn>
           </div>
+        </section>
 
-          <FadeIn delay={0.4} className="text-center mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="outline" size="lg" asChild>
-              <TrackedExternalLink href="https://share.google/KUKqro0A4qFmdJWDn" trackingLabel="reviews_view_more" target="_blank" rel="noopener noreferrer">
-                View More!
-              </TrackedExternalLink>
-            </Button>
-            <Button variant="hero" size="lg" asChild>
-              <TrackedExternalLink href="https://g.page/r/CXhxacLPmqCqEBM/review" trackingLabel="reviews_write_review" target="_blank" rel="noopener noreferrer">
-                Write A Review!
-              </TrackedExternalLink>
-            </Button>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 md:py-28 px-4 md:px-6 relative z-10">
-        <div className="container mx-auto max-w-4xl">
-          <ScaleIn>
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 300 }}
-              className="relative overflow-hidden rounded-3xl"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-secondary via-accent to-secondary opacity-95" />
-              <div className="absolute inset-0 bg-gradient-to-t from-transparent to-white/10" />
-              <div className="relative p-8 md:p-12 lg:p-16 text-center">
-                <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                  className="inline-block mb-6"
-                >
-                  <Sparkles className="text-white" size={48} />
-                </motion.div>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold mb-4 text-white">
-                  Ready to Get Your Systems Handled?
-                </h2>
-                <p className="text-base sm:text-lg md:text-xl text-white/90 mb-8 max-w-xl mx-auto">
-                  Schedule a free consultation and let's explore how I can take the tech off your plate
-                </p>
-                <Button
-                  size="lg"
-                  asChild
-                  className="bg-background text-foreground hover:bg-background/90 font-semibold shadow-lg"
-                >
-                  <TrackedLink to="/get-started" trackingLabel="homepage_cta_book_call" className="gap-2">
-                    Book Your Discovery Call
-                    <ArrowRight size={18} />
-                  </TrackedLink>
-                </Button>
-              </div>
-            </motion.div>
-          </ScaleIn>
-        </div>
-      </section>
-
-      <Footer />
-    </div>
+        <Footer />
+      </div>
     </>
   );
 };
+
+/* ── Smart Stack Card (inline) ── */
+function SmartStackCard({
+  emoji,
+  name,
+  tagline,
+  detail,
+}: {
+  emoji: string;
+  name: string;
+  tagline: string;
+  detail: string;
+}) {
+  const [hovered, setHovered] = useState(false);
+
+  return (
+    <div
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className={`glass rounded-xl p-5 h-full transition-all duration-300 border ${
+        hovered ? "border-primary/60" : "border-white/10"
+      }`}
+    >
+      <span className="text-3xl mb-3 block">{emoji}</span>
+      <p className="font-heading font-bold text-base mb-1">{name}</p>
+      <p className="text-sm text-muted-foreground">{tagline}</p>
+      <div
+        className="overflow-hidden transition-all duration-300"
+        style={{
+          maxHeight: hovered ? "200px" : "0px",
+          opacity: hovered ? 1 : 0,
+        }}
+      >
+        <div className="border-t border-white/10 mt-3 pt-3">
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            {detail}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default Index;
