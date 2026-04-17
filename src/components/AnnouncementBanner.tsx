@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { X } from "lucide-react";
 
-const STORAGE_KEY = "sws-workshop-banner-v1";
+const STORAGE_KEY = "sws-workshop-banner-may7";
 const BANNER_HEIGHT_PX = 40;
 
 export const AnnouncementBanner = () => {
