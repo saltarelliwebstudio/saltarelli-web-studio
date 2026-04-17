@@ -79,7 +79,7 @@ function useCountUp(target: number, duration = 1600) {
 // ─── Zod schemas ────────────────────────────────────────────────────────────
 
 const statsSchema = z.object({
-  industry: z.enum(["Roofing", "Concrete", "Landscaping", "HVAC", "Plumbing", "General Contractor", "Other"], {
+  industry: z.enum(["Roofing", "Concrete", "Landscaping", "HVAC", "Plumbing", "General Contractor", "Retail", "Professional Services", "Fitness", "Food & Beverage", "Other"], {
     required_error: "Please select your industry",
   }),
   avg_job_value: z.enum(["$500", "$1,000", "$2,500", "$5,000", "$10,000+"], {
@@ -237,7 +237,7 @@ export default function Funnel() {
         className="inline-flex items-center gap-2 glass px-4 py-2 rounded-full text-sm text-primary font-semibold mb-6"
       >
         <PhoneCall size={14} />
-        Free Revenue Calculator for Contractors
+        Free Revenue Calculator for Small Businesses
       </motion.div>
 
       <motion.h1
@@ -256,7 +256,7 @@ export default function Funnel() {
         transition={{ delay: 0.35, duration: 0.6 }}
         className="text-lg md:text-xl text-muted-foreground mb-10 leading-relaxed max-w-lg"
       >
-        Most contractors lose thousands every month from calls that go unanswered.{" "}
+        Most businesses lose thousands every month from calls that go unanswered.{" "}
         <strong className="text-foreground">Find out your number in 30 seconds.</strong>
       </motion.p>
 
@@ -511,7 +511,7 @@ export default function Funnel() {
         transition={{ delay: 0.4 }}
         className="text-lg sm:text-xl text-muted-foreground mb-8 max-w-md leading-relaxed"
       >
-        That's how much you could be leaving on the table —{" "}
+        That's how much you could be leaving on the table.{" "}
         <strong className="text-foreground">just from missed calls.</strong>
       </motion.p>
 
@@ -529,7 +529,7 @@ export default function Funnel() {
           <p className="font-heading font-semibold text-foreground">The Fix: AI Voice Agent</p>
         </div>
         <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
-          An AI voice agent picks up every call 24/7, captures the lead info, and books the job — even while you're on a roof or pouring concrete. No more voicemail. No more lost revenue. Every call answered, every opportunity captured.
+          An AI voice agent picks up every call 24/7, captures the lead info, and books the job, even when you're tied up with a customer or out on a job. No more voicemail. No more lost revenue. Every call answered, every opportunity captured.
         </p>
       </motion.div>
 

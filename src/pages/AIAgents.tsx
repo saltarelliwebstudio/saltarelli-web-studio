@@ -98,7 +98,7 @@ const AIAgents = () => {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed px-4"
             >
-              AI-powered voice and text agents that answer calls, capture leads, and respond to customers 24/7 — professionally managed and continuously improved.
+              AI-powered voice and text agents that answer calls, capture leads, and respond to customers 24/7. Professionally managed and continuously improved.
             </motion.p>
 
             {/* CTA Buttons */}
@@ -127,7 +127,7 @@ const AIAgents = () => {
               Missing Calls Means <span className="text-primary">Missing Revenue</span>
             </h2>
             <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">
-              Every missed call is a potential customer going to your competitor. Whether you're with another client, after hours, or just can't get to the phone — an AI agent ensures you never lose that opportunity again.
+              Every missed call is a potential customer going to your competitor. Whether you're with another client, after hours, or just can't get to the phone, an AI agent ensures you never lose that opportunity again.
             </p>
           </FadeIn>
         </div>

@@ -14,8 +14,8 @@ const defaultImage = `${siteUrl}/sws-logo.png`;
 const siteName = "Saltarelli Web Studio";
 
 export const SEO = ({
-  title = "Web Design in Ontario | Turn Your Dreams Into Reality",
-  description = "Professional web design services in Ontario. Fully custom websites and AI agents for small businesses. Fast turnaround, affordable pricing. Book a free discovery call today.",
+  title = "AI Admin Systems for Small Business",
+  description = "We build AI admin systems for businesses that save 10+ hours a week, delivered in 14 days. Websites, AI agents, and automations in one managed plan.",
   canonical,
   type = "website",
   image = defaultImage,
@@ -36,7 +36,7 @@ export const SEO = ({
     "@type": "LocalBusiness",
     name: siteName,
     description:
-      "Professional web design services in Ontario. Custom websites and AI agents for small businesses.",
+      "AI admin systems for small businesses. Save 10+ hours a week on estimates, follow-ups, scheduling, and invoicing. Delivered in 14 days.",
     url: siteUrl,
     logo: defaultImage,
     image: defaultImage,
@@ -61,7 +61,13 @@ export const SEO = ({
       "@type": "Person",
       name: "Adam Saltarelli",
     },
-    serviceType: ["Web Design", "Website Development", "AI Agents"],
+    serviceType: [
+      "AI Admin Systems",
+      "Business Automation",
+      "AI Agents",
+      "Web Design",
+      "CRM",
+    ],
   };
 
   return (
@@ -93,7 +99,7 @@ export const SEO = ({
       <meta name="robots" content="index, follow" />
       <meta
         name="keywords"
-        content="web design Ontario, website design, custom websites, AI agents, small business websites, web designer Canada, affordable web design, website redesign"
+        content="AI admin systems, AI for small business, business automation, small business AI, save 10 hours a week, 14 day delivery, AI agents Ontario, web design Ontario, automation Canada"
       />
       <meta name="geo.region" content="CA-ON" />
       <meta name="geo.placename" content="Ontario" />

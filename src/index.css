@@ -76,6 +76,9 @@
     --sidebar-accent-foreground: 0 0% 100%;
     --sidebar-border: 240 20% 18%;
     --sidebar-ring: 28 100% 55%;
+
+    /* Announcement banner offset (0 when dismissed) */
+    --banner-height: 0px;
   }
 
   .dark {

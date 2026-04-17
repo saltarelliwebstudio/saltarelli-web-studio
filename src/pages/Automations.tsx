@@ -30,7 +30,7 @@ const Automations = () => {
     {
       icon: MessageCircle,
       title: "Instant Notifications",
-      description: "Recipients get next steps via email, and you receive lead details via SMS — all automatic.",
+      description: "Recipients get next steps via email, and you receive lead details via SMS. All automatic.",
     },
   ];
 
@@ -98,7 +98,7 @@ const Automations = () => {
                 transition={{ duration: 0.6, delay: 0.4 }}
               className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed px-4"
             >
-              Custom automations that handle the repetitive work — continuously running, monitored, and improved so you never have to think about them.
+              Custom automations that handle the repetitive work. Continuously running, monitored, and improved so you never have to think about them.
             </motion.p>
 
               {/* CTA Buttons */}
@@ -141,7 +141,7 @@ const Automations = () => {
                 How It <span className="text-accent">Works</span>
               </h2>
               <p className="text-lg md:text-xl text-muted-foreground">
-                Intelligent automation that runs around the clock — managed for you
+                Intelligent automation that runs around the clock, managed for you
               </p>
             </FadeIn>
 
@@ -179,7 +179,7 @@ const Automations = () => {
                 Real-World <span className="text-primary">Example</span>
               </h2>
               <p className="text-lg md:text-xl text-muted-foreground">
-                Genius Fitness & MMA — Automated Lead Management
+                Genius Fitness & MMA: Automated Lead Management
               </p>
             </FadeIn>
 
@@ -262,7 +262,7 @@ const Automations = () => {
                     Let's Automate Your Business
                   </h2>
                   <p className="text-base sm:text-lg md:text-xl text-white/90 mb-8 max-w-xl mx-auto">
-                    Book a quick demo call and I'll show you how a fully managed automation can handle your workflow — setup to ongoing care
+                    Book a quick demo call and I'll show you how a fully managed automation can handle your workflow, setup to ongoing care
                   </p>
                   <Button
                     size="lg"

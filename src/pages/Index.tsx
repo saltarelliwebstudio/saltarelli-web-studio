@@ -25,14 +25,14 @@ const smartStackCards = [
     name: "Managed Website",
     tagline: "Your 24/7 digital storefront",
     detail:
-      "Custom-designed, mobile-optimized site with hosting, SSL, updates, and ongoing SEO — all included.",
+      "Custom-designed, mobile-optimized site with hosting, SSL, updates, and ongoing SEO. All included.",
   },
   {
     emoji: "🤖",
     name: "AI Chat Widget",
     tagline: "Answers questions while you sleep",
     detail:
-      "Trained on your business. Qualifies leads, answers FAQs, and books appointments — even at 2 AM.",
+      "Trained on your business. Qualifies leads, answers FAQs, and books appointments, even at 2 AM.",
   },
   {
     emoji: "📞",
@@ -60,36 +60,36 @@ const smartStackCards = [
     name: "CRM Dashboard",
     tagline: "See every lead in one place",
     detail:
-      "Track leads, follow-ups, and revenue — no spreadsheets. Built for trades, not enterprise.",
+      "Track leads, follow-ups, and revenue. No spreadsheets. Built for small business, not enterprise.",
   },
   {
     emoji: "📋",
     name: "Online Estimates",
     tagline: "Quote faster, close sooner",
     detail:
-      "Customers request quotes from your site. You review and send — branded, professional, fast.",
+      "Customers request quotes from your site. You review and send. Branded, professional, fast.",
   },
   {
     emoji: "🛡️",
     name: "Ongoing Management",
     tagline: "We handle the tech, you handle the work",
     detail:
-      "Hosting, security, updates, monitoring, and priority support — all bundled in your monthly plan.",
+      "Hosting, security, updates, monitoring, and priority support. All bundled in your monthly plan.",
   },
 ];
 
 const faqItems = [
   {
     q: "What kind of businesses is the Smart Stack Pack for?",
-    a: "It's built for Niagara-region trades and fitness businesses — electricians, landscapers, HVAC, gyms, martial arts studios, and similar. If you rely on phone calls, quotes, and local reputation, this is for you.",
+    a: "It's built for small and mid-size businesses that rely on phone calls, quotes, and local reputation. Service businesses, fitness studios, retail, professional services, and similar.",
   },
   {
     q: "Do I need to buy each piece separately?",
-    a: "No — we figure out which pieces fit your business and build around what you already have. If your website is solid, we won't redo it. We just plug in the AI, automations, and systems that are missing. You only pay for what makes sense.",
+    a: "No. We figure out which pieces fit your business and build around what you already have. If your website is solid, we won't redo it. We just plug in the AI, automations, and systems that are missing. You only pay for what makes sense.",
   },
   {
     q: "How long does setup take?",
-    a: "Most clients are fully live within 2–3 weeks. We handle everything — you just show up for a discovery call and approve the final setup.",
+    a: "Most clients are fully live within 2 to 3 weeks. We handle everything. You just show up for a discovery call and approve the final setup.",
   },
   {
     q: "What if it doesn't work for my business?",
@@ -101,7 +101,7 @@ const faqItems = [
   },
   {
     q: "Can I keep my current website?",
-    a: "Yes — we can integrate the AI agent, automations, and review engine with your existing site. But most clients choose the full stack because a managed site is included at no extra cost.",
+    a: "Yes. We can integrate the AI agent, automations, and review engine with your existing site. But most clients choose the full stack because a managed site is included at no extra cost.",
   },
 ];
 
@@ -118,8 +118,8 @@ const Index = () => {
     <>
       <SEO
         canonical="/"
-        title="Saltarelli Web Studio | Smart Systems for Niagara Businesses"
-        description="Website, AI agents, and automations bundled into one managed monthly plan for Niagara trades and fitness businesses. Take the free After-Hours Audit."
+        title="Saltarelli Web Studio | AI Admin Systems for Small Business"
+        description="We build AI admin systems for businesses that save 10+ hours a week, delivered in 14 days. Websites, AI agents, and automations in one managed plan. Take the free Leaky Bucket Audit."
         schema={{
           "@context": "https://schema.org",
           "@type": "ProfessionalService",
@@ -127,7 +127,7 @@ const Index = () => {
           url: "https://saltarelliwebstudio.ca",
           logo: "https://saltarelliwebstudio.ca/sws-logo.png",
           description:
-            "Smart systems for Niagara trades & fitness businesses — websites, AI, and automations bundled into one managed stack.",
+            "AI admin systems for businesses that save 10+ hours a week, delivered in 14 days. Websites, AI, and automations in one managed stack.",
           telephone: "+12895135284",
           email: "saltarelliwebstudio@gmail.com",
           areaServed: [
@@ -159,7 +159,7 @@ const Index = () => {
               author: { "@type": "Person", name: "Anthony, Genius Fitness & MMA" },
               reviewRating: { "@type": "Rating", ratingValue: "5" },
               reviewBody:
-                "Adam built our full member portal and automated our check-ins. Runs like clockwork — I barely touch it.",
+                "Adam built our full member portal and automated our check-ins. Runs like clockwork. I barely touch it.",
             },
             {
               "@type": "Review",
@@ -234,11 +234,19 @@ const Index = () => {
                   delay: 0.2,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-heading font-bold mb-6 leading-tight max-w-5xl mx-auto"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-heading font-bold mb-6 leading-[1.1] max-w-5xl mx-auto text-balance"
               >
-                YOUR BUSINESS SHOULD{" "}
-                <span className="text-primary glow-text">RUN WITHOUT YOU</span>{" "}
-                BABYSITTING IT.
+                We build AI admin systems
+                <br className="hidden md:inline" /> for businesses that save{" "}
+                <span className="text-primary glow-text whitespace-nowrap">
+                  10+ hours a week
+                </span>
+                ,
+                <br className="hidden md:inline" /> delivered in{" "}
+                <span className="text-primary glow-text whitespace-nowrap">
+                  14 days
+                </span>
+                .
               </motion.h1>
 
               {/* Subtitle */}
@@ -248,7 +256,7 @@ const Index = () => {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed px-4"
               >
-                We set up the systems. You get back to work.
+                Most businesses are losing jobs to competitors with smarter systems. We fix that.
               </motion.p>
 
               {/* CTA Buttons */}
@@ -338,7 +346,7 @@ const Index = () => {
                 <span className="text-primary">Anthony Romero</span> Uses the Stack
               </h2>
               <p className="text-sm text-muted-foreground">
-                PFL World Champion · Owner, Genius Fitness & MMA — Port Colborne, Ontario
+                PFL World Champion · Owner, Genius Fitness & MMA, Port Colborne, Ontario
               </p>
             </FadeIn>
 
@@ -366,7 +374,7 @@ const Index = () => {
                     The Client
                   </p>
                   <p className="text-muted-foreground">
-                    Genius Fitness & MMA — a Niagara combat sports gym with 80+ active members and growing.
+                    Genius Fitness & MMA, a Niagara combat sports gym with 80+ active members and growing.
                   </p>
                 </div>
               </StaggerItem>
@@ -415,7 +423,7 @@ const Index = () => {
                     <div className="w-10 h-10 rounded-full bg-indigo-600 flex items-center justify-center text-white font-bold text-sm">Z</div>
                     <div>
                       <p className="font-heading font-semibold text-foreground">Zachary Melnyk</p>
-                      <p className="text-xs text-muted-foreground">Melnyk Concrete — Automations Client</p>
+                      <p className="text-xs text-muted-foreground">Melnyk Concrete, Automations Client</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-2 mb-3">
@@ -517,7 +525,7 @@ const Index = () => {
                     <div className="w-10 h-10 rounded-full bg-amber-600 flex items-center justify-center text-white font-bold text-sm">B</div>
                     <div>
                       <p className="font-heading font-semibold text-foreground">Brandon Cassar</p>
-                      <p className="text-xs text-muted-foreground">Cassar Electric — Website Client</p>
+                      <p className="text-xs text-muted-foreground">Cassar Electric, Website Client</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-2 mb-3">
@@ -537,7 +545,7 @@ const Index = () => {
                     <div className="w-10 h-10 rounded-full bg-stone-600 flex items-center justify-center text-white font-bold text-sm">J</div>
                     <div>
                       <p className="font-heading font-semibold text-foreground">Joe Eddleston</p>
-                      <p className="text-xs text-muted-foreground">Bluewater Stone — Website Client</p>
+                      <p className="text-xs text-muted-foreground">Bluewater Stone, Website Client</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-2 mb-3">
@@ -557,7 +565,7 @@ const Index = () => {
                     <div className="w-10 h-10 rounded-full bg-blue-700 flex items-center justify-center text-white font-bold text-sm">A</div>
                     <div>
                       <p className="font-heading font-semibold text-foreground">Anthony Romero</p>
-                      <p className="text-xs text-muted-foreground">Genius Fitness & MMA — Website & Portal Client</p>
+                      <p className="text-xs text-muted-foreground">Genius Fitness & MMA, Website & Portal Client</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-2 mb-3">
@@ -577,7 +585,7 @@ const Index = () => {
                     <div className="w-10 h-10 rounded-full bg-slate-600 flex items-center justify-center text-white font-bold text-sm">J</div>
                     <div>
                       <p className="font-heading font-semibold text-foreground">Joseph Ballouz</p>
-                      <p className="text-xs text-muted-foreground">Streetball.ai — Website Client</p>
+                      <p className="text-xs text-muted-foreground">Streetball.ai, Website Client</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-2 mb-3">
@@ -736,7 +744,7 @@ const Index = () => {
                 {
                   num: 1,
                   title: "Discovery Call",
-                  desc: "We hop on a 30-minute call to map out your current setup, pain points, and goals. No pitch — just clarity.",
+                  desc: "We hop on a 30-minute call to map out your current setup, pain points, and goals. No pitch. Just clarity.",
                 },
                 {
                   num: 2,
@@ -794,9 +802,9 @@ const Index = () => {
                     Clean Hands Guarantee
                   </h2>
                   <p className="text-muted-foreground text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-4">
-                    If our systems aren't working harder than your youngest
-                    apprentice after 30 days, we'll refund every dollar you
-                    paid. No awkward conversation. No fine print.
+                    If our systems aren't working harder than your newest hire
+                    after 30 days, we'll refund every dollar you paid. No
+                    awkward conversation. No fine print.
                   </p>
                   <p className="text-sm text-muted-foreground italic">
                     We only win when your business runs better.

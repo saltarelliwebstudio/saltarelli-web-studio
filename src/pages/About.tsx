@@ -17,7 +17,7 @@ const About = () => {
       <SEO
         canonical="/about"
         title="About Adam Saltarelli | Ontario Web Designer"
-        description="Meet Adam Saltarelli — Ontario web designer specializing in custom websites, AI agents, and business automations for small businesses."
+        description="Meet Adam Saltarelli, founder of Saltarelli Web Studio. I build AI admin systems, custom websites, and automations for small businesses."
       />
     <div className="min-h-screen bg-background text-foreground relative flex flex-col overflow-x-hidden">
       <Starfield />
@@ -75,7 +75,7 @@ const About = () => {
               <h2 className="text-3xl font-heading font-bold mb-6">
                 Hi, I'm Adam
               </h2>
-              <p className="text-lg text-muted-foreground mb-4">I'm a tech-savvy guy from Ontario who sets up and manages websites, AI agents, and business automations — ongoing systems that keep your business running smoothly. I combine practical design with quality workmanship — raised to believe if you won't do your best, don't bother.</p>
+              <p className="text-lg text-muted-foreground mb-4">I'm a tech-savvy guy from Ontario who sets up and manages websites, AI agents, and business automations. Ongoing systems that keep your business running smoothly. I combine practical design with quality workmanship, raised to believe if you won't do your best, don't bother.</p>
               <p className="text-lg text-muted-foreground mb-4">
                 Outside of design I train for marathons and practice MMA; that focus 
                 shows up in my attention to detail. Every project gets my full effort 
@@ -83,7 +83,7 @@ const About = () => {
               </p>
               <p className="text-lg text-muted-foreground">
                 I believe in keeping things simple and effective. No unnecessary 
-                complexity, no inflated costs — just honest work that delivers results.
+                complexity, no inflated costs. Just honest work that delivers results.
               </p>
             </div>
           </div>
@@ -134,7 +134,7 @@ const About = () => {
               <li className="flex items-start gap-3">
                 <span className="text-primary mt-1">•</span>
                 <div>
-                  <strong>Fast Setup:</strong> I can have your system set up and running within a few days — then I handle everything ongoing so you never have to think about it.
+                  <strong>Fast Setup:</strong> I can have your system set up and running within a few days. Then I handle everything ongoing so you never have to think about it.
                 </div>
               </li>
               <li className="flex items-start gap-3">

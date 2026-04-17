@@ -73,7 +73,7 @@ const GetStarted = () => {
                 <div>
                   <h3 className="font-heading font-semibold mb-2">15 Minutes, Your Schedule</h3>
                   <p className="text-muted-foreground">
-                    Pick a time that works for you—virtual or in-person, whatever's convenient
+                    Pick a time that works for you, virtual or in-person, whatever's convenient
                   </p>
                 </div>
               </div>

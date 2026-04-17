@@ -17,7 +17,7 @@ const Portfolio = () => {
     {
       title: "WS Construction",
       description: "Home renovation company website for Fort Erie's experts. Showcases bathrooms, kitchens, windows, and more with a premium, modern design.",
-      category: "Home Services",
+      category: "Local Services",
       imageUrl: "/lovable-uploads/ws-construction.png",
       liveUrl: "https://ws-construction.ca",
     },
@@ -66,49 +66,49 @@ const Portfolio = () => {
     {
       title: "CDS Lawn Care Services",
       description: "Professional lawn care service website with service packages, online quotes, and seasonal maintenance scheduling.",
-      category: "Home Services",
+      category: "Local Services",
       imageUrl: "/lovable-uploads/2f0cdffd-2fae-4ffa-85d7-d2d01a0cc1d5.png",
       liveUrl: "https://sites.google.com/view/cds-lawn-care-services/home?authuser=1",
     },
     {
       title: "Pop's Landscaping",
       description: "Full-service landscaping company website with project gallery, service offerings, and quote request functionality.",
-      category: "Home Services",
+      category: "Local Services",
       imageUrl: "/lovable-uploads/pops-landscaping.png",
       liveUrl: "https://popslandscaping.ca/",
     },
     {
       title: "G&D Landscaping",
       description: "Professional landscaping website featuring lawn care, garden maintenance, and snow removal services. Clean design with easy quote requests.",
-      category: "Home Services",
+      category: "Local Services",
       imageUrl: "/lovable-uploads/gd-landscaping.png",
       liveUrl: "https://gdlandscaping.ca/",
     },
     {
       title: "Bluewater Stone Hardscaping",
       description: "Premium hardscaping company website showcasing custom stonework, retaining walls, and outdoor living spaces. Features gallery and free quote system.",
-      category: "Home Services",
+      category: "Local Services",
       imageUrl: "/lovable-uploads/bluewater-stone.png",
       liveUrl: "https://bluewaterstone.ca/",
     },
     {
       title: "Cassar Electric",
       description: "Industrial and commercial electrical services website for the Niagara region. Professional design with service information and contact functionality.",
-      category: "Home Services",
+      category: "Local Services",
       imageUrl: "/lovable-uploads/cassar-electric.png",
       liveUrl: "https://cassarelectric.ca/",
     },
     {
       title: "Tree and Stump Removal",
       description: "Professional tree and stump removal services website for Port Colborne and the Niagara region. Features service information, gallery, and quote request functionality.",
-      category: "Home Services",
+      category: "Local Services",
       imageUrl: "/lovable-uploads/tree-stump-removal.png",
       liveUrl: "https://treeandstumpremoval.ca/",
     },
     {
       title: "Claude's Roofing",
       description: "Professional roofing services website for Brantford and Southern Ontario. Features shingle roofing, repairs, skylights, and snow removal with 30+ years of experience.",
-      category: "Home Services",
+      category: "Local Services",
       imageUrl: "/lovable-uploads/claudes-roofing.png",
       liveUrl: "https://claudesroofing.ca/",
     },
@@ -129,7 +129,7 @@ const Portfolio = () => {
       <SEO
         canonical="/portfolio"
         title="Web Design Portfolio"
-        description="See our work — custom websites, AI integrations, and automations built for Ontario businesses. Real results for Pop's Landscaping, Genius Fitness & more."
+        description="See our work. Custom websites, AI integrations, and automations built for Ontario businesses. Real results for Pop's Landscaping, Genius Fitness, and more."
       />
     <div className="min-h-screen bg-background text-foreground relative flex flex-col overflow-x-hidden">
       <Starfield />

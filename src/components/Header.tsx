@@ -37,13 +37,15 @@ export const Header = () => {
     };
   }, [isMenuOpen]);
 
-  const navLinks = [
+  const navLinks: Array<{
+    href: string;
+    label: string;
+    external?: boolean;
+    badge?: string;
+  }> = [
     { href: "/", label: "Home" },
-    { href: "/about", label: "About" },
-    { href: "/services", label: "Websites" },
-    { href: "/ai-agents", label: "AI Agents" },
-    { href: "/automations", label: "Automations" },
     { href: "/portfolio", label: "Portfolio" },
+    { href: "/ai-operator-kit", label: "AI Operator Kit", badge: "FREE" },
     { href: "https://saltarelli-hub.vercel.app/login", label: "Dashboard", external: true },
   ];
 
@@ -81,7 +83,8 @@ export const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+      style={{ top: "var(--banner-height, 0px)" }}
+      className={`fixed left-0 right-0 w-full z-50 transition-all duration-500 ${
         isScrolled
           ? "bg-background/70 backdrop-blur-2xl border-b border-border/50 shadow-lg shadow-background/20"
           : "bg-transparent"
@@ -112,21 +115,31 @@ export const Header = () => {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="relative text-sm font-medium transition-colors duration-300 text-foreground/70 hover:text-foreground"
+                  className="relative text-sm font-medium transition-colors duration-300 inline-flex items-center gap-1.5 text-foreground/70 hover:text-foreground"
                 >
                   {link.label}
+                  {link.badge && (
+                    <span className="text-[10px] font-bold uppercase bg-primary/20 text-primary border border-primary/30 rounded-full px-1.5 py-0.5 leading-none">
+                      {link.badge}
+                    </span>
+                  )}
                 </a>
               ) : (
                 <Link
                   key={link.href}
                   to={link.href}
-                  className={`relative text-sm font-medium transition-colors duration-300 ${
+                  className={`relative text-sm font-medium transition-colors duration-300 inline-flex items-center gap-1.5 ${
                     location.pathname === link.href
                       ? "text-primary"
                       : "text-foreground/70 hover:text-foreground"
                   }`}
                 >
                   {link.label}
+                  {link.badge && (
+                    <span className="text-[10px] font-bold uppercase bg-primary/20 text-primary border border-primary/30 rounded-full px-1.5 py-0.5 leading-none">
+                      {link.badge}
+                    </span>
+                  )}
                   {location.pathname === link.href && (
                     <motion.div
                       layoutId="activeNav"
@@ -216,15 +229,20 @@ export const Header = () => {
                             href={link.href}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-2xl font-heading font-semibold transition-colors duration-300 block text-foreground/80 hover:text-foreground"
+                            className="text-2xl font-heading font-semibold transition-colors duration-300 inline-flex items-center gap-2 text-foreground/80 hover:text-foreground"
                             onClick={() => setIsMenuOpen(false)}
                           >
                             {link.label}
+                            {link.badge && (
+                              <span className="text-[10px] font-bold uppercase bg-primary/20 text-primary border border-primary/30 rounded-full px-1.5 py-0.5 leading-none">
+                                {link.badge}
+                              </span>
+                            )}
                           </a>
                         ) : (
                           <Link
                             to={link.href}
-                            className={`text-2xl font-heading font-semibold transition-colors duration-300 block ${
+                            className={`text-2xl font-heading font-semibold transition-colors duration-300 inline-flex items-center gap-2 ${
                               location.pathname === link.href
                                 ? "text-primary"
                                 : "text-foreground/80 hover:text-foreground"
@@ -232,6 +250,11 @@ export const Header = () => {
                             onClick={() => setIsMenuOpen(false)}
                           >
                             {link.label}
+                            {link.badge && (
+                              <span className="text-[10px] font-bold uppercase bg-primary/20 text-primary border border-primary/30 rounded-full px-1.5 py-0.5 leading-none">
+                                {link.badge}
+                              </span>
+                            )}
                           </Link>
                         )}
                       </motion.div>
