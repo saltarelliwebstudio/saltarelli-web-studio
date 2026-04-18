@@ -213,8 +213,8 @@ const Portfolio = () => {
               and measurable results. Contact me to discuss how we achieved these outcomes.
             </p>
             <Button variant="hero" asChild>
-              <TrackedLink to="/get-started" trackingLabel="portfolio_book_call">
-                Book a Discovery Call
+              <TrackedLink to="/#audit" trackingLabel="portfolio_leaky_bucket_audit">
+                Take the Leaky Bucket Audit
               </TrackedLink>
             </Button>
           </div>

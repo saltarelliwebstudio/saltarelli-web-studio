@@ -17,11 +17,6 @@ const Portfolio = React.lazy(() => import("./pages/Portfolio"));
 const GetStarted = React.lazy(() => import("./pages/GetStarted"));
 const Workshop = React.lazy(() => import("./pages/Workshop"));
 const AiOperatorKit = React.lazy(() => import("./pages/AiOperatorKit"));
-const Services = React.lazy(() => import("./pages/Services"));
-const AIAgents = React.lazy(() => import("./pages/AIAgents"));
-const Automations = React.lazy(() => import("./pages/Automations"));
-const Contact = React.lazy(() => import("./pages/Contact"));
-const Funnel = React.lazy(() => import("./pages/Funnel"));
 const NotFound = React.lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -44,12 +39,6 @@ const App = () => (
           <Route path="/get-started" element={<GetStarted />} />
           <Route path="/workshop" element={<Workshop />} />
           <Route path="/ai-operator-kit" element={<AiOperatorKit />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/websites" element={<Services />} />
-          <Route path="/ai-agents" element={<AIAgents />} />
-          <Route path="/automations" element={<Automations />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/funnel" element={<Funnel />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

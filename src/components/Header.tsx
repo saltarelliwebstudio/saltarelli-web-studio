@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { Menu, X, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { TrackedLink } from "@/components/TrackedLink";
@@ -150,9 +150,9 @@ export const Header = () => {
               )
             )}
             <Button variant="hero" size="sm" asChild className="ml-2">
-              <TrackedLink to="/get-started" trackingLabel="header_book_call" className="gap-2">
-                Book a Call
-                <ArrowRight size={16} />
+              <TrackedLink to="/#audit" trackingLabel="header_leaky_bucket_audit" className="gap-2">
+                <Sparkles size={16} />
+                Leaky Bucket Audit
               </TrackedLink>
             </Button>
           </div>
@@ -270,9 +270,9 @@ export const Header = () => {
                     className="mt-auto"
                   >
                     <Button variant="hero" size="lg" asChild className="w-full">
-                      <TrackedLink to="/get-started" trackingLabel="header_mobile_book_call" className="gap-2">
-                        Book a Call
-                        <ArrowRight size={18} />
+                      <TrackedLink to="/#audit" trackingLabel="header_mobile_leaky_bucket_audit" className="gap-2">
+                        <Sparkles size={18} />
+                        Leaky Bucket Audit
                       </TrackedLink>
                     </Button>
                   </motion.div>

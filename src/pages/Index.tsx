@@ -876,9 +876,9 @@ const Index = () => {
                     <span className="text-primary">Handled</span>?
                   </h2>
                   <p className="text-base sm:text-lg md:text-xl text-white/90 mb-8 max-w-xl mx-auto">
-                    20 minutes on your schedule. We'll map out how the Smart
-                    Stack Pack can run your business while you focus on the
-                    work.
+                    Take the free Leaky Bucket Audit. In 60 seconds you'll see
+                    where the revenue is leaking and how the Smart Stack Pack
+                    plugs it.
                   </p>
                   <Button
                     size="lg"
@@ -886,12 +886,12 @@ const Index = () => {
                     className="bg-background text-foreground hover:bg-background/90 font-semibold shadow-lg"
                   >
                     <TrackedLink
-                      to="/get-started"
-                      trackingLabel="homepage_cta_book_call"
+                      to="/#audit"
+                      trackingLabel="homepage_cta_leaky_bucket_audit"
                       className="gap-2"
                     >
-                      Book Your Discovery Call
-                      <ArrowRight size={18} />
+                      <Sparkles size={18} />
+                      Take the Free Leaky Bucket Audit
                     </TrackedLink>
                   </Button>
                 </div>

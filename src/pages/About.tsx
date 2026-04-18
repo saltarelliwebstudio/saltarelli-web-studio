@@ -177,8 +177,8 @@ const About = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="hero" size="lg" asChild>
-                <TrackedLink to="/get-started" trackingLabel="about_book_call">
-                  Book a Discovery Call <ArrowRight className="ml-2" size={20} />
+                <TrackedLink to="/#audit" trackingLabel="about_leaky_bucket_audit">
+                  Take the Leaky Bucket Audit <ArrowRight className="ml-2" size={20} />
                 </TrackedLink>
               </Button>
               <Button variant="cosmic" size="lg" asChild>
