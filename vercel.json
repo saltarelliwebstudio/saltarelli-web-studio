@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/t", "destination": "https://veyhxazlqekiweynjxhf.supabase.co/functions/v1/track-pageview" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
