@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { TrackedLink } from "@/components/TrackedLink";
+import { TrackedExternalLink } from "@/components/TrackedExternalLink";
 import logo from "@/assets/sws-logo.png";
 
 export const Header = () => {
@@ -150,10 +150,16 @@ export const Header = () => {
               )
             )}
             <Button variant="hero" size="sm" asChild className="ml-2">
-              <TrackedLink to="/#audit" trackingLabel="header_leaky_bucket_audit" className="gap-2">
+              <TrackedExternalLink
+                href="https://calendly.com/saltarelliwebstudio/30min"
+                trackingLabel="header_book_call"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="gap-2"
+              >
                 <Sparkles size={16} />
-                Leaky Bucket Audit
-              </TrackedLink>
+                Book a Call
+              </TrackedExternalLink>
             </Button>
           </div>
 
@@ -270,10 +276,16 @@ export const Header = () => {
                     className="mt-auto"
                   >
                     <Button variant="hero" size="lg" asChild className="w-full">
-                      <TrackedLink to="/#audit" trackingLabel="header_mobile_leaky_bucket_audit" className="gap-2">
+                      <TrackedExternalLink
+                        href="https://calendly.com/saltarelliwebstudio/30min"
+                        trackingLabel="header_mobile_book_call"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="gap-2"
+                      >
                         <Sparkles size={18} />
-                        Leaky Bucket Audit
-                      </TrackedLink>
+                        Book a Call
+                      </TrackedExternalLink>
                     </Button>
                   </motion.div>
                 </div>

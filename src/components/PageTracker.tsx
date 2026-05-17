@@ -45,7 +45,7 @@ export function trackEvent(event: string, metadata?: Record<string, unknown>) {
 }
 
 // Sections to track scroll visibility
-const TRACKED_SECTIONS = ["audit", "smart-stack"];
+const TRACKED_SECTIONS = ["smart-stack"];
 
 export function PageTracker() {
   const location = useLocation();

@@ -9,6 +9,7 @@ import { Footer } from "@/components/Footer";
 import { FadeIn } from "@/components/motion";
 import { SEO } from "@/components/SEO";
 import { TrackedLink } from "@/components/TrackedLink";
+import { TrackedExternalLink } from "@/components/TrackedExternalLink";
 import adamPhoto from "@/assets/adam-photo.png";
 
 const About = () => {
@@ -177,9 +178,14 @@ const About = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="hero" size="lg" asChild>
-                <TrackedLink to="/#audit" trackingLabel="about_leaky_bucket_audit">
-                  Take the Leaky Bucket Audit <ArrowRight className="ml-2" size={20} />
-                </TrackedLink>
+                <TrackedExternalLink
+                  href="https://calendly.com/saltarelliwebstudio/30min"
+                  trackingLabel="about_book_call"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Book a Call <ArrowRight className="ml-2" size={20} />
+                </TrackedExternalLink>
               </Button>
               <Button variant="cosmic" size="lg" asChild>
                 <TrackedLink to="/portfolio" trackingLabel="about_view_portfolio">View My Work</TrackedLink>

@@ -7,6 +7,8 @@ import { Footer } from "@/components/Footer";
 import { SEO } from "@/components/SEO";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { Button } from "@/components/ui/button";
+import { TrackedExternalLink } from "@/components/TrackedExternalLink";
+import { YouTubeFacade } from "@/components/YouTubeFacade";
 
 /* ── Tool data ── */
 const tools = [
@@ -156,6 +158,31 @@ const AiOperatorKit = () => {
           </div>
         </section>
 
+        {/* ──────────── WALKTHROUGH VIDEO ──────────── */}
+        <section
+          id="walkthrough"
+          className="px-4 md:px-6 pb-12 md:pb-20 relative z-10"
+        >
+          <div className="mx-auto max-w-4xl">
+            <FadeIn>
+              <div className="text-center mb-6 md:mb-8">
+                <span className="text-primary font-bold text-sm tracking-widest uppercase mb-2 block">
+                  // The Walkthrough
+                </span>
+                <h2 className="font-heading font-bold text-2xl md:text-3xl">
+                  Watch me run through the kit
+                </h2>
+              </div>
+            </FadeIn>
+            <FadeIn delay={0.05}>
+              <YouTubeFacade
+                videoId="ZQnOGtZlGW8"
+                title="AI Operator Kit walkthrough"
+              />
+            </FadeIn>
+          </div>
+        </section>
+
         {/* divider */}
         <div className="mx-auto max-w-[780px] px-4">
           <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent" />
@@ -227,16 +254,19 @@ const AiOperatorKit = () => {
                   <p className="text-muted-foreground text-[15px] font-light leading-relaxed max-w-lg mb-7">
                     Running a team means the leaks are different. It's not about
                     missing tools, it's the hours bleeding out where you can't see them.
-                    Take a free 30-second audit and find out exactly where.
+                    Book a quick call and we'll find them.
                   </p>
                   <Button variant="hero" size="lg" asChild>
-                    <a
-                      href="https://saltarelliwebstudio.ca/#audit"
+                    <TrackedExternalLink
+                      href="https://calendly.com/saltarelliwebstudio/30min"
+                      trackingLabel="ai_operator_kit_book_call"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="gap-2 inline-flex items-center whitespace-normal text-center"
                     >
                       <ArrowRight size={16} className="flex-shrink-0" />
-                      Take the Free Leaky Bucket Audit
-                    </a>
+                      Book a Call
+                    </TrackedExternalLink>
                   </Button>
                 </div>
               </div>

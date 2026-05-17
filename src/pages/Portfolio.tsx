@@ -8,7 +8,7 @@ import { Footer } from "@/components/Footer";
 import { PortfolioCard } from "@/components/PortfolioCard";
 import { FadeIn } from "@/components/motion";
 import { SEO } from "@/components/SEO";
-import { TrackedLink } from "@/components/TrackedLink";
+import { TrackedExternalLink } from "@/components/TrackedExternalLink";
 
 const Portfolio = () => {
   const [filter, setFilter] = useState("all");
@@ -213,9 +213,14 @@ const Portfolio = () => {
               and measurable results. Contact me to discuss how we achieved these outcomes.
             </p>
             <Button variant="hero" asChild>
-              <TrackedLink to="/#audit" trackingLabel="portfolio_leaky_bucket_audit">
-                Take the Leaky Bucket Audit
-              </TrackedLink>
+              <TrackedExternalLink
+                href="https://calendly.com/saltarelliwebstudio/30min"
+                trackingLabel="portfolio_book_call"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Book a Call
+              </TrackedExternalLink>
             </Button>
           </div>
         </div>

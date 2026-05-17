@@ -3,7 +3,7 @@ import { Check } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { TrackedLink } from "@/components/TrackedLink";
+import { TrackedExternalLink } from "@/components/TrackedExternalLink";
 
 interface PricingCardProps {
   title: string;
@@ -67,7 +67,14 @@ export const PricingCard: React.FC<PricingCardProps> = ({
               className="w-full"
               asChild
             >
-              <TrackedLink to="/get-started" trackingLabel={trackingLabel}>Choose {title}</TrackedLink>
+              <TrackedExternalLink
+                href="https://calendly.com/saltarelliwebstudio/30min"
+                trackingLabel={trackingLabel}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Choose {title}
+              </TrackedExternalLink>
             </Button>
             <p className="text-xs text-muted-foreground text-center">✅ 30-day satisfaction guarantee included</p>
           </div>

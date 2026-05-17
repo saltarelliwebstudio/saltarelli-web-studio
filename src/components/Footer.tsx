@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Mail, Phone, Instagram, Facebook, Podcast, Linkedin, Youtube, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { TrackedLink } from "@/components/TrackedLink";
+import { TrackedExternalLink } from "@/components/TrackedExternalLink";
 import logo from "@/assets/sws-logo.png";
 
 export const Footer = () => {
@@ -45,7 +45,7 @@ export const Footer = () => {
           <div>
             <h3 className="font-heading font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-3">
-              {[{ href: "/", label: "Home" }, { href: "/portfolio", label: "Portfolio" }, { href: "/ai-operator-kit", label: "AI Operator Kit" }, { href: "/#audit", label: "Leaky Bucket Audit" }].map((link) => (
+              {[{ href: "/", label: "Home" }, { href: "/portfolio", label: "Portfolio" }, { href: "/ai-operator-kit", label: "AI Operator Kit" }].map((link) => (
                 <li key={link.href}>
                   <Link to={link.href} className="text-muted-foreground hover:text-primary transition-colors">{link.label}</Link>
                 </li>
@@ -67,7 +67,14 @@ export const Footer = () => {
               </a>
               <p className="text-sm text-muted-foreground italic pt-2">Response time: 24-48 hours</p>
               <Button variant="hero" size="sm" className="mt-4 w-full sm:w-auto" asChild>
-                <TrackedLink to="/#audit" trackingLabel="footer_leaky_bucket_audit">Leaky Bucket Audit</TrackedLink>
+                <TrackedExternalLink
+                  href="https://calendly.com/saltarelliwebstudio/30min"
+                  trackingLabel="footer_book_call"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Book a Call
+                </TrackedExternalLink>
               </Button>
             </div>
           </div>

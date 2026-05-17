@@ -10,7 +10,6 @@ import { FadeIn, StaggerContainer, StaggerItem, ScaleIn } from "@/components/mot
 import { SEO } from "@/components/SEO";
 import { TrackedLink } from "@/components/TrackedLink";
 import { TrackedExternalLink } from "@/components/TrackedExternalLink";
-import { AfterHoursAudit } from "@/components/AfterHoursAudit";
 import {
   Accordion,
   AccordionContent,
@@ -119,7 +118,7 @@ const Index = () => {
       <SEO
         canonical="/"
         title="Saltarelli Web Studio | AI Admin Systems for Small Business"
-        description="We build AI admin systems for businesses that save 10+ hours a week, delivered in 14 days. Websites, AI agents, and automations in one managed plan. Take the free Leaky Bucket Audit."
+        description="We build AI admin systems for businesses that save 10+ hours a week, delivered in 14 days. Websites, AI agents, and automations in one managed plan. Book a call to see if we're a fit."
         schema={{
           "@context": "https://schema.org",
           "@type": "ProfessionalService",
@@ -267,10 +266,16 @@ const Index = () => {
                 className="flex flex-col sm:flex-row gap-4 justify-center px-4"
               >
                 <Button variant="hero" size="lg" asChild className="text-base">
-                  <a href="#audit" className="gap-2">
+                  <TrackedExternalLink
+                    href="https://calendly.com/saltarelliwebstudio/30min"
+                    trackingLabel="hero_book_call"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="gap-2 inline-flex items-center justify-center"
+                  >
                     <Sparkles size={18} />
-                    Take the Free Audit →
-                  </a>
+                    Book a Call
+                  </TrackedExternalLink>
                 </Button>
                 <Button
                   variant="cosmic"
@@ -666,24 +671,6 @@ const Index = () => {
           </div>
         </section>
 
-        {/* ──────────── AFTER-HOURS AUDIT ──────────── */}
-        <section
-          id="audit"
-          className="py-20 md:py-28 px-4 md:px-6 relative z-10"
-        >
-          <div className="container mx-auto max-w-6xl">
-            <FadeIn className="text-center mb-10">
-              <span className="text-primary font-bold text-sm tracking-widest uppercase mb-3 block">
-                Free Audit (less than one minute)
-              </span>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold">
-                Find Out What's Leaking
-              </h2>
-            </FadeIn>
-            <AfterHoursAudit />
-          </div>
-        </section>
-
         {/* ──────────── SMART STACK PACK ──────────── */}
         <section
           id="smart-stack"
@@ -718,7 +705,7 @@ const Index = () => {
                   trackingLabel="smart_stack_book_call"
                   className="gap-2 inline-flex items-center justify-center"
                 >
-                  Book a Discovery Call
+                  Book a Call
                   <ArrowRight size={18} />
                 </TrackedExternalLink>
               </Button>
@@ -876,23 +863,24 @@ const Index = () => {
                     <span className="text-primary">Handled</span>?
                   </h2>
                   <p className="text-base sm:text-lg md:text-xl text-white/90 mb-8 max-w-xl mx-auto">
-                    Take the free Leaky Bucket Audit. In 60 seconds you'll see
-                    where the revenue is leaking and how the Smart Stack Pack
-                    plugs it.
+                    Book a quick call. We'll map out exactly what's costing you
+                    time and money, and how the Smart Stack Pack plugs it.
                   </p>
                   <Button
                     size="lg"
                     asChild
                     className="bg-background text-foreground hover:bg-background/90 font-semibold shadow-lg"
                   >
-                    <TrackedLink
-                      to="/#audit"
-                      trackingLabel="homepage_cta_leaky_bucket_audit"
-                      className="gap-2"
+                    <TrackedExternalLink
+                      href="https://calendly.com/saltarelliwebstudio/30min"
+                      trackingLabel="homepage_final_book_call"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="gap-2 inline-flex items-center justify-center"
                     >
                       <Sparkles size={18} />
-                      Take the Free Leaky Bucket Audit
-                    </TrackedLink>
+                      Book a Call
+                    </TrackedExternalLink>
                   </Button>
                 </div>
               </motion.div>
