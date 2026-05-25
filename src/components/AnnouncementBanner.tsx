@@ -4,10 +4,13 @@ import { X } from "lucide-react";
 
 const STORAGE_KEY = "sws-workshop-banner-jun11-v1";
 const BANNER_HEIGHT_PX = 40;
+// Auto-hide after the workshop ends: 2026-06-11 18:00 UTC (~2 PM EDT, ~1 hr buffer after the noon session)
+const HIDE_AFTER = new Date("2026-06-11T18:00:00Z").getTime();
 
 export const AnnouncementBanner = () => {
   const [visible, setVisible] = useState(() => {
     if (typeof window === "undefined") return true;
+    if (Date.now() >= HIDE_AFTER) return false;
     return window.localStorage.getItem(STORAGE_KEY) !== "dismissed";
   });
 
