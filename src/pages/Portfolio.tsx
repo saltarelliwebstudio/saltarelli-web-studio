@@ -214,12 +214,12 @@ const Portfolio = () => {
             </p>
             <Button variant="hero" asChild>
               <TrackedExternalLink
-                href="https://calendly.com/saltarelliwebstudio/30min"
+                href="https://calendly.com/saltarelliwebstudio/free-15-minute-online-presence-review"
                 trackingLabel="portfolio_book_call"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Book a Call
+                Free Online Audit
               </TrackedExternalLink>
             </Button>
           </div>

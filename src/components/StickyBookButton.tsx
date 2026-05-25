@@ -13,14 +13,14 @@ export const StickyBookButton = () => {
         asChild
       >
         <TrackedExternalLink
-          href="https://calendly.com/saltarelliwebstudio/30min"
+          href="https://calendly.com/saltarelliwebstudio/free-15-minute-online-presence-review"
           trackingLabel="sticky_book_call"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-2"
         >
           <Calendar size={20} />
-          <span className="hidden sm:inline">Book a Call</span>
+          <span className="hidden sm:inline">Free Online Audit</span>
         </TrackedExternalLink>
       </Button>
     </div>

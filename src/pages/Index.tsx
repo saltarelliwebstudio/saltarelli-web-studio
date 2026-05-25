@@ -118,7 +118,7 @@ const Index = () => {
       <SEO
         canonical="/"
         title="Saltarelli Web Studio | AI Admin Systems for Small Business"
-        description="We build AI admin systems for businesses that save 10+ hours a week, delivered in 14 days. Websites, AI agents, and automations in one managed plan. Book a call to see if we're a fit."
+        description="We build AI admin systems for businesses that save 10+ hours a week, delivered in 14 days. Websites, AI agents, and automations in one managed plan. Grab a Free Online Audit to see if we're a fit."
         schema={{
           "@context": "https://schema.org",
           "@type": "ProfessionalService",
@@ -267,14 +267,14 @@ const Index = () => {
               >
                 <Button variant="hero" size="lg" asChild className="text-base">
                   <TrackedExternalLink
-                    href="https://calendly.com/saltarelliwebstudio/30min"
+                    href="https://calendly.com/saltarelliwebstudio/free-15-minute-online-presence-review"
                     trackingLabel="hero_book_call"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="gap-2 inline-flex items-center justify-center"
                   >
                     <Sparkles size={18} />
-                    Book a Call
+                    Free Online Audit
                   </TrackedExternalLink>
                 </Button>
                 <Button
@@ -701,11 +701,11 @@ const Index = () => {
               </p>
               <Button variant="hero" size="lg" asChild>
                 <TrackedExternalLink
-                  href="https://calendly.com/saltarelliwebstudio/30min"
+                  href="https://calendly.com/saltarelliwebstudio/free-15-minute-online-presence-review"
                   trackingLabel="smart_stack_book_call"
                   className="gap-2 inline-flex items-center justify-center"
                 >
-                  Book a Call
+                  Free Online Audit
                   <ArrowRight size={18} />
                 </TrackedExternalLink>
               </Button>
@@ -730,8 +730,8 @@ const Index = () => {
               {[
                 {
                   num: 1,
-                  title: "Discovery Call",
-                  desc: "We hop on a 30-minute call to map out your current setup, pain points, and goals. No pitch. Just clarity.",
+                  title: "Free Online Audit",
+                  desc: "Grab a free 15-minute audit. We map out your site, Google profile, and where customers are slipping through the cracks. No pitch, just clarity.",
                 },
                 {
                   num: 2,
@@ -863,7 +863,7 @@ const Index = () => {
                     <span className="text-primary">Handled</span>?
                   </h2>
                   <p className="text-base sm:text-lg md:text-xl text-white/90 mb-8 max-w-xl mx-auto">
-                    Book a quick call. We'll map out exactly what's costing you
+                    Grab a Free Online Audit. We'll map out exactly what's costing you
                     time and money, and how the Smart Stack Pack plugs it.
                   </p>
                   <Button
@@ -872,14 +872,14 @@ const Index = () => {
                     className="bg-background text-foreground hover:bg-background/90 font-semibold shadow-lg"
                   >
                     <TrackedExternalLink
-                      href="https://calendly.com/saltarelliwebstudio/30min"
+                      href="https://calendly.com/saltarelliwebstudio/free-15-minute-online-presence-review"
                       trackingLabel="homepage_final_book_call"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="gap-2 inline-flex items-center justify-center"
                     >
                       <Sparkles size={18} />
-                      Book a Call
+                      Free Online Audit
                     </TrackedExternalLink>
                   </Button>
                 </div>

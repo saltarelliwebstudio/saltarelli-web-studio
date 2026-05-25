@@ -68,12 +68,12 @@ export const Footer = () => {
               <p className="text-sm text-muted-foreground italic pt-2">Response time: 24-48 hours</p>
               <Button variant="hero" size="sm" className="mt-4 w-full sm:w-auto" asChild>
                 <TrackedExternalLink
-                  href="https://calendly.com/saltarelliwebstudio/30min"
+                  href="https://calendly.com/saltarelliwebstudio/free-15-minute-online-presence-review"
                   trackingLabel="footer_book_call"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Book a Call
+                  Free Online Audit
                 </TrackedExternalLink>
               </Button>
             </div>

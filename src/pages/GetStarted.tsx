@@ -15,8 +15,8 @@ const GetStarted = () => {
     <>
       <SEO
         canonical="/get-started"
-        title="Contact Us | Free Discovery Call"
-        description="Ready to get started? Book a free discovery call with Saltarelli Web Studio. Web design, AI agents, and automations for Ontario small businesses."
+        title="Free Online Audit | Saltarelli Web Studio"
+        description="Grab a free 15-minute Online Audit of your website, Google profile, and online presence. Honest review, clear next steps, no pressure."
       />
     <div className="min-h-screen bg-background text-foreground relative flex flex-col overflow-x-hidden">
       <Starfield />
@@ -48,11 +48,11 @@ const GetStarted = () => {
               </motion.div>
             </motion.div>
             <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6">
-              Let's Get Your Systems Running
+              Free Online Audit
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
-              Book a free 15-minute consultation to discuss your business goals 
-              and how I can set up and manage the systems you need.
+              Grab a free 15-minute audit of your website, Google profile, and online presence.
+              You'll leave with an honest review and clear next steps, no pressure.
             </p>
           </div>
 
@@ -61,29 +61,29 @@ const GetStarted = () => {
               <div className="flex items-start gap-4">
                 <CheckCircle className="text-primary mt-1 flex-shrink-0" size={24} />
                 <div>
-                  <h3 className="font-heading font-semibold mb-2">No Pressure, Just Conversation</h3>
+                  <h3 className="font-heading font-semibold mb-2">Honest Review, No Pressure</h3>
                   <p className="text-muted-foreground">
-                    We'll chat about your business, your goals, and explore how I can take the tech work off your plate
+                    We'll look at your site, your Google profile, and how customers actually find you — straight feedback, no pitch.
                   </p>
                 </div>
               </div>
-              
+
               <div className="flex items-start gap-4">
                 <Clock className="text-primary mt-1 flex-shrink-0" size={24} />
                 <div>
                   <h3 className="font-heading font-semibold mb-2">15 Minutes, Your Schedule</h3>
                   <p className="text-muted-foreground">
-                    Pick a time that works for you, virtual or in-person, whatever's convenient
+                    Pick a time that works for you. Online and quick — get in, get clarity, get out.
                   </p>
                 </div>
               </div>
-              
+
               <div className="flex items-start gap-4">
                 <CheckCircle className="text-primary mt-1 flex-shrink-0" size={24} />
                 <div>
-                  <h3 className="font-heading font-semibold mb-2">Get Clear Next Steps</h3>
+                  <h3 className="font-heading font-semibold mb-2">Walk Away With Clear Next Steps</h3>
                   <p className="text-muted-foreground">
-                    Leave the call with a clear understanding of setup timeline, ongoing services, and simple pricing
+                    You'll leave knowing exactly what's costing you leads and the simplest way to fix it — whether you work with me or not.
                   </p>
                 </div>
               </div>
@@ -91,13 +91,13 @@ const GetStarted = () => {
 
             <div className="text-center">
               <Button variant="hero" size="lg" className="w-full md:w-auto" asChild>
-                <TrackedExternalLink 
-                  href="https://calendly.com/saltarelliwebstudio/30min" 
+                <TrackedExternalLink
+                  href="https://calendly.com/saltarelliwebstudio/free-15-minute-online-presence-review"
                   trackingLabel="calendly_schedule_click"
-                  target="_blank" 
+                  target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Schedule Your Free Discovery Call
+                  Book My Free Online Audit
                 </TrackedExternalLink>
               </Button>
             </div>

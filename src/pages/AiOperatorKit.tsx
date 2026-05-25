@@ -254,18 +254,18 @@ const AiOperatorKit = () => {
                   <p className="text-muted-foreground text-[15px] font-light leading-relaxed max-w-lg mb-7">
                     Running a team means the leaks are different. It's not about
                     missing tools, it's the hours bleeding out where you can't see them.
-                    Book a quick call and we'll find them.
+                    Grab a Free Online Audit and we'll find them.
                   </p>
                   <Button variant="hero" size="lg" asChild>
                     <TrackedExternalLink
-                      href="https://calendly.com/saltarelliwebstudio/30min"
+                      href="https://calendly.com/saltarelliwebstudio/free-15-minute-online-presence-review"
                       trackingLabel="ai_operator_kit_book_call"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="gap-2 inline-flex items-center whitespace-normal text-center"
                     >
                       <ArrowRight size={16} className="flex-shrink-0" />
-                      Book a Call
+                      Free Online Audit
                     </TrackedExternalLink>
                   </Button>
                 </div>

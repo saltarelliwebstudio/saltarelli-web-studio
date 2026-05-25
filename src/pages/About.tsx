@@ -179,12 +179,12 @@ const About = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="hero" size="lg" asChild>
                 <TrackedExternalLink
-                  href="https://calendly.com/saltarelliwebstudio/30min"
+                  href="https://calendly.com/saltarelliwebstudio/free-15-minute-online-presence-review"
                   trackingLabel="about_book_call"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Book a Call <ArrowRight className="ml-2" size={20} />
+                  Free Online Audit <ArrowRight className="ml-2" size={20} />
                 </TrackedExternalLink>
               </Button>
               <Button variant="cosmic" size="lg" asChild>

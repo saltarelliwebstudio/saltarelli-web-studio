@@ -68,7 +68,7 @@ export const PricingCard: React.FC<PricingCardProps> = ({
               asChild
             >
               <TrackedExternalLink
-                href="https://calendly.com/saltarelliwebstudio/30min"
+                href="https://calendly.com/saltarelliwebstudio/free-15-minute-online-presence-review"
                 trackingLabel={trackingLabel}
                 target="_blank"
                 rel="noopener noreferrer"

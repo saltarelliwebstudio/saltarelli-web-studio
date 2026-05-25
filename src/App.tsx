@@ -7,7 +7,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { PageTracker } from "@/components/PageTracker";
-import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import Index from "./pages/Index";
@@ -28,7 +27,6 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <AnnouncementBanner />
         <ScrollToTop />
         <PageTracker />
         <Suspense fallback={<div className="min-h-screen" />}>

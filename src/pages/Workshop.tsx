@@ -117,7 +117,7 @@ const Workshop = () => {
                     Date
                   </p>
                   <p className="font-heading font-semibold text-sm">
-                    Thu, May 7 · 12 PM EDT
+                    COMING SOON
                   </p>
                 </div>
               </div>

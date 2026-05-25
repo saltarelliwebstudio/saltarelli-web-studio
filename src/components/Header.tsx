@@ -151,14 +151,14 @@ export const Header = () => {
             )}
             <Button variant="hero" size="sm" asChild className="ml-2">
               <TrackedExternalLink
-                href="https://calendly.com/saltarelliwebstudio/30min"
+                href="https://calendly.com/saltarelliwebstudio/free-15-minute-online-presence-review"
                 trackingLabel="header_book_call"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="gap-2"
               >
                 <Sparkles size={16} />
-                Book a Call
+                Free Online Audit
               </TrackedExternalLink>
             </Button>
           </div>
@@ -277,14 +277,14 @@ export const Header = () => {
                   >
                     <Button variant="hero" size="lg" asChild className="w-full">
                       <TrackedExternalLink
-                        href="https://calendly.com/saltarelliwebstudio/30min"
+                        href="https://calendly.com/saltarelliwebstudio/free-15-minute-online-presence-review"
                         trackingLabel="header_mobile_book_call"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="gap-2"
                       >
                         <Sparkles size={18} />
-                        Book a Call
+                        Free Online Audit
                       </TrackedExternalLink>
                     </Button>
                   </motion.div>
