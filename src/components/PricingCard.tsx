@@ -76,7 +76,7 @@ export const PricingCard: React.FC<PricingCardProps> = ({
                 Choose {title}
               </TrackedExternalLink>
             </Button>
-            <p className="text-xs text-muted-foreground text-center">✅ 30-day satisfaction guarantee included</p>
+            <p className="text-xs text-muted-foreground text-center">✅ 60-day satisfaction guarantee included</p>
           </div>
         </CardContent>
       </Card>

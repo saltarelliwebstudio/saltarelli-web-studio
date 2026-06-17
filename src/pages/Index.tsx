@@ -6,6 +6,7 @@ import { Starfield } from "@/components/Starfield";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { TestimonialCard } from "@/components/TestimonialCard";
+import { TrustedBy } from "@/components/TrustedBy";
 import { FadeIn, StaggerContainer, StaggerItem, ScaleIn } from "@/components/motion";
 import { SEO } from "@/components/SEO";
 import { TrackedLink } from "@/components/TrackedLink";
@@ -92,7 +93,7 @@ const faqItems = [
   },
   {
     q: "What if it doesn't work for my business?",
-    a: "That's what the Clean Hands Guarantee is for. If the systems aren't outperforming your current setup after 30 days, you get a full refund. No awkward conversation.",
+    a: "That's what the Clean Hands Guarantee is for. If the systems aren't outperforming your current setup after 60 days, you get a full refund. No awkward conversation.",
   },
   {
     q: "Do I need to be tech-savvy?",
@@ -102,14 +103,6 @@ const faqItems = [
     q: "Can I keep my current website?",
     a: "Yes. We can integrate the AI agent, automations, and review engine with your existing site. But most clients choose the full stack because a managed site is included at no extra cost.",
   },
-];
-
-const tickerItems = [
-  "CALLS ANSWERED",
-  "LEADS CAPTURED",
-  "ESTIMATES AUTOMATED",
-  "REVIEWS COLLECTED",
-  "ZERO MANUAL WORK",
 ];
 
 const Index = () => {
@@ -150,7 +143,7 @@ const Index = () => {
           aggregateRating: {
             "@type": "AggregateRating",
             ratingValue: "5",
-            reviewCount: "12",
+            reviewCount: "20",
           },
           review: [
             {
@@ -294,50 +287,34 @@ const Index = () => {
               </motion.div>
 
               {/* Trust Badge */}
-              <motion.p
+              <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.8 }}
-                className="text-sm text-muted-foreground mt-4"
+                className="mt-6 flex flex-col items-center gap-2"
               >
-                Backed by our Clean Hands Guarantee
-              </motion.p>
+                <a
+                  href="#reviews"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 backdrop-blur-sm transition-colors hover:border-primary/50"
+                >
+                  <span className="flex gap-0.5">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} size={16} className="fill-primary text-primary" />
+                    ))}
+                  </span>
+                  <span className="text-sm font-semibold text-foreground">5.0</span>
+                  <span className="text-sm text-muted-foreground">· 20 Google reviews</span>
+                </a>
+                <p className="text-sm text-muted-foreground">
+                  Backed by our Clean Hands Guarantee
+                </p>
+              </motion.div>
             </div>
           </div>
         </section>
 
-        {/* ──────────── SCROLLING TICKER BAR ──────────── */}
-        <div className="relative z-10 overflow-hidden bg-primary py-3">
-          <div className="ticker-track">
-            {[...tickerItems, ...tickerItems].map((item, i) => (
-              <span
-                key={i}
-                className="inline-block whitespace-nowrap text-white font-bold text-sm tracking-widest mx-8"
-              >
-                {item}
-              </span>
-            ))}
-            {[...tickerItems, ...tickerItems].map((item, i) => (
-              <span
-                key={`dup-${i}`}
-                className="inline-block whitespace-nowrap text-white font-bold text-sm tracking-widest mx-8"
-              >
-                {item}
-              </span>
-            ))}
-          </div>
-          <style>{`
-            .ticker-track {
-              display: flex;
-              width: max-content;
-              animation: ticker 30s linear infinite;
-            }
-            @keyframes ticker {
-              0% { transform: translateX(0); }
-              100% { transform: translateX(-50%); }
-            }
-          `}</style>
-        </div>
+        {/* ──────────── TRUSTED BY (CLIENT LOGOS) ──────────── */}
+        <TrustedBy />
 
         {/* ──────────── GENIUS FITNESS CASE STUDY ──────────── */}
         <section className="py-20 md:py-28 px-4 md:px-6 relative z-10">
@@ -408,7 +385,7 @@ const Index = () => {
         </section>
 
         {/* ──────────── GOOGLE REVIEW BOMB ──────────── */}
-        <section className="py-20 md:py-28 px-4 md:px-6 relative z-10">
+        <section id="reviews" className="py-20 md:py-28 px-4 md:px-6 relative z-10">
           <div className="container mx-auto max-w-6xl">
             <FadeIn className="text-center mb-12">
               <span className="text-primary font-bold text-sm tracking-widest uppercase mb-3 block">
@@ -790,7 +767,7 @@ const Index = () => {
                   </h2>
                   <p className="text-muted-foreground text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-4">
                     If our systems aren't working harder than your newest hire
-                    after 30 days, we'll refund every dollar you paid. No
+                    after 60 days, we'll refund every dollar you paid. No
                     awkward conversation. No fine print.
                   </p>
                   <p className="text-sm text-muted-foreground italic">
