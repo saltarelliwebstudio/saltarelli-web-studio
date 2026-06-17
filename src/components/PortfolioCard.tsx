@@ -11,6 +11,8 @@ interface PortfolioCardProps {
   category: string;
   imageUrl?: string;
   liveUrl?: string;
+  type?: string;
+  status?: string;
 }
 
 export const PortfolioCard: React.FC<PortfolioCardProps> = ({
@@ -19,6 +21,8 @@ export const PortfolioCard: React.FC<PortfolioCardProps> = ({
   category,
   imageUrl,
   liveUrl,
+  type,
+  status,
 }) => {
   const [imageError, setImageError] = useState(false);
   
@@ -32,6 +36,19 @@ export const PortfolioCard: React.FC<PortfolioCardProps> = ({
     >
       <Card className="group overflow-hidden glass hover:shadow-glow transition-all duration-500 h-full">
         <div className="aspect-video relative overflow-hidden bg-gradient-to-br from-primary/20 to-accent/20">
+          {/* Type + status badges */}
+          <div className="absolute top-3 left-3 z-20 flex gap-2">
+            {type && (
+              <span className="rounded-full bg-primary/90 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-primary-foreground shadow">
+                {type}
+              </span>
+            )}
+            {status && (
+              <span className="rounded-full bg-amber-500/90 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-black shadow">
+                {status}
+              </span>
+            )}
+          </div>
           {imageUrl && !imageError ? (
             <img
               src={imageUrl}

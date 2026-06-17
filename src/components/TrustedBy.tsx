@@ -12,7 +12,6 @@ const logos: Logo[] = [
   { src: "/logos/genius-fitness.webp", alt: "Genius Fitness & MMA", url: "https://www.geniusfitnessandmma.com" },
   { src: "/logos/pops-landscaping.png", alt: "Pop's Landscaping", url: "https://popslandscaping.ca" },
   { src: "/logos/360-property-maintenance.png", alt: "360 Property Maintenance", url: "https://360propertymaintenance.com" },
-  { src: "/logos/bell-marine.webp", alt: "Bell Marine", url: "https://bellmarineltd.com" },
   { src: "/logos/luxury-details.png", alt: "Luxury Details", url: "https://luxurydetails.ca" },
   { src: "/logos/mbv-specialty-services.png", alt: "MBV Specialty Services", url: "https://mbvinc.ca" },
   { src: "/logos/landscape-one.jpeg", alt: "Landscape One", url: "https://landscapeone.ca" },
@@ -27,6 +26,7 @@ const logos: Logo[] = [
   { src: "/logos/claudes-roofing.png", alt: "Claude's Roofing", url: "https://claudesroofing.ca", imgClass: "max-h-[84px] max-w-[92%] object-contain rounded-md" },
   { src: "/logos/tree-stump-removal.png", alt: "Tree and Stump Removal", url: "https://treeandstumpremoval.ca" },
   { src: "/logos/carrot-effect.png", alt: "The Carrot Effect", url: "https://thecarroteffect.ca" },
+  { src: "/logos/napa.png", alt: "Niagara Antique Power Association", url: "https://www.niagaraantiquepower.org", imgClass: "max-h-[72px] max-w-[92%] object-contain rounded-md" },
 ];
 
 function LogoTile({ logo }: { logo: Logo }) {
