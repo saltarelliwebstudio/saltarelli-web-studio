@@ -384,6 +384,57 @@ const Index = () => {
           </div>
         </section>
 
+        {/* ──────────── CLIENT SPOTLIGHT (Luke Ellis) ──────────── */}
+        <section className="py-16 md:py-24 px-4 md:px-6 relative z-10">
+          <div className="container mx-auto max-w-4xl">
+            <FadeIn className="text-center mb-10">
+              <span className="text-primary font-bold text-sm tracking-widest uppercase mb-3 block">
+                Client Spotlight
+              </span>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold">
+                "The value created for my business is{" "}
+                <span className="text-primary">beyond measurable.</span>"
+              </h2>
+            </FadeIn>
+
+            <ScaleIn>
+              <div className="glass-strong rounded-2xl border border-primary/30 shadow-glow p-6 md:p-10">
+                <div className="flex items-center gap-2 mb-5">
+                  <div className="flex gap-0.5">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} size={18} className="fill-primary text-primary" />
+                    ))}
+                  </div>
+                  <span className="text-xs text-muted-foreground">Shared publicly on Facebook</span>
+                </div>
+
+                <div className="space-y-4 text-foreground/90 text-base md:text-lg leading-relaxed">
+                  <p>
+                    "Been on the phone all morning with our new website developer Adam. He's 17 years old. This guy knows AI like nobody I've met.
+                  </p>
+                  <p>
+                    I met him in a Tim Hortons at 10pm a couple months ago. I was in the bathroom when my phone rang, declined it 3 times, then finally picked up. It was Adam, saying he was outside staring at my company van, telling me he'd already built me a whole new website while I was in the bathroom, using AI.
+                  </p>
+                  <p>
+                    Today we hopped on a call and within 2 hours he helped us streamline every aspect of the business. Automated booking, leads, AI phone calls. You name it, we touched on it. This kid is 17, and in 2 hours made more than most do in a day.
+                  </p>
+                  <p>
+                    The value created for my business is beyond measurable. He should have charged us double or triple what he did. We signed up for a monthly subscription to integrate every new AI feature we can into the business.
+                  </p>
+                  <p className="text-foreground font-semibold">
+                    The world is changing. Change with it or get left behind."
+                  </p>
+                </div>
+
+                <div className="mt-6 pt-6 border-t border-white/10">
+                  <p className="font-heading font-semibold text-foreground">Luke Ellis</p>
+                  <p className="text-sm text-muted-foreground">Owner, Luxury Details</p>
+                </div>
+              </div>
+            </ScaleIn>
+          </div>
+        </section>
+
         {/* ──────────── GOOGLE REVIEW BOMB ──────────── */}
         <section id="reviews" className="py-20 md:py-28 px-4 md:px-6 relative z-10">
           <div className="container mx-auto max-w-6xl">
