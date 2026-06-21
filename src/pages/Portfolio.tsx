@@ -86,6 +86,14 @@ const portfolioItems = [
   },
   // ── Websites ──
   {
+    title: "Simon \"Showtime\" Romero",
+    description: "Real estate site for Simon \"Showtime\" Romero of Olympia Realty, built to win listings and capture buyer and seller leads across the Niagara Region.",
+    category: "Real Estate",
+    type: "Website",
+    imageUrl: "/lovable-uploads/simon-real-estate.webp",
+    liveUrl: "https://showtimesellshomes.ca",
+  },
+  {
     title: "WS Construction",
     description: "Home renovation company website for Fort Erie's experts. Showcases bathrooms, kitchens, windows, and more with a premium, modern design.",
     category: "Local Services",
