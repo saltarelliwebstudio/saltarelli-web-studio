@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { X } from "lucide-react";
 import {
   getNextSession,
   getCountdownParts,
@@ -8,9 +7,6 @@ import {
 } from "@/lib/liveSession";
 
 const BANNER_HEIGHT_PX = 44;
-
-const storageKeyFor = (start: Date) =>
-  `sws-live-banner-${start.toISOString().slice(0, 10)}`;
 
 const CountdownPill = ({ value, unit }: { value: number; unit: string }) => (
   <span className="inline-flex items-baseline rounded-md bg-background/50 border border-primary/40 px-1.5 py-0.5 font-mono font-bold tabular-nums text-primary text-xs leading-none shadow-[0_0_12px_hsl(var(--primary)/0.25)]">
@@ -27,36 +23,18 @@ export const AnnouncementBanner = () => {
     return () => clearInterval(id);
   }, []);
 
-  const [hidden, setHidden] = useState(false);
-
   const now = new Date();
   const session = getNextSession(now);
-  const key = storageKeyFor(session.start);
 
-  // Dismissal is scoped to the current week's session key, so the banner
-  // reappears automatically once the countdown rolls to next Thursday.
-  const dismissed =
-    typeof window !== "undefined" &&
-    window.localStorage.getItem(key) === "dismissed";
-  const visible = !hidden && !dismissed;
-
+  // The banner is always visible — it cannot be dismissed. It offsets the page
+  // content by reserving its height as a CSS custom property.
   useEffect(() => {
     const root = document.documentElement;
-    root.style.setProperty(
-      "--banner-height",
-      visible ? `${BANNER_HEIGHT_PX}px` : "0px"
-    );
+    root.style.setProperty("--banner-height", `${BANNER_HEIGHT_PX}px`);
     return () => {
       root.style.setProperty("--banner-height", "0px");
     };
-  }, [visible]);
-
-  if (!visible) return null;
-
-  const handleDismiss = () => {
-    window.localStorage.setItem(key, "dismissed");
-    setHidden(true);
-  };
+  }, []);
 
   const cp = getCountdownParts(session.start.getTime() - now.getTime());
 
@@ -112,14 +90,6 @@ export const AnnouncementBanner = () => {
             </span>
           </Link>
         </div>
-        <button
-          type="button"
-          onClick={handleDismiss}
-          aria-label="Dismiss banner"
-          className="flex-shrink-0 text-foreground/70 hover:text-foreground p-1 rounded transition-colors"
-        >
-          <X size={16} />
-        </button>
       </div>
     </div>
   );
