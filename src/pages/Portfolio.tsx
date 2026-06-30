@@ -86,6 +86,22 @@ const portfolioItems = [
   },
   // ── Websites ──
   {
+    title: "X Fitness",
+    description: "Website for Port Colborne's 24/7 discipline gym, built to drive memberships with a bold hero, equipment showcase, and clear free-class and tour calls to action.",
+    category: "Fitness & Wellness",
+    type: "Website",
+    imageUrl: "/lovable-uploads/xfitness-site.webp",
+    liveUrl: "https://xfitness.ca",
+  },
+  {
+    title: "Grind Tech",
+    description: "Stump grinding company website built to win same-day jobs across Niagara, Hamilton, Brant, Haldimand, Norfolk, and Peel, with a bold hero, service-area map, and a fast quote flow.",
+    category: "Local Services",
+    type: "Website",
+    imageUrl: "/lovable-uploads/grindtech-site.webp",
+    liveUrl: "https://grindtech.ca",
+  },
+  {
     title: "Simon \"Showtime\" Romero",
     description: "Real estate site for Simon \"Showtime\" Romero of Olympia Realty, built to win listings and capture buyer and seller leads across the Niagara Region.",
     category: "Real Estate",
@@ -220,6 +236,14 @@ const portfolioItems = [
     type: "Website",
     imageUrl: "/lovable-uploads/mohawk-electric-site.webp",
     liveUrl: "https://mohawkelectric.ca",
+  },
+  {
+    title: "Snippe Electric",
+    description: "Electrical contractor website for Snippe Electric Inc., serving Haldimand County and the Niagara Region with a clean, code-compliant design, clear services, and a simple Contact Us flow.",
+    category: "Local Services",
+    type: "Website",
+    imageUrl: "/lovable-uploads/snippe-electric-site.webp",
+    liveUrl: "https://snippeelectric.com",
   },
   {
     title: "MBV Specialty Services",
