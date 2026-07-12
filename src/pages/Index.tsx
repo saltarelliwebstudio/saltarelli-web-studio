@@ -76,8 +76,8 @@ const Index = () => {
     <>
       <SEO
         canonical="/"
-        title="Saltarelli Web Studio | Top of Google in 60 Days, Guaranteed"
-        description="I build and manage your website and Google review engine to get your local business ranking at the top of Google in 60 days. Guaranteed, or you don't pay. Only 5 spots a month."
+        title="Saltarelli Web Studio | Get Found on Google, Win More Customers"
+        description="I build and manage websites, Google review engines, and local SEO that get local businesses found on Google and winning more customers. Backed by a 60-day guarantee. Serving Niagara and Ontario."
         schema={{
           "@context": "https://schema.org",
           "@type": "ProfessionalService",
