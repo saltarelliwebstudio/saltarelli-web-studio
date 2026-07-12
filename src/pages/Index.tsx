@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ArrowRight, Sparkles, ShieldCheck, Star } from "lucide-react";
+import { ArrowRight, Sparkles, ShieldCheck, Star, CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Starfield } from "@/components/Starfield";
@@ -18,90 +18,56 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import logo from "@/assets/sws-logo.png";
+import { supabase } from "@/integrations/supabase/client";
 
 const smartStackCards = [
   {
     emoji: "🌐",
     name: "Managed Website",
-    tagline: "Your 24/7 digital storefront",
+    tagline: "Built to rank and convert",
     detail:
-      "Custom-designed, mobile-optimized site with hosting, SSL, updates, and ongoing SEO. All included.",
-  },
-  {
-    emoji: "🤖",
-    name: "AI Chat Widget",
-    tagline: "Answers questions while you sleep",
-    detail:
-      "Trained on your business. Qualifies leads, answers FAQs, and books appointments, even at 2 AM.",
-  },
-  {
-    emoji: "📞",
-    name: "AI Phone Agent",
-    tagline: "Never miss a call again",
-    detail:
-      "An AI receptionist that picks up, qualifies callers, and routes hot leads to your phone instantly.",
-  },
-  {
-    emoji: "⚡",
-    name: "Lead Automations",
-    tagline: "Capture → Notify → Follow up",
-    detail:
-      "New lead comes in? You get a text. They get a reply. The CRM gets updated. Zero manual work.",
+      "We refine the entire front end and back end into a fast, mobile-first site built to rank on Google and turn visitors into calls. Hosting, updates, and edits all handled for you.",
   },
   {
     emoji: "⭐",
-    name: "Review Engine",
-    tagline: "5-star reviews on autopilot",
+    name: "Google Review Engine",
+    tagline: "More 5-star reviews, higher rankings",
     detail:
-      "Automated post-job review requests via SMS. More reviews = higher Google ranking = more calls.",
+      "More reviews means a higher spot in Google's local results, which means more customers find you first. The more you stack up, the higher you climb.",
   },
   {
-    emoji: "📊",
-    name: "CRM Dashboard",
-    tagline: "See every lead in one place",
+    emoji: "📈",
+    name: "SEO + Systems",
+    tagline: "The engine that gets you to the top",
     detail:
-      "Track leads, follow-ups, and revenue. No spreadsheets. Built for small business, not enterprise.",
-  },
-  {
-    emoji: "📋",
-    name: "Online Estimates",
-    tagline: "Quote faster, close sooner",
-    detail:
-      "Customers request quotes from your site. You review and send. Branded, professional, fast.",
-  },
-  {
-    emoji: "🛡️",
-    name: "Ongoing Management",
-    tagline: "We handle the tech, you handle the work",
-    detail:
-      "Hosting, security, updates, monitoring, and priority support. All bundled in your monthly plan.",
+      "Local SEO, Google Business Profile optimization, and the automations that capture every lead and notify you the second one comes in, so nothing slips through the cracks.",
   },
 ];
 
 const faqItems = [
   {
-    q: "What kind of businesses is the Smart Stack Pack for?",
-    a: "It's built for small and mid-size businesses that rely on phone calls, quotes, and local reputation. Service businesses, fitness studios, retail, professional services, and similar.",
+    q: "What exactly do I get?",
+    a: "A managed website, a Google review engine, and the local SEO that gets you ranking. I build it, I manage it, and I keep you climbing Google. It's one simple monthly plan with everything included.",
   },
   {
-    q: "Do I need to buy each piece separately?",
-    a: "No. We figure out which pieces fit your business and build around what you already have. If your website is solid, we won't redo it. We just plug in the AI, automations, and systems that are missing. You only pay for what makes sense.",
+    q: "How does the 60-day guarantee work?",
+    a: "If you're not satisfied with what I've delivered after 60 days, you get a full refund. Every dollar back, no awkward conversation, no fine print. That's the Clean Hands Guarantee.",
   },
   {
-    q: "How long does setup take?",
-    a: "Most clients are fully live within 2 to 3 weeks. We handle everything. You just show up for a discovery call and approve the final setup.",
+    q: "What kind of businesses is this for?",
+    a: "Local businesses that live and die by Google and word of mouth. Trades, gyms, service businesses, restaurants, professional services. If your customers find you by searching, this is for you.",
   },
   {
-    q: "What if it doesn't work for my business?",
-    a: "That's what the Clean Hands Guarantee is for. If the systems aren't outperforming your current setup after 60 days, you get a full refund. No awkward conversation.",
+    q: "Can you actually get me to the top of Google?",
+    a: "I took a 24/7 gym in Port Colborne to number one on Google in the Niagara region in 60 days. Every market is different, which is exactly why there's a money-back guarantee. If I don't deliver, you don't pay.",
   },
   {
-    q: "Do I need to be tech-savvy?",
-    a: "Not at all. We manage everything. You'll get a simple dashboard to see leads and reviews, but you never have to touch code, hosting, or settings.",
+    q: "How much of my time does it take?",
+    a: "About 15 minutes. You approve the direction and I handle the rest. No touching code, hosting, or settings.",
   },
   {
-    q: "Can I keep my current website?",
-    a: "Yes. We can integrate the AI agent, automations, and review engine with your existing site. But most clients choose the full stack because a managed site is included at no extra cost.",
+    q: "What does it cost?",
+    a: "One simple monthly plan. The exact number depends on your market and how competitive your area is, so we go over it on a quick call once I've had a look at your business.",
   },
 ];
 
@@ -110,8 +76,8 @@ const Index = () => {
     <>
       <SEO
         canonical="/"
-        title="Saltarelli Web Studio | AI Admin Systems for Small Business"
-        description="We build AI admin systems for businesses that save 10+ hours a week, delivered in 14 days. Websites, AI agents, and automations in one managed plan. Grab a Free Online Audit to see if we're a fit."
+        title="Saltarelli Web Studio | Top of Google in 60 Days, Guaranteed"
+        description="I build and manage your website and Google review engine to get your local business ranking at the top of Google in 60 days. Guaranteed, or you don't pay. Only 5 spots a month."
         schema={{
           "@context": "https://schema.org",
           "@type": "ProfessionalService",
@@ -119,7 +85,7 @@ const Index = () => {
           url: "https://saltarelliwebstudio.ca",
           logo: "https://saltarelliwebstudio.ca/sws-logo.png",
           description:
-            "AI admin systems for businesses that save 10+ hours a week, delivered in 14 days. Websites, AI, and automations in one managed stack.",
+            "Managed websites, Google review engines, and local SEO that get local businesses ranking at the top of Google in 60 days. Guaranteed, or you don't pay.",
           telephone: "+12895135284",
           email: "saltarelliwebstudio@gmail.com",
           areaServed: [
@@ -131,11 +97,10 @@ const Index = () => {
           ],
           founder: { "@type": "Person", name: "Adam Saltarelli" },
           serviceType: [
+            "Local SEO",
             "Web Design",
-            "AI Chat Widgets",
-            "AI Voice Agents",
-            "Business Automation",
-            "CRM",
+            "Website Management",
+            "Google Business Profile Optimization",
             "Review Management",
           ],
           priceRange: "$$",
@@ -228,17 +193,16 @@ const Index = () => {
                 }}
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-heading font-bold mb-6 leading-[1.1] max-w-5xl mx-auto text-balance"
               >
-                We build AI admin systems
-                <br className="hidden md:inline" /> for businesses that save{" "}
+                I took a Port Colborne gym to{" "}
                 <span className="text-primary glow-text whitespace-nowrap">
-                  10+ hours a week
-                </span>
-                ,
-                <br className="hidden md:inline" /> delivered in{" "}
+                  #1 on Google
+                </span>{" "}
+                in{" "}
                 <span className="text-primary glow-text whitespace-nowrap">
-                  14 days
+                  60 days
                 </span>
                 .
+                <br className="hidden md:inline" /> Let's get more customers finding you.
               </motion.h1>
 
               {/* Subtitle */}
@@ -248,7 +212,7 @@ const Index = () => {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed px-4"
               >
-                Most businesses are losing jobs to competitors with smarter systems. We fix that.
+                I build and manage your website and Google review engine to get more local customers finding you on Google. If it's not working in 60 days, you don't pay a cent.
               </motion.p>
 
               {/* CTA Buttons */}
@@ -259,16 +223,13 @@ const Index = () => {
                 className="flex flex-col sm:flex-row gap-4 justify-center px-4"
               >
                 <Button variant="hero" size="lg" asChild className="text-base">
-                  <TrackedExternalLink
-                    href="https://calendly.com/saltarelliwebstudio/free-15-minute-online-presence-review"
-                    trackingLabel="hero_book_call"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <a
+                    href="#apply"
                     className="gap-2 inline-flex items-center justify-center"
                   >
                     <Sparkles size={18} />
-                    Free Online Audit
-                  </TrackedExternalLink>
+                    See If You Qualify
+                  </a>
                 </Button>
                 <Button
                   variant="cosmic"
@@ -724,18 +685,16 @@ const Index = () => {
 
             <FadeIn className="text-center">
               <p className="text-sm text-muted-foreground mb-6 max-w-xl mx-auto">
-                Everything above is bundled into one simple monthly plan. No
-                contracts. Cancel anytime.
+                Everything above is bundled into one simple monthly plan.
               </p>
               <Button variant="hero" size="lg" asChild>
-                <TrackedExternalLink
-                  href="https://calendly.com/saltarelliwebstudio/free-15-minute-online-presence-review"
-                  trackingLabel="smart_stack_book_call"
+                <a
+                  href="#apply"
                   className="gap-2 inline-flex items-center justify-center"
                 >
-                  Free Online Audit
+                  See If You Qualify
                   <ArrowRight size={18} />
-                </TrackedExternalLink>
+                </a>
               </Button>
             </FadeIn>
           </div>
@@ -758,18 +717,18 @@ const Index = () => {
               {[
                 {
                   num: 1,
-                  title: "Free Online Audit",
-                  desc: "Grab a free 15-minute audit. We map out your site, Google profile, and where customers are slipping through the cracks. No pitch, just clarity.",
+                  title: "Apply & Qualify",
+                  desc: "Tell me about your business in a quick form or call. I look at your Google presence and whether I can get you to the top. I only take 5 clients a month.",
                 },
                 {
                   num: 2,
-                  title: "Build & Setup",
-                  desc: "We design your site, train your AI agents, and wire up your automations. You approve everything before it goes live.",
+                  title: "Build & Rank",
+                  desc: "I build your site, set up your review engine, and dial in your local SEO. You approve everything before it goes live.",
                 },
                 {
                   num: 3,
-                  title: "It Runs. You Work.",
-                  desc: "Your stack goes live. Leads get answered, reviews get collected, and you get back to the work that actually makes you money.",
+                  title: "You Climb. Jobs Come In.",
+                  desc: "You start climbing Google, reviews roll in, and the calls follow. If you're not satisfied with what we've done in 60 days, you don't pay a cent.",
                 },
               ].map((step, idx) => (
                 <FadeIn key={idx} delay={idx * 0.15}>
@@ -817,12 +776,13 @@ const Index = () => {
                     Clean Hands Guarantee
                   </h2>
                   <p className="text-muted-foreground text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-4">
-                    If our systems aren't working harder than your newest hire
-                    after 60 days, we'll refund every dollar you paid. No
-                    awkward conversation. No fine print.
+                    If you're not getting more customers from Google within 60
+                    days, I'll refund every dollar you paid. No awkward
+                    conversation. No fine print.
                   </p>
                   <p className="text-sm text-muted-foreground italic">
-                    We only win when your business runs better.
+                    I don't promise #1. That's up to your market. I promise more
+                    customers, or your money back.
                   </p>
                 </div>
               </div>
@@ -863,6 +823,27 @@ const Index = () => {
           </div>
         </section>
 
+        {/* ──────────── APPLY / QUALIFY FORM ──────────── */}
+        <section id="apply" className="py-20 md:py-28 px-4 md:px-6 relative z-10">
+          <div className="container mx-auto max-w-2xl">
+            <FadeIn className="text-center mb-10">
+              <span className="text-primary font-bold text-sm tracking-widest uppercase mb-3 block">
+                See If You Qualify
+              </span>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-4">
+                Tell me about your business
+              </h2>
+              <p className="text-muted-foreground max-w-xl mx-auto">
+                Drop your details and I'll personally review your business and
+                get back to you. Ready right now? Book a call on the spot.
+              </p>
+            </FadeIn>
+            <FadeIn>
+              <ApplyForm />
+            </FadeIn>
+          </div>
+        </section>
+
         {/* ──────────── FINAL CTA ──────────── */}
         <section className="py-20 md:py-28 px-4 md:px-6 relative z-10">
           <div className="container mx-auto max-w-4xl">
@@ -887,28 +868,25 @@ const Index = () => {
                     <Sparkles className="text-white" size={48} />
                   </motion.div>
                   <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold mb-4 text-white">
-                    Ready to Get Your Systems{" "}
-                    <span className="text-primary">Handled</span>?
+                    Ready to Get to the{" "}
+                    <span className="text-primary">Top of Google</span>?
                   </h2>
                   <p className="text-base sm:text-lg md:text-xl text-white/90 mb-8 max-w-xl mx-auto">
-                    Grab a Free Online Audit. We'll map out exactly what's costing you
-                    time and money, and how the Smart Stack Pack plugs it.
+                    Apply for one of 5 spots this month. I'll review your business and
+                    show you exactly how we get you ranking at the top of Google in 60 days.
                   </p>
                   <Button
                     size="lg"
                     asChild
                     className="bg-background text-foreground hover:bg-background/90 font-semibold shadow-lg"
                   >
-                    <TrackedExternalLink
-                      href="https://calendly.com/saltarelliwebstudio/free-15-minute-online-presence-review"
-                      trackingLabel="homepage_final_book_call"
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <a
+                      href="#apply"
                       className="gap-2 inline-flex items-center justify-center"
                     >
                       <Sparkles size={18} />
-                      Free Online Audit
-                    </TrackedExternalLink>
+                      See If You Qualify
+                    </a>
                   </Button>
                 </div>
               </motion.div>
@@ -960,6 +938,168 @@ function SmartStackCard({
           </p>
         </div>
       </div>
+    </div>
+  );
+}
+
+/* ── Apply / Qualify Form ── */
+function ApplyForm() {
+  const CALENDLY =
+    "https://calendly.com/saltarelliwebstudio/free-15-minute-online-presence-review";
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    website: "",
+    message: "",
+  });
+  const [status, setStatus] = useState<
+    "idle" | "submitting" | "success" | "error"
+  >("idle");
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const update =
+    (field: string) =>
+    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+      setForm((f) => ({ ...f, [field]: e.target.value }));
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!form.name.trim() || !form.email.trim()) {
+      setErrorMsg("Please add your name and email.");
+      setStatus("error");
+      return;
+    }
+    setStatus("submitting");
+    setErrorMsg("");
+    try {
+      const { data, error } = await supabase.functions.invoke("qualify-submit", {
+        body: form,
+      });
+      const payload = data as { error?: string } | null;
+      if (error || payload?.error) {
+        throw new Error(payload?.error || error?.message || "Something went wrong.");
+      }
+      setStatus("success");
+    } catch (err) {
+      setErrorMsg(
+        err instanceof Error
+          ? err.message
+          : "Something went wrong. Please try again or book a call below."
+      );
+      setStatus("error");
+    }
+  };
+
+  const inputClass =
+    "w-full rounded-xl bg-white/5 border border-white/15 px-4 py-3 text-foreground placeholder:text-muted-foreground focus:border-primary/60 focus:outline-none transition-colors";
+
+  if (status === "success") {
+    return (
+      <div className="glass-strong rounded-2xl border border-primary/30 shadow-glow p-8 md:p-10 text-center">
+        <div className="flex justify-center mb-5">
+          <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center">
+            <CheckCircle className="text-primary" size={32} />
+          </div>
+        </div>
+        <h3 className="text-2xl font-heading font-bold mb-3">
+          Got it. I'll be in touch.
+        </h3>
+        <p className="text-muted-foreground mb-6 max-w-md mx-auto">
+          I'll personally review your business
+          {form.website ? " and your website" : ""} and get back to you shortly.
+          Want to skip the wait?
+        </p>
+        <Button variant="hero" size="lg" asChild>
+          <TrackedExternalLink
+            href={CALENDLY}
+            trackingLabel="apply_success_book_now"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="gap-2 inline-flex items-center justify-center"
+          >
+            Book a Call Now
+            <ArrowRight size={18} />
+          </TrackedExternalLink>
+        </Button>
+      </div>
+    );
+  }
+
+  return (
+    <div className="glass-strong rounded-2xl border border-primary/30 shadow-glow p-6 md:p-8">
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div className="grid sm:grid-cols-2 gap-4">
+          <input
+            type="text"
+            placeholder="Your name *"
+            value={form.name}
+            onChange={update("name")}
+            className={inputClass}
+          />
+          <input
+            type="email"
+            placeholder="Email *"
+            value={form.email}
+            onChange={update("email")}
+            className={inputClass}
+          />
+        </div>
+        <div className="grid sm:grid-cols-2 gap-4">
+          <input
+            type="tel"
+            placeholder="Phone (optional)"
+            value={form.phone}
+            onChange={update("phone")}
+            className={inputClass}
+          />
+          <input
+            type="text"
+            placeholder="Your website (if you have one)"
+            value={form.website}
+            onChange={update("website")}
+            className={inputClass}
+          />
+        </div>
+        <textarea
+          placeholder="Anything I should know? (optional)"
+          value={form.message}
+          onChange={update("message")}
+          rows={3}
+          className={`${inputClass} resize-none`}
+        />
+
+        {status === "error" && (
+          <p className="text-sm text-red-400">{errorMsg}</p>
+        )}
+
+        <Button
+          type="submit"
+          variant="hero"
+          size="lg"
+          disabled={status === "submitting"}
+          className="w-full gap-2"
+        >
+          <Sparkles size={18} />
+          {status === "submitting" ? "Sending..." : "See If I Can Help"}
+        </Button>
+        <p className="text-sm text-muted-foreground text-center pt-1">
+          Or{" "}
+          <TrackedExternalLink
+            href={CALENDLY}
+            trackingLabel="apply_book_now"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary font-medium hover:underline"
+          >
+            just book a time with me now
+          </TrackedExternalLink>
+          .
+        </p>
+        <p className="text-xs text-muted-foreground text-center">
+          Only 5 spots a month. I'll personally review what you send.
+        </p>
+      </form>
     </div>
   );
 }
