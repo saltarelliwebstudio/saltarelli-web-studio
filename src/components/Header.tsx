@@ -3,7 +3,6 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { TrackedExternalLink } from "@/components/TrackedExternalLink";
 import logo from "@/assets/sws-logo.png";
 
 export const Header = () => {
@@ -150,16 +149,10 @@ export const Header = () => {
               )
             )}
             <Button variant="hero" size="sm" asChild className="ml-2">
-              <TrackedExternalLink
-                href="https://calendly.com/saltarelliwebstudio/free-15-minute-online-presence-review"
-                trackingLabel="header_book_call"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="gap-2"
-              >
+              <a href="/#apply" className="gap-2 inline-flex items-center">
                 <Sparkles size={16} />
-                Free Online Audit
-              </TrackedExternalLink>
+                See If You Qualify
+              </a>
             </Button>
           </div>
 
@@ -276,16 +269,10 @@ export const Header = () => {
                     className="mt-auto"
                   >
                     <Button variant="hero" size="lg" asChild className="w-full">
-                      <TrackedExternalLink
-                        href="https://calendly.com/saltarelliwebstudio/free-15-minute-online-presence-review"
-                        trackingLabel="header_mobile_book_call"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="gap-2"
-                      >
+                      <a href="/#apply" className="gap-2 inline-flex items-center justify-center">
                         <Sparkles size={18} />
-                        Free Online Audit
-                      </TrackedExternalLink>
+                        See If You Qualify
+                      </a>
                     </Button>
                   </motion.div>
                 </div>

@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Mail, Phone, Instagram, Facebook, Podcast, Linkedin, Youtube, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { TrackedExternalLink } from "@/components/TrackedExternalLink";
 import logo from "@/assets/sws-logo.png";
 
 export const Footer = () => {
@@ -17,7 +16,7 @@ export const Footer = () => {
               <span className="font-heading font-bold text-lg">Saltarelli Web Studio</span>
             </div>
             <p className="text-muted-foreground mb-6 max-w-sm leading-relaxed">
-              Managed websites, AI agents, and automations that keep your business running, because your success is my priority.
+              Managed websites, Google reviews, and local SEO that get your business found on Google and bring in more customers. Because your success is my priority.
             </p>
             <div className="flex gap-4">
               <a href="https://www.instagram.com/saltarelliwebstudio/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-all" aria-label="Instagram">
@@ -67,14 +66,7 @@ export const Footer = () => {
               </a>
               <p className="text-sm text-muted-foreground italic pt-2">Response time: 24-48 hours</p>
               <Button variant="hero" size="sm" className="mt-4 w-full sm:w-auto" asChild>
-                <TrackedExternalLink
-                  href="https://calendly.com/saltarelliwebstudio/free-15-minute-online-presence-review"
-                  trackingLabel="footer_book_call"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Free Online Audit
-                </TrackedExternalLink>
+                <a href="/#apply">See If You Qualify</a>
               </Button>
             </div>
           </div>
