@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Mail, Phone, Instagram, Facebook, Podcast, Linkedin, Youtube, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { trackButtonClick } from "@/lib/analytics";
 import logo from "@/assets/sws-logo.png";
 
 export const Footer = () => {
@@ -66,7 +67,7 @@ export const Footer = () => {
               </a>
               <p className="text-sm text-muted-foreground italic pt-2">Response time: 24-48 hours</p>
               <Button variant="hero" size="sm" className="mt-4 w-full sm:w-auto" asChild>
-                <a href="/#apply">See If You Qualify</a>
+                <a href="/#apply" onClick={() => trackButtonClick("footer_qualify", "See If You Qualify", "#apply")}>See If You Qualify</a>
               </Button>
             </div>
           </div>
