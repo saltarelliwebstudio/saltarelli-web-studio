@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/accordion";
 import logo from "@/assets/sws-logo.png";
 import { supabase } from "@/integrations/supabase/client";
+import { trackButtonClick } from "@/lib/analytics";
 
 const smartStackCards = [
   {
@@ -225,6 +226,7 @@ const Index = () => {
                 <Button variant="hero" size="lg" asChild className="text-base">
                   <a
                     href="#apply"
+                    onClick={() => trackButtonClick("hero_qualify", "See If You Qualify", "#apply")}
                     className="gap-2 inline-flex items-center justify-center"
                   >
                     <Sparkles size={18} />
@@ -690,6 +692,7 @@ const Index = () => {
               <Button variant="hero" size="lg" asChild>
                 <a
                   href="#apply"
+                  onClick={() => trackButtonClick("smartstack_qualify", "See If You Qualify", "#apply")}
                   className="gap-2 inline-flex items-center justify-center"
                 >
                   See If You Qualify
@@ -882,6 +885,7 @@ const Index = () => {
                   >
                     <a
                       href="#apply"
+                      onClick={() => trackButtonClick("final_qualify", "See If You Qualify", "#apply")}
                       className="gap-2 inline-flex items-center justify-center"
                     >
                       <Sparkles size={18} />

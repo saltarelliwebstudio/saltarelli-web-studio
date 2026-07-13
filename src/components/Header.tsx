@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { trackButtonClick } from "@/lib/analytics";
 import logo from "@/assets/sws-logo.png";
 
 export const Header = () => {
@@ -149,7 +150,7 @@ export const Header = () => {
               )
             )}
             <Button variant="hero" size="sm" asChild className="ml-2">
-              <a href="/#apply" className="gap-2 inline-flex items-center">
+              <a href="/#apply" onClick={() => trackButtonClick("header_qualify", "See If You Qualify", "#apply")} className="gap-2 inline-flex items-center">
                 <Sparkles size={16} />
                 See If You Qualify
               </a>
@@ -269,7 +270,7 @@ export const Header = () => {
                     className="mt-auto"
                   >
                     <Button variant="hero" size="lg" asChild className="w-full">
-                      <a href="/#apply" className="gap-2 inline-flex items-center justify-center">
+                      <a href="/#apply" onClick={() => trackButtonClick("header_mobile_qualify", "See If You Qualify", "#apply")} className="gap-2 inline-flex items-center justify-center">
                         <Sparkles size={18} />
                         See If You Qualify
                       </a>
