@@ -9,6 +9,7 @@ import { FadeIn } from "@/components/motion/FadeIn";
 import { Button } from "@/components/ui/button";
 import { TrackedExternalLink } from "@/components/TrackedExternalLink";
 import { YouTubeFacade } from "@/components/YouTubeFacade";
+import { CalendlySection, CALENDLY_URL } from "@/components/CalendlyEmbed";
 
 /* ── Tool data ── */
 const tools = [
@@ -262,7 +263,7 @@ const AiOperatorKit = () => {
                   </p>
                   <Button variant="hero" size="lg" asChild>
                     <TrackedExternalLink
-                      href="https://calendly.com/saltarelliwebstudio/free-15-minute-online-presence-review"
+                      href={CALENDLY_URL}
                       trackingLabel="ai_operator_kit_book_call"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -277,6 +278,12 @@ const AiOperatorKit = () => {
             </FadeIn>
           </div>
         </section>
+
+        <CalendlySection
+          trackingLabel="ai_operator_kit_inline"
+          heading="Running a business? Let's find the leaks."
+          subheading="Grab a time below. Fifteen minutes, no pitch, and you'll leave knowing where the hours are going."
+        />
 
       </div>
     </>

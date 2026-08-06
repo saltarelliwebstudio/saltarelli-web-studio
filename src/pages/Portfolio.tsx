@@ -9,6 +9,7 @@ import { PortfolioCard } from "@/components/PortfolioCard";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/motion";
 import { SEO } from "@/components/SEO";
 import { TrackedExternalLink } from "@/components/TrackedExternalLink";
+import { CalendlySection, CALENDLY_URL } from "@/components/CalendlyEmbed";
 
 type FeaturedStudy = {
   title: string;
@@ -463,7 +464,7 @@ const Portfolio = () => {
               </p>
               <Button variant="hero" asChild>
                 <TrackedExternalLink
-                  href="https://calendly.com/saltarelliwebstudio/free-15-minute-online-presence-review"
+                  href={CALENDLY_URL}
                   trackingLabel="portfolio_book_call"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -474,6 +475,12 @@ const Portfolio = () => {
             </div>
           </div>
         </section>
+
+        <CalendlySection
+          trackingLabel="portfolio_inline"
+          heading="Want results like these?"
+          subheading="Grab a time below. Fifteen minutes, and I'll map out exactly what a website, automation, or AI agent could do for your business."
+        />
 
         <Footer />
       </div>

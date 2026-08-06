@@ -67,7 +67,8 @@ export const CalendlyEmbed = ({
         />
       </div>
 
-      {/* Always reachable, even if the iframe is blocked or fails to render. */}
+      {/* Always reachable, even if the iframe is blocked or fails to render.
+          Deliberately NOT the primary path — booking happens in the iframe. */}
       <p className="text-center text-sm text-muted-foreground mt-4">
         Calendar not loading?{" "}
         <a
@@ -90,3 +91,43 @@ export const CalendlyEmbed = ({
     </div>
   );
 };
+
+/**
+ * Full-width booking section: heading + inline calendar.
+ *
+ * Booking IS the conversion on this site — there is no lead form path to fall
+ * back on — so every page that sells should end in a live calendar rather than
+ * a button that punts the visitor to another tab.
+ *
+ * max-w-5xl because Calendly needs ~1000px to lay out in two columns.
+ */
+export const CalendlySection = ({
+  trackingLabel,
+  eyebrow = "Free Website Demo",
+  heading,
+  subheading,
+}: {
+  trackingLabel: string;
+  eyebrow?: string;
+  heading: string;
+  subheading?: string;
+}) => (
+  <section className="py-20 md:py-28 px-4 md:px-6 relative z-10">
+    <div className="container mx-auto max-w-5xl">
+      <div className="text-center mb-10">
+        <span className="text-primary font-bold text-sm tracking-widest uppercase mb-3 block">
+          {eyebrow}
+        </span>
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-4">
+          {heading}
+        </h2>
+        {subheading && (
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            {subheading}
+          </p>
+        )}
+      </div>
+      <CalendlyEmbed trackingLabel={trackingLabel} />
+    </div>
+  </section>
+);

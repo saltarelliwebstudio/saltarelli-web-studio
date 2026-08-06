@@ -11,6 +11,7 @@ import { SEO } from "@/components/SEO";
 import { TrackedLink } from "@/components/TrackedLink";
 import { TrackedExternalLink } from "@/components/TrackedExternalLink";
 import adamPhoto from "@/assets/adam-photo.png";
+import { CalendlySection, CALENDLY_URL } from "@/components/CalendlyEmbed";
 
 const About = () => {
   return (
@@ -179,7 +180,7 @@ const About = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="hero" size="lg" asChild>
                 <TrackedExternalLink
-                  href="https://calendly.com/saltarelliwebstudio/free-15-minute-online-presence-review"
+                  href={CALENDLY_URL}
                   trackingLabel="about_book_call"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -192,6 +193,12 @@ const About = () => {
               </Button>
             </div>
           </div>
+
+          <CalendlySection
+            trackingLabel="about_inline"
+            heading="Grab a time with me"
+            subheading="Fifteen minutes, no pitch. I'll look at your site and your Google profile before we speak."
+          />
         </div>
       </section>
 
