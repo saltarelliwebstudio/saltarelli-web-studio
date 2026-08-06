@@ -1,4 +1,5 @@
 {
+  "buildCommand": "npm run build:seo",
   "rewrites": [
     { "source": "/t", "destination": "https://veyhxazlqekiweynjxhf.supabase.co/functions/v1/track-pageview" },
     { "source": "/(.*)", "destination": "/index.html" }
