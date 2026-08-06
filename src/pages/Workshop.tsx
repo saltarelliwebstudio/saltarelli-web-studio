@@ -98,8 +98,8 @@ const Workshop = () => {
     <>
       <SEO
         canonical="/workshop"
-        title={`${SESSION_NAME} — Free Weekly Live Session`}
-        description="Free live AI Q&A and tutorials every Thursday at 12 PM ET. Ask anything, watch real demos, and see how Adam builds the systems he runs his business on."
+        title={SESSION_NAME}
+        description="Free live AI Q&A and tutorials, first Saturday of every month at 10 AM ET. Ask anything and watch real demos. No pitch, no fluff."
       />
       <div className="min-h-screen bg-background text-foreground relative flex flex-col overflow-x-hidden">
         <Starfield />
@@ -116,7 +116,7 @@ const Workshop = () => {
               </div>
 
               <span className="block text-center text-primary font-bold text-sm tracking-widest uppercase mb-4">
-                {session.isLive ? "🔴 Live Right Now" : "Live Weekly · Free"}
+                {session.isLive ? "🔴 Live Right Now" : "Live Monthly · Free"}
               </span>
 
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-center leading-tight mb-6">
@@ -125,9 +125,9 @@ const Workshop = () => {
               </h1>
 
               <p className="text-center text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
-                Every Thursday at noon, bring your AI questions, watch real
-                tutorials, and see exactly how I've built the systems I run my
-                business on. Ask anything. No pitch, no fluff.
+                The first Saturday of every month at 10am, bring your AI
+                questions, watch real tutorials, and see exactly how I've built
+                the systems I run my business on. Ask anything. No pitch, no fluff.
               </p>
 
               {/* Countdown */}

@@ -17,8 +17,8 @@ const About = () => {
     <>
       <SEO
         canonical="/about"
-        title="About Adam Saltarelli | Ontario Web Designer"
-        description="Meet Adam Saltarelli, founder of Saltarelli Web Studio. I build AI admin systems, custom websites, and automations for small businesses."
+        title="About Adam Saltarelli | Saltarelli Web Studio"
+        description="Meet Adam Saltarelli, founder of Saltarelli Web Studio. I build websites, Google review engines, and local SEO for Niagara businesses."
       />
     <div className="min-h-screen bg-background text-foreground relative flex flex-col overflow-x-hidden">
       <Starfield />
@@ -184,7 +184,7 @@ const About = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Free Online Audit <ArrowRight className="ml-2" size={20} />
+                  Book a Call <ArrowRight className="ml-2" size={20} />
                 </TrackedExternalLink>
               </Button>
               <Button variant="cosmic" size="lg" asChild>

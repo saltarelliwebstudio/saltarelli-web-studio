@@ -4,10 +4,9 @@ import { Starfield } from "@/components/Starfield";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Calendar, Clock, CheckCircle } from "lucide-react";
 import { SEO } from "@/components/SEO";
-import { TrackedExternalLink } from "@/components/TrackedExternalLink";
+import { CalendlyEmbed } from "@/components/CalendlyEmbed";
 
 const GetStarted = () => {
 
@@ -15,8 +14,8 @@ const GetStarted = () => {
     <>
       <SEO
         canonical="/get-started"
-        title="Free Online Audit | Saltarelli Web Studio"
-        description="Grab a free 15-minute Online Audit of your website, Google profile, and online presence. Honest review, clear next steps, no pressure."
+        title="Free 15-Min Online Presence Review"
+        description="Book a free 15-minute review of your website, Google profile, and reviews. Honest feedback and clear next steps, no pressure."
       />
     <div className="min-h-screen bg-background text-foreground relative flex flex-col overflow-x-hidden">
       <Starfield />
@@ -27,7 +26,8 @@ const GetStarted = () => {
       <Header />
 
       <section className="relative min-h-[80svh] flex items-center justify-center px-4 md:px-6 pt-20 pb-10">
-        <div className="container mx-auto max-w-3xl relative z-10">
+        {/* max-w-5xl so the inline Calendly gets its two-column layout. */}
+        <div className="container mx-auto max-w-5xl relative z-10">
           <div className="text-center mb-12">
             {/* Glowing Calendar Icon */}
             <motion.div
@@ -48,11 +48,11 @@ const GetStarted = () => {
               </motion.div>
             </motion.div>
             <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6">
-              Free Online Audit
+              Free 15-Minute Online Presence Review
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
-              Grab a free 15-minute audit of your website, Google profile, and online presence.
-              You'll leave with an honest review and clear next steps, no pressure.
+              A free 15-minute look at your website, Google profile, and reviews.
+              You'll leave with honest feedback and clear next steps, no pressure.
             </p>
           </div>
 
@@ -89,18 +89,7 @@ const GetStarted = () => {
               </div>
             </div>
 
-            <div className="text-center">
-              <Button variant="hero" size="lg" className="w-full md:w-auto" asChild>
-                <TrackedExternalLink
-                  href="https://calendly.com/saltarelliwebstudio/free-15-minute-online-presence-review"
-                  trackingLabel="calendly_schedule_click"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Book My Free Online Audit
-                </TrackedExternalLink>
-              </Button>
-            </div>
+            <CalendlyEmbed trackingLabel="get_started_inline" />
           </Card>
         </div>
       </section>

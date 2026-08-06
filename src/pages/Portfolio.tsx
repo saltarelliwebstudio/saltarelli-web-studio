@@ -246,6 +246,14 @@ const portfolioItems = [
     liveUrl: "https://snippeelectric.com",
   },
   {
+    title: "Powell Electrical Contracting",
+    description: "Electrical contractor website for family-owned Powell Electrical, serving Dunnville, Haldimand, Hamilton, and Niagara across agricultural, commercial, industrial, residential, and solar work, with a 35-foot bucket truck service, coverage map, and instant lead alerts.",
+    category: "Local Services",
+    type: "Website",
+    imageUrl: "/lovable-uploads/powell-electrical-site.webp",
+    liveUrl: "https://powellelectricalcontracting.ca",
+  },
+  {
     title: "MBV Specialty Services",
     description: "Electrical services website covering residential, commercial, and industrial work across Ontario, with a bold, modern design.",
     category: "Local Services",
@@ -361,7 +369,7 @@ const Portfolio = () => {
       <SEO
         canonical="/portfolio"
         title="Web Design Portfolio"
-        description="See our work. Custom websites, AI automations, voice agents, and apps built for Ontario businesses. Real results for Genius Fitness, Melnyk Concrete, Pop's Landscaping, and more."
+        description="Websites, AI automations, voice agents, and apps built for Ontario businesses, including Genius Fitness, Melnyk Concrete and Pop's Landscaping."
       />
       <div className="min-h-screen bg-background text-foreground relative flex flex-col overflow-x-hidden">
         <Starfield />
@@ -451,7 +459,7 @@ const Portfolio = () => {
             <div className="bg-card/50 backdrop-blur-sm rounded-2xl p-8 max-w-4xl mx-auto text-center">
               <h2 className="text-2xl font-heading font-bold mb-4">Want results like these?</h2>
               <p className="text-muted-foreground mb-6">
-                Grab a free online audit and I'll map out exactly what a website, automation, or AI agent could do for your business.
+                Book a call and I'll map out exactly what a website, automation, or AI agent could do for your business.
               </p>
               <Button variant="hero" asChild>
                 <TrackedExternalLink
@@ -460,7 +468,7 @@ const Portfolio = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Free Online Audit
+                  Book a Call
                 </TrackedExternalLink>
               </Button>
             </div>

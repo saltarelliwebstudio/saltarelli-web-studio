@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import { businessSchema, SITE_URL, LOGO_URL, BUSINESS_NAME } from "@/lib/schema";
 
 interface SEOProps {
   title?: string;
@@ -6,16 +7,17 @@ interface SEOProps {
   canonical?: string;
   type?: "website" | "article" | "profile";
   image?: string;
-  schema?: object;
+  /** One schema object, or several to emit as separate JSON-LD blocks. */
+  schema?: object | object[];
 }
 
-const siteUrl = "https://saltarelliwebstudio.ca";
-const defaultImage = `${siteUrl}/sws-logo.png`;
-const siteName = "Saltarelli Web Studio";
+const siteUrl = SITE_URL;
+const defaultImage = LOGO_URL;
+const siteName = BUSINESS_NAME;
 
 export const SEO = ({
-  title = "AI Admin Systems for Small Business",
-  description = "We build AI admin systems for businesses that save 10+ hours a week, delivered in 14 days. Websites, AI agents, and automations in one managed plan.",
+  title = "Get Found on Google, Win More Customers",
+  description = "Managed websites, Google review engines, and local SEO that get Niagara businesses found on Google. Backed by a 60-day guarantee.",
   canonical,
   type = "website",
   image = defaultImage,
@@ -31,44 +33,11 @@ export const SEO = ({
 
   const pageUrl = fullCanonical;
 
-  const defaultSchema = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    name: siteName,
-    description:
-      "AI admin systems for small businesses. Save 10+ hours a week on estimates, follow-ups, scheduling, and invoicing. Delivered in 14 days.",
-    url: siteUrl,
-    logo: defaultImage,
-    image: defaultImage,
-    telephone: "+1-226-340-5015",
-    email: "saltarelliwebstudio@gmail.com",
-    address: {
-      "@type": "PostalAddress",
-      addressRegion: "Ontario",
-      addressCountry: "CA",
-    },
-    areaServed: {
-      "@type": "Place",
-      name: "Ontario, Canada",
-    },
-    priceRange: "$$",
-    openingHours: "Mo-Fr 09:00-17:00",
-    sameAs: [
-      "https://www.instagram.com/saltarelliwebstudio",
-      "https://www.facebook.com/profile.php?id=61576197754247",
-    ],
-    founder: {
-      "@type": "Person",
-      name: "Adam Saltarelli",
-    },
-    serviceType: [
-      "AI Admin Systems",
-      "Business Automation",
-      "AI Agents",
-      "Web Design",
-      "CRM",
-    ],
-  };
+  // Business identity lives in src/lib/schema.ts so the site, the footer, and
+  // the Google Business Profile all state the same name, address, and phone.
+  const schemas = schema
+    ? Array.isArray(schema) ? schema : [schema]
+    : [businessSchema];
 
   return (
     <Helmet>
@@ -95,19 +64,18 @@ export const SEO = ({
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
 
-      {/* Additional SEO */}
+      {/* Additional SEO. No keywords meta — Google has ignored it since 2009
+          and it reads as amateur to anyone who views source. */}
       <meta name="robots" content="index, follow" />
-      <meta
-        name="keywords"
-        content="AI admin systems, AI for small business, business automation, small business AI, save 10 hours a week, 14 day delivery, AI agents Ontario, web design Ontario, automation Canada"
-      />
       <meta name="geo.region" content="CA-ON" />
       <meta name="geo.placename" content="Ontario" />
 
       {/* JSON-LD Schema */}
-      <script type="application/ld+json">
-        {JSON.stringify(schema || defaultSchema)}
-      </script>
+      {schemas.map((s, i) => (
+        <script type="application/ld+json" key={i}>
+          {JSON.stringify(s)}
+        </script>
+      ))}
     </Helmet>
   );
 };

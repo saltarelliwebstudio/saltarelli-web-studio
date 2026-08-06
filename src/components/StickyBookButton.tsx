@@ -20,7 +20,7 @@ export const StickyBookButton = () => {
           className="flex items-center gap-2"
         >
           <Calendar size={20} />
-          <span className="hidden sm:inline">Free Online Audit</span>
+          <span className="hidden sm:inline">Book a Call</span>
         </TrackedExternalLink>
       </Button>
     </div>

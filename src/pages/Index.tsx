@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ArrowRight, Sparkles, ShieldCheck, Star, CheckCircle } from "lucide-react";
+import { ArrowRight, Sparkles, ShieldCheck, Star, CheckCircle, Calendar } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Starfield } from "@/components/Starfield";
@@ -11,6 +11,7 @@ import { FadeIn, StaggerContainer, StaggerItem, ScaleIn } from "@/components/mot
 import { SEO } from "@/components/SEO";
 import { TrackedLink } from "@/components/TrackedLink";
 import { TrackedExternalLink } from "@/components/TrackedExternalLink";
+import { CalendlyEmbed, CALENDLY_URL } from "@/components/CalendlyEmbed";
 import {
   Accordion,
   AccordionContent,
@@ -20,6 +21,12 @@ import {
 import logo from "@/assets/sws-logo.png";
 import { supabase } from "@/integrations/supabase/client";
 import { trackButtonClick } from "@/lib/analytics";
+import { businessSchema, SERVICE_TYPES } from "@/lib/schema";
+
+// Booking is the primary conversion. Warm inbound should never have to fill out a
+// form to reach Adam -- every prominent CTA points here, and the #apply section
+// embeds the calendar inline so booking never leaves the page.
+const CALENDLY = CALENDLY_URL;
 
 const smartStackCards = [
   {
@@ -77,35 +84,21 @@ const Index = () => {
     <>
       <SEO
         canonical="/"
-        title="Saltarelli Web Studio | Get Found on Google, Win More Customers"
-        description="I build and manage websites, Google review engines, and local SEO that get local businesses found on Google and winning more customers. Backed by a 60-day guarantee. Serving Niagara and Ontario."
+        title="Get Found on Google in Niagara | Saltarelli Web Studio"
+        description="Managed websites, Google review engines, and local SEO that get Niagara businesses found on Google. Backed by a 60-day guarantee."
         schema={{
-          "@context": "https://schema.org",
-          "@type": "ProfessionalService",
-          name: "Saltarelli Web Studio",
-          url: "https://saltarelliwebstudio.ca",
-          logo: "https://saltarelliwebstudio.ca/sws-logo.png",
-          description:
-            "Managed websites, Google review engines, and local SEO that get local businesses ranking at the top of Google in 60 days. Guaranteed, or you don't pay.",
-          telephone: "+12895135284",
-          email: "saltarelliwebstudio@gmail.com",
-          areaServed: [
-            {
-              "@type": "State",
-              name: "Ontario",
-              containedInPlace: { "@type": "Country", name: "Canada" },
-            },
-          ],
-          founder: { "@type": "Person", name: "Adam Saltarelli" },
-          serviceType: [
-            "Local SEO",
-            "Web Design",
-            "Website Management",
-            "Google Business Profile Optimization",
-            "Review Management",
-          ],
-          priceRange: "$$",
-          knowsLanguage: "en",
+          // Name, address, phone, socials and the 12-city service area all come
+          // from src/lib/schema.ts so they can't drift from the footer or the
+          // Google Business Profile. Only homepage-specific proof is added here.
+          ...businessSchema,
+          hasOfferCatalog: {
+            "@type": "OfferCatalog",
+            name: "Smart Stack Pack",
+            itemListElement: SERVICE_TYPES.map((service) => ({
+              "@type": "Offer",
+              itemOffered: { "@type": "Service", name: service },
+            })),
+          },
           aggregateRating: {
             "@type": "AggregateRating",
             ratingValue: "5",
@@ -224,14 +217,16 @@ const Index = () => {
                 className="flex flex-col sm:flex-row gap-4 justify-center px-4"
               >
                 <Button variant="hero" size="lg" asChild className="text-base">
-                  <a
-                    href="#apply"
-                    onClick={() => trackButtonClick("hero_qualify", "See If You Qualify", "#apply")}
+                  <TrackedExternalLink
+                    href={CALENDLY}
+                    trackingLabel="hero_book_call"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="gap-2 inline-flex items-center justify-center"
                   >
-                    <Sparkles size={18} />
-                    See If You Qualify
-                  </a>
+                    <Calendar size={18} />
+                    Book a Free 15-Min Call
+                  </TrackedExternalLink>
                 </Button>
                 <Button
                   variant="cosmic"
@@ -827,23 +822,49 @@ const Index = () => {
         </section>
 
         {/* ──────────── APPLY / QUALIFY FORM ──────────── */}
+        {/* Calendly needs ~1000px to lay out details + calendar side by side.
+            Narrower than that and it collapses to one column with an inner
+            scrollbar, which buries the date picker. */}
         <section id="apply" className="py-20 md:py-28 px-4 md:px-6 relative z-10">
-          <div className="container mx-auto max-w-2xl">
+          <div className="container mx-auto max-w-5xl">
             <FadeIn className="text-center mb-10">
               <span className="text-primary font-bold text-sm tracking-widest uppercase mb-3 block">
-                See If You Qualify
+                Book a Call
               </span>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-4">
-                Tell me about your business
+                Grab a time that works
               </h2>
               <p className="text-muted-foreground max-w-xl mx-auto">
-                Drop your details and I'll personally review your business and
-                get back to you. Ready right now? Book a call on the spot.
+                Fifteen minutes, no pitch. We'll look at how your business shows
+                up on Google right now and where the leads are leaking.
               </p>
             </FadeIn>
+
             <FadeIn>
-              <ApplyForm />
+              <CalendlyEmbed trackingLabel="apply_inline" />
             </FadeIn>
+
+            <div className="max-w-2xl mx-auto">
+              <FadeIn className="text-center mt-20 mb-10">
+                <div className="flex items-center gap-4 mb-10">
+                  <span className="h-px flex-1 bg-white/10" />
+                  <span className="text-xs uppercase tracking-widest text-muted-foreground">
+                    Or
+                  </span>
+                  <span className="h-px flex-1 bg-white/10" />
+                </div>
+                <h2 className="text-2xl md:text-3xl font-heading font-bold mb-4">
+                  Send me your details instead
+                </h2>
+                <p className="text-muted-foreground max-w-xl mx-auto">
+                  Not ready to pick a time? Drop your info and I'll personally
+                  review your business and get back to you.
+                </p>
+              </FadeIn>
+              <FadeIn>
+                <ApplyForm />
+              </FadeIn>
+            </div>
           </div>
         </section>
 
@@ -948,8 +969,6 @@ function SmartStackCard({
 
 /* ── Apply / Qualify Form ── */
 function ApplyForm() {
-  const CALENDLY =
-    "https://calendly.com/saltarelliwebstudio/free-15-minute-online-presence-review";
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -971,6 +990,11 @@ function ApplyForm() {
     e.preventDefault();
     if (!form.name.trim() || !form.email.trim()) {
       setErrorMsg("Please add your name and email.");
+      setStatus("error");
+      return;
+    }
+    if (form.phone.replace(/\D/g, "").length < 10) {
+      setErrorMsg("Please add a phone number so I can reach you.");
       setStatus("error");
       return;
     }
@@ -1052,7 +1076,7 @@ function ApplyForm() {
         <div className="grid sm:grid-cols-2 gap-4">
           <input
             type="tel"
-            placeholder="Phone (optional)"
+            placeholder="Phone *"
             value={form.phone}
             onChange={update("phone")}
             className={inputClass}

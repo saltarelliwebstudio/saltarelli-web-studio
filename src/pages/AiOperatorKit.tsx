@@ -102,7 +102,8 @@ const AiOperatorKit = () => {
   return (
     <>
       <SEO
-        title="AI Operator Kit: Free Resource | Saltarelli Web Studio"
+        canonical="/ai-operator-kit"
+        title="AI Operator Kit: Free Resource"
         description="The exact 8 tools I use to run a full agency solo and save 10+ hours every week. Free resource by Adam Saltarelli."
       />
 
@@ -120,10 +121,13 @@ const AiOperatorKit = () => {
             </FadeIn>
 
             <FadeIn delay={0.05}>
+              {/* Whitespace between the lines is load-bearing: without it the
+                  h1's textContent reads "AIOperatorKit" to crawlers and screen
+                  readers, which is what Google actually indexes. */}
               <h1 className="font-heading font-bold text-6xl sm:text-7xl md:text-8xl lg:text-9xl leading-[0.92] tracking-tight mb-2">
-                AI
+                AI{" "}
                 <br />
-                <span className="text-primary">Operator</span>
+                <span className="text-primary">Operator</span>{" "}
                 <br />
                 Kit
               </h1>
@@ -254,7 +258,7 @@ const AiOperatorKit = () => {
                   <p className="text-muted-foreground text-[15px] font-light leading-relaxed max-w-lg mb-7">
                     Running a team means the leaks are different. It's not about
                     missing tools, it's the hours bleeding out where you can't see them.
-                    Grab a Free Online Audit and we'll find them.
+                    Book a call and we'll find them.
                   </p>
                   <Button variant="hero" size="lg" asChild>
                     <TrackedExternalLink
@@ -265,7 +269,7 @@ const AiOperatorKit = () => {
                       className="gap-2 inline-flex items-center whitespace-normal text-center"
                     >
                       <ArrowRight size={16} className="flex-shrink-0" />
-                      Free Online Audit
+                      Book a Call
                     </TrackedExternalLink>
                   </Button>
                 </div>
