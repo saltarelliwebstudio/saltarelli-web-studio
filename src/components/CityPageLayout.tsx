@@ -8,7 +8,7 @@ import { Footer } from "@/components/Footer";
 import { SEO } from "@/components/SEO";
 import { FadeIn } from "@/components/motion";
 import { TrackedExternalLink } from "@/components/TrackedExternalLink";
-import { CALENDLY_URL } from "@/components/CalendlyEmbed";
+import { CalendlyEmbed, CALENDLY_URL } from "@/components/CalendlyEmbed";
 import { cityServiceSchema, breadcrumbSchema, CITY_PAGES } from "@/lib/schema";
 
 interface CityPageLayoutProps {
@@ -125,28 +125,27 @@ export const CityPageLayout = ({
           </div>
         </section>
 
-        {/* ── CLOSING CTA ── */}
+        {/* ── CLOSING CTA — inline booking ──
+            max-w-5xl because Calendly needs ~1000px to lay out in two columns,
+            same as the homepage #apply section. */}
         <section className="py-20 md:py-28 px-4 md:px-6 relative z-10">
-          <div className="container mx-auto max-w-3xl text-center">
+          <div className="container mx-auto max-w-5xl">
             <FadeIn>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-4">
-                Let's talk about your {city} business
-              </h2>
-              <p className="text-lg text-muted-foreground mb-8">
-                Fifteen minutes, no pitch. I'll tell you honestly where you stand
-                on Google and what I'd do about it. If it's not working in 60
-                days, you don't pay a cent.
-              </p>
-              <Button variant="hero" size="lg" asChild>
-                <TrackedExternalLink
-                  href={CALENDLY_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  trackingLabel={`${slug}_footer_book_call`}
-                >
-                  Book a Call <ArrowRight className="ml-2" size={20} />
-                </TrackedExternalLink>
-              </Button>
+              <div className="text-center mb-10">
+                <span className="text-primary font-bold text-sm tracking-widest uppercase mb-3 block">
+                  Free Website Demo
+                </span>
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-4">
+                  Let's talk about your {city} business
+                </h2>
+                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                  Grab a time below. Fifteen minutes, no pitch. I'll look at your
+                  site, your Google profile and your reviews before we speak, and
+                  I'll build you a free demo page so you can see it, not just hear
+                  about it.
+                </p>
+              </div>
+              <CalendlyEmbed trackingLabel={`${slug}_inline`} />
             </FadeIn>
           </div>
         </section>

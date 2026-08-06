@@ -153,9 +153,21 @@ async function settleAnimations(page) {
  * disables GA4 across the whole site.
  */
 function cleanHtml(html) {
-  return html.replace(
-    /<script[^>]*src="[^"]*_vercel\/(?:insights|speed-insights)[^"]*"[^>]*><\/script>/g,
-    ""
+  return (
+    html
+      .replace(
+        /<script[^>]*src="[^"]*_vercel\/(?:insights|speed-insights)[^"]*"[^>]*><\/script>/g,
+        ""
+      )
+      // CalendlyEmbed builds embed_domain from window.location.hostname, which
+      // during prerender is the local snapshot server. Calendly refuses to paint
+      // when it can't verify the framing domain, so a baked 127.0.0.1 would ship
+      // a silently blank calendar to anyone who sees the static HTML before
+      // React re-renders. Rewrite it to the real domain.
+      .replace(
+        /embed_domain=(?:127\.0\.0\.1|localhost)(?:%3A|:)?\d*/g,
+        "embed_domain=saltarelliwebstudio.ca"
+      )
   );
 }
 
