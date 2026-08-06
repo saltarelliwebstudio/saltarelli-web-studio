@@ -72,6 +72,19 @@ export const AREA_SERVED = [
   },
 ];
 
+/**
+ * Cities with a dedicated landing page. Lives here rather than in
+ * CityPageLayout because the Footer links to these too, and importing them from
+ * CityPageLayout would create a Footer -> CityPageLayout -> Footer cycle.
+ *
+ * Keep in sync with ROUTES in scripts/routes.mjs and the routes in App.tsx.
+ */
+export const CITY_PAGES = [
+  { city: "Port Colborne", slug: "web-design-port-colborne" },
+  { city: "Welland", slug: "web-design-welland" },
+  { city: "St. Catharines", slug: "web-design-st-catharines" },
+];
+
 export const SERVICE_TYPES = [
   "Local SEO",
   "Web Design",
