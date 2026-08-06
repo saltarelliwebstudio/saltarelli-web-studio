@@ -21,7 +21,7 @@ import {
 import logo from "@/assets/sws-logo.png";
 import { supabase } from "@/integrations/supabase/client";
 import { trackButtonClick } from "@/lib/analytics";
-import { businessSchema, SERVICE_TYPES } from "@/lib/schema";
+import { businessSchema, SERVICE_TYPES, faqSchema } from "@/lib/schema";
 
 // Booking is the primary conversion. Warm inbound should never have to fill out a
 // form to reach Adam -- every prominent CTA points here, and the #apply section
@@ -86,7 +86,7 @@ const Index = () => {
         canonical="/"
         title="Get Found on Google in Niagara | Saltarelli Web Studio"
         description="Managed websites, Google review engines, and local SEO that get Niagara businesses found on Google. Backed by a 60-day guarantee."
-        schema={{
+        schema={[{
           // Name, address, phone, socials and the 12-city service area all come
           // from src/lib/schema.ts so they can't drift from the footer or the
           // Google Business Profile. Only homepage-specific proof is added here.
@@ -137,7 +137,10 @@ const Index = () => {
                 "I'm glad I found Adam to do this website for me. He made it easy and I appreciate it working with him and I. Thank you",
             },
           ],
-        }}
+        },
+        // The six Q&As below are rendered visibly in the FAQ accordion, which
+        // is what Google requires for FAQPage markup to be eligible.
+        faqSchema(faqItems)]}
       />
       <div className="min-h-screen bg-background text-foreground relative flex flex-col overflow-x-hidden">
         <Starfield />

@@ -148,6 +148,24 @@ export function cityServiceSchema(city: string, slug: string, description: strin
   };
 }
 
+/**
+ * FAQPage schema from question/answer pairs already rendered on the page.
+ *
+ * Google requires the marked-up Q&A to be visible on the page, which is why
+ * this takes the same array the accordion renders rather than a separate copy.
+ */
+export function faqSchema(items: { q: string; a: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: { "@type": "Answer", text: item.a },
+    })),
+  };
+}
+
 /** Home → page breadcrumb trail. */
 export function breadcrumbSchema(name: string, slug: string) {
   return {
