@@ -3,13 +3,16 @@ import { Link } from "react-router-dom";
 import { Mail, Phone, Instagram, Facebook, Podcast, Linkedin, Youtube, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { trackButtonClick } from "@/lib/analytics";
+import { CITY_PAGES } from "@/lib/schema";
 import logo from "@/assets/sws-logo.png";
 
 export const Footer = () => {
   return (
     <footer className="relative z-20 glass-strong border-t border-border/50 mt-auto">
       <div className="container mx-auto px-5 md:px-6 py-12 md:py-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
+        {/* 5 columns because the logo block spans 2. Adding Service Area to a
+            4-column grid would have pushed Contact onto its own row. */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 md:gap-10">
           {/* Logo and Description */}
           <div className="sm:col-span-2">
             <div className="flex items-center gap-3 mb-4">
@@ -53,13 +56,30 @@ export const Footer = () => {
             </ul>
           </div>
 
+          {/* Service Area — sitewide internal links to the city landing pages */}
+          <div>
+            <h3 className="font-heading font-semibold mb-4">Service Area</h3>
+            <ul className="space-y-3">
+              {CITY_PAGES.map((city) => (
+                <li key={city.slug}>
+                  <Link to={`/${city.slug}`} className="text-muted-foreground hover:text-primary transition-colors">
+                    Web design in {city.city}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <p className="text-sm text-muted-foreground/70 mt-4">
+              Serving the Niagara Region, Ontario.
+            </p>
+          </div>
+
           {/* Contact Info */}
           <div>
             <h3 className="font-heading font-semibold mb-4">Contact</h3>
             <div className="space-y-3">
-              <a href="tel:+12895135284" className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors">
+              <a href="tel:+12893029451" className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors">
                 <Phone size={16} />
-                <span className="text-sm">(289) 513-5284</span>
+                <span className="text-sm">(289) 302-9451</span>
               </a>
               <a href="mailto:saltarelliwebstudio@gmail.com" className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors">
                 <Mail size={16} />
