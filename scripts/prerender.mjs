@@ -144,14 +144,19 @@ async function settleAnimations(page) {
   });
 }
 
-/** Strip analytics tags the SPA injected, so they aren't double-loaded. */
+/**
+ * Strip only the analytics tags the SPA INJECTED at runtime, so they aren't
+ * shipped statically and then injected a second time on hydration.
+ *
+ * Deliberately does NOT touch the Google Tag in index.html. That tag is part of
+ * the source template and must ship in the static HTML — stripping it silently
+ * disables GA4 across the whole site.
+ */
 function cleanHtml(html) {
-  return html
-    .replace(
-      /<script[^>]*src="[^"]*(?:googletagmanager|google-analytics|vercel-insights|_vercel\/insights|_vercel\/speed-insights)[^"]*"[^>]*><\/script>/g,
-      ""
-    )
-    .replace(/<link[^>]*href="[^"]*(?:calendly|googletagmanager)[^"]*"[^>]*>/g, "");
+  return html.replace(
+    /<script[^>]*src="[^"]*_vercel\/(?:insights|speed-insights)[^"]*"[^>]*><\/script>/g,
+    ""
+  );
 }
 
 async function main() {

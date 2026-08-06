@@ -9,7 +9,7 @@ const WebDesignStCatharines = () => (
   <CityPageLayout
     city="St. Catharines"
     slug="web-design-st-catharines"
-    title="Web Design in St. Catharines, Ontario"
+    title="Web Design in St. Catharines, ON"
     description="Websites, Google reviews and local SEO for St. Catharines businesses. Built for Niagara's most competitive search market, where reviews decide the ranking."
     intro="St. Catharines is the one Niagara market where you have real competition on Google. Ranking here is a different job than ranking in a small town, and it's won on reviews."
   >

@@ -9,6 +9,8 @@ interface SEOProps {
   image?: string;
   /** One schema object, or several to emit as separate JSON-LD blocks. */
   schema?: object | object[];
+  /** Keep this page out of the index (404s, thank-you pages). */
+  noindex?: boolean;
 }
 
 const siteUrl = SITE_URL;
@@ -22,6 +24,7 @@ export const SEO = ({
   type = "website",
   image = defaultImage,
   schema,
+  noindex = false,
 }: SEOProps) => {
   const fullTitle = title.includes(siteName)
     ? title
@@ -66,7 +69,7 @@ export const SEO = ({
 
       {/* Additional SEO. No keywords meta — Google has ignored it since 2009
           and it reads as amateur to anyone who views source. */}
-      <meta name="robots" content="index, follow" />
+      <meta name="robots" content={noindex ? "noindex, follow" : "index, follow"} />
       <meta name="geo.region" content="CA-ON" />
       <meta name="geo.placename" content="Ontario" />
 
