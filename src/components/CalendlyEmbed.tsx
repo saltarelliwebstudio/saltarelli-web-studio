@@ -112,7 +112,9 @@ export const CalendlySection = ({
   heading: string;
   subheading?: string;
 }) => (
-  <section className="py-20 md:py-28 px-4 md:px-6 relative z-10">
+  // id="apply" so the sitewide header/footer CTAs scroll to THIS page's
+  // calendar instead of navigating the visitor away to the homepage.
+  <section id="apply" className="py-20 md:py-28 px-4 md:px-6 relative z-10">
     <div className="container mx-auto max-w-5xl">
       <div className="text-center mb-10">
         <span className="text-primary font-bold text-sm tracking-widest uppercase mb-3 block">

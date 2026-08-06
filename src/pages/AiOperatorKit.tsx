@@ -270,7 +270,7 @@ const AiOperatorKit = () => {
                       className="gap-2 inline-flex items-center whitespace-normal text-center"
                     >
                       <ArrowRight size={16} className="flex-shrink-0" />
-                      Book a Call
+                      Book a Free Demo
                     </TrackedExternalLink>
                   </Button>
                 </div>

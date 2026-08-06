@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { trackButtonClick } from "@/lib/analytics";
 import { CITY_PAGES } from "@/lib/schema";
 import logo from "@/assets/sws-logo.png";
+import { scrollToBooking } from "@/lib/scrollToBooking";
 
 export const Footer = () => {
   return (
@@ -87,7 +88,7 @@ export const Footer = () => {
               </a>
               <p className="text-sm text-muted-foreground italic pt-2">Response time: 24-48 hours</p>
               <Button variant="hero" size="sm" className="mt-4 w-full sm:w-auto" asChild>
-                <a href="/#apply" onClick={() => trackButtonClick("footer_qualify", "See If You Qualify", "#apply")}>See If You Qualify</a>
+                <a href="/#apply" onClick={(e) => { trackButtonClick("footer_qualify", "Book a Free Demo", "#apply"); scrollToBooking(e); }}>Book a Free Demo</a>
               </Button>
             </div>
           </div>

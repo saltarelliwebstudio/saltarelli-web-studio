@@ -228,7 +228,7 @@ const Index = () => {
                     className="gap-2 inline-flex items-center justify-center"
                   >
                     <Calendar size={18} />
-                    Book a Free 15-Min Call
+                    Book a Free Demo
                   </TrackedExternalLink>
                 </Button>
                 <Button
@@ -690,10 +690,10 @@ const Index = () => {
               <Button variant="hero" size="lg" asChild>
                 <a
                   href="#apply"
-                  onClick={() => trackButtonClick("smartstack_qualify", "See If You Qualify", "#apply")}
+                  onClick={() => trackButtonClick("smartstack_qualify", "Book a Free Demo", "#apply")}
                   className="gap-2 inline-flex items-center justify-center"
                 >
-                  See If You Qualify
+                  Book a Free Demo
                   <ArrowRight size={18} />
                 </a>
               </Button>
@@ -832,7 +832,7 @@ const Index = () => {
           <div className="container mx-auto max-w-5xl">
             <FadeIn className="text-center mb-10">
               <span className="text-primary font-bold text-sm tracking-widest uppercase mb-3 block">
-                Book a Call
+                Free Website Demo
               </span>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-4">
                 Grab a time that works
@@ -909,11 +909,11 @@ const Index = () => {
                   >
                     <a
                       href="#apply"
-                      onClick={() => trackButtonClick("final_qualify", "See If You Qualify", "#apply")}
+                      onClick={() => trackButtonClick("final_qualify", "Book a Free Demo", "#apply")}
                       className="gap-2 inline-flex items-center justify-center"
                     >
                       <Sparkles size={18} />
-                      See If You Qualify
+                      Book a Free Demo
                     </a>
                   </Button>
                 </div>
@@ -1049,7 +1049,7 @@ function ApplyForm() {
             rel="noopener noreferrer"
             className="gap-2 inline-flex items-center justify-center"
           >
-            Book a Call Now
+            Book a Free Demo Now
             <ArrowRight size={18} />
           </TrackedExternalLink>
         </Button>

@@ -469,7 +469,7 @@ const Portfolio = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Book a Call
+                  Book a Free Demo
                 </TrackedExternalLink>
               </Button>
             </div>

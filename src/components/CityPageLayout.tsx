@@ -8,7 +8,7 @@ import { Footer } from "@/components/Footer";
 import { SEO } from "@/components/SEO";
 import { FadeIn } from "@/components/motion";
 import { TrackedExternalLink } from "@/components/TrackedExternalLink";
-import { CalendlyEmbed, CALENDLY_URL } from "@/components/CalendlyEmbed";
+import { CalendlySection, CALENDLY_URL } from "@/components/CalendlyEmbed";
 import { cityServiceSchema, breadcrumbSchema, CITY_PAGES } from "@/lib/schema";
 
 interface CityPageLayoutProps {
@@ -86,7 +86,7 @@ export const CityPageLayout = ({
                     rel="noopener noreferrer"
                     trackingLabel={`${slug}_hero_book_call`}
                   >
-                    Book a Call <ArrowRight className="ml-2" size={20} />
+                    Book a Free Demo <ArrowRight className="ml-2" size={20} />
                   </TrackedExternalLink>
                 </Button>
               </div>
@@ -126,29 +126,14 @@ export const CityPageLayout = ({
         </section>
 
         {/* ── CLOSING CTA — inline booking ──
-            max-w-5xl because Calendly needs ~1000px to lay out in two columns,
-            same as the homepage #apply section. */}
-        <section className="py-20 md:py-28 px-4 md:px-6 relative z-10">
-          <div className="container mx-auto max-w-5xl">
-            <FadeIn>
-              <div className="text-center mb-10">
-                <span className="text-primary font-bold text-sm tracking-widest uppercase mb-3 block">
-                  Free Website Demo
-                </span>
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-4">
-                  Let's talk about your {city} business
-                </h2>
-                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                  Grab a time below. Fifteen minutes, no pitch. I'll look at your
-                  site, your Google profile and your reviews before we speak, and
-                  I'll build you a free demo page so you can see it, not just hear
-                  about it.
-                </p>
-              </div>
-              <CalendlyEmbed trackingLabel={`${slug}_inline`} />
-            </FadeIn>
-          </div>
-        </section>
+            Shared CalendlySection so this carries id="apply", which is what
+            lets the header/footer CTAs scroll to THIS page's calendar instead
+            of navigating the visitor back to the homepage. */}
+        <CalendlySection
+          trackingLabel={`${slug}_inline`}
+          heading={`Let's talk about your ${city} business`}
+          subheading="Grab a time below. Fifteen minutes, no pitch. I'll look at your site, your Google profile and your reviews before we speak, and I'll build you a free demo page so you can see it, not just hear about it."
+        />
 
         <Footer />
       </div>

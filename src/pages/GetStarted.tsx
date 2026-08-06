@@ -14,7 +14,7 @@ const GetStarted = () => {
     <>
       <SEO
         canonical="/get-started"
-        title="Free 15-Min Online Presence Review"
+        title="Free Website Demo"
         description="Book a free 15-minute review of your website, Google profile, and reviews. Honest feedback and clear next steps, no pressure."
       />
     <div className="min-h-screen bg-background text-foreground relative flex flex-col overflow-x-hidden">
@@ -48,7 +48,7 @@ const GetStarted = () => {
               </motion.div>
             </motion.div>
             <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6">
-              Free 15-Minute Online Presence Review
+              Free Website Demo
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
               A free 15-minute look at your website, Google profile, and reviews.
@@ -89,7 +89,9 @@ const GetStarted = () => {
               </div>
             </div>
 
-            <CalendlyEmbed trackingLabel="get_started_inline" />
+            <div id="apply">
+              <CalendlyEmbed trackingLabel="get_started_inline" />
+            </div>
           </Card>
         </div>
       </section>

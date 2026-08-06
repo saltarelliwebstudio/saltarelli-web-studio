@@ -185,7 +185,7 @@ const About = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Book a Call <ArrowRight className="ml-2" size={20} />
+                  Book a Free Demo <ArrowRight className="ml-2" size={20} />
                 </TrackedExternalLink>
               </Button>
               <Button variant="cosmic" size="lg" asChild>
