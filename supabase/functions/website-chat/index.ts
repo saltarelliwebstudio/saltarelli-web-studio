@@ -1,5 +1,11 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import Anthropic from "npm:@anthropic-ai/sdk";
+
+// Was pointed at the Lovable AI gateway, which needed a LOVABLE_API_KEY that was
+// never set on this project — the function threw before it ever reached a model,
+// which is why the widget sat unmounted. ANTHROPIC_API_KEY is already a secret here.
+const MODEL = "claude-opus-5";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -136,13 +142,39 @@ function validateInput(data: unknown): {
   };
 }
 
+// The one booking link. Mirrors CALENDLY_URL in src/components/CalendlyEmbed.tsx —
+// if that changes, change it here too. The slug still says "online presence review";
+// that's historical and must not be renamed (it would break every existing link).
+const BOOKING_URL = "https://calendly.com/saltarelliwebstudio/free-15-minute-online-presence-review";
+
+// Retell voice agent "Sam" — inbound line. Captures leads, does NOT book meetings.
+const VOICE_AGENT_NUMBER = "(289) 513-5284";
+
 const KNOWLEDGE_BASE = `You are the helpful assistant for Saltarelli Web Studio, a managed web services and automation business in Ontario, Canada run by Adam Saltarelli.
 
 ## ABOUT THE BUSINESS
 - **Owner**: Adam Saltarelli - a tech-savvy guy from Ontario who sets up and manages websites, AI agents, and business automations
 - **Philosophy**: Quality workmanship, fair pricing, personal attention to every project
 - **Setup Time**: Systems typically go live in 1-3 weeks
-- **Pricing**: Affordable pricing starting at just a few hundred dollars
+
+## THE OFFER IS CALLED THE SMART STACK PACK
+Everything below is delivered as one bundle under one name: the **Smart Stack Pack**. Adam helps
+small local businesses get found on Google and win more customers. It is one plan, not a menu, and
+you must never present it as tiers or packages to choose between.
+
+The three parts:
+- **Managed Website** - fast, mobile-first, built to rank and to turn visitors into calls. Hosting,
+  updates and edits all handled.
+- **Google Review Engine** - helps them collect more 5-star reviews, which lifts their position in
+  Google's local results.
+- **SEO + Systems** - local SEO, Google Business Profile optimisation, and automations that capture
+  every lead and notify the owner the moment one arrives.
+
+Adam takes only 5 new clients a month.
+
+**The Clean Hands Guarantee**: if a client is not getting more customers from Google within 60 days,
+Adam refunds every dollar they paid. Do not overstate it - he does NOT promise a #1 ranking, because
+that depends on their market. He promises more customers, or their money back.
 
 ## SERVICES OFFERED
 
@@ -202,13 +234,14 @@ Custom workflows that handle repetitive tasks:
 - Notifies coaches via SMS instantly
 
 ## PROCESS (4 Steps)
-1. **Discovery**: Free consultation to discuss your business goals
+1. **Discovery**: A Free Website Demo (15 minutes) to discuss your business goals
 2. **Design**: FREE concept website, AI agent demo, or automation walkthrough before any commitment
 3. **Build**: 50% deposit to start, then collaborate to perfect every detail
 4. **Go Live & Ongoing Care**: System goes live and ongoing management from there
 
 ## CONTACT
-To get started: Book a free consultation at https://calendly.com/saltarelliwebstudio/30min
+To get started: Book a Free Demo at ${BOOKING_URL}
+Prefer to talk instead of type? Sam, our AI assistant, answers at ${VOICE_AGENT_NUMBER}.
 
 ## PORTFOLIO HIGHLIGHTS
 - WS Construction (ws-construction.ca) - Home renovation website
@@ -222,18 +255,47 @@ To get started: Book a free consultation at https://calendly.com/saltarelliwebst
 - See real results from real clients
 - Free concept/demo before commitment
 - Clear communication, no tech jargon
-- Transparent pricing, no hidden fees
+- No hidden fees, and the price is agreed with Adam directly on the demo
 - Personal investment in every project
 
+## CRITICAL OFFER NAME RULE
+The product has exactly ONE name: the **Smart Stack Pack**. Never invent a
+variant, never call it a package, tier, plan level or bundle-of-the-week.
+
+The free 15-minute intro also has exactly ONE name. A visitor must hear the same words everywhere.
+- The offer (noun) is a **"Free Website Demo"**.
+- The action (verb) is **"Book a Free Demo"**.
+- RETIRED — never say these, they no longer exist: "Free Online Audit", "free audit",
+  "See If You Qualify", "Free 15-Min Call", "Free 15-Min Online Presence Review",
+  "free consultation". If a visitor uses one of those names, answer them normally but
+  say "Free Website Demo" in your own reply.
+
 ## CRITICAL BOOKING LINK RULE
-- **ALWAYS** use this exact link for booking: https://calendly.com/saltarelliwebstudio/30min
-- Any time someone asks to book, schedule, get started, work together, or wants to take the next step, provide this link: https://calendly.com/saltarelliwebstudio/30min
-- NEVER use any other Calendly link. NEVER use a 15min link. ONLY use the 30min link above.
+- **ALWAYS** use this exact link for booking: ${BOOKING_URL}
+- Any time someone asks to book, schedule, get started, work together, or wants to take the next step, provide this link: ${BOOKING_URL}
+- NEVER use any other Calendly link. A "/30min" link is retired and must never be given out.
+
+## PHONE HANDOFF
+- If a visitor would rather talk than type, is in a hurry, says typing is a hassle, or
+  asks whether they can call, offer: "You can talk to our AI assistant Sam right now at ${VOICE_AGENT_NUMBER}."
+- Sam answers questions and takes their details, but does NOT book meetings. So booking
+  through this chat is the primary path — only offer the phone as the alternative.
+- Never present the phone number as a way to schedule.
+
+## COLLECTING CONTACT DETAILS
+- If a visitor is interested but not ready to book, ask for their name and email (or phone)
+  so Adam can follow up. Ask once, naturally, and never badger someone who declines.
+- Once they give you a name AND an email or phone, confirm it back to them in one short
+  sentence and tell them Adam will be in touch.
+- Never ask for contact details before you have actually answered their question.
 
 ## INSTRUCTIONS FOR RESPONDING
 - **ANSWER ONLY WHAT'S ASKED** - Don't volunteer extra info
-- "How do I work with you?" / "How do I book a call?" → "Book a free consultation at https://calendly.com/saltarelliwebstudio/30min"
-- "How much?" → "Starting at a few hundred dollars, depends on scope"
+- "How do I work with you?" / "How do I book a call?" → "Book a Free Demo at ${BOOKING_URL}"
+- "How much?" → NEVER quote a price, a range, or a starting figure. Say that it depends on
+  what they need and that Adam goes through it on the demo, then give the booking link.
+  Quoting a number here anchors the conversation before Adam has said a word, and it has
+  been anchoring it far below what the work actually costs.
 - "What do you offer?" → Brief list of the services, nothing more
 - NO unsolicited details about deposits, turnaround, process steps
 - 1-2 sentences max. Be direct. Be helpful. Stop there.`;
@@ -243,6 +305,24 @@ const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
 const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
 const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
+/** Saltarelli Web Studio's own pod. Our website chat is stored exactly like a
+ *  client's, through the same tables and the same shape, so if transcript
+ *  storage ever breaks we find out on our own site before a client does. */
+const SWS_POD_ID = "00000000-0000-4000-8000-00005a5a5a5a";
+
+/**
+ * Persist one exchange.
+ *
+ * FIXED 2026-08-18. This previously inserted session_id / user_message /
+ * assistant_message / source_url into public.chat_logs. None of those columns
+ * exist on that table - it is the DASHBOARD support chat and is
+ * user_id/role/content with user_id NOT NULL. So every insert failed from the
+ * 2026-08-14 launch onward, and because the failure was only console.error'd the
+ * widget looked perfect while discarding every conversation on the site.
+ *
+ * Now writes to chat_conversations / chat_messages, the same pair the client
+ * sites use, which are built for anonymous visitors and have no user_id.
+ */
 async function logConversation(
   sessionId: string,
   sourceUrl: string | null,
@@ -250,17 +330,136 @@ async function logConversation(
   assistantMessage: string
 ) {
   try {
-    const { error } = await supabase.from("chat_logs").insert({
-      session_id: sessionId,
-      source_url: sourceUrl,
-      user_message: userMessage,
-      assistant_message: assistantMessage,
-    });
-    if (error) {
-      console.error("Failed to log conversation:", error);
+    const { data: convo, error: convoErr } = await supabase
+      .from("chat_conversations")
+      .upsert(
+        {
+          pod_id: SWS_POD_ID,
+          session_id: sessionId,
+          source_url: sourceUrl,
+          last_message_at: new Date().toISOString(),
+        },
+        { onConflict: "pod_id,session_id" }
+      )
+      .select("id, message_count")
+      .single();
+
+    if (convoErr || !convo) {
+      console.error("Failed to upsert conversation:", convoErr);
+      return;
     }
+
+    const { error: msgErr } = await supabase.from("chat_messages").insert([
+      { conversation_id: convo.id, role: "user", content: userMessage },
+      { conversation_id: convo.id, role: "assistant", content: assistantMessage },
+    ]);
+    if (msgErr) {
+      console.error("Failed to insert messages:", msgErr);
+      return;
+    }
+
+    await supabase
+      .from("chat_conversations")
+      .update({ message_count: (convo.message_count ?? 0) + 2 })
+      .eq("id", convo.id);
   } catch (e) {
     console.error("Error logging conversation:", e);
+  }
+}
+
+// Sessions we've already turned into a lead, so a long conversation doesn't
+// create a duplicate on every subsequent message. In-memory only: worst case an
+// isolate restart lets one duplicate through, which is cheaper than adding a table.
+const submittedSessions = new Set<string>();
+
+const EMAIL_RE = /[^\s@<>()[\]]+@[^\s@<>()[\]]+\.[a-z]{2,}/i;
+
+/**
+ * If the visitor handed over contact details in chat, push them into the same
+ * `qualify-submit` function the website form and the Retell phone agent use, so a
+ * chat lead lands in `qualify_leads` and pings Telegram like any other lead.
+ *
+ * Trigger is deterministic: we only spend an extraction call once an email actually
+ * appears in something the VISITOR typed. `qualify-submit` requires name + email.
+ */
+async function captureLeadIfPresent(
+  messages: Array<{ role: string; content: string }>,
+  sessionId: string,
+  sourceUrl: string | null,
+  anthropic: Anthropic
+) {
+  if (submittedSessions.has(sessionId)) return;
+
+  const visitorText = messages
+    .filter((m) => m.role === "user")
+    .map((m) => m.content)
+    .join("\n");
+
+  if (!EMAIL_RE.test(visitorText)) return;
+
+  try {
+    const res = await anthropic.messages.create({
+      model: MODEL,
+      max_tokens: 1024,
+      output_config: {
+        effort: "low",
+        format: {
+          type: "json_schema",
+          schema: {
+            type: "object",
+            properties: {
+              name: { type: ["string", "null"] },
+              email: { type: ["string", "null"] },
+              phone: { type: ["string", "null"] },
+              website: { type: ["string", "null"] },
+              message: {
+                type: ["string", "null"],
+                description: "One sentence on what the visitor wants.",
+              },
+            },
+            required: ["name", "email", "phone", "website", "message"],
+            additionalProperties: false,
+          },
+        },
+      },
+      system:
+        "Extract the visitor's contact details from this chat transcript. " +
+        "Use null for anything they did not actually provide. Never invent a name or an email.",
+      messages: [{ role: "user", content: visitorText }],
+    });
+
+    const text = res.content.find((b) => b.type === "text")?.text;
+    if (!text) return;
+
+    const lead = JSON.parse(text);
+    // qualify-submit rejects anything without both, so don't waste the call.
+    if (!lead?.name || !lead?.email) return;
+
+    // Mark before awaiting so two in-flight messages can't both submit.
+    submittedSessions.add(sessionId);
+    if (submittedSessions.size > 5000) submittedSessions.clear();
+
+    const submitRes = await fetch(`${supabaseUrl}/functions/v1/qualify-submit`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        source: "chat",
+        name: lead.name,
+        email: lead.email,
+        phone: lead.phone ?? undefined,
+        website: lead.website ?? undefined,
+        message: [lead.message, sourceUrl ? `(from ${sourceUrl})` : null]
+          .filter(Boolean)
+          .join(" "),
+      }),
+    });
+
+    if (!submitRes.ok) {
+      console.error("qualify-submit rejected chat lead:", submitRes.status, await submitRes.text());
+      submittedSessions.delete(sessionId); // let a later message retry
+    }
+  } catch (e) {
+    console.warn("Chat lead capture failed (non-fatal):", e);
   }
 }
 
@@ -308,86 +507,52 @@ serve(async (req) => {
     }
 
     const { messages, session_id, source_url } = validation;
-    const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
-    
-    if (!LOVABLE_API_KEY) {
-      throw new Error("LOVABLE_API_KEY is not configured");
+    const ANTHROPIC_API_KEY = Deno.env.get("ANTHROPIC_API_KEY");
+
+    if (!ANTHROPIC_API_KEY) {
+      throw new Error("ANTHROPIC_API_KEY is not configured");
     }
+
+    const anthropic = new Anthropic({ apiKey: ANTHROPIC_API_KEY });
 
     // Get the latest user message for logging
     const latestUserMessage = messages![messages!.length - 1]?.content || "";
 
-    const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${LOVABLE_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        model: "google/gemini-3-flash-preview",
-        messages: [
-          { role: "system", content: KNOWLEDGE_BASE },
-          ...messages!,
-        ],
-        stream: true,
-      }),
-    });
-
-    if (!response.ok) {
-      if (response.status === 429) {
-        return new Response(JSON.stringify({ error: "Rate limited. Please try again in a moment." }), {
-          status: 429,
-          headers: { ...corsHeaders, "Content-Type": "application/json" },
-        });
-      }
-      if (response.status === 402) {
-        return new Response(JSON.stringify({ error: "Service temporarily unavailable." }), {
-          status: 402,
-          headers: { ...corsHeaders, "Content-Type": "application/json" },
-        });
-      }
-      const errorText = await response.text();
-      console.error("AI gateway error:", response.status, errorText);
-      return new Response(JSON.stringify({ error: "AI service error" }), {
-        status: 500,
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-      });
-    }
-
-    // Create a TransformStream to intercept and collect the response
-    const reader = response.body!.getReader();
     const encoder = new TextEncoder();
-    const decoder = new TextDecoder();
     let fullAssistantResponse = "";
 
+    // The wire format stays the OpenAI-style `data: {choices:[{delta:{content}}]}`
+    // the frontend parser already reads. Translating here keeps Chatbot.tsx's
+    // stream handling untouched.
     const stream = new ReadableStream({
       async start(controller) {
         try {
-          while (true) {
-            const { done, value } = await reader.read();
-            if (done) break;
+          const modelStream = anthropic.messages.stream({
+            model: MODEL,
+            max_tokens: 2048,
+            // Thinking is on by default on this model. Left on deliberately —
+            // disabling it can leak <thinking> tags into the visible reply.
+            // `low` effort keeps it quick enough for a chat widget.
+            output_config: { effort: "low" },
+            system: KNOWLEDGE_BASE,
+            messages: messages!.map((m) => ({
+              role: m.role === "assistant" ? "assistant" : "user",
+              content: m.content,
+            })),
+          });
 
-            // Pass through to client
-            controller.enqueue(value);
+          modelStream.on("text", (delta: string) => {
+            fullAssistantResponse += delta;
+            controller.enqueue(
+              encoder.encode(
+                `data: ${JSON.stringify({ choices: [{ delta: { content: delta } }] })}\n\n`
+              )
+            );
+          });
 
-            // Also collect the response for logging
-            const chunk = decoder.decode(value, { stream: true });
-            const lines = chunk.split("\n");
-            
-            for (const line of lines) {
-              if (line.startsWith("data: ") && line !== "data: [DONE]") {
-                try {
-                  const json = JSON.parse(line.slice(6));
-                  const content = json.choices?.[0]?.delta?.content;
-                  if (content) {
-                    fullAssistantResponse += content;
-                  }
-                } catch {
-                  // Ignore parse errors for incomplete chunks
-                }
-              }
-            }
-          }
+          await modelStream.finalMessage();
+
+          controller.enqueue(encoder.encode("data: [DONE]\n\n"));
           controller.close();
 
           // Log the conversation after stream completes
@@ -397,6 +562,15 @@ serve(async (req) => {
               source_url || null,
               latestUserMessage,
               fullAssistantResponse
+            );
+
+            // Then see if this conversation just became a lead. Runs after the
+            // reply has already streamed out, so it costs the visitor nothing.
+            await captureLeadIfPresent(
+              messages!,
+              session_id,
+              source_url || null,
+              anthropic
             );
           }
         } catch (e) {
