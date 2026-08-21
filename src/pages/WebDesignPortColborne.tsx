@@ -52,11 +52,9 @@ const WebDesignPortColborne = () => (
         being a job.
       </p>
       <p>
-        Genius isn't the only one here. X Fitness runs a 24/7 gym in town, Joe
-        Camilleri's Tree and Stump Removal covers Port Colborne and the wider
-        Niagara region, and Santoro Pizza has been feeding this town for years.
-        Different businesses, same pattern: get found, get reviewed, stop losing
-        the call.
+        Genius isn't the only one here. X Fitness runs a 24/7 gym in town and
+        Santoro Pizza has been feeding this town for years. Different businesses,
+        same pattern: get found, get reviewed, stop losing the call.
       </p>
     </CitySection>
 

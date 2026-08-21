@@ -151,14 +151,6 @@ const portfolioItems = [
     liveUrl: "https://www.momdukes2020.com",
   },
   {
-    title: "Molon's Orthodontics",
-    description: "Concept website design for a modern orthodontic practice. Showcases patient portal, appointment booking, and treatment information layouts.",
-    category: "Healthcare",
-    type: "Website",
-    imageUrl: "/lovable-uploads/12bf1319-8fb6-4f87-ab56-02eaf20e2767.webp",
-    liveUrl: "https://molonsorthodontics.crd.co",
-  },
-  {
     title: "Keeda's Home Bakery",
     description: "Artisan home bakery website with order forms, gallery of custom designs, and seasonal menu updates. Built for easy self-management.",
     category: "Food & Restaurant",
@@ -205,14 +197,6 @@ const portfolioItems = [
     type: "Website",
     imageUrl: "/lovable-uploads/cassar-electric.webp",
     liveUrl: "https://cassarelectric.ca/",
-  },
-  {
-    title: "Tree and Stump Removal",
-    description: "Professional tree and stump removal services website for Port Colborne and the Niagara region. Features service information, gallery, and quote request functionality.",
-    category: "Local Services",
-    type: "Website",
-    imageUrl: "/lovable-uploads/tree-stump-removal.webp",
-    liveUrl: "https://treeandstumpremoval.ca/",
   },
   {
     title: "Claude's Roofing",
@@ -285,14 +269,6 @@ const portfolioItems = [
     type: "Website",
     imageUrl: "/lovable-uploads/skunk-removal-site.webp",
     liveUrl: "https://skunkremovalservicesniagara.ca",
-  },
-  {
-    title: "Mark Windows and Doors",
-    description: "Windows and doors company website showcasing products and installations with a strong, trustworthy local presence.",
-    category: "Local Services",
-    type: "Website",
-    imageUrl: "/lovable-uploads/mark-windows-site.webp",
-    liveUrl: "https://windowsanddoorsbymark.com",
   },
   {
     title: "Santoro Pizza",

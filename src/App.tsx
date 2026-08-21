@@ -8,6 +8,8 @@ import { HelmetProvider } from "react-helmet-async";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { PageTracker } from "@/components/PageTracker";
 import { StickyBookButton } from "@/components/StickyBookButton";
+import { Chatbot } from "@/components/Chatbot";
+import { DemoPopup } from "@/components/DemoPopup";
 // import { AnnouncementBanner } from "@/components/AnnouncementBanner"; // temporarily hidden
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
@@ -56,6 +58,8 @@ const App = () => (
         </Routes>
         </Suspense>
         <StickyBookButton />
+        <Chatbot />
+        <DemoPopup />
       </BrowserRouter>
       <Analytics />
       <SpeedInsights />

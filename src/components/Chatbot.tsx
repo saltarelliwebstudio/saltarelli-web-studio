@@ -1,8 +1,15 @@
 import React, { useState, useRef, useEffect, useMemo } from "react";
-import { MessageCircle, X, Send, Loader2 } from "lucide-react";
+import { MessageCircle, X, Send, Loader2, Calendar, Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { CALENDLY_URL } from "@/components/CalendlyEmbed";
+import { TrackedExternalLink } from "@/components/TrackedExternalLink";
+import { setChatOpen } from "@/lib/chatOpenStore";
+
+// Retell voice agent "Sam". Answers questions and takes details; does NOT book.
+const VOICE_AGENT_DISPLAY = "(289) 513-5284";
+const VOICE_AGENT_TEL = "+12895135284";
 
 type Message = {
   role: "user" | "assistant";
@@ -40,11 +47,19 @@ const generateSessionId = () => {
 const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/website-chat`;
 
 export const Chatbot = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpenState] = useState(false);
+
+  // Mirror open state out so StickyBookButton can get out of this corner.
+  const setIsOpen = (open: boolean) => {
+    setIsOpenState(open);
+    setChatOpen(open);
+  };
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
-      content: "Hi! I'm here to help you learn about Saltarelli Web Studio. Ask me about our websites, AI agents, automations, or anything else!",
+      content:
+        "Hey, I'm here to answer anything about Saltarelli Web Studio — websites, AI agents, automations, pricing. " +
+        "Ask away, or book a Free Demo and Adam will walk you through it in 15 minutes.",
     },
   ]);
   const [input, setInput] = useState("");
@@ -142,7 +157,12 @@ export const Chatbot = () => {
       console.error("Chat error:", error);
       setMessages((prev) => [
         ...prev,
-        { role: "assistant", content: "Sorry, I'm having trouble connecting right now. Please try again or grab a Free Online Audit directly: https://calendly.com/saltarelliwebstudio/free-15-minute-online-presence-review" },
+        {
+          role: "assistant",
+          content:
+            `Sorry, I'm having trouble connecting right now. You can book a Free Demo directly: ${CALENDLY_URL}` +
+            ` — or talk to Sam, our AI assistant, at ${VOICE_AGENT_DISPLAY}.`,
+        },
       ]);
     } finally {
       setIsLoading(false);
@@ -240,6 +260,31 @@ export const Chatbot = () => {
               ))}
               <div ref={messagesEndRef} />
             </div>
+
+            {/* Quick replies — only while the conversation is still just the greeting,
+                so the visitor has somewhere to go without thinking of a question. */}
+            {messages.length === 1 && (
+              <div className="flex gap-2 px-3 pb-1 bg-background/95 backdrop-blur-xl">
+                <TrackedExternalLink
+                  href={CALENDLY_URL}
+                  trackingLabel="chat_book_demo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1.5 rounded-full border border-primary/40 bg-primary/10 px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-primary/20"
+                >
+                  <Calendar size={13} />
+                  Book a free demo
+                </TrackedExternalLink>
+                <TrackedExternalLink
+                  href={`tel:${VOICE_AGENT_TEL}`}
+                  trackingLabel="chat_call_sam"
+                  className="flex items-center gap-1.5 rounded-full border border-border/60 bg-card/60 px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-card"
+                >
+                  <Phone size={13} />
+                  Talk to Sam by phone
+                </TrackedExternalLink>
+              </div>
+            )}
 
             {/* Input */}
             <form onSubmit={handleSubmit} className="p-3 bg-card/80 backdrop-blur-xl border-t border-border/50">

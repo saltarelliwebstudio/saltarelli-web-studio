@@ -13,7 +13,24 @@ Deno.serve(async (req) => {
 
   try {
     const body = await req.json();
-    const { name, email, phone, website, message } = body;
+
+    // Two callers hit this function:
+    //  1. The website form  -> flat body { name, email, phone, website, message }
+    //  2. The Retell phone agent (submit_lead tool) -> wrapped body
+    //     { call: { from_number, ... }, name: "submit_lead", args: {...} }
+    // Detect the Retell shape by the presence of an `args` object and unwrap it.
+    const isPhone = body && typeof body.args === "object" && body.args !== null;
+    const src = isPhone ? body.args : body;
+
+    const name = src.name;
+    const email = src.email;
+    // Over the phone the caller's number is captured automatically; fall back to it.
+    const phone = src.phone ?? (isPhone ? body?.call?.from_number : undefined);
+    const website = src.website;
+    const message = src.message;
+    // The website-chat function passes source:"chat" explicitly; the website form
+    // sends nothing and stays "website". Retell is detected by its wrapped shape.
+    const source = isPhone ? "phone" : src.source === "chat" ? "chat" : "website";
 
     // --- Validation (name + email required; rest optional) ---
     if (!name || typeof name !== "string" || name.trim().length < 1 || name.length > 100) {
@@ -72,8 +89,12 @@ Deno.serve(async (req) => {
     }
 
     // --- Notify Adam (best-effort; never blocks the saved lead) ---
+    const header =
+      source === "phone" ? "📞 New PHONE lead"
+      : source === "chat" ? "💬 New CHAT lead"
+      : "🌐 New WEBSITE lead";
     const summary =
-      `🟢 New qualify lead\n` +
+      `${header}\n` +
       `Name: ${clean.name}\n` +
       `Email: ${clean.email}\n` +
       (clean.phone ? `Phone: ${clean.phone}\n` : "") +
@@ -110,12 +131,67 @@ Deno.serve(async (req) => {
           body: JSON.stringify({
             from: Deno.env.get("RESEND_FROM_EMAIL") ?? "leads@saltarelliwebstudio.ca",
             to: notifyEmail,
-            subject: `New lead: ${clean.name}${clean.website ? " — " + clean.website : ""}`,
+            subject: `${source === "phone" ? "📞 Phone" : source === "chat" ? "💬 Chat" : "🌐 Website"} lead: ${clean.name}${clean.website ? " — " + clean.website : ""}`,
             text: summary,
           }),
         });
       } catch (e) {
         console.warn("Email notify failed (non-fatal):", e);
+      }
+    }
+
+    // --- Auto-reply to the SUBMITTER (best-effort; never blocks the saved lead) ---
+    // Sent for every lead (website form + Sam phone agent), per Adam 2026-07-17.
+    const autoReplyText =
+      `Hey ${clean.name}, Adam here from Saltarelli Web Studio. ` +
+      `Got your message and I'll personally get back to you shortly. ` +
+      `Feel free to reply right here if it's easier.`;
+
+    // Auto-reply EMAIL (reuses the Resend key already used for Adam's notify)
+    if (resendKey && clean.email) {
+      try {
+        await fetch("https://api.resend.com/emails", {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${resendKey}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            from: Deno.env.get("RESEND_FROM_EMAIL") ?? "leads@saltarelliwebstudio.ca",
+            to: clean.email,
+            reply_to: "saltarelliwebstudio@gmail.com",
+            subject: "Got your message - Saltarelli Web Studio",
+            text: autoReplyText,
+          }),
+        });
+      } catch (e) {
+        console.warn("Auto-reply email failed (non-fatal):", e);
+      }
+    }
+
+    // Auto-reply TEXT via Quo/OpenPhone business line.
+    // Normalize to E.164 (form often gets bare 10-digit input like "2899314142").
+    // NOTE: the Quo line is A2P-approved for CANADIAN SMS only; US numbers 400 and
+    // fail soft here (submitter still got the email above).
+    const quoKey = Deno.env.get("QUO_BUSINESS_API_KEY");
+    const quoFrom = Deno.env.get("QUO_BUSINESS_FROM");
+    if (quoKey && quoFrom && clean.phone) {
+      const digits = clean.phone.replace(/\D/g, "");
+      const e164 =
+        clean.phone.trim().startsWith("+") ? clean.phone.trim()
+        : digits.length === 10 ? `+1${digits}`
+        : digits.length === 11 && digits.startsWith("1") ? `+${digits}`
+        : null;
+      if (e164) {
+        try {
+          await fetch("https://api.openphone.com/v1/messages", {
+            method: "POST",
+            headers: { Authorization: quoKey, "Content-Type": "application/json" },
+            body: JSON.stringify({ content: autoReplyText, from: quoFrom, to: [e164] }),
+          });
+        } catch (e) {
+          console.warn("Auto-reply SMS failed (non-fatal):", e);
+        }
       }
     }
 

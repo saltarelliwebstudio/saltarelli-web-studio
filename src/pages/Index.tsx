@@ -102,7 +102,7 @@ const Index = () => {
           aggregateRating: {
             "@type": "AggregateRating",
             ratingValue: "5",
-            reviewCount: "20",
+            reviewCount: "25",
           },
           review: [
             {
@@ -264,7 +264,7 @@ const Index = () => {
                     ))}
                   </span>
                   <span className="text-sm font-semibold text-foreground">5.0</span>
-                  <span className="text-sm text-muted-foreground">· 20 Google reviews</span>
+                  <span className="text-sm text-muted-foreground">· 25 Google reviews</span>
                 </a>
                 <p className="text-sm text-muted-foreground">
                   Backed by our Clean Hands Guarantee

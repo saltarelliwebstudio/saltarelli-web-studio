@@ -1,10 +1,10 @@
-// Recurring weekly live session — single source of truth.
-// "Live AI Q&A + Tutorials" runs every Thursday at 12:00 PM ET (DST-aware).
+// Recurring monthly live session — single source of truth.
+// "Live AI Q&A + Tutorials" runs the FIRST SATURDAY of each month at 10:00 AM ET (DST-aware).
 // Used by AnnouncementBanner + the /workshop route so the schedule lives in one place.
 
 const TZ = "America/Toronto"; // ET, DST-aware (matches Adam's Calendly: America/New_York)
-const SESSION_WEEKDAY = 4; // 0=Sun, 1=Mon ... 4=Thu
-const SESSION_HOUR = 12; // 12 PM
+const SESSION_WEEKDAY = 6; // 0=Sun, 1=Mon ... 6=Sat
+const SESSION_HOUR = 10; // 10 AM
 const SESSION_MINUTE = 0;
 const SESSION_DURATION_MIN = 60;
 
@@ -13,7 +13,7 @@ export const SESSION_NAME = "Live AI Q&A + Tutorials";
 // Internal route the banner points to (the signup landing page).
 export const SIGNUP_PATH = "/workshop";
 
-// Permanent recurring Google Meet room — same link every Thursday.
+// Permanent recurring Google Meet room — same link every session.
 export const LIVE_SESSION_MEET_URL = "https://meet.google.com/qrm-vhfn-zpb";
 
 export interface NextSession {
@@ -91,22 +91,38 @@ function zonedDateParts(date: Date, tz: string) {
   };
 }
 
-// The next (or currently-live) Thursday-noon-ET session.
+// Day-of-month (1-based) of the first Saturday of the given month, in TZ.
+function firstSessionDayOfMonth(year: number, month: number): number {
+  // Noon anchor avoids DST edges when reading the weekday of the 1st.
+  const firstUtc = zonedWallToUtc(year, month, 1, 12, 0, TZ);
+  const { weekday } = zonedDateParts(firstUtc, TZ);
+  return 1 + ((SESSION_WEEKDAY - weekday + 7) % 7);
+}
+
+// The next (or currently-live) first-Saturday-of-month 10 AM ET session.
 export function getNextSession(now: Date = new Date()): NextSession {
-  const { year, month, day, weekday } = zonedDateParts(now, TZ);
-  const daysUntil = (SESSION_WEEKDAY - weekday + 7) % 7;
+  const { year, month } = zonedDateParts(now, TZ);
 
-  let start = zonedWallToUtc(year, month, day + daysUntil, SESSION_HOUR, SESSION_MINUTE, TZ);
-  let end = new Date(start.getTime() + SESSION_DURATION_MIN * 60_000);
+  // Build the session for a given year/month, normalizing month overflow.
+  const buildFor = (y: number, m: number): NextSession => {
+    const yy = y + Math.floor(m / 12);
+    const mm = ((m % 12) + 12) % 12;
+    const sessionDay = firstSessionDayOfMonth(yy, mm);
+    const start = zonedWallToUtc(yy, mm, sessionDay, SESSION_HOUR, SESSION_MINUTE, TZ);
+    const end = new Date(start.getTime() + SESSION_DURATION_MIN * 60_000);
+    return { start, end, isLive: false };
+  };
 
-  // If this week's session has already ended, roll forward to next Thursday.
-  if (now.getTime() >= end.getTime()) {
-    start = zonedWallToUtc(year, month, day + daysUntil + 7, SESSION_HOUR, SESSION_MINUTE, TZ);
-    end = new Date(start.getTime() + SESSION_DURATION_MIN * 60_000);
+  let session = buildFor(year, month);
+
+  // If this month's session has already ended, roll forward to next month's first Saturday.
+  if (now.getTime() >= session.end.getTime()) {
+    session = buildFor(year, month + 1);
   }
 
-  const isLive = now.getTime() >= start.getTime() && now.getTime() < end.getTime();
-  return { start, end, isLive };
+  const isLive =
+    now.getTime() >= session.start.getTime() && now.getTime() < session.end.getTime();
+  return { ...session, isLive };
 }
 
 export interface CountdownParts {
@@ -136,7 +152,7 @@ export function formatCountdown(ms: number): string {
   return parts.join(" ");
 }
 
-// "Thu, Jun 11 · 12 PM ET"
+// "Sat, Aug 1 · 10 AM ET"
 export function formatSessionDate(date: Date): string {
   const datePart = new Intl.DateTimeFormat("en-US", {
     timeZone: TZ,
@@ -160,14 +176,14 @@ function gcalStamp(d: Date): string {
   return d.toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
 }
 
-// A "click to add to Google Calendar" link for the recurring weekly session.
+// A "click to add to Google Calendar" link for the recurring monthly session.
 export function getAddToCalendarUrl(session: NextSession): string {
   const text = encodeURIComponent(SESSION_NAME);
   const dates = `${gcalStamp(session.start)}/${gcalStamp(session.end)}`;
   const details = encodeURIComponent(
-    `Join the live session here: ${LIVE_SESSION_MEET_URL}\n\nWeekly AI Q&A + tutorials with Adam. Bring your questions.`
+    `Join the live session here: ${LIVE_SESSION_MEET_URL}\n\nMonthly AI Q&A + tutorials with Adam. Bring your questions.`
   );
   const location = encodeURIComponent(LIVE_SESSION_MEET_URL);
-  const recur = encodeURIComponent("RRULE:FREQ=WEEKLY;BYDAY=TH");
+  const recur = encodeURIComponent("RRULE:FREQ=MONTHLY;BYDAY=1SA");
   return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${text}&dates=${dates}&details=${details}&location=${location}&recur=${recur}`;
 }

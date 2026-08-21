@@ -16,7 +16,6 @@ const logos: Logo[] = [
   { src: "/logos/mbv-specialty-services.png", alt: "MBV Specialty Services", url: "https://mbvinc.ca" },
   { src: "/logos/landscape-one.jpeg", alt: "Landscape One", url: "https://landscapeone.ca" },
   { src: "/logos/skunk-removal-niagara.png", alt: "Skunk Removal Services Niagara", url: "https://skunkremovalservicesniagara.ca" },
-  { src: "/logos/mark-windows-and-doors.png", alt: "Mark Windows and Doors", url: "https://windowsanddoorsbymark.com", imgClass: "max-h-[52px] max-w-[94%] object-contain rounded-md" },
   { src: "/logos/santoro-pizza.png", alt: "Santoro Pizza", url: "https://santoropizza.ca", imgClass: "max-h-[82px] max-w-[88%] object-contain rounded-md" },
   { src: "/logos/ws-construction.png", alt: "WS Construction", url: "https://ws-construction.ca" },
   { src: "/logos/mary-maes.png", alt: "Mary N Mae's Tack N Feed", url: "http://www.marynmaetacknfeed.com", imgClass: "max-h-[78px] max-w-[88%] object-contain rounded-md" },
@@ -24,7 +23,6 @@ const logos: Logo[] = [
   { src: "/logos/bluewater-stone.png", alt: "Bluewater Stone Hardscaping", url: "https://bluewaterstone.ca" },
   { src: "/logos/gd-landscaping.png", alt: "G&D Landscaping", url: "https://gdlandscaping.ca", imgClass: "max-h-[84px] max-w-[90%] object-contain rounded-md" },
   { src: "/logos/claudes-roofing.png", alt: "Claude's Roofing", url: "https://claudesroofing.ca", imgClass: "max-h-[84px] max-w-[92%] object-contain rounded-md" },
-  { src: "/logos/tree-stump-removal.png", alt: "Tree and Stump Removal", url: "https://treeandstumpremoval.ca" },
   { src: "/logos/carrot-effect.png", alt: "The Carrot Effect", url: "https://thecarroteffect.ca" },
   { src: "/logos/napa.png", alt: "Niagara Antique Power Association", url: "https://www.niagaraantiquepower.org", imgClass: "max-h-[72px] max-w-[92%] object-contain rounded-md" },
 ];

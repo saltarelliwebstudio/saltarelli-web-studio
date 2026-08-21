@@ -26,6 +26,18 @@ export const AnnouncementBanner = () => {
   const now = new Date();
   const session = getNextSession(now);
 
+  // Compact upcoming-session label, e.g. "SAT AUG 1" — derived from the schedule
+  // so it's always correct (no hardcoded weekday that breaks on off-weeks).
+  const sessionLabel = new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/Toronto",
+    weekday: "short",
+    month: "short",
+    day: "numeric",
+  })
+    .format(session.start)
+    .replace(",", "")
+    .toUpperCase();
+
   // The banner is always visible — it cannot be dismissed. It offsets the page
   // content by reserving its height as a CSS custom property.
   useEffect(() => {
@@ -68,7 +80,7 @@ export const AnnouncementBanner = () => {
               <span className="flex items-center gap-2 min-w-0">
                 <span className="hidden sm:inline flex-shrink-0">🚀</span>
                 <span className="hidden md:inline font-heading font-bold text-primary whitespace-nowrap">
-                  THIS THURSDAY
+                  {sessionLabel}
                 </span>
                 <span className="font-heading font-semibold truncate">
                   Live AI Q&amp;A + Tutorials
