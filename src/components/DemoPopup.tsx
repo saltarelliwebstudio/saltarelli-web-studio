@@ -49,6 +49,15 @@ export const DemoPopup = () => {
     if (suppressed) return;
     if (typeof window === "undefined") return;
 
+    // The build-time prerenderer drives a headless Chrome over every route and
+    // scrolls the whole page to latch framer-motion's whileInView animations.
+    // That scroll trips the trigger below, and Radix portals the modal to
+    // <body> — OUTSIDE #root, where React never hydrates it — so the snapshot
+    // ships a permanently-open popup that no click can close. Shipped that way
+    // site-wide on 2026-08-20. scripts/prerender.mjs also strips stray portals
+    // as a backstop; this is the front door.
+    if ((window as unknown as { __PRERENDER__?: boolean }).__PRERENDER__) return;
+
     // localStorage throws in Safari private mode. A popup is not worth an
     // exception, and failing closed (never showing) is the polite direction.
     try {
@@ -116,7 +125,10 @@ export const DemoPopup = () => {
     <Dialog open={isOpen} onOpenChange={handleOpenChange}>
       {/* Wide enough for Calendly's two-column layout — it needs ~1000px, and the
           narrow fallback is much taller, which buries the calendar in a modal. */}
-      <DialogContent className="max-w-5xl max-h-[92vh] overflow-y-auto p-0 gap-0">
+      {/* `[&>button:last-child]:hidden` kills DialogContent's own close button.
+          It always renders last, and it sits 4px off the bigger one below —
+          two overlapping Xs that read as one smudged icon. */}
+      <DialogContent className="max-w-5xl max-h-[92vh] overflow-y-auto p-0 gap-0 [&>button:last-child]:hidden">
         {/* The stock DialogContent close button is small and grey; this modal
             interrupts someone, so the way out should be obvious. */}
         <button

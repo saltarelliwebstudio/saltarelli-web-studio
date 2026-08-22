@@ -63,8 +63,17 @@ const MIME = {
   ".pdf": "application/pdf",
 };
 
-/** Static file server for dist/ with SPA fallback, so client routes boot. */
-function createServer() {
+/**
+ * Static file server for dist/ with SPA fallback, so client routes boot.
+ *
+ * `shell` is the PRISTINE dist/index.html, read once before any route is
+ * written. It is deliberately not re-read from disk: route "/" overwrites
+ * dist/index.html with its own snapshot, and every later route falls back to
+ * that same file — so a re-reading server feeds each route the previous
+ * route's rendered DOM. That is how a single stray portal node ends up baked
+ * into all ten pages. (Shipped exactly that way 2026-08-20.)
+ */
+function createServer(shell) {
   return http.createServer((req, res) => {
     const urlPath = decodeURIComponent((req.url || "/").split("?")[0]);
     const filePath = path.join(DIST, urlPath);
@@ -84,7 +93,7 @@ function createServer() {
 
     // Otherwise fall back to the SPA shell so react-router can take over.
     res.writeHead(200, { "Content-Type": MIME[".html"] });
-    fs.createReadStream(path.join(DIST, "index.html")).pipe(res);
+    res.end(shell);
   });
 }
 
@@ -145,6 +154,41 @@ async function settleAnimations(page) {
 }
 
 /**
+ * Remove React portals from the snapshot.
+ *
+ * Radix (Dialog, Toast, Tooltip, Popover, Sheet) portals its content to
+ * `document.body`, OUTSIDE `<div id="root">`. React only hydrates #root, so
+ * anything baked in beside it is dead markup forever: no fiber, no handlers,
+ * no way to close it. On 2026-08-20 the DemoPopup's new desktop scroll trigger
+ * fired during settleAnimations()'s scroll pass and shipped a permanently-open,
+ * unclosable modal over every page on the site.
+ *
+ * Nothing React injects at runtime belongs in a static snapshot — hydration
+ * recreates it — so the rule is simply: `body > *` that isn't #root or a
+ * script/template goes. Returns what was removed so the build log shows it.
+ */
+async function stripPortals(page) {
+  return page.evaluate(() => {
+    const removed = [];
+    for (const el of [...document.body.children]) {
+      if (el.id === "root") continue;
+      if (el.tagName === "SCRIPT" || el.tagName === "TEMPLATE" || el.tagName === "NOSCRIPT") continue;
+      removed.push(el.tagName.toLowerCase() + (el.id ? "#" + el.id : "") + (el.getAttribute("role") ? "[role=" + el.getAttribute("role") + "]" : ""));
+      el.remove();
+    }
+    // Radix locks scroll + hides the page from AT while a modal is open. Both
+    // get written into the static HTML and neither is ever undone.
+    document.body.removeAttribute("style");
+    document.body.removeAttribute("data-scroll-locked");
+    for (const el of document.querySelectorAll("#root [aria-hidden=\"true\"][data-aria-hidden]")) {
+      el.removeAttribute("aria-hidden");
+      el.removeAttribute("data-aria-hidden");
+    }
+    return removed;
+  });
+}
+
+/**
  * Strip only the analytics tags the SPA INJECTED at runtime, so they aren't
  * shipped statically and then injected a second time on hydration.
  *
@@ -179,7 +223,8 @@ async function main() {
 
   const { default: puppeteer } = await import("puppeteer");
 
-  const server = createServer();
+  const shell = await fsp.readFile(path.join(DIST, "index.html"));
+  const server = createServer(shell);
   await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
   const { port } = server.address();
   const origin = `http://127.0.0.1:${port}`;
@@ -210,6 +255,12 @@ async function main() {
   for (const target of targets) {
     const page = await browser.newPage();
     await page.setViewport({ width: 1280, height: 900 });
+
+    // Let the app know it is being snapshotted. Anything that interrupts a
+    // visitor (popups, toasts) must not render into static HTML.
+    await page.evaluateOnNewDocument(() => {
+      window.__PRERENDER__ = true;
+    });
 
     await page.setRequestInterception(true);
     page.on("request", (req) => {
@@ -244,6 +295,11 @@ async function main() {
       const forced = await settleAnimations(page);
       if (forced > 0) {
         console.log(`[prerender]   forced ${forced} lingering hidden element(s) visible`);
+      }
+
+      const stripped = await stripPortals(page);
+      if (stripped.length > 0) {
+        console.log(`[prerender]   stripped ${stripped.length} portal node(s): ${stripped.join(", ")}`);
       }
 
       const html = cleanHtml(
