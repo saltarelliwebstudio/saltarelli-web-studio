@@ -26,16 +26,22 @@ export const Header = () => {
     setIsMenuOpen(false);
   }, [location.pathname]);
 
-  // Prevent body scroll when menu is open
+  // Prevent scroll when the menu is open.
+  //
+  // Deliberately a class on <html>, NOT document.body.style.overflow. Radix's
+  // react-remove-scroll locks body through an injected stylesheet carrying
+  // `!important` plus a REFCOUNTED `data-scroll-locked` attribute, so an inline
+  // body.style.overflow write here was outranked while a dialog was open and
+  // then cleared to "" on the way out — two owners, one property, and whoever
+  // tore down last decided whether scroll came back.
+  //
+  // html and body are independent channels: body's overflow only propagates to
+  // the viewport while html's is `visible`, so each lock holds on its own and
+  // neither teardown can unlock while the other is still up. Rule in index.css.
   useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
+    const root = document.documentElement;
+    root.classList.toggle("nav-open", isMenuOpen);
+    return () => root.classList.remove("nav-open");
   }, [isMenuOpen]);
 
   const navLinks: Array<{

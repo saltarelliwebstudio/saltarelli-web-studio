@@ -26,6 +26,10 @@ const POISON = [
   { pattern: /role="dialog"/, label: "open dialog baked in" },
   { pattern: /data-radix-focus-guard/, label: "Radix focus guard baked in" },
   { pattern: /data-radix-popper-content-wrapper/, label: "Radix popper baked in" },
+  // The mobile nav's own lock. Prerender runs at 1280px and the menu button is
+  // lg:hidden, so it cannot open today — but this file exists to catch a lock
+  // that leaked into static HTML, and that is one of them.
+  { pattern: /<html[^>]*\bnav-open\b/, label: "mobile nav scroll lock baked in" },
 ];
 
 function htmlFiles(dir) {

@@ -367,3 +367,12 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--primary));
 }
+
+/* Mobile nav scroll lock. On <html> rather than <body> on purpose: Radix's
+   react-remove-scroll locks body via an `!important` stylesheet and a
+   refcounted data-scroll-locked attribute, so a second owner of body's overflow
+   is both outranked and able to unlock what Radix still needs locked. Separate
+   element keeps the two locks independent. See Header.tsx. */
+html.nav-open {
+  overflow: hidden;
+}
