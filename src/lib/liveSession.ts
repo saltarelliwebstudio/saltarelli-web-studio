@@ -187,3 +187,18 @@ export function getAddToCalendarUrl(session: NextSession): string {
   const recur = encodeURIComponent("RRULE:FREQ=MONTHLY;BYDAY=1SA");
   return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${text}&dates=${dates}&details=${details}&location=${location}&recur=${recur}`;
 }
+
+// ---------------------------------------------------------------------------
+// One-off event: the NFIH community workshop, Fri Oct 16 2026, 11:00–12:30 ET.
+// Hosted and ticketed by the Niagara Falls Innovation Hub on Eventbrite, so the
+// banner links out rather than to an internal route.
+// The banner reads WORKSHOP_END to retire itself once the session is over.
+// ---------------------------------------------------------------------------
+export const WORKSHOP_NAME =
+  "Get Found, Get Called: Google, Reviews, and AI For Business Owners";
+
+export const WORKSHOP_URL =
+  "https://www.eventbrite.ca/e/get-found-get-called-google-reviews-and-ai-for-business-owners-tickets-2000174782618?aff=website";
+
+export const WORKSHOP_START = zonedWallToUtc(2026, 9, 16, 11, 0, TZ); // month is 0-indexed
+export const WORKSHOP_END = zonedWallToUtc(2026, 9, 16, 12, 30, TZ);

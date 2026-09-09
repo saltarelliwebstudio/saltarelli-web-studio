@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet-async";
-import { businessSchema, SITE_URL, LOGO_URL, BUSINESS_NAME } from "@/lib/schema";
+import { businessSchema, personSchema, SITE_URL, LOGO_URL, BUSINESS_NAME } from "@/lib/schema";
 
 interface SEOProps {
   title?: string;
@@ -38,9 +38,12 @@ export const SEO = ({
 
   // Business identity lives in src/lib/schema.ts so the site, the footer, and
   // the Google Business Profile all state the same name, address, and phone.
+  // The Person node ships alongside the business on every page that doesn't
+  // override this. That is the point of it: the name and the business have to
+  // be joined site-wide, not only on /about.
   const schemas = schema
     ? Array.isArray(schema) ? schema : [schema]
-    : [businessSchema];
+    : [businessSchema, personSchema];
 
   return (
     <Helmet>

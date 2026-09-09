@@ -1,7 +1,20 @@
 {
   "buildCommand": "npm run build:seo",
+  "redirects": [
+    {
+      "source": "/workshop",
+      "destination": "/",
+      "permanent": false
+    }
+  ],
   "rewrites": [
-    { "source": "/t", "destination": "https://veyhxazlqekiweynjxhf.supabase.co/functions/v1/track-pageview" },
-    { "source": "/(.*)", "destination": "/index.html" }
+    {
+      "source": "/t",
+      "destination": "https://veyhxazlqekiweynjxhf.supabase.co/functions/v1/track-pageview"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
   ]
 }

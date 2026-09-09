@@ -36,7 +36,7 @@ export const Footer = () => {
               <a href="https://x.com/SaltarelliWeb" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-all" aria-label="X">
                 <Twitter size={18} />
               </a>
-              <a href="https://www.linkedin.com/in/adam-saltarelli-a7a8bb339/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-all" aria-label="LinkedIn">
+              <a href="https://www.linkedin.com/in/adamsaltarelli" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-all" aria-label="LinkedIn">
                 <Linkedin size={18} />
               </a>
               <a href="https://www.youtube.com/@saltarelliwebstudio" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-all" aria-label="YouTube">

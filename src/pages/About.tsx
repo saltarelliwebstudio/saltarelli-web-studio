@@ -8,6 +8,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { FadeIn } from "@/components/motion";
 import { SEO } from "@/components/SEO";
+import { businessSchema, personSchema, profilePageSchema } from "@/lib/schema";
 import { TrackedLink } from "@/components/TrackedLink";
 import { TrackedExternalLink } from "@/components/TrackedExternalLink";
 import adamPhoto from "@/assets/adam-photo.png";
@@ -20,6 +21,14 @@ const About = () => {
         canonical="/about"
         title="About Adam Saltarelli | Saltarelli Web Studio"
         description="Meet Adam Saltarelli, founder of Saltarelli Web Studio. I build websites, Google review engines, and local SEO for Niagara businesses."
+        type="profile"
+        schema={[
+          businessSchema,
+          personSchema,
+          // This is the canonical page for the person entity, so it says so.
+          // Every press mention in personSchema's `subjectOf` resolves here.
+          profilePageSchema,
+        ]}
       />
     <div className="min-h-screen bg-background text-foreground relative flex flex-col overflow-x-hidden">
       <Starfield />

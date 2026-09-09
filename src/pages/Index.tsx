@@ -21,7 +21,7 @@ import {
 import logo from "@/assets/sws-logo.png";
 import { supabase } from "@/integrations/supabase/client";
 import { trackButtonClick } from "@/lib/analytics";
-import { businessSchema, SERVICE_TYPES, faqSchema } from "@/lib/schema";
+import { businessSchema, personSchema, SERVICE_TYPES, faqSchema } from "@/lib/schema";
 
 // Booking is the primary conversion. Warm inbound should never have to fill out a
 // form to reach Adam -- every prominent CTA points here, and the #apply section
@@ -99,45 +99,19 @@ const Index = () => {
               itemOffered: { "@type": "Service", name: service },
             })),
           },
-          aggregateRating: {
-            "@type": "AggregateRating",
-            ratingValue: "5",
-            reviewCount: "25",
-          },
-          review: [
-            {
-              "@type": "Review",
-              author: { "@type": "Person", name: "Anthony, Genius Fitness & MMA" },
-              reviewRating: { "@type": "Rating", ratingValue: "5" },
-              reviewBody:
-                "Adam built our full member portal and automated our check-ins. Runs like clockwork. I barely touch it.",
-            },
-            {
-              "@type": "Review",
-              author: { "@type": "Person", name: "Owner, Pop's Landscaping" },
-              reviewRating: { "@type": "Rating", ratingValue: "5" },
-              reviewBody:
-                "Adam did an amazing job designing our website from start to finish. Professional, easy to communicate with, and delivered on time.",
-            },
-            {
-              "@type": "Review",
-              author: {
-                "@type": "Person",
-                name: "Owner, Mom Duke's Authentic Jamaican Cuisine",
-              },
-              reviewRating: { "@type": "Rating", ratingValue: "5" },
-              reviewBody:
-                "I would highly recommend Adam if you are looking to refresh your website. He did a fantastic job for us.",
-            },
-            {
-              "@type": "Review",
-              author: { "@type": "Person", name: "Claude Chaisson" },
-              reviewRating: { "@type": "Rating", ratingValue: "5" },
-              reviewBody:
-                "I'm glad I found Adam to do this website for me. He made it easy and I appreciate it working with him and I. Thank you",
-            },
-          ],
+          // No aggregateRating / review markup here, deliberately.
+          // Google's structured-data policy does not allow self-serving
+          // reviews: an organization rating itself, on its own site, is not
+          // eligible for review rich results, and marking it up anyway risks a
+          // manual action that suppresses rich results for the WHOLE domain -
+          // including the LocalBusiness markup above, which is valid.
+          // The real 5.0 / 25 reviews live on the Google Business Profile and
+          // show in the map pack from there. The testimonials stay on the page
+          // below for humans; only the machine-readable claim is gone.
         },
+        // This page passes an explicit array, so it does not inherit SEO.tsx's
+        // default — the Person node has to be listed here by hand.
+        personSchema,
         // The six Q&As below are rendered visibly in the FAQ accordion, which
         // is what Google requires for FAQPage markup to be eligible.
         faqSchema(faqItems)]}

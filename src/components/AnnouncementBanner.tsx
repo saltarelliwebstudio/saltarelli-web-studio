@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import {
-  getNextSession,
+  WORKSHOP_START,
+  WORKSHOP_END,
+  WORKSHOP_URL,
   getCountdownParts,
-  SIGNUP_PATH,
 } from "@/lib/liveSession";
 
 const BANNER_HEIGHT_PX = 44;
@@ -24,31 +24,25 @@ export const AnnouncementBanner = () => {
   }, []);
 
   const now = new Date();
-  const session = getNextSession(now);
+  const isOver = now.getTime() > WORKSHOP_END.getTime();
+  const isLive =
+    now.getTime() >= WORKSHOP_START.getTime() && !isOver;
 
-  // Compact upcoming-session label, e.g. "SAT AUG 1" — derived from the schedule
-  // so it's always correct (no hardcoded weekday that breaks on off-weeks).
-  const sessionLabel = new Intl.DateTimeFormat("en-US", {
-    timeZone: "America/Toronto",
-    weekday: "short",
-    month: "short",
-    day: "numeric",
-  })
-    .format(session.start)
-    .replace(",", "")
-    .toUpperCase();
-
-  // The banner is always visible — it cannot be dismissed. It offsets the page
-  // content by reserving its height as a CSS custom property.
+  // Reserve the banner's height only while it is actually on screen, so the
+  // page reflows correctly the moment the workshop is over.
   useEffect(() => {
     const root = document.documentElement;
-    root.style.setProperty("--banner-height", `${BANNER_HEIGHT_PX}px`);
+    root.style.setProperty("--banner-height", isOver ? "0px" : `${BANNER_HEIGHT_PX}px`);
     return () => {
       root.style.setProperty("--banner-height", "0px");
     };
-  }, []);
+  }, [isOver]);
 
-  const cp = getCountdownParts(session.start.getTime() - now.getTime());
+  // Self-retiring: once the session has ended the banner disappears on its own
+  // rather than counting down to a date that has already passed.
+  if (isOver) return null;
+
+  const cp = getCountdownParts(WORKSHOP_START.getTime() - now.getTime());
 
   return (
     <div
@@ -61,29 +55,31 @@ export const AnnouncementBanner = () => {
     >
       <div className="h-full container mx-auto px-4 md:px-6 flex items-center justify-between gap-3">
         <div className="flex-1 flex justify-center min-w-0">
-          <Link
-            to={SIGNUP_PATH}
+          <a
+            href={WORKSHOP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="group flex items-center gap-2 sm:gap-3 text-xs sm:text-sm font-medium min-w-0 text-foreground"
           >
-            {session.isLive ? (
+            {isLive ? (
               <span className="flex items-center gap-2 font-heading font-bold min-w-0">
                 <span className="relative flex h-2.5 w-2.5 flex-shrink-0">
                   <span className="absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75 animate-ping" />
                   <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-red-500" />
                 </span>
-                <span className="text-red-400 whitespace-nowrap">WE'RE LIVE NOW</span>
+                <span className="text-red-400 whitespace-nowrap">HAPPENING NOW</span>
                 <span className="hidden sm:inline truncate">
-                  · Live AI Q&amp;A + Tutorials
+                  · Niagara Falls Innovation Hub
                 </span>
               </span>
             ) : (
               <span className="flex items-center gap-2 min-w-0">
-                <span className="hidden sm:inline flex-shrink-0">🚀</span>
+                <span className="hidden sm:inline flex-shrink-0">📍</span>
                 <span className="hidden md:inline font-heading font-bold text-primary whitespace-nowrap">
-                  {sessionLabel}
+                  FRI OCT 16
                 </span>
                 <span className="font-heading font-semibold truncate">
-                  Live AI Q&amp;A + Tutorials
+                  Free workshop · Niagara Falls Innovation Hub
                 </span>
                 <span className="hidden sm:inline text-muted-foreground whitespace-nowrap">
                   · starts in
@@ -94,13 +90,12 @@ export const AnnouncementBanner = () => {
                   <CountdownPill value={cp.minutes} unit="m" />
                   <CountdownPill value={cp.seconds} unit="s" />
                 </span>
-                <span className="hidden sm:inline flex-shrink-0">🔥</span>
               </span>
             )}
             <span className="font-heading font-bold text-primary glow-text whitespace-nowrap group-hover:underline flex-shrink-0">
-              {session.isLive ? "Jump in →" : "Grab your spot →"}
+              {isLive ? "Details →" : "Reserve a seat →"}
             </span>
-          </Link>
+          </a>
         </div>
       </div>
     </div>

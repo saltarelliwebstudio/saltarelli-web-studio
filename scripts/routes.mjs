@@ -27,7 +27,6 @@ export const ROUTES = [
   { path: "/web-design-st-catharines", source: "src/pages/WebDesignStCatharines.tsx", changefreq: "monthly", priority: "0.8" },
   { path: "/get-started", source: "src/pages/GetStarted.tsx", changefreq: "monthly", priority: "0.7" },
   { path: "/ai-operator-kit", source: "src/pages/AiOperatorKit.tsx", changefreq: "monthly", priority: "0.7" },
-  { path: "/workshop", source: "src/pages/Workshop.tsx", changefreq: "weekly", priority: "0.6" },
   { path: "/about", source: "src/pages/About.tsx", changefreq: "monthly", priority: "0.5" },
 ];
 

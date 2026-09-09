@@ -10,7 +10,7 @@ import { PageTracker } from "@/components/PageTracker";
 import { StickyBookButton } from "@/components/StickyBookButton";
 import { Chatbot } from "@/components/Chatbot";
 import { DemoPopup } from "@/components/DemoPopup";
-// import { AnnouncementBanner } from "@/components/AnnouncementBanner"; // temporarily hidden
+import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import Index from "./pages/Index";
@@ -18,7 +18,6 @@ import Index from "./pages/Index";
 const About = React.lazy(() => import("./pages/About"));
 const Portfolio = React.lazy(() => import("./pages/Portfolio"));
 const GetStarted = React.lazy(() => import("./pages/GetStarted"));
-const Workshop = React.lazy(() => import("./pages/Workshop"));
 const AiOperatorKit = React.lazy(() => import("./pages/AiOperatorKit"));
 const NotFound = React.lazy(() => import("./pages/NotFound"));
 const WebDesignPortColborne = React.lazy(() => import("./pages/WebDesignPortColborne"));
@@ -34,8 +33,8 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        {/* Temporarily hidden — monthly Live Q&A banner. Restore by uncommenting. */}
-        {/* <AnnouncementBanner /> */}
+        {/* Countdown to the Oct 16 NFIH workshop. Self-retires after the session. */}
+        <AnnouncementBanner />
         <ScrollToTop />
         <PageTracker />
         <Suspense fallback={<div className="min-h-screen" />}>
@@ -44,7 +43,6 @@ const App = () => (
           <Route path="/about" element={<About />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/get-started" element={<GetStarted />} />
-          <Route path="/workshop" element={<Workshop />} />
           <Route path="/ai-operator-kit" element={<AiOperatorKit />} />
 
           {/* Niagara city landing pages. Also listed in scripts/routes.mjs,

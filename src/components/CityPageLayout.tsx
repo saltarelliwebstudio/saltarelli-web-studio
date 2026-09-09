@@ -9,7 +9,7 @@ import { SEO } from "@/components/SEO";
 import { FadeIn } from "@/components/motion";
 import { TrackedExternalLink } from "@/components/TrackedExternalLink";
 import { CalendlySection, CALENDLY_URL } from "@/components/CalendlyEmbed";
-import { cityServiceSchema, breadcrumbSchema, CITY_PAGES } from "@/lib/schema";
+import { cityServiceSchema, breadcrumbSchema, personSchema, CITY_PAGES } from "@/lib/schema";
 
 interface CityPageLayoutProps {
   city: string;
@@ -50,6 +50,9 @@ export const CityPageLayout = ({
         schema={[
           cityServiceSchema(city, slug, description),
           breadcrumbSchema(`Web Design in ${city}`, slug),
+          // Who actually provides the service. These are the pages competing
+          // on local intent, so the founder entity earns its bytes here.
+          personSchema,
         ]}
       />
 

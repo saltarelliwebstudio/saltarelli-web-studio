@@ -87,6 +87,14 @@ const portfolioItems = [
   },
   // ── Websites ──
   {
+    title: "All Yukon Refrigeration",
+    description: "HVAC and commercial refrigeration contractor in Whitehorse, built for a territory where a failed compressor at forty below is an emergency. Lead capture wired straight to the owner's phone.",
+    category: "Local Services",
+    type: "Website",
+    imageUrl: "/lovable-uploads/all-yukon-site.webp",
+    liveUrl: "https://allyukon.ca",
+  },
+  {
     title: "X Fitness",
     description: "Website for Port Colborne's 24/7 discipline gym, built to drive memberships with a bold hero, equipment showcase, and clear free-class and tour calls to action.",
     category: "Fitness & Wellness",
