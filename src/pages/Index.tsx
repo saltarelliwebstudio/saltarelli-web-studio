@@ -404,7 +404,7 @@ const Index = () => {
                     <span className="text-xs text-foreground/80 leading-snug">five-star Google reviews<br />in under a month</span>
                   </div>
                   <p className="text-foreground/90 text-sm leading-relaxed">
-                    "Working with Adam has been an absolute pleasure. He fully understands his industry and is proficient in his work. He took us from zero reviews to 11) 5 Star reviews in less than a month. Look forward to continuing our progress!"
+                    "Working with Adam has been an absolute pleasure. He fully understands his industry and is proficient in his work. He took us from zero reviews to 11 5 Star reviews in less than a month. Look forward to continuing our progress!"
                   </p>
                 </div>
               </ScaleIn>
