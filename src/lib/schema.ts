@@ -169,6 +169,8 @@ export const CITY_PAGES = [
   { city: "Port Colborne", slug: "web-design-port-colborne" },
   { city: "Welland", slug: "web-design-welland" },
   { city: "St. Catharines", slug: "web-design-st-catharines" },
+  { city: "Fort Erie", slug: "web-design-fort-erie" },
+  { city: "Crystal Beach", slug: "web-design-crystal-beach" },
 ];
 
 export const SERVICE_TYPES = [

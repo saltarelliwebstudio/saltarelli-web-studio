@@ -25,6 +25,8 @@ export const ROUTES = [
   { path: "/web-design-port-colborne", source: "src/pages/WebDesignPortColborne.tsx", changefreq: "monthly", priority: "0.8" },
   { path: "/web-design-welland", source: "src/pages/WebDesignWelland.tsx", changefreq: "monthly", priority: "0.8" },
   { path: "/web-design-st-catharines", source: "src/pages/WebDesignStCatharines.tsx", changefreq: "monthly", priority: "0.8" },
+  { path: "/web-design-fort-erie", source: "src/pages/WebDesignFortErie.tsx", changefreq: "monthly", priority: "0.8" },
+  { path: "/web-design-crystal-beach", source: "src/pages/WebDesignCrystalBeach.tsx", changefreq: "monthly", priority: "0.8" },
   { path: "/get-started", source: "src/pages/GetStarted.tsx", changefreq: "monthly", priority: "0.7" },
   { path: "/ai-operator-kit", source: "src/pages/AiOperatorKit.tsx", changefreq: "monthly", priority: "0.7" },
   { path: "/about", source: "src/pages/About.tsx", changefreq: "monthly", priority: "0.5" },

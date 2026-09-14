@@ -22,6 +22,8 @@ const AiOperatorKit = React.lazy(() => import("./pages/AiOperatorKit"));
 const NotFound = React.lazy(() => import("./pages/NotFound"));
 const WebDesignPortColborne = React.lazy(() => import("./pages/WebDesignPortColborne"));
 const WebDesignWelland = React.lazy(() => import("./pages/WebDesignWelland"));
+const WebDesignFortErie = React.lazy(() => import("./pages/WebDesignFortErie"));
+const WebDesignCrystalBeach = React.lazy(() => import("./pages/WebDesignCrystalBeach"));
 const WebDesignStCatharines = React.lazy(() => import("./pages/WebDesignStCatharines"));
 
 const queryClient = new QueryClient();
@@ -49,6 +51,8 @@ const App = () => (
               which drives both prerendering and sitemap.xml. */}
           <Route path="/web-design-port-colborne" element={<WebDesignPortColborne />} />
           <Route path="/web-design-welland" element={<WebDesignWelland />} />
+          <Route path="/web-design-fort-erie" element={<WebDesignFortErie />} />
+          <Route path="/web-design-crystal-beach" element={<WebDesignCrystalBeach />} />
           <Route path="/web-design-st-catharines" element={<WebDesignStCatharines />} />
 
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
