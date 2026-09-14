@@ -105,7 +105,7 @@ const Index = () => {
           // eligible for review rich results, and marking it up anyway risks a
           // manual action that suppresses rich results for the WHOLE domain -
           // including the LocalBusiness markup above, which is valid.
-          // The real 5.0 / 25 reviews live on the Google Business Profile and
+          // The real 5.0 / 27 reviews live on the Google Business Profile and
           // show in the map pack from there. The testimonials stay on the page
           // below for humans; only the machine-readable claim is gone.
         },
@@ -238,7 +238,7 @@ const Index = () => {
                     ))}
                   </span>
                   <span className="text-sm font-semibold text-foreground">5.0</span>
-                  <span className="text-sm text-muted-foreground">· 25 Google reviews</span>
+                  <span className="text-sm text-muted-foreground">· 27 Google reviews</span>
                 </a>
                 <p className="text-sm text-muted-foreground">
                   Backed by our Clean Hands Guarantee
@@ -384,6 +384,31 @@ const Index = () => {
             </FadeIn>
 
             <div className="columns-1 md:columns-2 lg:columns-3 gap-5 space-y-5">
+              {/* CARD 0 — Kyle McNabb, Trades Pro Supply (featured, review engine) */}
+              <ScaleIn>
+                <div className="break-inside-avoid glass-strong rounded-2xl p-6 border border-primary/30 shadow-glow">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 rounded-full bg-amber-600 flex items-center justify-center text-white font-bold text-sm">K</div>
+                    <div>
+                      <p className="font-heading font-semibold text-foreground">Kyle McNabb</p>
+                      <p className="text-xs text-muted-foreground">Trades Pro Supply, Google Review Engine Client</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="flex gap-0.5">{[...Array(5)].map((_, i) => <Star key={i} size={16} className="fill-primary text-primary" />)}</div>
+                    <span className="text-xs text-muted-foreground">September 2026</span>
+                    <span className="text-[10px] font-bold bg-primary/20 text-primary px-2 py-0.5 rounded-full">NEW</span>
+                  </div>
+                  <div className="flex items-center gap-3 mb-4 rounded-xl bg-primary/10 border border-primary/20 px-4 py-3">
+                    <span className="font-heading font-bold text-2xl text-primary leading-none">0 → 11</span>
+                    <span className="text-xs text-foreground/80 leading-snug">five-star Google reviews<br />in under a month</span>
+                  </div>
+                  <p className="text-foreground/90 text-sm leading-relaxed">
+                    "Working with Adam has been an absolute pleasure. He fully understands his industry and is proficient in his work. He took us from zero reviews to 11) 5 Star reviews in less than a month. Look forward to continuing our progress!"
+                  </p>
+                </div>
+              </ScaleIn>
+
               {/* CARD 1 — Zachary Melnyk (featured) */}
               <ScaleIn>
                 <div className="break-inside-avoid glass-strong rounded-2xl p-6 border border-primary/30 shadow-glow">

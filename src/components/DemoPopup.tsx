@@ -234,7 +234,7 @@ export const DemoPopup = () => {
                 ))}
               </span>
               <span className="text-xs font-semibold text-foreground">5.0</span>
-              <span className="text-xs text-muted-foreground">· 25 Google reviews</span>
+              <span className="text-xs text-muted-foreground">· 27 Google reviews</span>
             </span>
             <span className="text-muted-foreground">
               <span className="text-foreground/90">
