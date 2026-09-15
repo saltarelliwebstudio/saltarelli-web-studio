@@ -49,7 +49,7 @@ export const Footer = () => {
           <div>
             <h3 className="font-heading font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-3">
-              {[{ href: "/", label: "Home" }, { href: "/portfolio", label: "Portfolio" }, { href: "/about", label: "About Adam" }, { href: "/ai-operator-kit", label: "AI Operator Kit" }, { href: "/get-started", label: "Free Website Demo" }].map((link) => (
+              {[{ href: "/", label: "Home" }, { href: "/portfolio", label: "Portfolio" }, { href: "/about", label: "About Adam" }, { href: "/ai-operator-kit", label: "AI Operator Kit" }, { href: "/get-started", label: "Free Website Demo" }, { href: "/sms", label: "Text Updates" }, { href: "/privacy", label: "Privacy" }].map((link) => (
                 <li key={link.href}>
                   <Link to={link.href} className="text-muted-foreground hover:text-primary transition-colors">{link.label}</Link>
                 </li>

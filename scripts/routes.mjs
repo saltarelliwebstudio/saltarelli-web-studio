@@ -30,6 +30,8 @@ export const ROUTES = [
   { path: "/get-started", source: "src/pages/GetStarted.tsx", changefreq: "monthly", priority: "0.7" },
   { path: "/ai-operator-kit", source: "src/pages/AiOperatorKit.tsx", changefreq: "monthly", priority: "0.7" },
   { path: "/about", source: "src/pages/About.tsx", changefreq: "monthly", priority: "0.5" },
+  { path: "/sms", source: "src/pages/SmsOptIn.tsx", changefreq: "yearly", priority: "0.3" },
+  { path: "/privacy", source: "src/pages/Privacy.tsx", changefreq: "yearly", priority: "0.2" },
 ];
 
 /**

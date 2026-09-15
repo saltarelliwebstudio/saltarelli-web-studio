@@ -16,6 +16,8 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 import Index from "./pages/Index";
 
 const About = React.lazy(() => import("./pages/About"));
+import Privacy from "./pages/Privacy";
+import SmsOptIn from "./pages/SmsOptIn";
 const Portfolio = React.lazy(() => import("./pages/Portfolio"));
 const GetStarted = React.lazy(() => import("./pages/GetStarted"));
 const AiOperatorKit = React.lazy(() => import("./pages/AiOperatorKit"));
@@ -43,6 +45,8 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/sms" element={<SmsOptIn />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/get-started" element={<GetStarted />} />
           <Route path="/ai-operator-kit" element={<AiOperatorKit />} />
