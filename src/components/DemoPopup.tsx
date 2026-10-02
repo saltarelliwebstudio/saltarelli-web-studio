@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { CalendlyEmbed } from "@/components/CalendlyEmbed";
 import { trackEvent } from "@/components/PageTracker";
 import { useChatOpen } from "@/lib/chatOpenStore";
+import { GOOGLE_REVIEW_COUNT, GOOGLE_RATING } from "@/data/googleReviews";
 
 /**
  * Exit-intent booking popup for the Free Website Demo.
@@ -233,8 +234,8 @@ export const DemoPopup = () => {
                   <Star key={i} size={13} className="fill-primary text-primary" />
                 ))}
               </span>
-              <span className="text-xs font-semibold text-foreground">5.0</span>
-              <span className="text-xs text-muted-foreground">· 27 Google reviews</span>
+              <span className="text-xs font-semibold text-foreground">{GOOGLE_RATING}</span>
+              <span className="text-xs text-muted-foreground">· {GOOGLE_REVIEW_COUNT} Google reviews</span>
             </span>
             <span className="text-muted-foreground">
               <span className="text-foreground/90">

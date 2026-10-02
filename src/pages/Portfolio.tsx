@@ -23,6 +23,27 @@ type FeaturedStudy = {
 
 const featured: FeaturedStudy[] = [
   {
+    title: "All Yukon Refrigeration",
+    logo: "/logos/all-yukon-refrigeration.png",
+    badges: ["Website", "Review Engine", "AI Visibility"],
+    blurb:
+      "Daniel's Whitehorse HVAC company moved off a slow Wix site onto a fast custom build, with an automated Google review engine and content written so AI search can understand what they do.",
+    result:
+      "Daniel asked ChatGPT which heat pump installer it would pick in Whitehorse. In his words: \"it named our business as the top pick!\"",
+    links: [{ label: "Visit site", href: "https://allyukon.ca", icon: "external" }],
+  },
+  {
+    title: "AcuPoint Wellness Clinic",
+    logo: "/logos/acupoint-wellness-clinic.jpg",
+    badges: ["Google Profile", "Review Engine", "SEO"],
+    status: "Started September 2026",
+    blurb:
+      "An acupuncture clinic in Vienna, Virginia. We run Dr. Teresa McFarland's Google profile, a HIPAA-aware review engine, and on-site SEO for the conditions she treats.",
+    result:
+      "In progress. First 30-day check-in lands in November.",
+    links: [{ label: "Visit site", href: "https://acupointclinic.com", icon: "external" }],
+  },
+  {
     title: "Genius Fitness & MMA",
     logo: "/logos/genius-fitness.webp",
     badges: ["Website", "Automation", "App"],

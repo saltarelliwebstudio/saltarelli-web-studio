@@ -2,11 +2,15 @@ import AutoScroll from "embla-carousel-auto-scroll";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import { FadeIn } from "@/components/motion";
 
-type Logo = { src: string; alt: string; url: string; imgClass?: string };
+type Logo = { src: string; alt: string; url?: string; imgClass?: string };
 
 const BASE_IMG = "max-h-[60px] max-w-[85%] object-contain rounded-md";
 
 const logos: Logo[] = [
+  { src: "/logos/all-yukon-refrigeration.png", alt: "All Yukon Refrigeration", url: "https://allyukon.ca", imgClass: "max-h-[72px] max-w-[88%] object-contain rounded-md" },
+  { src: "/logos/acupoint-wellness-clinic.jpg", alt: "AcuPoint Wellness Clinic", url: "https://acupointclinic.com", imgClass: "max-h-[70px] max-w-[92%] object-contain rounded-md" },
+  // Anchor's new site isn't on his domain yet, so the tile doesn't link out until it is.
+  { src: "/logos/anchor-electric.png", alt: "Anchor Electric Niagara", imgClass: "max-h-[84px] max-w-[80%] object-contain rounded-md" },
   { src: "/logos/cassar-electrical.png", alt: "Cassar Electrical", url: "https://cassarelectric.ca" },
   { src: "/logos/mohawk-electric.png", alt: "Mohawk Electric", url: "https://mohawkelectric.ca" },
   { src: "/logos/genius-fitness.webp", alt: "Genius Fitness & MMA", url: "https://www.geniusfitnessandmma.com" },
@@ -27,7 +31,20 @@ const logos: Logo[] = [
   { src: "/logos/napa.png", alt: "Niagara Antique Power Association", url: "https://www.niagaraantiquepower.org", imgClass: "max-h-[72px] max-w-[92%] object-contain rounded-md" },
 ];
 
+const TILE =
+  "group flex h-28 w-48 select-none items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-b from-white to-slate-100 p-5 shadow-lg shadow-black/20 ring-1 ring-black/5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-glow";
+
 function LogoTile({ logo }: { logo: Logo }) {
+  const img = (
+    <img src={logo.src} alt={logo.alt} loading="lazy" draggable={false} className={logo.imgClass ?? BASE_IMG} />
+  );
+  if (!logo.url) {
+    return (
+      <div title={logo.alt} className={TILE}>
+        {img}
+      </div>
+    );
+  }
   return (
     <a
       href={logo.url}
@@ -36,15 +53,9 @@ function LogoTile({ logo }: { logo: Logo }) {
       aria-label={`Visit ${logo.alt}`}
       title={logo.alt}
       draggable={false}
-      className="group flex h-28 w-48 select-none items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-b from-white to-slate-100 p-5 shadow-lg shadow-black/20 ring-1 ring-black/5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-glow"
+      className={TILE}
     >
-      <img
-        src={logo.src}
-        alt={logo.alt}
-        loading="lazy"
-        draggable={false}
-        className={logo.imgClass ?? BASE_IMG}
-      />
+      {img}
     </a>
   );
 }
@@ -58,10 +69,10 @@ export function TrustedBy() {
             Trusted By
           </span>
           <h2 className="text-2xl md:text-3xl font-heading font-bold">
-            Businesses across the Niagara Region run on our work
+            From Niagara to the Yukon, businesses run on our work
           </h2>
           <p className="text-sm text-muted-foreground mt-3">
-            Drag to explore. Tap any logo to visit their site.
+            Drag to explore. Tap a logo to visit their site.
           </p>
         </FadeIn>
       </div>

@@ -7,6 +7,9 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { TestimonialCard } from "@/components/TestimonialCard";
 import { TrustedBy } from "@/components/TrustedBy";
+import { ReviewWall } from "@/components/ReviewWall";
+import { ProofResults } from "@/components/ProofResults";
+import { GOOGLE_REVIEW_COUNT, GOOGLE_RATING } from "@/data/googleReviews";
 import { FadeIn, StaggerContainer, StaggerItem, ScaleIn } from "@/components/motion";
 import { SEO } from "@/components/SEO";
 import { TrackedLink } from "@/components/TrackedLink";
@@ -105,7 +108,7 @@ const Index = () => {
           // eligible for review rich results, and marking it up anyway risks a
           // manual action that suppresses rich results for the WHOLE domain -
           // including the LocalBusiness markup above, which is valid.
-          // The real 5.0 / 27 reviews live on the Google Business Profile and
+          // The real Google reviews (count in src/data/googleReviews.ts) live on the Google Business Profile and
           // show in the map pack from there. The testimonials stay on the page
           // below for humans; only the machine-readable claim is gone.
         },
@@ -237,8 +240,8 @@ const Index = () => {
                       <Star key={i} size={16} className="fill-primary text-primary" />
                     ))}
                   </span>
-                  <span className="text-sm font-semibold text-foreground">5.0</span>
-                  <span className="text-sm text-muted-foreground">· 27 Google reviews</span>
+                  <span className="text-sm font-semibold text-foreground">{GOOGLE_RATING}</span>
+                  <span className="text-sm text-muted-foreground">· {GOOGLE_REVIEW_COUNT} Google reviews</span>
                 </a>
                 <p className="text-sm text-muted-foreground">
                   Backed by our Clean Hands Guarantee
@@ -319,6 +322,9 @@ const Index = () => {
           </div>
         </section>
 
+        {/* ──────────── REAL RESULTS (All Yukon + quick wins) ──────────── */}
+        <ProofResults />
+
         {/* ──────────── CLIENT SPOTLIGHT (Luke Ellis) ──────────── */}
         <section className="py-16 md:py-24 px-4 md:px-6 relative z-10">
           <div className="container mx-auto max-w-4xl">
@@ -370,294 +376,8 @@ const Index = () => {
           </div>
         </section>
 
-        {/* ──────────── GOOGLE REVIEW BOMB ──────────── */}
-        <section id="reviews" className="py-20 md:py-28 px-4 md:px-6 relative z-10">
-          <div className="container mx-auto max-w-6xl">
-            <FadeIn className="text-center mb-12">
-              <span className="text-primary font-bold text-sm tracking-widest uppercase mb-3 block">
-                Real Clients. Real Results.
-              </span>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-4">
-                What Niagara Business Owners Are Saying
-              </h2>
-              <p className="text-sm text-muted-foreground">All reviews verified on Google.</p>
-            </FadeIn>
-
-            <div className="columns-1 md:columns-2 lg:columns-3 gap-5 space-y-5">
-              {/* CARD 0 — Kyle McNabb, Trades Pro Supply (featured, review engine) */}
-              <ScaleIn>
-                <div className="break-inside-avoid glass-strong rounded-2xl p-6 border border-primary/30 shadow-glow">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-full bg-amber-600 flex items-center justify-center text-white font-bold text-sm">K</div>
-                    <div>
-                      <p className="font-heading font-semibold text-foreground">Kyle McNabb</p>
-                      <p className="text-xs text-muted-foreground">Trades Pro Supply, Google Review Engine Client</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="flex gap-0.5">{[...Array(5)].map((_, i) => <Star key={i} size={16} className="fill-primary text-primary" />)}</div>
-                    <span className="text-xs text-muted-foreground">September 2026</span>
-                    <span className="text-[10px] font-bold bg-primary/20 text-primary px-2 py-0.5 rounded-full">NEW</span>
-                  </div>
-                  <div className="flex items-center gap-3 mb-4 rounded-xl bg-primary/10 border border-primary/20 px-4 py-3">
-                    <span className="font-heading font-bold text-2xl text-primary leading-none">0 → 11</span>
-                    <span className="text-xs text-foreground/80 leading-snug">five-star Google reviews<br />in under a month</span>
-                  </div>
-                  <p className="text-foreground/90 text-sm leading-relaxed">
-                    "Working with Adam has been an absolute pleasure. He fully understands his industry and is proficient in his work. He took us from zero reviews to 11 5 Star reviews in less than a month. Look forward to continuing our progress!"
-                  </p>
-                </div>
-              </ScaleIn>
-
-              {/* CARD 1 — Zachary Melnyk (featured) */}
-              <ScaleIn>
-                <div className="break-inside-avoid glass-strong rounded-2xl p-6 border border-primary/30 shadow-glow">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-full bg-indigo-600 flex items-center justify-center text-white font-bold text-sm">Z</div>
-                    <div>
-                      <p className="font-heading font-semibold text-foreground">Zachary Melnyk</p>
-                      <p className="text-xs text-muted-foreground">Melnyk Concrete, Automations Client</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="flex gap-0.5">{[...Array(5)].map((_, i) => <Star key={i} size={16} className="fill-primary text-primary" />)}</div>
-                    <span className="text-xs text-muted-foreground">1 month ago</span>
-                  </div>
-                  <p className="text-foreground/90 text-sm leading-relaxed">
-                    "Adam has been a huge help to the business. He built out multiple automations to streamline our admin processes and took a lot of repetitive work off our plate. What stood out most was how responsive and thorough he was throughout the entire process. Anytime I needed adjustments, variations, or wanted to fine-tune how the automation worked, he handled it quickly and made sure everything was dialed in properly with our company's operating procedures. He's knowledgeable, easy to communicate with, and clearly cares about doing things the right way, not just rushing to 'get it done.' We'll definitely be continuing to work with Adam moving forward and I'd recommend him to anyone looking to improve their systems and automate tasks the right way."
-                  </p>
-                </div>
-              </ScaleIn>
-
-              {/* CARD 6 — Joseph Ruscica (NEW) */}
-              <ScaleIn delay={0.05}>
-                <div className="break-inside-avoid glass rounded-xl p-5 border border-white/10">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-full bg-emerald-600 flex items-center justify-center text-white font-bold text-sm">J</div>
-                    <div>
-                      <p className="font-heading font-semibold text-foreground">Joseph Ruscica</p>
-                      <p className="text-xs text-muted-foreground">Website Client</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="flex gap-0.5">{[...Array(5)].map((_, i) => <Star key={i} size={16} className="fill-primary text-primary" />)}</div>
-                    <span className="text-xs text-muted-foreground">1 week ago</span>
-                    <span className="text-[10px] font-bold bg-primary/20 text-primary px-2 py-0.5 rounded-full">NEW</span>
-                  </div>
-                  <p className="text-foreground/90 text-sm leading-relaxed">
-                    "Easy to work with, amazing pricing, and even better workmanship. Adam really goes above and beyond any big name web designers and at a fraction of the price. Will be referring him to anybody in need of a quality website from now on."
-                  </p>
-                </div>
-              </ScaleIn>
-
-              {/* CARD 2 — 360 Property Maintenance */}
-              <ScaleIn delay={0.1}>
-                <div className="break-inside-avoid glass rounded-xl p-5 border border-white/10">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-full bg-sky-600 flex items-center justify-center text-white font-bold text-sm">3</div>
-                    <div>
-                      <p className="font-heading font-semibold text-foreground">360 Property Maintenance</p>
-                      <p className="text-xs text-muted-foreground">Website Client</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="flex gap-0.5">{[...Array(5)].map((_, i) => <Star key={i} size={16} className="fill-primary text-primary" />)}</div>
-                    <span className="text-xs text-muted-foreground">1 month ago</span>
-                  </div>
-                  <p className="text-foreground/90 text-sm leading-relaxed">
-                    "I can't say enough good things about working with Adam Saltarelli Web Studio. From the first call, everything was organized and professional. He listened to what I wanted, gave great suggestions, and created a website that looks modern, clean, and is very easy to navigate (even added a FAQs section that I hadn't thought of which by the way is brilliant). The site works perfectly on mobile or Desktop loads quickly. I've already received compliments and new inquiries since launching. Highly recommend!"
-                  </p>
-                </div>
-              </ScaleIn>
-
-              {/* CARD 7 — Arlene Austin (NEW) */}
-              <ScaleIn delay={0.15}>
-                <div className="break-inside-avoid glass rounded-xl p-5 border border-white/10">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-full bg-green-600 flex items-center justify-center text-white font-bold text-sm">A</div>
-                    <div>
-                      <p className="font-heading font-semibold text-foreground">Arlene Austin</p>
-                      <p className="text-xs text-muted-foreground">Website Client</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="flex gap-0.5">{[...Array(5)].map((_, i) => <Star key={i} size={16} className="fill-primary text-primary" />)}</div>
-                    <span className="text-xs text-muted-foreground">2 weeks ago</span>
-                    <span className="text-[10px] font-bold bg-primary/20 text-primary px-2 py-0.5 rounded-full">NEW</span>
-                  </div>
-                  <p className="text-foreground/90 text-sm leading-relaxed">
-                    "Working with Adam was definitely a 100/10 experience He is knowledgeable, forward thinking, readily accessible and willing to suggest ways to set-up your platform. I would highly recommend Adam to anyone looking for a talented web designer, to show case your business."
-                  </p>
-                </div>
-              </ScaleIn>
-
-              {/* CARD 3 — Pop's Landscaping */}
-              <ScaleIn delay={0.2}>
-                <div className="break-inside-avoid glass rounded-xl p-5 border border-white/10">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-full bg-lime-700 flex items-center justify-center text-white font-bold text-sm">P</div>
-                    <div>
-                      <p className="font-heading font-semibold text-foreground">Pop's Landscaping</p>
-                      <p className="text-xs text-muted-foreground">Website Client</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="flex gap-0.5">{[...Array(5)].map((_, i) => <Star key={i} size={16} className="fill-primary text-primary" />)}</div>
-                    <span className="text-xs text-muted-foreground">2 months ago</span>
-                  </div>
-                  <p className="text-foreground/90 text-sm leading-relaxed">
-                    "Adam did an amazing job designing our website from start to finish. He was professional, easy to communicate with, and really took the time to understand what I wanted. The final site looks great, runs smoothly, and was delivered on time. I'd highly recommend Adam to anyone looking for a reliable and talented website designer."
-                  </p>
-                </div>
-              </ScaleIn>
-
-              {/* CARD 4 — Brandon Cassar */}
-              <ScaleIn delay={0.25}>
-                <div className="break-inside-avoid glass rounded-xl p-5 border border-white/10">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-full bg-amber-600 flex items-center justify-center text-white font-bold text-sm">B</div>
-                    <div>
-                      <p className="font-heading font-semibold text-foreground">Brandon Cassar</p>
-                      <p className="text-xs text-muted-foreground">Cassar Electric, Website Client</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="flex gap-0.5">{[...Array(5)].map((_, i) => <Star key={i} size={16} className="fill-primary text-primary" />)}</div>
-                    <span className="text-xs text-muted-foreground">2 months ago</span>
-                  </div>
-                  <p className="text-foreground/90 text-sm leading-relaxed">
-                    "Adam is fantastic! We used SWS for the design and creation for our website and we couldn't be happier with his services. We will continue use SWS in the future for website content and branding needs!"
-                  </p>
-                </div>
-              </ScaleIn>
-
-              {/* CARD 5 — Joe Eddleston */}
-              <ScaleIn delay={0.3}>
-                <div className="break-inside-avoid glass rounded-xl p-5 border border-white/10">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-full bg-stone-600 flex items-center justify-center text-white font-bold text-sm">J</div>
-                    <div>
-                      <p className="font-heading font-semibold text-foreground">Joe Eddleston</p>
-                      <p className="text-xs text-muted-foreground">Bluewater Stone, Website Client</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="flex gap-0.5">{[...Array(5)].map((_, i) => <Star key={i} size={16} className="fill-primary text-primary" />)}</div>
-                    <span className="text-xs text-muted-foreground">2 months ago</span>
-                  </div>
-                  <p className="text-foreground/90 text-sm leading-relaxed">
-                    "We had an amazing experience working with our web designer on the Bluewater Stone website. From start to finish, the process was smooth, professional, and efficient. They truly understood our brand and translated our vision into a clean, modern site that represents our hardscaping work perfectly. Communication was excellent, turnaround times were fast, and the final product exceeded our expectations. I would highly recommend them to any business looking for top-quality web design."
-                  </p>
-                </div>
-              </ScaleIn>
-
-              {/* CARD — Anthony Romero */}
-              <ScaleIn delay={0.35}>
-                <div className="break-inside-avoid glass rounded-xl p-5 border border-white/10">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-full bg-blue-700 flex items-center justify-center text-white font-bold text-sm">A</div>
-                    <div>
-                      <p className="font-heading font-semibold text-foreground">Anthony Romero</p>
-                      <p className="text-xs text-muted-foreground">Genius Fitness & MMA, Website & Portal Client</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="flex gap-0.5">{[...Array(5)].map((_, i) => <Star key={i} size={16} className="fill-primary text-primary" />)}</div>
-                    <span className="text-xs text-muted-foreground">2 months ago</span>
-                  </div>
-                  <p className="text-foreground/90 text-sm leading-relaxed">
-                    "Adam does a fantastic job putting together your dream website. Definitely recommend to any business."
-                  </p>
-                </div>
-              </ScaleIn>
-
-              {/* CARD — Joseph Ballouz */}
-              <ScaleIn delay={0.4}>
-                <div className="break-inside-avoid glass rounded-xl p-5 border border-white/10">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-full bg-slate-600 flex items-center justify-center text-white font-bold text-sm">J</div>
-                    <div>
-                      <p className="font-heading font-semibold text-foreground">Joseph Ballouz</p>
-                      <p className="text-xs text-muted-foreground">Streetball.ai, Website Client</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="flex gap-0.5">{[...Array(5)].map((_, i) => <Star key={i} size={16} className="fill-primary text-primary" />)}</div>
-                    <span className="text-xs text-muted-foreground">2 months ago</span>
-                  </div>
-                  <p className="text-foreground/90 text-sm leading-relaxed">
-                    "Amazing product and service! Adam is very nice and professional, he listens carefully to your needs and delivers exactly that. For my landing page streetball.ai, I described via text what I wanted, then Adam did a free prototype, then we refined it together. Highly recommend!"
-                  </p>
-                </div>
-              </ScaleIn>
-
-              {/* CARD — Olivier Michel */}
-              <ScaleIn delay={0.45}>
-                <div className="break-inside-avoid glass rounded-xl p-5 border border-white/10">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-full bg-purple-600 flex items-center justify-center text-white font-bold text-sm">O</div>
-                    <div>
-                      <p className="font-heading font-semibold text-foreground">Olivier Michel</p>
-                      <p className="text-xs text-muted-foreground">Website Client</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="flex gap-0.5">{[...Array(5)].map((_, i) => <Star key={i} size={16} className="fill-primary text-primary" />)}</div>
-                    <span className="text-xs text-muted-foreground">2 months ago</span>
-                  </div>
-                  <p className="text-foreground/90 text-sm leading-relaxed">
-                    "Saltarelli web studio delivers high quality and timely websites. I highly recommend Adam because he's amazing to work with."
-                  </p>
-                </div>
-              </ScaleIn>
-
-              {/* CARD — Colton Saliba */}
-              <ScaleIn delay={0.5}>
-                <div className="break-inside-avoid glass rounded-xl p-5 border border-white/10">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-full bg-orange-700 flex items-center justify-center text-white font-bold text-sm">C</div>
-                    <div>
-                      <p className="font-heading font-semibold text-foreground">Colton Saliba</p>
-                      <p className="text-xs text-muted-foreground">Website Client</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="flex gap-0.5">{[...Array(5)].map((_, i) => <Star key={i} size={16} className="fill-primary text-primary" />)}</div>
-                    <span className="text-xs text-muted-foreground">1 month ago</span>
-                  </div>
-                  <p className="text-foreground/90 text-sm leading-relaxed">
-                    "Thank Adam for making such a great website, it surpassed my expectations by far. For anyone looking for a website for their business I 100% recommend Adam."
-                  </p>
-                </div>
-              </ScaleIn>
-
-              {/* CARD — Claude Chaisson */}
-              <ScaleIn delay={0.55}>
-                <div className="break-inside-avoid glass rounded-xl p-5 border border-white/10">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-full bg-yellow-700 flex items-center justify-center text-white font-bold text-sm">C</div>
-                    <div>
-                      <p className="font-heading font-semibold text-foreground">Claude Chaisson</p>
-                      <p className="text-xs text-muted-foreground">Website Client</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="flex gap-0.5">{[...Array(5)].map((_, i) => <Star key={i} size={16} className="fill-primary text-primary" />)}</div>
-                    <span className="text-xs text-muted-foreground">1 month ago</span>
-                    <span className="text-[10px] font-bold bg-primary/20 text-primary px-2 py-0.5 rounded-full">NEW</span>
-                  </div>
-                  <p className="text-foreground/90 text-sm leading-relaxed">
-                    "I'm glad I found Adam to do this website for me. He made it easy and I appreciate it working with him and I. Thank you"
-                  </p>
-                </div>
-              </ScaleIn>
-            </div>
-
-            <FadeIn className="text-center mt-8">
-              <p className="text-sm text-muted-foreground">All reviews posted on Google · Niagara Region, Ontario</p>
-            </FadeIn>
-          </div>
-        </section>
+        {/* ──────────── GOOGLE REVIEW WALL (data: src/data/googleReviews.ts) ──────────── */}
+        <ReviewWall />
 
         {/* ──────────── SMART STACK PACK ──────────── */}
         <section
