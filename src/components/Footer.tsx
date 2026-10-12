@@ -54,6 +54,9 @@ export const Footer = () => {
                   <Link to={link.href} className="text-muted-foreground hover:text-primary transition-colors">{link.label}</Link>
                 </li>
               ))}
+              <li>
+                <a href="https://adamseye.ca" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">Adam's Eye: AI Audits</a>
+              </li>
             </ul>
           </div>
 

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="10 20 180 100" width="180" height="100" role="img" aria-label="Adam's Eye">
+  <path d="M10 70 Q100 -30 190 70 Q100 170 10 70 Z" fill="#FFFFFF"/>
+  <circle cx="100" cy="70" r="42" fill="#F26A1B"/>
+  <circle cx="100" cy="63" r="13" fill="#000000"/>
+  <path d="M95 64 L105 64 L111 94 L89 94 Z" fill="#000000"/>
+</svg>

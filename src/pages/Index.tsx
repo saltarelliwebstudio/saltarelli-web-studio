@@ -22,6 +22,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import logo from "@/assets/sws-logo.png";
+import adamsEyeMark from "@/assets/adams-eye-mark.svg";
 import { supabase } from "@/integrations/supabase/client";
 import { trackButtonClick } from "@/lib/analytics";
 import { businessSchema, personSchema, SERVICE_TYPES, faqSchema } from "@/lib/schema";
@@ -416,6 +417,40 @@ const Index = () => {
                   <ArrowRight size={18} />
                 </a>
               </Button>
+            </FadeIn>
+          </div>
+        </section>
+
+        {/* ──────────── ADAM'S EYE (audit brand, links out) ──────────── */}
+        <section className="py-12 md:py-16 px-4 md:px-6 relative z-10">
+          <div className="container mx-auto max-w-4xl">
+            <FadeIn>
+              <div className="rounded-2xl border border-border bg-card/60 p-6 md:p-10 flex flex-col md:flex-row items-center gap-6 md:gap-10 text-center md:text-left">
+                <img src={adamsEyeMark} alt="Adam's Eye logo" width={160} height={89} loading="lazy" className="w-32 md:w-40 h-auto shrink-0" />
+                <div className="flex-1">
+                  <span className="text-primary font-bold text-sm tracking-widest uppercase mb-2 block">
+                    Not sure where to start?
+                  </span>
+                  <h2 className="text-2xl md:text-3xl font-heading font-bold mb-3">
+                    Adam's Eye: AI operations audits
+                  </h2>
+                  <p className="text-muted-foreground mb-5">
+                    I spend a day inside your business, find where time and money are leaking, and hand you a ranked fix list. Fix it yourself, or have us build it.
+                  </p>
+                  <Button variant="outline" size="lg" asChild>
+                    <TrackedExternalLink
+                      href="https://adamseye.ca"
+                      trackingLabel="home_adams_eye"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="gap-2 inline-flex items-center justify-center"
+                    >
+                      Book an Audit Day
+                      <ArrowRight size={18} />
+                    </TrackedExternalLink>
+                  </Button>
+                </div>
+              </div>
             </FadeIn>
           </div>
         </section>
