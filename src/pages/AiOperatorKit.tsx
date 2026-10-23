@@ -9,7 +9,9 @@ import { FadeIn } from "@/components/motion/FadeIn";
 import { Button } from "@/components/ui/button";
 import { TrackedExternalLink } from "@/components/TrackedExternalLink";
 import { YouTubeFacade } from "@/components/YouTubeFacade";
+import { TrackedLink } from "@/components/TrackedLink";
 import { CalendlySection, CALENDLY_URL } from "@/components/CalendlyEmbed";
+import { withAttribution } from "@/lib/attribution";
 
 /* ── Tool data ── */
 const tools = [
@@ -185,6 +187,21 @@ const AiOperatorKit = () => {
                 title="AI Operator Kit walkthrough"
               />
             </FadeIn>
+            {/* Bridge for business owners: the kit draws AI-curious viewers, the score is what converts them */}
+            <FadeIn delay={0.1}>
+              <div className="mt-6 rounded-2xl border border-primary/30 bg-primary/5 px-5 py-4 text-center">
+                <p className="text-sm md:text-base text-muted-foreground">
+                  Own a local business? See how easy you are to find on Google.{" "}
+                  <TrackedLink
+                    to="/score?src=operator-kit"
+                    trackingLabel="kit_get_found_score"
+                    className="text-primary font-semibold underline underline-offset-4 hover:text-primary/80 whitespace-nowrap"
+                  >
+                    Take the free 3-minute Get Found Score
+                  </TrackedLink>
+                </p>
+              </div>
+            </FadeIn>
           </div>
         </section>
 
@@ -263,14 +280,14 @@ const AiOperatorKit = () => {
                   </p>
                   <Button variant="hero" size="lg" asChild>
                     <TrackedExternalLink
-                      href={CALENDLY_URL}
+                      href={withAttribution(CALENDLY_URL)}
                       trackingLabel="ai_operator_kit_book_call"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="gap-2 inline-flex items-center whitespace-normal text-center"
                     >
                       <ArrowRight size={16} className="flex-shrink-0" />
-                      Book a Free Demo
+                      Talk to an Expert
                     </TrackedExternalLink>
                   </Button>
                 </div>

@@ -9,6 +9,7 @@ import { SEO } from "@/components/SEO";
 import { FadeIn } from "@/components/motion";
 import { TrackedExternalLink } from "@/components/TrackedExternalLink";
 import { CalendlySection, CALENDLY_URL } from "@/components/CalendlyEmbed";
+import { withAttribution } from "@/lib/attribution";
 import { cityServiceSchema, breadcrumbSchema, personSchema, CITY_PAGES } from "@/lib/schema";
 
 interface CityPageLayoutProps {
@@ -84,12 +85,12 @@ export const CityPageLayout = ({
               <div className="mt-8 flex justify-center">
                 <Button variant="hero" size="lg" asChild>
                   <TrackedExternalLink
-                    href={CALENDLY_URL}
+                    href={withAttribution(CALENDLY_URL)}
                     target="_blank"
                     rel="noopener noreferrer"
                     trackingLabel={`${slug}_hero_book_call`}
                   >
-                    Book a Free Demo <ArrowRight className="ml-2" size={20} />
+                    Talk to an Expert <ArrowRight className="ml-2" size={20} />
                   </TrackedExternalLink>
                 </Button>
               </div>
@@ -135,7 +136,7 @@ export const CityPageLayout = ({
         <CalendlySection
           trackingLabel={`${slug}_inline`}
           heading={`Let's talk about your ${city} business`}
-          subheading="Grab a time below. Fifteen minutes, no pitch. I'll look at your site, your Google profile and your reviews before we speak, and I'll build you a free demo page so you can see it, not just hear about it."
+          subheading="Grab a time below. 30 minutes, no pressure. I'll look at your site, your Google profile and your reviews before we speak, and I'll build you a free demo page so you can see it, not just hear about it."
         />
 
         <Footer />

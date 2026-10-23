@@ -14,8 +14,8 @@ const GetStarted = () => {
     <>
       <SEO
         canonical="/get-started"
-        title="Free Website Demo"
-        description="Book a free 15-minute review of your website, Google profile, and reviews. Honest feedback and clear next steps, no pressure."
+        title="Free Strategy Call"
+        description="Book a free 30-minute strategy call. We learn how your business gets customers today and where it's leaking. No pitch, no pressure."
       />
     <div className="min-h-screen bg-background text-foreground relative flex flex-col overflow-x-hidden">
       <Starfield />
@@ -48,11 +48,11 @@ const GetStarted = () => {
               </motion.div>
             </motion.div>
             <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6">
-              Free Website Demo
+              Free Strategy Call
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
-              A free 15-minute look at your website, Google profile, and reviews.
-              You'll leave with honest feedback and clear next steps, no pressure.
+              A free 30-minute call to understand your business: where customers come from and what's getting in the way.
+              No pitch. If there's a fit, we build you a custom plan and walk you through it on a second call.
             </p>
           </div>
 

@@ -10,6 +10,7 @@ import { FadeIn, StaggerContainer, StaggerItem } from "@/components/motion";
 import { SEO } from "@/components/SEO";
 import { TrackedExternalLink } from "@/components/TrackedExternalLink";
 import { CalendlySection, CALENDLY_URL } from "@/components/CalendlyEmbed";
+import { withAttribution } from "@/lib/attribution";
 
 type FeaturedStudy = {
   title: string;
@@ -469,12 +470,12 @@ const Portfolio = () => {
               </p>
               <Button variant="hero" asChild>
                 <TrackedExternalLink
-                  href={CALENDLY_URL}
+                  href={withAttribution(CALENDLY_URL)}
                   trackingLabel="portfolio_book_call"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Book a Free Demo
+                  Talk to an Expert
                 </TrackedExternalLink>
               </Button>
             </div>

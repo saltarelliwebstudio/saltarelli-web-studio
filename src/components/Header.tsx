@@ -157,9 +157,9 @@ export const Header = () => {
               )
             )}
             <Button variant="hero" size="sm" asChild className="ml-2">
-              <a href="/#apply" onClick={(e) => { trackButtonClick("header_qualify", "Book a Free Demo", "#apply"); scrollToBooking(e); }} className="gap-2 inline-flex items-center">
+              <a href="/#apply" onClick={(e) => { trackButtonClick("header_qualify", "Talk to an Expert", "#apply"); scrollToBooking(e); }} className="gap-2 inline-flex items-center">
                 <Sparkles size={16} />
-                Book a Free Demo
+                Talk to an Expert
               </a>
             </Button>
           </div>
@@ -277,9 +277,9 @@ export const Header = () => {
                     className="mt-auto"
                   >
                     <Button variant="hero" size="lg" asChild className="w-full">
-                      <a href="/#apply" onClick={(e) => { trackButtonClick("header_mobile_qualify", "Book a Free Demo", "#apply"); scrollToBooking(e); }} className="gap-2 inline-flex items-center justify-center">
+                      <a href="/#apply" onClick={(e) => { trackButtonClick("header_mobile_qualify", "Talk to an Expert", "#apply"); scrollToBooking(e); }} className="gap-2 inline-flex items-center justify-center">
                         <Sparkles size={18} />
-                        Book a Free Demo
+                        Talk to an Expert
                       </a>
                     </Button>
                   </motion.div>

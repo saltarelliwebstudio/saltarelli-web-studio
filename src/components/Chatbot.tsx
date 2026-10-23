@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { CALENDLY_URL } from "@/components/CalendlyEmbed";
+import { withAttribution } from "@/lib/attribution";
 import { TrackedExternalLink } from "@/components/TrackedExternalLink";
 import { setChatOpen } from "@/lib/chatOpenStore";
 
@@ -59,7 +60,7 @@ export const Chatbot = () => {
       role: "assistant",
       content:
         "Hey, I'm here to answer anything about Saltarelli Web Studio — websites, AI agents, automations, pricing. " +
-        "Ask away, or book a Free Demo and Adam will walk you through it in 15 minutes.",
+        "Ask away, or book a free 30-minute strategy call with Adam.",
     },
   ]);
   const [input, setInput] = useState("");
@@ -160,7 +161,7 @@ export const Chatbot = () => {
         {
           role: "assistant",
           content:
-            `Sorry, I'm having trouble connecting right now. You can book a Free Demo directly: ${CALENDLY_URL}` +
+            `Sorry, I'm having trouble connecting right now. You can book a free strategy call directly: ${CALENDLY_URL}` +
             ` — or talk to Sam, our AI assistant, at ${VOICE_AGENT_DISPLAY}.`,
         },
       ]);
@@ -266,7 +267,7 @@ export const Chatbot = () => {
             {messages.length === 1 && (
               <div className="flex gap-2 px-3 pb-1 bg-background/95 backdrop-blur-xl">
                 <TrackedExternalLink
-                  href={CALENDLY_URL}
+                  href={withAttribution(CALENDLY_URL)}
                   trackingLabel="chat_book_demo"
                   target="_blank"
                   rel="noopener noreferrer"

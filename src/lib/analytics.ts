@@ -38,3 +38,17 @@ export const trackButtonClick = (
     from: label,
   });
 };
+
+/**
+ * A form lead landed (homepage form, Get Found Score). Same GA event as a
+ * Calendly booking, so both count as leads; `method` tells them apart.
+ */
+export const trackFormLead = (method: string): void => {
+  if (typeof window !== "undefined" && window.gtag) {
+    window.gtag("event", "generate_lead", {
+      method,
+      page_location: window.location.pathname,
+    });
+  }
+  trackEvent("form_lead", { method });
+};

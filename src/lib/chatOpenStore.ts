@@ -4,7 +4,7 @@ import { useSyncExternalStore } from "react";
  * Whether the chat panel is open, shared between `Chatbot` and `StickyBookButton`.
  *
  * Both live in the bottom-right corner. The open chat panel covers the sticky
- * "Book a Free Demo" button, so the button hides while the panel is up. They are
+ * "Book a Free Strategy Call" button, so the button hides while the panel is up. They are
  * mounted as siblings in App.tsx with no common ancestor to hold this in, and a
  * whole context provider for one boolean is more plumbing than it's worth.
  */

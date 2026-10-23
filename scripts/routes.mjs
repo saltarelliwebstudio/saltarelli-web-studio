@@ -28,10 +28,12 @@ export const ROUTES = [
   { path: "/web-design-fort-erie", source: "src/pages/WebDesignFortErie.tsx", changefreq: "monthly", priority: "0.8" },
   { path: "/web-design-crystal-beach", source: "src/pages/WebDesignCrystalBeach.tsx", changefreq: "monthly", priority: "0.8" },
   { path: "/get-started", source: "src/pages/GetStarted.tsx", changefreq: "monthly", priority: "0.7" },
+  { path: "/score", source: "src/pages/GetFoundScore.tsx", changefreq: "monthly", priority: "0.6" },
   { path: "/ai-operator-kit", source: "src/pages/AiOperatorKit.tsx", changefreq: "monthly", priority: "0.7" },
   { path: "/about", source: "src/pages/About.tsx", changefreq: "monthly", priority: "0.5" },
   { path: "/sms", source: "src/pages/SmsOptIn.tsx", changefreq: "yearly", priority: "0.3" },
   { path: "/privacy", source: "src/pages/Privacy.tsx", changefreq: "yearly", priority: "0.2" },
+  { path: "/terms", source: "src/pages/Terms.tsx", changefreq: "yearly", priority: "0.2" },
 ];
 
 /**

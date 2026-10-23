@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { TrackedExternalLink } from "@/components/TrackedExternalLink";
 import { CALENDLY_URL } from "@/components/CalendlyEmbed";
+import { withAttribution } from "@/lib/attribution";
 
 interface PricingCardProps {
   title: string;
@@ -69,7 +70,7 @@ export const PricingCard: React.FC<PricingCardProps> = ({
               asChild
             >
               <TrackedExternalLink
-                href={CALENDLY_URL}
+                href={withAttribution(CALENDLY_URL)}
                 trackingLabel={trackingLabel}
                 target="_blank"
                 rel="noopener noreferrer"

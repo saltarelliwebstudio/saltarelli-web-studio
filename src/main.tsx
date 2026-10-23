@@ -1,6 +1,7 @@
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
 import { healStaticSnapshot } from "./lib/healStaticSnapshot";
+import { captureFirstTouch } from "./lib/attribution";
 import "./index.css";
 import "@fontsource/inter/400.css";
 import "@fontsource/inter/500.css";
@@ -16,5 +17,9 @@ import "@fontsource/poppins/700.css";
 // unclosable modal, and Radix would otherwise capture that "none" and restore
 // it the next time a dialog closes. See lib/healStaticSnapshot.ts.
 healStaticSnapshot();
+
+// Remember where this visitor first came from, before any in-site navigation
+// changes document.referrer. Every Calendly link carries it. See lib/attribution.ts.
+captureFirstTouch();
 
 createRoot(document.getElementById("root")!).render(<App />);

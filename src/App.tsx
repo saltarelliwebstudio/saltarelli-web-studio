@@ -17,10 +17,12 @@ import Index from "./pages/Index";
 
 const About = React.lazy(() => import("./pages/About"));
 import Privacy from "./pages/Privacy";
+import Terms from "./pages/Terms";
 import SmsOptIn from "./pages/SmsOptIn";
 const Portfolio = React.lazy(() => import("./pages/Portfolio"));
 const GetStarted = React.lazy(() => import("./pages/GetStarted"));
 const AiOperatorKit = React.lazy(() => import("./pages/AiOperatorKit"));
+const GetFoundScore = React.lazy(() => import("./pages/GetFoundScore"));
 const NotFound = React.lazy(() => import("./pages/NotFound"));
 const WebDesignPortColborne = React.lazy(() => import("./pages/WebDesignPortColborne"));
 const WebDesignWelland = React.lazy(() => import("./pages/WebDesignWelland"));
@@ -46,10 +48,12 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
           <Route path="/privacy" element={<Privacy />} />
+          <Route path="/terms" element={<Terms />} />
           <Route path="/sms" element={<SmsOptIn />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/get-started" element={<GetStarted />} />
           <Route path="/ai-operator-kit" element={<AiOperatorKit />} />
+          <Route path="/score" element={<GetFoundScore />} />
 
           {/* Niagara city landing pages. Also listed in scripts/routes.mjs,
               which drives both prerendering and sitemap.xml. */}

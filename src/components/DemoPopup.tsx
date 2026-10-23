@@ -222,7 +222,7 @@ export const DemoPopup = () => {
             Before you go — grab a free demo
           </DialogTitle>
           <DialogDescription className="mt-2 text-sm text-muted-foreground">
-            Fifteen minutes, no pitch deck. Adam shows you what your site could look
+            30 minutes, no pitch deck. Adam shows you what your site could look
             like and where you're losing customers on Google right now.
           </DialogDescription>
 

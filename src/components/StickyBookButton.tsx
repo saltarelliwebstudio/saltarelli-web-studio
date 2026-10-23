@@ -3,6 +3,7 @@ import { Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { TrackedExternalLink } from "@/components/TrackedExternalLink";
 import { CALENDLY_URL } from "@/components/CalendlyEmbed";
+import { withAttribution } from "@/lib/attribution";
 import { useChatOpen } from "@/lib/chatOpenStore";
 
 export const StickyBookButton = () => {
@@ -20,14 +21,14 @@ export const StickyBookButton = () => {
         asChild
       >
         <TrackedExternalLink
-          href={CALENDLY_URL}
+          href={withAttribution(CALENDLY_URL)}
           trackingLabel="sticky_book_call"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-2"
         >
           <Calendar size={20} />
-          <span className="hidden sm:inline">Book a Free Demo</span>
+          <span className="hidden sm:inline">Talk to an Expert</span>
         </TrackedExternalLink>
       </Button>
     </div>

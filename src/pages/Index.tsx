@@ -9,12 +9,12 @@ import { TestimonialCard } from "@/components/TestimonialCard";
 import { TrustedBy } from "@/components/TrustedBy";
 import { ReviewWall } from "@/components/ReviewWall";
 import { ProofResults } from "@/components/ProofResults";
-import { GOOGLE_REVIEW_COUNT, GOOGLE_RATING } from "@/data/googleReviews";
 import { FadeIn, StaggerContainer, StaggerItem, ScaleIn } from "@/components/motion";
 import { SEO } from "@/components/SEO";
 import { TrackedLink } from "@/components/TrackedLink";
 import { TrackedExternalLink } from "@/components/TrackedExternalLink";
 import { CalendlyEmbed, CALENDLY_URL } from "@/components/CalendlyEmbed";
+import { withAttribution } from "@/lib/attribution";
 import {
   Accordion,
   AccordionContent,
@@ -24,8 +24,8 @@ import {
 import logo from "@/assets/sws-logo.png";
 import adamsEyeMark from "@/assets/adams-eye-mark.svg";
 import { supabase } from "@/integrations/supabase/client";
-import { trackButtonClick } from "@/lib/analytics";
-import { businessSchema, personSchema, SERVICE_TYPES, faqSchema } from "@/lib/schema";
+import { trackButtonClick, trackFormLead } from "@/lib/analytics";
+import { businessSchema, personSchema, SERVICE_TYPES, faqSchema, CITY_PAGES } from "@/lib/schema";
 
 // Booking is the primary conversion. Warm inbound should never have to fill out a
 // form to reach Adam -- every prominent CTA points here, and the #apply section
@@ -63,15 +63,19 @@ const faqItems = [
   },
   {
     q: "How does the 60-day guarantee work?",
-    a: "If you're not satisfied with what I've delivered after 60 days, you get a full refund. Every dollar back, no awkward conversation, no fine print. That's the Clean Hands Guarantee.",
+    a: "If you're not satisfied inside the first 60 days, you get a full refund. Every dollar back, no awkward conversation, no fine print, and no conditions tied to review counts or ranking positions. That's the Clean Hands Guarantee.",
   },
   {
     q: "What kind of businesses is this for?",
     a: "Local businesses that live and die by Google and word of mouth. Trades, gyms, service businesses, restaurants, professional services. If your customers find you by searching, this is for you.",
   },
   {
-    q: "Can you actually get me to the top of Google?",
-    a: "I took a 24/7 gym in Port Colborne to number one on Google in the Niagara region in 60 days. Every market is different, which is exactly why there's a money-back guarantee. If I don't deliver, you don't pay.",
+    q: "Can you guarantee I'll be #1 on Google?",
+    a: "No one honestly can. Your market decides that. What I can show you: a 24/7 gym in Port Colborne went to number one on Google in the Niagara region in 60 days with the same site, review engine and local SEO I'd build for you. And if you're not satisfied in the first 60 days, you get your money back.",
+  },
+  {
+    q: "What areas do you serve?",
+    a: "All of the Niagara Region: Port Colborne, Welland, St. Catharines, Niagara Falls, Fort Erie, Crystal Beach, Ridgeway, Fonthill, Thorold, Grimsby and Niagara-on-the-Lake. I'm local, so you can meet me in person. I also work with businesses across Ontario and Canada over video.",
   },
   {
     q: "How much of my time does it take?",
@@ -88,8 +92,8 @@ const Index = () => {
     <>
       <SEO
         canonical="/"
-        title="Get Found on Google in Niagara | Saltarelli Web Studio"
-        description="Managed websites, Google review engines, and local SEO that get Niagara businesses found on Google. Backed by a 60-day guarantee."
+        title="Niagara Web Design & Local SEO | Saltarelli Web Studio"
+        description="Niagara web design, Google reviews and local SEO for trades and local businesses in St. Catharines, Welland, Niagara Falls, Fort Erie and Port Colborne. 60-day money-back guarantee."
         schema={[{
           // Name, address, phone, socials and the 12-city service area all come
           // from src/lib/schema.ts so they can't drift from the footer or the
@@ -126,7 +130,7 @@ const Index = () => {
         <Header />
 
         {/* ──────────── HERO ──────────── */}
-        <section className="relative min-h-[100svh] flex items-center justify-center px-4 md:px-6 pt-20 pb-10">
+        <section className="relative md:min-h-[100svh] flex items-center justify-center px-4 md:px-6 pt-28 md:pt-20 pb-16 md:pb-10">
           <div className="container mx-auto max-w-6xl relative z-10">
             <div className="text-center">
               {/* Floating Logo */}
@@ -149,7 +153,7 @@ const Index = () => {
                   <img
                     src={logo}
                     alt="Saltarelli Web Studio"
-                    className="h-32 w-32 md:h-40 md:w-40 relative z-10 drop-shadow-2xl"
+                    className="h-20 w-20 md:h-32 md:w-32 relative z-10 drop-shadow-2xl"
                     width={160}
                     height={160}
                     fetchPriority="high"
@@ -166,18 +170,12 @@ const Index = () => {
                   delay: 0.2,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-heading font-bold mb-6 leading-[1.1] max-w-5xl mx-auto text-balance"
+                className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-heading font-bold mb-5 leading-[1.1] max-w-5xl mx-auto text-balance"
               >
-                I took a Port Colborne gym to{" "}
-                <span className="text-primary glow-text whitespace-nowrap">
-                  #1 on Google
-                </span>{" "}
-                in{" "}
-                <span className="text-primary glow-text whitespace-nowrap">
-                  60 days
+                We Build Websites That{" "}
+                <span className="text-primary glow-text">
+                  Get Your Phone Ringing
                 </span>
-                .
-                <br className="hidden md:inline" /> Let's get more customers finding you.
               </motion.h1>
 
               {/* Subtitle */}
@@ -185,9 +183,9 @@ const Index = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
-                className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed px-4"
+                className="text-[15px] sm:text-base md:text-lg text-foreground/75 mb-8 max-w-2xl mx-auto leading-relaxed px-2 sm:px-4"
               >
-                I build and manage your website and Google review engine to get more local customers finding you on Google. If it's not working in 60 days, you don't pay a cent.
+                Most local businesses are stuck relying on word of mouth, referrals and paid lead sites. We replace all of that with one system that gets you found on Google, collects 5-star reviews and follows up on every lead, so more calls turn into booked jobs. Not satisfied in 60 days? You get your money back.
               </motion.p>
 
               {/* CTA Buttons */}
@@ -199,55 +197,29 @@ const Index = () => {
               >
                 <Button variant="hero" size="lg" asChild className="text-base">
                   <TrackedExternalLink
-                    href={CALENDLY}
+                    href={withAttribution(CALENDLY)}
                     trackingLabel="hero_book_call"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="gap-2 inline-flex items-center justify-center"
                   >
                     <Calendar size={18} />
-                    Book a Free Demo
+                    Talk to an Expert
                   </TrackedExternalLink>
                 </Button>
-                <Button
-                  variant="cosmic"
-                  size="lg"
-                  asChild
-                  className="text-base"
-                >
-                  <a
-                    href="#smart-stack"
+                <Button variant="cosmic" size="lg" asChild className="text-base">
+                  <TrackedLink
+                    to="/score?src=home-hero"
+                    trackingLabel="hero_get_found_score"
                     className="gap-2 inline-flex items-center justify-center"
                   >
-                    See What's Included
+                    Get Your Free Get Found Score
                     <ArrowRight size={18} />
-                  </a>
+                  </TrackedLink>
                 </Button>
               </motion.div>
 
-              {/* Trust Badge */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.8 }}
-                className="mt-6 flex flex-col items-center gap-2"
-              >
-                <a
-                  href="#reviews"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 backdrop-blur-sm transition-colors hover:border-primary/50"
-                >
-                  <span className="flex gap-0.5">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} size={16} className="fill-primary text-primary" />
-                    ))}
-                  </span>
-                  <span className="text-sm font-semibold text-foreground">{GOOGLE_RATING}</span>
-                  <span className="text-sm text-muted-foreground">· {GOOGLE_REVIEW_COUNT} Google reviews</span>
-                </a>
-                <p className="text-sm text-muted-foreground">
-                  Backed by our Clean Hands Guarantee
-                </p>
-              </motion.div>
+
             </div>
           </div>
         </section>
@@ -410,10 +382,10 @@ const Index = () => {
               <Button variant="hero" size="lg" asChild>
                 <a
                   href="#apply"
-                  onClick={() => trackButtonClick("smartstack_qualify", "Book a Free Demo", "#apply")}
+                  onClick={() => trackButtonClick("smartstack_qualify", "Talk to an Expert", "#apply")}
                   className="gap-2 inline-flex items-center justify-center"
                 >
-                  Book a Free Demo
+                  Talk to an Expert
                   <ArrowRight size={18} />
                 </a>
               </Button>
@@ -473,7 +445,7 @@ const Index = () => {
                 {
                   num: 1,
                   title: "Apply & Qualify",
-                  desc: "Tell me about your business in a quick form or call. I look at your Google presence and whether I can get you to the top. I only take 5 clients a month.",
+                  desc: "Tell me about your business in a quick form or call. I look at your Google presence and tell you honestly whether I can help. I only take 5 clients a month.",
                 },
                 {
                   num: 2,
@@ -531,15 +503,48 @@ const Index = () => {
                     Clean Hands Guarantee
                   </h2>
                   <p className="text-muted-foreground text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-4">
-                    If you're not getting more customers from Google within 60
-                    days, I'll refund every dollar you paid. No awkward
-                    conversation. No fine print.
+                    If you're not satisfied inside the first 60 days, I'll refund
+                    every dollar you paid. No awkward conversation. No fine print.
+                    No conditions tied to review counts or ranking positions.
                   </p>
                   <p className="text-sm text-muted-foreground italic">
-                    I don't promise #1. That's up to your market. I promise more
-                    customers, or your money back.
+                    I don't promise #1. That's up to your market. I promise to do
+                    the work right, or you don't pay for it.
                   </p>
                 </div>
+              </div>
+            </FadeIn>
+          </div>
+        </section>
+
+        {/* ──────────── SERVICE AREA ──────────── */}
+        {/* In-body links to the city pages. Google listed them as "Discovered,
+            not indexed" with only footer links pointing at them. */}
+        <section className="py-16 md:py-20 px-4 md:px-6 relative z-10">
+          <div className="container mx-auto max-w-[760px] text-center">
+            <FadeIn>
+              <span className="text-primary font-bold text-sm tracking-widest uppercase mb-3 block">
+                Local to Niagara
+              </span>
+              <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
+                Web design and local SEO across the Niagara Region
+              </h2>
+              <p className="text-muted-foreground text-base md:text-lg leading-relaxed mb-6">
+                I live and work in Niagara. Every town here is its own Google
+                search, so your site and your Google profile should name the
+                places you actually serve. Here is what that looks like where you are:
+              </p>
+              <div className="flex flex-wrap justify-center gap-3">
+                {CITY_PAGES.map((c) => (
+                  <TrackedLink
+                    key={c.slug}
+                    to={`/${c.slug}`}
+                    trackingLabel={`home_city_${c.slug}`}
+                    className="glass rounded-full border border-white/10 px-4 py-2 text-sm font-semibold hover:border-primary/60 transition-colors"
+                  >
+                    Web design in {c.city}
+                  </TrackedLink>
+                ))}
               </div>
             </FadeIn>
           </div>
@@ -586,14 +591,15 @@ const Index = () => {
           <div className="container mx-auto max-w-5xl">
             <FadeIn className="text-center mb-10">
               <span className="text-primary font-bold text-sm tracking-widest uppercase mb-3 block">
-                Free Website Demo
+                Free Strategy Call
               </span>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-4">
                 Grab a time that works
               </h2>
               <p className="text-muted-foreground max-w-xl mx-auto">
-                Fifteen minutes, no pitch. We'll look at how your business shows
-                up on Google right now and where the leads are leaking.
+                30 minutes on Google Meet, no pressure. I'll have looked at your
+                site, your Google profile and your reviews before we talk, and
+                I'll show you where the calls are leaking.
               </p>
             </FadeIn>
 
@@ -649,12 +655,12 @@ const Index = () => {
                     <Sparkles className="text-white" size={48} />
                   </motion.div>
                   <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold mb-4 text-white">
-                    Ready to Get to the{" "}
-                    <span className="text-primary">Top of Google</span>?
+                    Ready to Get{" "}
+                    <span className="text-primary">Found on Google</span>?
                   </h2>
                   <p className="text-base sm:text-lg md:text-xl text-white/90 mb-8 max-w-xl mx-auto">
-                    Apply for one of 5 spots this month. I'll review your business and
-                    show you exactly how we get you ranking at the top of Google in 60 days.
+                    I take 5 new Niagara businesses a month. Book a call and I'll show
+                    you exactly where you stand on Google and what it takes to climb.
                   </p>
                   <Button
                     size="lg"
@@ -663,13 +669,23 @@ const Index = () => {
                   >
                     <a
                       href="#apply"
-                      onClick={() => trackButtonClick("final_qualify", "Book a Free Demo", "#apply")}
+                      onClick={() => trackButtonClick("final_qualify", "Talk to an Expert", "#apply")}
                       className="gap-2 inline-flex items-center justify-center"
                     >
                       <Sparkles size={18} />
-                      Book a Free Demo
+                      Talk to an Expert
                     </a>
                   </Button>
+                  <p className="mt-5 text-sm text-white/80">
+                    Not ready yet?{" "}
+                    <TrackedLink
+                      to="/score?src=home-final"
+                      trackingLabel="final_get_found_score"
+                      className="text-white font-medium underline underline-offset-4 hover:text-white/90"
+                    >
+                      See your Get Found Score first
+                    </TrackedLink>
+                  </p>
                 </div>
               </motion.div>
             </ScaleIn>
@@ -765,6 +781,7 @@ function ApplyForm() {
       if (error || payload?.error) {
         throw new Error(payload?.error || error?.message || "Something went wrong.");
       }
+      trackFormLead("homepage_form");
       setStatus("success");
     } catch (err) {
       setErrorMsg(
@@ -797,13 +814,13 @@ function ApplyForm() {
         </p>
         <Button variant="hero" size="lg" asChild>
           <TrackedExternalLink
-            href={CALENDLY}
+            href={withAttribution(CALENDLY)}
             trackingLabel="apply_success_book_now"
             target="_blank"
             rel="noopener noreferrer"
             className="gap-2 inline-flex items-center justify-center"
           >
-            Book a Free Demo Now
+            Talk to an Expert
             <ArrowRight size={18} />
           </TrackedExternalLink>
         </Button>
@@ -871,7 +888,7 @@ function ApplyForm() {
         <p className="text-sm text-muted-foreground text-center pt-1">
           Or{" "}
           <TrackedExternalLink
-            href={CALENDLY}
+            href={withAttribution(CALENDLY)}
             trackingLabel="apply_book_now"
             target="_blank"
             rel="noopener noreferrer"

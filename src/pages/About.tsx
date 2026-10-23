@@ -13,6 +13,7 @@ import { TrackedLink } from "@/components/TrackedLink";
 import { TrackedExternalLink } from "@/components/TrackedExternalLink";
 import adamPhoto from "@/assets/adam-photo.png";
 import { CalendlySection, CALENDLY_URL } from "@/components/CalendlyEmbed";
+import { withAttribution } from "@/lib/attribution";
 
 const About = () => {
   return (
@@ -189,12 +190,12 @@ const About = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="hero" size="lg" asChild>
                 <TrackedExternalLink
-                  href={CALENDLY_URL}
+                  href={withAttribution(CALENDLY_URL)}
                   trackingLabel="about_book_call"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Book a Free Demo <ArrowRight className="ml-2" size={20} />
+                  Talk to an Expert <ArrowRight className="ml-2" size={20} />
                 </TrackedExternalLink>
               </Button>
               <Button variant="cosmic" size="lg" asChild>

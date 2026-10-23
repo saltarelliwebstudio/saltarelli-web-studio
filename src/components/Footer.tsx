@@ -49,7 +49,7 @@ export const Footer = () => {
           <div>
             <h3 className="font-heading font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-3">
-              {[{ href: "/", label: "Home" }, { href: "/portfolio", label: "Portfolio" }, { href: "/about", label: "About Adam" }, { href: "/ai-operator-kit", label: "AI Operator Kit" }, { href: "/get-started", label: "Free Website Demo" }, { href: "/sms", label: "Text Updates" }, { href: "/privacy", label: "Privacy" }].map((link) => (
+              {[{ href: "/", label: "Home" }, { href: "/portfolio", label: "Portfolio" }, { href: "/about", label: "About Adam" }, { href: "/ai-operator-kit", label: "AI Operator Kit" }, { href: "/get-started", label: "Free Website Demo" }, { href: "/sms", label: "Text Updates" }, { href: "/privacy", label: "Privacy" }, { href: "/terms", label: "Terms" }].map((link) => (
                 <li key={link.href}>
                   <Link to={link.href} className="text-muted-foreground hover:text-primary transition-colors">{link.label}</Link>
                 </li>
@@ -91,7 +91,7 @@ export const Footer = () => {
               </a>
               <p className="text-sm text-muted-foreground italic pt-2">Response time: 24-48 hours</p>
               <Button variant="hero" size="sm" className="mt-4 w-full sm:w-auto" asChild>
-                <a href="/#apply" onClick={(e) => { trackButtonClick("footer_qualify", "Book a Free Demo", "#apply"); scrollToBooking(e); }}>Book a Free Demo</a>
+                <a href="/#apply" onClick={(e) => { trackButtonClick("footer_qualify", "Talk to an Expert", "#apply"); scrollToBooking(e); }}>Talk to an Expert</a>
               </Button>
             </div>
           </div>

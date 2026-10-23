@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { trackEvent } from "@/components/PageTracker";
 import { trackButtonClick } from "@/lib/analytics";
+import { withAttribution } from "@/lib/attribution";
 
 export const CALENDLY_URL =
-  "https://calendly.com/saltarelliwebstudio/free-15-minute-online-presence-review";
+  "https://calendly.com/saltarelliwebstudio/30min";
 
 /**
  * Inline Calendly booking widget.
@@ -52,8 +53,10 @@ export const CalendlyEmbed = ({
   // exempt, which is exactly how this passed local testing and failed in production.
   const host =
     typeof window !== "undefined" ? window.location.hostname : "saltarelliwebstudio.ca";
+  // Calendly's own booking redirect (watch.saltarelliwebstudio.ca) carries the
+  // pre-call video, so nothing extra is shown here after a booking.
   const src =
-    `${CALENDLY_URL}?embed_domain=${encodeURIComponent(host)}&embed_type=Inline` +
+    `${withAttribution(CALENDLY_URL)}&embed_domain=${encodeURIComponent(host)}&embed_type=Inline` +
     `&hide_gdpr_banner=1&background_color=0d0d12&text_color=f5f3ef&primary_color=ea7b2d`;
 
   return (
@@ -61,7 +64,7 @@ export const CalendlyEmbed = ({
       <div className="overflow-hidden rounded-2xl border border-white/15 bg-white/5">
         <iframe
           src={src}
-          title="Book a free 15-minute call with Adam"
+          title="Book a free 30-minute strategy call with Adam"
           className="w-full border-0 h-[1080px] sm:h-[760px]"
           loading="lazy"
         />
@@ -72,7 +75,7 @@ export const CalendlyEmbed = ({
       <p className="text-center text-sm text-muted-foreground mt-4">
         Calendar not loading?{" "}
         <a
-          href={CALENDLY_URL}
+          href={withAttribution(CALENDLY_URL)}
           target="_blank"
           rel="noopener noreferrer"
           onClick={() =>

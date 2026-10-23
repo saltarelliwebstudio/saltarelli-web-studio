@@ -72,7 +72,7 @@ const WebDesignStCatharines = () => (
       </p>
       <p>
         If you're in St. Catharines and you want to know where you genuinely
-        stand against the businesses ranking above you, book a call. Fifteen
+        stand against the businesses ranking above you, book a call. Thirty
         minutes, and I'll have looked at your site, your profile and your review
         pattern before we speak.
       </p>
