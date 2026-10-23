@@ -1,4 +1,5 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import { Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { TrackedExternalLink } from "@/components/TrackedExternalLink";
@@ -7,6 +8,9 @@ import { withAttribution } from "@/lib/attribution";
 import { useChatOpen } from "@/lib/chatOpenStore";
 
 export const StickyBookButton = () => {
+  // Lives outside <Routes>, so subscribe to the route or the Calendly link keeps
+  // the first page's utm_content after in-site navigation.
+  useLocation();
   // The open chat panel covers this corner, so step out of its way.
   if (useChatOpen()) return null;
 

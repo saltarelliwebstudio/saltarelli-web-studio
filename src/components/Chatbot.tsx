@@ -3,6 +3,7 @@ import { MessageCircle, X, Send, Loader2, Calendar, Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useLocation } from "react-router-dom";
 import { CALENDLY_URL } from "@/components/CalendlyEmbed";
 import { withAttribution } from "@/lib/attribution";
 import { TrackedExternalLink } from "@/components/TrackedExternalLink";
@@ -48,6 +49,9 @@ const generateSessionId = () => {
 const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/website-chat`;
 
 export const Chatbot = () => {
+  // Outside <Routes>: re-render on navigation so the Calendly link's utm_content
+  // names the page the visitor is actually on.
+  useLocation();
   const [isOpen, setIsOpenState] = useState(false);
 
   // Mirror open state out so StickyBookButton can get out of this corner.
